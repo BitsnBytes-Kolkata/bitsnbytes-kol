@@ -1,20 +1,26 @@
-"use client"
+"use client";
 
-import dynamic from "next/dynamic"
-import { Suspense } from "react"
-import { PageSection } from "@/components/page-section"
-import { LoadingInline } from "@/components/loading-wrapper"
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+import { PageSection } from "@/components/page-section";
+import { LoadingInline } from "@/components/loading-wrapper";
 
 // Lazy load heavy components
 const TeamCaseStudy = dynamic(() => import("@/components/team-case-study"), {
   loading: () => <LoadingInline />,
-  ssr: true
-})
+  ssr: true,
+});
 
-const WebGLShader = dynamic(() => import("@/components/ui/web-gl-shader").then(mod => ({ default: mod.WebGLShader })), {
-  loading: () => null,
-  ssr: false
-})
+const WebGLShader = dynamic(
+  () =>
+    import("@/components/ui/web-gl-shader").then((mod) => ({
+      default: mod.WebGLShader,
+    })),
+  {
+    loading: () => null,
+    ssr: false,
+  },
+);
 
 const aboutContent = {
   title: "About Bits&Bytes",
@@ -42,7 +48,7 @@ const aboutContent = {
         "We inspire the next generation of developers and innovators to turn their ideas into reality and create solutions that make a real difference.",
     },
   ],
-}
+};
 
 const teamMembers = [
   {
@@ -51,7 +57,12 @@ const teamMembers = [
     role: "Founder",
     image: "/team/yash.jpeg",
     bio: "Leads the entire organization, coordinating between all teams, organizing events, setting timelines, and ensuring that work gets executed efficiently.",
-    expertise: ["Leadership", "Event Management", "Team Coordination", "Strategic Planning"],
+    expertise: [
+      "Leadership",
+      "Event Management",
+      "Team Coordination",
+      "Strategic Planning",
+    ],
     linkedin: "https://www.linkedin.com/in/yash-singh-a41540270/",
     accentColor: "#3E1E68", // Deep Purple
     isFounder: true,
@@ -62,7 +73,12 @@ const teamMembers = [
     role: "Co-Founder & Chief Creative Strategist",
     image: "/team/aadrika.png",
     bio: "Leads branding, design decisions, idea generation, and promotional campaign planning. Handles basic tech work and guides the overall direction of the organization.",
-    expertise: ["Creative Strategy", "Brand Development", "Campaign Planning", "Design Direction"],
+    expertise: [
+      "Creative Strategy",
+      "Brand Development",
+      "Campaign Planning",
+      "Design Direction",
+    ],
     linkedin: "https://in.linkedin.com/in/aadrika-maurya",
     accentColor: "#E45A92", // Vibrant Pink
     isFounder: true,
@@ -73,7 +89,11 @@ const teamMembers = [
     role: "Co-Founder & Technical Lead",
     image: "/team/akshat.png",
     bio: "Builds and maintains the website, leads programming projects, evaluates tech stacks, and ensures the technical stability of all projects.",
-    expertise: ["AI & LLMOps", "Cloud Infrastructure", "Full-Stack Development"],
+    expertise: [
+      "AI & LLMOps",
+      "Cloud Infrastructure",
+      "Full-Stack Development",
+    ],
     linkedin: "https://www.linkedin.com/in/akshat-singh-kushwaha/",
     accentColor: "#5D2F77", // Rich Plum
     isFounder: true,
@@ -84,7 +104,12 @@ const teamMembers = [
     role: "Founding Member & Backend Lead",
     image: "/team/devaansh.jpeg",
     bio: "Manages backend development, collaborates on technical features, and builds relationships with schools, students, and external communities for participation and support.",
-    expertise: ["Backend Development", "Database Architecture", "Community Outreach", "Partnership Building"],
+    expertise: [
+      "Backend Development",
+      "Database Architecture",
+      "Community Outreach",
+      "Partnership Building",
+    ],
     linkedin: "https://www.linkedin.com/in/devaanshpa/",
   },
   {
@@ -93,7 +118,12 @@ const teamMembers = [
     role: "Ideation & Research Lead",
     image: "/team/saksham.jpeg",
     bio: "Brainstorms new concepts, supports ongoing initiatives with research, and helps refine plans for events and content.",
-    expertise: ["Strategic Ideation", "Research & Analysis", "Concept Development", "Event Planning"],
+    expertise: [
+      "Strategic Ideation",
+      "Research & Analysis",
+      "Concept Development",
+      "Event Planning",
+    ],
     linkedin: "https://www.linkedin.com/in/sakshm/",
   },
   {
@@ -102,7 +132,12 @@ const teamMembers = [
     role: "Content & Video Producer",
     image: "/team/kaustubh.jpeg",
     bio: "Creates compelling video content, edits event highlights, and works on storytelling that attracts attention.",
-    expertise: ["Video Production", "Content Creation", "Video Editing", "Brand Storytelling"],
+    expertise: [
+      "Video Production",
+      "Content Creation",
+      "Video Editing",
+      "Brand Storytelling",
+    ],
   },
   {
     id: 7,
@@ -110,7 +145,12 @@ const teamMembers = [
     role: "Outreach Lead",
     image: "/team/oviyaa.jpeg",
     bio: "Builds and maintains connections with schools, clubs, local communities, and potential collaborators.",
-    expertise: ["Outreach", "Digital Marketing", "Community Engagement", "Growth Strategy"],
+    expertise: [
+      "Outreach",
+      "Digital Marketing",
+      "Community Engagement",
+      "Growth Strategy",
+    ],
     linkedin: "https://www.linkedin.com/in/oviyaa-singh-3a183a370/",
   },
   {
@@ -119,7 +159,12 @@ const teamMembers = [
     role: "Social Media & Promotions Head",
     image: "/team/maryam.jpeg",
     bio: "Designs visuals for posts, events, and campaigns while maintaining branding consistency. Coordinates closely with the social media and content teams.",
-    expertise: ["Social Media", "Brand Identity", "Visual Communication", "Design Systems"],
+    expertise: [
+      "Social Media",
+      "Brand Identity",
+      "Visual Communication",
+      "Design Systems",
+    ],
     linkedin: "https://www.linkedin.com/in/maryam-fatima-9719aa377/",
   },
   {
@@ -128,9 +173,15 @@ const teamMembers = [
     role: "Backend Developer",
     image: "/team/areeb.png",
     bio: "Assists in backend development tasks, collaborates on building robust APIs, and ensures smooth data management for various projects.",
-    expertise: ["Backend Development", "API Design", "Database Management", "Collaboration"],
+    expertise: [
+      "Backend Development",
+      "API Design",
+      "Database Management",
+      "Collaboration",
+    ],
+    linkedin: "https://www.linkedin.com/in/areeb-ahmad-066547315/",
   },
-]
+];
 
 export default function About() {
   return (
@@ -143,34 +194,38 @@ export default function About() {
           title={aboutContent.title}
           description={aboutContent.description}
         >
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {aboutContent.sections.map((section, index) => (
-            <div
-              key={section.title}
-              className="glass-card relative isolate overflow-hidden p-6 text-foreground shadow-xl hover:shadow-[var(--glow-strong)] dark:text-white"
-              style={{ animationDelay: `${index * 0.05}s` }}
-            >
-              <h3 className="font-display text-xl font-semibold text-foreground dark:text-white sm:text-2xl">{section.title}</h3>
-              <p className="mt-3 text-sm text-foreground/80 dark:text-white/80 sm:text-base">{section.description}</p>
-            </div>
-          ))}
-        </div>
-      </PageSection>
+          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
+            {aboutContent.sections.map((section, index) => (
+              <div
+                key={section.title}
+                className="glass-card relative isolate overflow-hidden p-4 sm:p-6 text-foreground shadow-xl hover:shadow-[var(--glow-strong)] dark:text-white"
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                <h3 className="font-display text-lg sm:text-xl md:text-2xl font-semibold text-foreground dark:text-white">
+                  {section.title}
+                </h3>
+                <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-foreground/80 dark:text-white/80">
+                  {section.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </PageSection>
 
-      <PageSection
-        align="center"
-        eyebrow="Team"
-        title="Meet the Agents"
-        description="A tight crew of designers, engineers, club leads, and storytellers powering India-wide teen-led tech movements."
-      >
-        <Suspense fallback={<LoadingInline />}>
-          <TeamCaseStudy members={teamMembers} />
-        </Suspense>
-        <p className="mt-6 text-center text-sm text-muted-foreground">*Roles stay flexible as our team and club grow.</p>
-      </PageSection>
+        <PageSection
+          align="center"
+          eyebrow="Team"
+          title="Meet the Agents"
+          description="A tight crew of designers, engineers, club leads, and storytellers powering India-wide teen-led tech movements."
+        >
+          <Suspense fallback={<LoadingInline />}>
+            <TeamCaseStudy members={teamMembers} />
+          </Suspense>
+          <p className="mt-4 sm:mt-6 text-center text-xs sm:text-sm text-muted-foreground px-4 sm:px-0">
+            *Roles stay flexible as our team and club grow.
+          </p>
+        </PageSection>
       </main>
     </>
-  )
+  );
 }
-
-

@@ -1,32 +1,58 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import dynamic from "next/dynamic"
-import { Suspense } from "react"
+import Image from "next/image";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
-import { PageSection } from "@/components/page-section"
-import { LiquidButton } from "@/components/ui/liquid-glass-button"
-import { LiquidGlassBackdrop } from "@/components/ui/liquid-glass-effect"
-import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card"
-import { LoadingInline } from "@/components/loading-wrapper"
+import { PageSection } from "@/components/page-section";
+import { LiquidButton } from "@/components/ui/liquid-glass-button";
+import { LiquidGlassBackdrop } from "@/components/ui/liquid-glass-effect";
+import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
+import { LoadingInline } from "@/components/loading-wrapper";
 
 // Lazy load heavy components
 const TeamGlobe = dynamic(() => import("@/components/team-globe"), {
   loading: () => <LoadingInline />,
-  ssr: false
-})
+  ssr: false,
+});
 
-const WebGLShader = dynamic(() => import("@/components/ui/web-gl-shader").then(mod => ({ default: mod.WebGLShader })), {
-  loading: () => null,
-  ssr: false
-})
+const WebGLShader = dynamic(
+  () =>
+    import("@/components/ui/web-gl-shader").then((mod) => ({
+      default: mod.WebGLShader,
+    })),
+  {
+    loading: () => null,
+    ssr: false,
+  },
+);
 
 const highlightStats = [
-  { value: "120+", label: "Students active", description: "From across India" },
-  { value: "10", label: "Schools represented", description: "Cross-campus exchange" },
-  { value: "60+", label: "Projects launched", description: "Products, apps, AI" },
-  { value: "1st", label: "Student-led hackathon", description: "Scrapyard Lucknow 2024" },
-]
+  {
+    value: "120+",
+    label: "Students active",
+    description: "From across India",
+    timeframe: "Since Jan 2024 ↑",
+  },
+  {
+    value: "10",
+    label: "Schools represented",
+    description: "Cross-campus exchange",
+    timeframe: "Growing monthly ↑",
+  },
+  {
+    value: "60+",
+    label: "Projects launched",
+    description: "Products, apps, AI",
+    timeframe: "In 6 months ↑",
+  },
+  {
+    value: "1st",
+    label: "Student-led hackathon",
+    description: "Scrapyard Lucknow 2024",
+    timeframe: "Historic milestone",
+  },
+];
 
 const culturePillars = [
   {
@@ -41,7 +67,7 @@ const culturePillars = [
     title: "Real-world impact",
     copy: "We solve for real audiences, from school ops to civic tech to accessibility.",
   },
-]
+];
 
 export default function Impact() {
   return (
@@ -64,13 +90,21 @@ export default function Impact() {
                   Our impact hits beyond the venue walls
                 </h1>
                 <p className="max-w-2xl text-base sm:text-lg text-white/80 font-medium">
-                  From first-high-schooler hackathons to squads embedded inside local schools, we design experiences that get teens building—and ship the outcomes publicly.
+                  From first-high-schooler hackathons to squads embedded inside
+                  local schools, we design experiences that get teens
+                  building—and ship the outcomes publicly.
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
-                  <LiquidButton size="xl" className="bg-[var(--brand-pink)] text-white border-2 border-white/20 rounded-full shadow-[0_0_30px_rgba(228,90,146,0.5)] hover:shadow-[0_0_50px_rgba(228,90,146,0.7)]">
+                  <LiquidButton
+                    size="xl"
+                    className="bg-[var(--brand-pink)] text-white border-2 border-white/20 rounded-full shadow-[0_0_30px_rgba(228,90,146,0.5)] hover:shadow-[0_0_50px_rgba(228,90,146,0.7)]"
+                  >
                     See showcase reel
                   </LiquidButton>
-                  <LiquidButton size="xl" className="border-2 border-white/40 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 rounded-full">
+                  <LiquidButton
+                    size="xl"
+                    className="border-2 border-white/40 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 rounded-full"
+                  >
                     Book the team
                   </LiquidButton>
                 </div>
@@ -103,9 +137,20 @@ export default function Impact() {
                     className="flex flex-col border-b border-white/30 pb-5 last:border-none last:pb-0 dark:border-white/10"
                     style={{ animationDelay: `${index * 0.08}s` }}
                   >
-                    <span className="text-4xl font-bold text-[var(--brand-pink)]">{stat.value}</span>
-                    <p className="text-lg font-semibold text-foreground dark:text-white">{stat.label}</p>
-                    <p className="text-sm text-muted-foreground dark:text-white/70">{stat.description}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-4xl font-bold text-[var(--brand-pink)]">
+                        {stat.value}
+                      </span>
+                      <span className="inline-flex items-center rounded-full border border-[var(--brand-pink)]/30 bg-[var(--brand-pink)]/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-[var(--brand-pink)]">
+                        {stat.timeframe}
+                      </span>
+                    </div>
+                    <p className="text-lg font-semibold text-foreground dark:text-white">
+                      {stat.label}
+                    </p>
+                    <p className="text-sm text-muted-foreground dark:text-white/70">
+                      {stat.description}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -119,15 +164,16 @@ export default function Impact() {
           title="Scrapyard Lucknow 2024"
           description={
             <span className="mx-auto block max-w-2xl">
-              Our debut hackathon united 40+ coders, designers, filmmakers, and builders to tackle
-              civic, education, and sustainability problems.
+              Our debut hackathon united 40+ coders, designers, filmmakers, and
+              builders to tackle civic, education, and sustainability problems.
             </span>
           }
         >
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
             {[
               {
-                image: "/images/b653f79c-fcc9-49bb-a92a-4fc454659b3a-1-105-c.jpeg",
+                image:
+                  "/images/b653f79c-fcc9-49bb-a92a-4fc454659b3a-1-105-c.jpeg",
                 title: "Club United",
                 copy: "40+ talented developers united for innovation",
               },
@@ -137,14 +183,22 @@ export default function Impact() {
                 copy: "Brainstorming solutions to real-world problems",
               },
               {
-                image: "/images/4c59e5bb-c1eb-4e4d-9b69-f29faa693002-1-105-c.jpeg",
+                image:
+                  "/images/4c59e5bb-c1eb-4e4d-9b69-f29faa693002-1-105-c.jpeg",
                 title: "Project Showcase",
                 copy: "Presenting prototypes to judges and club members",
               },
             ].map((card, idx) => (
-              <CardContainer key={card.title} className="inter-var w-full" containerClassName="py-4">
+              <CardContainer
+                key={card.title}
+                className="inter-var w-full"
+                containerClassName="py-4"
+              >
                 <CardBody className="glass-card group/card relative flex h-full min-h-[420px] w-full flex-col border-2 border-[var(--brand-pink)]/20 p-6 shadow-2xl transition-all duration-300 hover:border-[var(--brand-pink)]/40 hover:shadow-[0_20px_60px_rgba(228,90,146,0.3)] dark:border-[var(--brand-pink)]/30 dark:hover:border-[var(--brand-pink)]/50">
-                  <CardItem translateZ="100" className="mb-4 w-full overflow-hidden rounded-2xl">
+                  <CardItem
+                    translateZ="100"
+                    className="mb-4 w-full overflow-hidden rounded-2xl"
+                  >
                     <Image
                       src={card.image}
                       height={1000}
@@ -192,9 +246,15 @@ export default function Impact() {
                 style={{ animationDelay: `${idx * 0.12}s` }}
               >
                 <div className="relative z-10">
-                  <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--brand-pink)]">0{idx + 1}</p>
-                  <h3 className="mt-3 font-display text-lg font-bold text-foreground dark:text-white sm:text-xl">{pillar.title}</h3>
-                  <p className="mt-2 text-sm text-foreground/80 dark:text-white/80 sm:text-base">{pillar.copy}</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--brand-pink)]">
+                    0{idx + 1}
+                  </p>
+                  <h3 className="mt-3 font-display text-lg font-bold text-foreground dark:text-white sm:text-xl">
+                    {pillar.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-foreground/80 dark:text-white/80 sm:text-base">
+                    {pillar.copy}
+                  </p>
                 </div>
               </div>
             ))}
@@ -202,5 +262,5 @@ export default function Impact() {
         </PageSection>
       </main>
     </>
-  )
+  );
 }

@@ -1,38 +1,56 @@
-
-
-import Link from "next/link"
-import { ArrowRight, Code2, Users, Rocket, Lightbulb, Trophy, Sparkles } from "lucide-react"
-import dynamic from "next/dynamic"
-import { Suspense } from "react"
-import { Metadata } from "next"
+import Link from "next/link";
+import {
+  ArrowRight,
+  Code2,
+  Users,
+  Rocket,
+  Lightbulb,
+  Trophy,
+  Sparkles,
+} from "lucide-react";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Bits&Bytes - Teen Led Code Club | India",
-  description: "Innovate. Collaborate. Hack. Join India's boldest builders club for ambitious teens. Build real projects, attend hackathons, and grow as a developer.",
-}
+  description:
+    "Innovate. Collaborate. Hack. Join India's boldest builders club for ambitious teens. Build real projects, attend hackathons, and grow as a developer.",
+};
 
-import { HeroFuturistic } from "@/components/ui/hero-futuristic"
-import { PageSection } from "@/components/page-section"
-import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { LoadingInline } from "@/components/loading-wrapper"
+import { HeroFuturistic } from "@/components/ui/hero-futuristic";
+import { PageSection } from "@/components/page-section";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { LoadingInline } from "@/components/loading-wrapper";
 
 // Lazy load heavy components
-const InfiniteMovingCards = dynamic(() => import("@/components/ui/infinite-moving-cards").then(mod => ({ default: mod.InfiniteMovingCards })), {
-  loading: () => <LoadingInline />,
-  ssr: true
-})
+const InfiniteMovingCards = dynamic(
+  () =>
+    import("@/components/ui/infinite-moving-cards").then((mod) => ({
+      default: mod.InfiniteMovingCards,
+    })),
+  {
+    loading: () => <LoadingInline />,
+    ssr: true,
+  },
+);
 
 const GlassIcons = dynamic(() => import("@/components/GlassIcons"), {
   loading: () => <LoadingInline />,
-  ssr: true
-})
+  ssr: true,
+});
 
 const stats = [
   { value: "120+", label: "Active members", detail: "across India" },
   { value: "60+", label: "Projects shipped", detail: "from apps to AI" },
   { value: "10", label: "Partner schools", detail: "and growing" },
-]
+];
 
 const stories = [
   {
@@ -67,10 +85,38 @@ const stories = [
     quote:
       "From brainstorming wild ideas to seeing them come alive at events, every moment here pushes us to think bigger and execute faster.",
     name: "Oviyaa",
-    title: "Social Media & Promotions Head",
+    title: "Outreach Lead",
     image: "/team/oviyaa.jpeg",
   },
-]
+  {
+    quote:
+      "I never thought I could build apps until I joined. The mentorship here is different—everyone actually wants you to win.",
+    name: "Maryam",
+    title: "Social Media & Promotions Head",
+    image: "/team/maryam.jpeg",
+  },
+  {
+    quote:
+      "From design systems to deployment pipelines, we learn by doing. It's the best way to grow as an engineer.",
+    name: "Kaustubh",
+    title: "Content & Video Producer",
+    image: "/team/kaustubh.jpeg",
+  },
+  {
+    quote:
+      "Brainstorming new concepts and refining event plans has taught me how ideas evolve into real impact. This club turns creativity into action.",
+    name: "Saksham",
+    title: "Ideation & Research Lead",
+    image: "/team/saksham.jpeg",
+  },
+  {
+    quote:
+      "Working on backend systems here gave me real-world experience I couldn't get anywhere else. Every API we build serves actual users.",
+    name: "Areeb",
+    title: "Backend Developer",
+    image: "/team/areeb.png",
+  },
+];
 
 const focusAreas = [
   {
@@ -82,8 +128,8 @@ const focusAreas = [
       "40+ teens building together at Scrapyard, our flagship hackathon born in Lucknow",
       "24-hour sprints turning ideas into working prototypes",
       "Judging panels with industry mentors and startup founders",
-      "Prizes, networking, and real opportunities for standout projects"
-    ]
+      "Prizes, networking, and real opportunities for standout projects",
+    ],
   },
   {
     icon: <Lightbulb className="w-full h-full" />,
@@ -94,8 +140,8 @@ const focusAreas = [
       "Weekly workshops on web dev, AI/ML, mobile apps, and design systems",
       "Beginner-friendly sessions paired with advanced deep-dives",
       "Live coding, Q&A, and take-home projects",
-      "Led by experienced teen developers and guest industry speakers"
-    ]
+      "Led by experienced teen developers and guest industry speakers",
+    ],
   },
   {
     icon: <Code2 className="w-full h-full" />,
@@ -106,8 +152,8 @@ const focusAreas = [
       "60+ projects launched—from apps to AI tools",
       "Collaborate with design, dev, and club teams",
       "Portfolio-ready work with mentorship at every stage",
-      "Open-source contributions and team project squads"
-    ]
+      "Open-source contributions and team project squads",
+    ],
   },
   {
     icon: <Users className="w-full h-full" />,
@@ -118,8 +164,8 @@ const focusAreas = [
       "120+ active members across India",
       "Discord workspace for daily code help and project collabs",
       "Study groups, pair programming sessions, and code reviews",
-      "Safe, inclusive environment where everyone ships something real"
-    ]
+      "Safe, inclusive environment where everyone ships something real",
+    ],
   },
   {
     icon: <Rocket className="w-full h-full" />,
@@ -130,8 +176,8 @@ const focusAreas = [
       "AI/ML experiments, blockchain prototypes, and creative tech art",
       "Pitch nights where anyone can propose their wildest ideas",
       "Access to beta tools, APIs, and sponsor resources",
-      "Encouragement to fail fast, learn faster, and iterate boldly"
-    ]
+      "Encouragement to fail fast, learn faster, and iterate boldly",
+    ],
   },
   {
     icon: <Sparkles className="w-full h-full" />,
@@ -142,10 +188,10 @@ const focusAreas = [
       "One-on-one pairing with mentors who've shipped projects",
       "Office hours for technical questions and career guidance",
       "Portfolio reviews, resume tips, and interview prep",
-      "Alumni network connecting you to internships and opportunities"
-    ]
+      "Alumni network connecting you to internships and opportunities",
+    ],
   },
-]
+];
 
 export default function Home() {
   return (
@@ -164,9 +210,15 @@ export default function Home() {
               className="glass-card relative isolate overflow-hidden p-6 text-foreground shadow-xl hover:shadow-[var(--glow-strong)] dark:text-white"
             >
               <CardContent className="relative z-10 p-0">
-                <p className="text-4xl font-bold text-[var(--brand-pink)]">{stat.value}</p>
-                <CardTitle className="mt-2 text-lg text-foreground dark:text-white">{stat.label}</CardTitle>
-                <CardDescription className="text-base text-foreground/70 dark:text-white/70">{stat.detail}</CardDescription>
+                <p className="text-4xl font-bold text-[var(--brand-pink)]">
+                  {stat.value}
+                </p>
+                <CardTitle className="mt-2 text-lg text-foreground dark:text-white">
+                  {stat.label}
+                </CardTitle>
+                <CardDescription className="text-base text-foreground/70 dark:text-white/70">
+                  {stat.detail}
+                </CardDescription>
               </CardContent>
             </Card>
           ))}
@@ -186,15 +238,15 @@ export default function Home() {
         </Suspense>
       </PageSection>
 
-      <PageSection eyebrow="Stories" title="Voices from the crew" align="center">
+      <PageSection
+        eyebrow="Stories"
+        title="Voices from the crew"
+        align="center"
+      >
         <Suspense fallback={<LoadingInline />}>
-          <InfiniteMovingCards
-            items={stories}
-            direction="left"
-            speed="slow"
-          />
+          <InfiniteMovingCards items={stories} direction="left" speed="slow" />
         </Suspense>
       </PageSection>
     </div>
-  )
+  );
 }

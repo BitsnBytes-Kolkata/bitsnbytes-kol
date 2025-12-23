@@ -1,17 +1,17 @@
-import type { ReactNode } from "react"
+import type { ReactNode } from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 type PageSectionProps = {
-  children: ReactNode
-  className?: string
-  eyebrow?: string
-  title?: string | ReactNode
-  description?: string | ReactNode
-  align?: "left" | "center"
-  as?: "section" | "div"
-  bleed?: boolean
-}
+  children: ReactNode;
+  className?: string;
+  eyebrow?: string;
+  title?: string | ReactNode;
+  description?: string | ReactNode;
+  align?: "left" | "center";
+  as?: "section" | "div";
+  bleed?: boolean;
+};
 
 export function PageSection({
   children,
@@ -23,20 +23,36 @@ export function PageSection({
   as: Component = "section",
   bleed = false,
 }: PageSectionProps) {
-  const headingAlignment = align === "center" ? "items-center text-center" : "text-left"
+  const headingAlignment =
+    align === "center" ? "items-center text-center" : "text-left";
 
   return (
-    <Component className={cn("section-shell py-12 sm:py-16", bleed && "max-w-none px-0 sm:px-6", className)}>
+    <Component
+      className={cn(
+        "section-shell py-8 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8",
+        bleed && "max-w-none px-0 sm:px-6",
+        className,
+      )}
+    >
       {(eyebrow || title || description) && (
-        <div className={cn("mb-10 flex flex-col gap-3", headingAlignment)}>
-          {eyebrow && <span className="section-eyebrow">{eyebrow}</span>}
+        <div
+          className={cn(
+            "mb-6 sm:mb-8 md:mb-10 flex flex-col gap-2 sm:gap-3",
+            headingAlignment,
+          )}
+        >
+          {eyebrow && (
+            <span className="section-eyebrow text-[0.6rem] sm:text-[0.7rem] px-3 sm:px-4">
+              {eyebrow}
+            </span>
+          )}
           {title && (
-            <h2 className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
               {title}
             </h2>
           )}
           {description && (
-            <p className="max-w-3xl text-base text-muted-foreground sm:text-lg">
+            <p className="max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground px-2 sm:px-0">
               {description}
             </p>
           )}
@@ -44,8 +60,7 @@ export function PageSection({
       )}
       {children}
     </Component>
-  )
+  );
 }
 
-export default PageSection
-
+export default PageSection;
