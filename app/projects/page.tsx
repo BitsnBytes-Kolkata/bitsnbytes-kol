@@ -196,7 +196,7 @@ export default function Projects() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               <div>
                 <p className="text-3xl font-bold text-[var(--brand-pink)]">
-                  60+
+                  15+
                 </p>
                 <p className="text-sm text-muted-foreground">
                   Projects shipped
@@ -204,9 +204,9 @@ export default function Projects() {
               </div>
               <div>
                 <p className="text-3xl font-bold text-[var(--brand-pink)]">
-                  120+
+                  200+
                 </p>
-                <p className="text-sm text-muted-foreground">Contributors</p>
+                <p className="text-sm text-muted-foreground">Active members</p>
               </div>
               <div>
                 <p className="text-3xl font-bold text-[var(--brand-pink)]">

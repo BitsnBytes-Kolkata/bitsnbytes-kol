@@ -19,9 +19,9 @@ import { Button } from "@/components/ui/button";
 import { LiquidGlassBackdrop } from "@/components/ui/liquid-glass-effect";
 
 const stats = [
-  { value: "120+", label: "Active members" },
-  { value: "60+", label: "Projects shipped" },
-  { value: "10", label: "Partner schools" },
+  { value: "200+", label: "Active members" },
+  { value: "15+", label: "Projects shipped" },
+  { value: "10+", label: "Partner schools" },
 ];
 
 export const HeroFuturistic = () => {

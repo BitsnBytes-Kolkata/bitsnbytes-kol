@@ -11,8 +11,8 @@ Bits&Bytes is a teen-led code club and nonprofit based in Lucknow, India, servin
 ## Key Focus Areas
 - **Hackathons**: Organizing events like "Scrapyard Lucknow" where teens build prototypes in 24-hour sprints.
 - **Workshops**: Weekly sessions on Web Dev, AI/ML, Mobile Apps, and Design.
-- **Projects**: Shipping real products (60+ shipped so far).
-- **Community**: A safe, inclusive space for 120+ active members to learn and collaborate.
+- **Projects**: Shipping real products (15+ shipped so far).
+- **Community**: A safe, inclusive space for 200+ active members to learn and collaborate.
 
 ## Team & Roles
 - **Yash**: Co‑Founder & Lead Dev (Full-stack, AI)

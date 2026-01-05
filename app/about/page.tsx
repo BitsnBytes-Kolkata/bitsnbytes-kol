@@ -33,9 +33,9 @@ const aboutContent = {
     "We're a teen-led code club dedicated to fostering innovation, collaboration, and real-world impact through technology.",
   sections: [
     {
-      title: "Host Hackathons",
+      title: "Open Source Culture",
       description:
-        "We organize competitive hackathons where teens can showcase their coding skills and build innovative projects under time pressure, fostering creativity and teamwork.",
+        "We believe in building in public. Our projects are open for collaboration, encouraging every member to contribute, learn, and improve each other's code.",
     },
     {
       title: "Workshops & Learning",
