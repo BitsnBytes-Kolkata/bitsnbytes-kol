@@ -125,6 +125,8 @@ function TeamCard({
                 src={member.image}
                 alt=""
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                quality={90}
                 className="object-cover rounded-xl sm:rounded-2xl"
               />
             </div>
@@ -135,51 +137,60 @@ function TeamCard({
                 src={member.image}
                 alt={member.name}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                quality={90}
                 className="object-cover"
                 onLoad={(e) => extractDominantColor(e.currentTarget)}
               />
             </div>
           </div>
         </div>
-        <div className="mt-3 sm:mt-4 flex min-h-[160px] sm:min-h-[180px] md:min-h-[220px] flex-col gap-1.5 sm:gap-2 p-3 sm:p-4 text-white">
-          <div className="flex items-start justify-between gap-2">
-            <div className="flex-1 min-w-0">
-              <span className="text-[0.55rem] sm:text-[0.65rem] font-semibold uppercase tracking-[0.25em] sm:tracking-[0.35em] opacity-70 line-clamp-1">
-                {member.role}
-              </span>
-              <h3 className="font-display text-lg sm:text-xl md:text-2xl font-bold">
-                {member.name}
-              </h3>
+        <div className="relative mt-auto">
+          {/* Text backdrop for readability */}
+          <div className="absolute inset-0 -mx-3 -mb-3 sm:-mx-4 sm:-mb-4 rounded-b-xl sm:rounded-b-2xl bg-black/60 backdrop-blur-md border-t border-white/10" />
+
+          <div className="relative flex min-h-[160px] sm:min-h-[180px] md:min-h-[220px] flex-col gap-2 sm:gap-3 p-3 sm:p-5 text-white z-10">
+            <div className="flex items-start justify-between gap-2">
+              <div className="flex-1 min-w-0">
+                <span className="text-[0.6rem] sm:text-[0.7rem] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[var(--brand-pink)] mb-1 block">
+                  {member.role}
+                </span>
+                <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">
+                  {member.name}
+                </h3>
+              </div>
+              {member.linkedin && (
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-white/15 transition-all hover:bg-white/25 hover:scale-110 border border-white/20"
+                  aria-label={`${member.name}'s LinkedIn`}
+                >
+                  <Linkedin className="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:scale-110" />
+                </a>
+              )}
             </div>
-            {member.linkedin && (
-              <a
-                href={member.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 hover:scale-110"
-                aria-label={`${member.name}'s LinkedIn`}
-              >
-                <Linkedin className="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:scale-110" />
-              </a>
+
+            <p className="mb-auto text-sm sm:text-base leading-relaxed text-white/90 font-medium font-sans">
+              {member.bio}
+            </p>
+
+            {member.expertise && member.expertise.length > 0 ? (
+              <div className="mt-auto pt-4 flex flex-wrap gap-2">
+                {member.expertise.slice(0, 3).map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full bg-white/10 border border-white/10 px-2.5 sm:px-3 py-1 text-[0.6rem] sm:text-[0.7rem] font-bold uppercase tracking-wider text-white/80"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            ) : (
+              <div className="pt-2 sm:pt-4 h-6 sm:h-8" />
             )}
           </div>
-          <p className="mb-auto text-xs sm:text-sm leading-relaxed opacity-80 line-clamp-3 sm:line-clamp-4">
-            {member.bio}
-          </p>
-          {member.expertise && member.expertise.length > 0 ? (
-            <div className="mt-auto pt-2 sm:pt-4 flex flex-wrap gap-1.5 sm:gap-2">
-              {member.expertise.slice(0, 3).map((skill) => (
-                <span
-                  key={skill}
-                  className="rounded-full bg-white/20 px-2 sm:px-3 py-0.5 sm:py-1 text-[0.55rem] sm:text-[0.65rem] font-semibold uppercase tracking-wide"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          ) : (
-            <div className="pt-2 sm:pt-4 h-6 sm:h-8" />
-          )}
         </div>
       </div>
     </CometCard>

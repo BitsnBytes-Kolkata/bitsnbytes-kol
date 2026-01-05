@@ -52,7 +52,7 @@ export function PageSection({
             </h2>
           )}
           {description && (
-            <p className="max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground px-2 sm:px-0">
+            <p className="max-w-3xl text-sm sm:text-base md:text-lg text-foreground/90 font-medium px-2 sm:px-0">
               {description}
             </p>
           )}

@@ -99,7 +99,7 @@ interface GlowingCardDescriptionProps {
 export function GlowingCardDescription({ children, className }: GlowingCardDescriptionProps) {
     return (
         <p className={cn(
-            "font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground dark:text-white/80",
+            "font-sans text-sm leading-[1.25rem] md:text-base md:leading-[1.5rem] text-muted-foreground dark:text-white font-medium",
             className
         )}>
             {children}

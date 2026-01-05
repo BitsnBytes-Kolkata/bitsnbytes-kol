@@ -93,7 +93,7 @@ const coreTeam = [
     id: 3,
     name: "Akshat",
     role: "Co-Founder & Technical Lead",
-    image: "/team/akshat.png",
+    image: "/team/akshat.webp",
     bio: "Builds and maintains the website, leads programming projects, evaluates tech stacks, and ensures the technical stability of all projects.",
     expertise: [
       "AI & LLMOps",
@@ -132,6 +132,21 @@ const coreTeam = [
     ],
     linkedin: "https://www.linkedin.com/in/maryam-fatima-9719aa377/",
   },
+  {
+    id: 11,
+    name: "Oviyaa",
+    role: "Founder & Local Lead",
+    image: "/team/oviyaa.jpeg",
+    bio: "Co-founded the Lucknow chapter, leading local outreach, community building, and scaling our presence across regional schools and tech hubs.",
+    expertise: [
+      "Community Leadership",
+      "Strategic Outreach",
+      "Local Operations",
+      "Growth Strategy",
+    ],
+    linkedin: "https://www.linkedin.com/in/oviyaa-singh-3a183a370/",
+    isFounder: true,
+  },
 ];
 
 // Volunteers - smaller cards section
@@ -147,12 +162,6 @@ const volunteers = [
     name: "Kaustubh",
     image: "/team/kaustubh.jpeg",
     linkedin: "https://www.linkedin.com/in/kaustubh-shaw-905ab3381/",
-  },
-  {
-    id: 11,
-    name: "Oviyaa",
-    image: "/team/oviyaa.jpeg",
-    linkedin: "https://www.linkedin.com/in/oviyaa-singh-3a183a370/",
   },
   {
     id: 7,
