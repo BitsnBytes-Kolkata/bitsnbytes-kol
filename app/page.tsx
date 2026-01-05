@@ -30,10 +30,10 @@ import { Button } from "@/components/ui/button";
 import { LoadingInline } from "@/components/loading-wrapper";
 
 // Lazy load heavy components
-const InfiniteMovingCards = dynamic(
+const Testimonial = dynamic(
   () =>
-    import("@/components/ui/infinite-moving-cards").then((mod) => ({
-      default: mod.InfiniteMovingCards,
+    import("@/components/ui/design-testimonial").then((mod) => ({
+      default: mod.Testimonial,
     })),
   {
     loading: () => <LoadingInline />,
@@ -52,71 +52,6 @@ const stats = [
   { value: "10", label: "Partner schools", detail: "and growing" },
 ];
 
-const stories = [
-  {
-    quote:
-      "Scrapyard hackathon felt electric—40+ teens building, pitching, and cheering each other on. It proved students can run world-class events.",
-    name: "Aadrika",
-    title: "Co-Founder & Chief Creative Strategist",
-    image: "/team/aadrika.png",
-  },
-  {
-    quote:
-      "We pair first-time coders with experienced mentors, so everyone ships something real. The confidence boost is unreal.",
-    name: "Yash",
-    title: "Co-Founder & Local Lead",
-    image: "/team/yash.jpeg",
-  },
-  {
-    quote:
-      "Building this platform has been incredible. We're not just coding—we're creating opportunities for the next generation of India's teen tech talent.",
-    name: "Akshat",
-    title: "Co-Founder & Technical Lead",
-    image: "/team/akshat.png",
-  },
-  {
-    quote:
-      "The backend work we do here isn't just about databases and APIs—it's about creating a stable foundation that allows every member to build boldly.",
-    name: "Devansh",
-    title: "Founding Member & Backend Lead",
-    image: "/team/devaansh.jpeg",
-  },
-  {
-    quote:
-      "From brainstorming wild ideas to seeing them come alive at events, every moment here pushes us to think bigger and execute faster.",
-    name: "Oviyaa",
-    title: "Outreach Lead",
-    image: "/team/oviyaa.jpeg",
-  },
-  {
-    quote:
-      "I never thought I could build apps until I joined. The mentorship here is different—everyone actually wants you to win.",
-    name: "Maryam",
-    title: "Social Media & Promotions Head",
-    image: "/team/maryam.jpeg",
-  },
-  {
-    quote:
-      "From design systems to deployment pipelines, we learn by doing. It's the best way to grow as an engineer.",
-    name: "Kaustubh",
-    title: "Content & Video Producer",
-    image: "/team/kaustubh.jpeg",
-  },
-  {
-    quote:
-      "Brainstorming new concepts and refining event plans has taught me how ideas evolve into real impact. This club turns creativity into action.",
-    name: "Saksham",
-    title: "Ideation & Research Lead",
-    image: "/team/saksham.jpeg",
-  },
-  {
-    quote:
-      "Working on backend systems here gave me real-world experience I couldn't get anywhere else. Every API we build serves actual users.",
-    name: "Areeb",
-    title: "Backend Developer",
-    image: "/team/areeb.png",
-  },
-];
 
 const focusAreas = [
   {
@@ -244,7 +179,7 @@ export default function Home() {
         align="center"
       >
         <Suspense fallback={<LoadingInline />}>
-          <InfiniteMovingCards items={stories} direction="left" speed="slow" />
+          <Testimonial />
         </Suspense>
       </PageSection>
     </div>
