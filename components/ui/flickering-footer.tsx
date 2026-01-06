@@ -317,7 +317,7 @@ export function FlickeringFooter() {
                 </div>
             </div>
             <div className="border-t border-white/10 text-center text-[10px] sm:text-xs py-3 sm:py-4 px-4 w-full text-muted-foreground">
-                © {new Date().getFullYear()} Bits&Bytes. Built with club love.
+                © {new Date().getFullYear()} Bits&Bytes. Built with club ❤️.
             </div>
         </footer>
     );
