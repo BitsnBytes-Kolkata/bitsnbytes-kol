@@ -9,7 +9,7 @@ const World = dynamic(
     loading: () => (
       <div className="flex items-center justify-center h-full w-full">
         <div className="animate-pulse text-muted-foreground">
-          Loading globe...
+          Loading...
         </div>
       </div>
     ),
