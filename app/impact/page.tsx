@@ -81,14 +81,14 @@ export default function Impact() {
       <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden text-white">
         <WebGLShader />
         <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6">
-          <div className="relative border-2 border-[var(--brand-pink)]/30 rounded-[40px] p-2 backdrop-blur-sm bg-black/10">
-            <div className="relative border-2 border-[var(--brand-pink)]/50 rounded-[36px] py-16 px-6 sm:px-10 overflow-hidden bg-black/40 backdrop-blur-xl">
-              <div className="absolute inset-0 bg-[var(--brand-purple)]/20" />
+          <div className="relative border-2 border-(--brand-pink)/30 rounded-[40px] p-2 backdrop-blur-sm bg-black/10">
+            <div className="relative border-2 border-(--brand-pink)/50 rounded-[36px] py-16 px-6 sm:px-10 overflow-hidden bg-black/40 backdrop-blur-xl">
+              <div className="absolute inset-0 bg-(--brand-purple)/20" />
               <div className="relative z-10 flex flex-col items-center gap-6 text-center">
-                <span className="inline-flex items-center gap-2 rounded-full border border-[var(--brand-pink)]/60 bg-black/40 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-white/90 backdrop-blur-md">
+                <span className="inline-flex items-center gap-2 rounded-full border border-(--brand-pink)/60 bg-black/40 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-white/90 backdrop-blur-md">
                   <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--brand-pink)] opacity-75" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--brand-pink)]" />
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-(--brand-pink) opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-(--brand-pink)" />
                   </span>
                   Impact
                 </span>
@@ -103,7 +103,7 @@ export default function Impact() {
                 <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
                   <LiquidButton
                     size="xl"
-                    className="bg-[var(--brand-pink)] text-white border-2 border-white/20 rounded-full shadow-[0_0_30px_rgba(228,90,146,0.5)] hover:shadow-[0_0_50px_rgba(228,90,146,0.7)]"
+                    className="bg-(--brand-pink) text-white border-2 border-white/20 rounded-full shadow-[0_0_30px_rgba(228,90,146,0.5)] hover:shadow-[0_0_50px_rgba(228,90,146,0.7)]"
                   >
                     See showcase reel
                   </LiquidButton>
@@ -134,7 +134,7 @@ export default function Impact() {
                 </Suspense>
               </div>
             </div>
-            <div className="glass-card relative order-1 space-y-6 p-8 text-foreground shadow-2xl dark:text-white lg:order-2">
+            <div className="glass-card relative order-1 p-8 text-foreground shadow-2xl dark:text-white lg:order-2">
               <LiquidGlassBackdrop radiusClassName="rounded-[inherit]" />
               <div className="relative z-10 space-y-6">
                 {highlightStats.map((stat, index) => (
@@ -144,10 +144,10 @@ export default function Impact() {
                     style={{ animationDelay: `${index * 0.08}s` }}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-4xl font-bold text-[var(--brand-pink)]">
+                      <span className="text-4xl font-bold text-(--brand-pink)">
                         {stat.value}
                       </span>
-                      <span className="inline-flex items-center rounded-full border border-[var(--brand-pink)]/30 bg-[var(--brand-pink)]/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-[var(--brand-pink)]">
+                      <span className="inline-flex items-center rounded-full border border-(--brand-pink)/30 bg-(--brand-pink)/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-(--brand-pink)">
                         {stat.timeframe}
                       </span>
                     </div>
@@ -200,7 +200,7 @@ export default function Impact() {
                 className="inter-var w-full"
                 containerClassName="py-4"
               >
-                <CardBody className="glass-card group/card relative flex h-full min-h-[420px] w-full flex-col border-2 border-[var(--brand-pink)]/20 p-6 shadow-2xl transition-all duration-300 hover:border-[var(--brand-pink)]/40 hover:shadow-[0_20px_60px_rgba(228,90,146,0.3)] dark:border-[var(--brand-pink)]/30 dark:hover:border-[var(--brand-pink)]/50">
+                <CardBody className="glass-card group/card relative flex h-full min-h-[420px] w-full flex-col border-2 border-(--brand-pink)/20 p-6 shadow-2xl transition-all duration-300 hover:border-(--brand-pink)/40 hover:shadow-[0_20px_60px_rgba(228,90,146,0.3)] dark:border-(--brand-pink)/30 dark:hover:border-(--brand-pink)/50">
                   <CardItem
                     translateZ="100"
                     className="mb-4 w-full overflow-hidden rounded-2xl"
@@ -215,7 +215,7 @@ export default function Impact() {
                   </CardItem>
                   <CardItem
                     translateZ="50"
-                    className="font-display text-2xl font-bold text-[var(--brand-purple)] dark:text-white"
+                    className="font-display text-2xl font-bold text-(--brand-purple) dark:text-white"
                   >
                     {card.title}
                   </CardItem>
@@ -227,9 +227,9 @@ export default function Impact() {
                     {card.copy}
                   </CardItem>
                   <CardItem translateZ="40" className="mt-4">
-                    <div className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-pink)]">
+                    <div className="inline-flex items-center gap-2 text-sm font-semibold text-(--brand-pink)">
                       <span>0{idx + 1}</span>
-                      <div className="h-px w-8 bg-[var(--brand-pink)]" />
+                      <div className="h-px w-8 bg-(--brand-pink)" />
                     </div>
                   </CardItem>
                 </CardBody>
