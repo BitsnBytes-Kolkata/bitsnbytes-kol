@@ -1,9 +1,22 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Code of Conduct | Bits&Bytes - Community Guidelines",
+  title: "Code of Conduct - Community Guidelines",
   description:
-    "Our community guidelines for a safe, welcoming, and inclusive environment. Learn about our values, expectations, and how we handle violations at Bits&Bytes.",
+    "Bits&Bytes community guidelines for a safe, welcoming & inclusive environment. Learn about our values, expectations & policies for teen coders.",
+  alternates: {
+    canonical: "https://gobitsnbytes.org/coc",
+  },
+  openGraph: {
+    title: "Code of Conduct | Bits&Bytes",
+    description: "Our community guidelines for creating a safe, welcoming environment for all teen developers.",
+    url: "https://gobitsnbytes.org/coc",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function CodeOfConductLayout({

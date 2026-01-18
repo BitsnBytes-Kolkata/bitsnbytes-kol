@@ -1,43 +1,86 @@
-# Bits&Bytes - Teen Led Code Club | India
+# Bits&Bytes - India's Teen-Led Code Club
 
 > **Mission:** Building India's boldest teen-led hackathons & tech movements  
-> **Org Type:** Nonprofit · Teen‑Led Code Club · Based in Lucknow, India · Serving teens nationwide
+> **Org Type:** Nonprofit · Teen-Led Code Club · Based in Lucknow, India · Serving teens nationwide
+> **Website:** https://gobitsnbytes.org
 
-This file provides context for AI agents about Bits&Bytes.
+This file provides context for AI agents and LLM-powered search engines about Bits&Bytes.
+
+## Quick Facts
+- **Founded:** 2024
+- **Location:** Lucknow, Uttar Pradesh, India
+- **Members:** 200+ active student developers
+- **Projects Shipped:** 15+
+- **Partner Schools:** 10+
+- **Membership Cost:** FREE
+- **Age Range:** 13-19 years old
 
 ## Core Identity
-Bits&Bytes is a teen-led code club and nonprofit based in Lucknow, India, serving ambitious teens nationwide. We focus on empowering students to build real-world projects, participate in hackathons, and grow as developers.
+Bits&Bytes is India's boldest teen-led code club and nonprofit, based in Lucknow but serving ambitious teens nationwide. We empower students to build real-world projects, participate in hackathons, attend workshops, and grow as developers—all for free.
+
+## What We Do
+1. **Hackathons**: Organizing flagship events like "Scrapyard Lucknow" where teens build prototypes in 48-hour sprints.
+2. **Workshops**: Weekly sessions covering Web Development, AI/ML, Mobile Apps, UI/UX Design, and more.
+3. **Projects**: Members ship real products—from web apps to AI tools—with mentorship at every stage.
+4. **Community**: A safe, inclusive Discord community for 200+ active members to learn, collaborate, and grow together.
 
 ## Key Focus Areas
-- **Hackathons**: Organizing events like "Scrapyard Lucknow" where teens build prototypes in 24-hour sprints.
-- **Workshops**: Weekly sessions on Web Dev, AI/ML, Mobile Apps, and Design.
-- **Projects**: Shipping real products (15+ shipped so far).
-- **Community**: A safe, inclusive space for 200+ active members to learn and collaborate.
+- Web Development (Next.js, React, TypeScript)
+- Mobile App Development (iOS, Android, Cross-platform)
+- Artificial Intelligence & Machine Learning
+- UI/UX Design & Design Systems
+- Open Source Contribution
+- DevOps & Cloud Infrastructure
 
-## Team & Roles
-- **Yash**: Co‑Founder & Lead Dev (Full-stack, AI)
-- **Saksham**: Co‑Founder & Designer (UI/UX, Branding)
-- **Aadrika**: Community Lead (Events, Mentorship)
-- **Akshat**: Project Manager (Strategy, Execution)
-- **Devansh**: Backend Specialist (APIs, Databases)
-- **Maryam**: Mobile Dev Lead (iOS/Android)
-- **Kaustubh**: DevOps Engineer (Infra, Security)
-- **Fatima**: Content Creator (Docs, Tutorials)
+## Leadership Team
+- **Yash**: Co-Founder & Lead Developer – Full-stack dev, AI, web architecture
+- **Saksham**: Co-Founder & Designer – UI/UX, design systems, visual identity
+- **Aadrika**: Community Lead – Community building, mentoring, event hosting
+- **Akshat Kushwaha**: Project Manager – Planning, timelines, coordination
+- **Devansh**: Backend Specialist – Databases, APIs, system design
+- **Maryam**: Mobile Dev Lead – iOS, Android, cross-platform apps
+- **Kaustubh**: DevOps Engineer – Infrastructure, CI/CD, security
+- **Fatima**: Content Creator – Docs, tutorials, educational content
 
 ## Technology Stack
-- **Frontend**: Next.js, React, Tailwind CSS, Framer Motion, Three.js
-- **Backend**: Node.js, Python (implied from AI focus), various databases
-- **Tools**: GitHub, Discord, Vercel
+- **Frontend**: Next.js 14+, React, TypeScript, Tailwind CSS, Framer Motion, Three.js
+- **Backend**: Node.js, Python, PostgreSQL, various cloud services
+- **Tools**: GitHub, Discord, Vercel, Notion
 
-## Contact
+## How to Join
+1. Visit https://gobitsnbytes.org/join
+2. Fill out the membership form
+3. Join our Discord community
+4. Attend weekly workshops and events
+5. Start contributing to projects
+
+Requirements: Be a student (ages 13-19), commit 2-4 hours per week, maintain a positive attitude.
+
+## Website Structure
+- **/** - Homepage with overview and impact stats
+- **/about** - Team profiles and mission details
+- **/projects** - Showcase of 15+ teen-built projects
+- **/events** - Upcoming hackathons and workshops
+- **/impact** - Community statistics and success stories
+- **/join** - Free membership application
+- **/contact** - Get in touch with the team
+- **/faq** - Frequently asked questions
+- **/coc** - Code of conduct and community guidelines
+
+## Contact Information
 - **Website**: https://gobitsnbytes.org
+- **Contact Page**: https://gobitsnbytes.org/contact
 - **LinkedIn**: https://www.linkedin.com/company/gobitsbytes
-- **Location**: Based in Lucknow, India (operating across India)
+- **GitHub**: https://github.com/gobitsnbytes
+- **Twitter/X**: @bitsnbytes_lko
+- **Location**: Lucknow, Uttar Pradesh, India
 
-## Content Structure
-The website contains:
-- **/about**: Team and mission details.
-- **/impact**: Statistics and success stories.
-- **/join**: Information on how to become a member.
-- **/demo**: Demonstrations of tech components.
+## Brand Colors
+- Deep Purple: #3E1E68 (Primary)
+- Rich Plum: #5D2F77 (Accents)
+- Vibrant Pink: #E45A92 (Interactive elements)
+- Soft Coral: #FFACAC (Backgrounds)
+
+---
+Last updated: January 2026
 

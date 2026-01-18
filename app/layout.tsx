@@ -1,5 +1,5 @@
 import type React from "react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Poppins, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -31,38 +31,65 @@ const jetBrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+// SEO-optimized viewport configuration
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#3E1E68" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://gobitsnbytes.org"),
   title: {
-    default: "Bits&Bytes - Teen Led Code Club | India",
+    default: "Bits&Bytes - India's Teen-Led Code Club | Hackathons & Tech Community",
     template: "%s | Bits&Bytes",
   },
   description:
-    "Innovate. Collaborate. Hack. Join the most creative code club for teens in India. Build real projects, attend hackathons, and grow as a developer.",
+    "Join India's boldest teen-led code club. Build real projects, attend hackathons, workshops, and grow as a developer. 200+ active members, 15+ shipped projects. Free to join!",
   keywords: [
+    "Bits and Bytes",
     "bits&bytes",
-    "teen code club",
-    "india hackathons",
-    "student developers",
-    "coding club",
+    "teen code club india",
+    "india hackathons for students",
+    "student developers india",
+    "coding club lucknow",
     "tech events india",
-    "learn coding",
-    "teen programmers",
-    "hackathons in india",
-    "coding classes for teens",
+    "learn coding for teens",
+    "teen programmers community",
+    "hackathons in india 2025",
+    "coding classes for teens india",
+    "high school coding club",
+    "teen tech community",
+    "youth coding programs india",
+    "student hackathon india",
+    "free coding club india",
   ],
-  authors: [{ name: "Bits&Bytes Team", url: "https://gobitsnbytes.org" }],
+  authors: [{ name: "Bits&Bytes Team", url: "https://gobitsnbytes.org/about" }],
   creator: "Bits&Bytes",
   publisher: "Bits&Bytes",
+  formatDetection: {
+    email: true,
+    address: true,
+    telephone: true,
+  },
   alternates: {
-    canonical: "/",
+    canonical: "https://gobitsnbytes.org",
+    languages: {
+      "en-IN": "https://gobitsnbytes.org",
+    },
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
@@ -73,38 +100,47 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://gobitsnbytes.org",
     siteName: "Bits&Bytes",
-    title: "Bits&Bytes - Teen Led Code Club | India",
+    title: "Bits&Bytes - India's Teen-Led Code Club | Hackathons & Tech Community",
     description:
-      "Innovate. Collaborate. Hack. Join the most creative code club for teens in India.",
+      "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer. 200+ active members building the future.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Bits&Bytes - Teen Led Code Club",
+        alt: "Bits&Bytes - India's Teen-Led Code Club",
+        type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bits&Bytes - Teen Led Code Club | India",
+    title: "Bits&Bytes - India's Teen-Led Code Club",
     description:
-      "Innovate. Collaborate. Hack. Join the most creative code club for teens in India.",
+      "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer.",
     images: ["/og-image.png"],
     creator: "@bitsnbytes_lko",
     site: "@bitsnbytes_lko",
   },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || "google-site-verification-code",
+  },
   category: "education",
-  classification: "Nonprofit Code Club",
+  classification: "Nonprofit Teen Code Club",
   other: {
-    "google-site-verification":
-      process.env.GOOGLE_SITE_VERIFICATION ||
-      "google-site-verification=1234567890",
+    "msapplication-TileColor": "#3E1E68",
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "black-translucent",
   },
   icons: {
-    icon: "/logo.svg",
+    icon: [
+      { url: "/logo.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
     shortcut: "/logo.svg",
-    apple: "/logo.svg",
+    apple: [
+      { url: "/logo.svg", sizes: "180x180", type: "image/svg+xml" },
+    ],
   },
 };
 
@@ -113,21 +149,146 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
+  // Organization structured data for Google Knowledge Panel
+  const organizationJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "EducationalOrganization",
+    "@id": "https://gobitsnbytes.org/#organization",
     name: "Bits&Bytes",
+    alternateName: ["Bits and Bytes", "BitsNBytes", "Bits & Bytes"],
     url: "https://gobitsnbytes.org",
-    logo: "https://gobitsnbytes.org/logo.svg",
-    sameAs: ["https://www.linkedin.com/company/gobitsbytes"],
+    logo: {
+      "@type": "ImageObject",
+      url: "https://gobitsnbytes.org/logo.svg",
+      width: 512,
+      height: 512,
+    },
+    image: "https://gobitsnbytes.org/og-image.png",
     description:
-      "Innovate. Collaborate. Hack. Join the most creative code club for teens in India.",
+      "India's boldest teen-led code club. We run hackathons, workshops, and build real projects. Join 200+ student developers building the future.",
+    foundingDate: "2024",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Lucknow",
       addressRegion: "Uttar Pradesh",
       addressCountry: "IN",
     },
+    areaServed: {
+      "@type": "Country",
+      name: "India",
+    },
+    sameAs: [
+      "https://www.linkedin.com/company/gobitsbytes",
+      "https://github.com/gobitsnbytes",
+      "https://twitter.com/bitsnbytes_lko",
+      "https://www.instagram.com/gobitsnbytes",
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      url: "https://gobitsnbytes.org/contact",
+      availableLanguage: ["English", "Hindi"],
+    },
+    memberOf: {
+      "@type": "Organization",
+      name: "Hack Club",
+    },
+    knowsAbout: [
+      "Web Development",
+      "Mobile App Development",
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Hackathons",
+      "Youth Coding Education",
+    ],
+  };
+
+  // WebSite structured data for sitelinks search box
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://gobitsnbytes.org/#website",
+    url: "https://gobitsnbytes.org",
+    name: "Bits&Bytes",
+    description: "India's teen-led code club for hackathons, workshops, and building real projects",
+    publisher: {
+      "@id": "https://gobitsnbytes.org/#organization",
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://gobitsnbytes.org/?search={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
+    inLanguage: "en-IN",
+  };
+
+  // Breadcrumb for homepage
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://gobitsnbytes.org",
+      },
+    ],
+  };
+
+  // Navigation/Sitelinks structured data
+  const siteNavigationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    name: "Main Navigation",
+    url: "https://gobitsnbytes.org",
+    hasPart: [
+      {
+        "@type": "WebPage",
+        name: "About Us",
+        description: "Learn about Bits&Bytes - India's teen-led code club",
+        url: "https://gobitsnbytes.org/about",
+      },
+      {
+        "@type": "WebPage",
+        name: "Projects",
+        description: "Explore 15+ projects built by teen developers",
+        url: "https://gobitsnbytes.org/projects",
+      },
+      {
+        "@type": "WebPage",
+        name: "Events",
+        description: "Hackathons, workshops, and tech events for students",
+        url: "https://gobitsnbytes.org/events",
+      },
+      {
+        "@type": "WebPage",
+        name: "Join Us",
+        description: "Join India's boldest teen code club - free membership",
+        url: "https://gobitsnbytes.org/join",
+      },
+      {
+        "@type": "WebPage",
+        name: "Impact",
+        description: "See our community impact - 200+ students, 15+ projects",
+        url: "https://gobitsnbytes.org/impact",
+      },
+      {
+        "@type": "WebPage",
+        name: "Contact",
+        description: "Get in touch with Bits&Bytes team",
+        url: "https://gobitsnbytes.org/contact",
+      },
+      {
+        "@type": "WebPage",
+        name: "FAQ",
+        description: "Frequently asked questions about Bits&Bytes",
+        url: "https://gobitsnbytes.org/faq",
+      },
+    ],
   };
 
   return (
@@ -136,10 +297,27 @@ export default function RootLayout({
       className={`${poppins.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://vercel.live" />
+      </head>
       <body className="font-sans antialiased bg-background text-foreground selection:bg-accent/30 selection:text-primary overflow-x-hidden">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavigationJsonLd) }}
         />
         <ThemeProvider>
           <PageBackground />

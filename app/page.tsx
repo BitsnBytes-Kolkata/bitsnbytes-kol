@@ -13,9 +13,18 @@ import { Suspense } from "react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Bits&Bytes - Teen Led Code Club | India",
+  title: "Bits&Bytes - India's Teen-Led Code Club | Hackathons & Tech Community",
   description:
-    "Innovate. Collaborate. Hack. Join India's boldest builders club for ambitious teens. Build real projects, attend hackathons, and grow as a developer.",
+    "Join India's boldest teen-led code club. Build real projects, attend hackathons, workshops & grow as a developer. 200+ active members, 15+ shipped projects. 100% free to join!",
+  alternates: {
+    canonical: "https://gobitsnbytes.org",
+  },
+  openGraph: {
+    title: "Bits&Bytes - India's Teen-Led Code Club",
+    description: "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer.",
+    url: "https://gobitsnbytes.org",
+    type: "website",
+  },
 };
 
 import { HeroFuturistic } from "@/components/ui/hero-futuristic";
