@@ -107,56 +107,62 @@ function TeamCard({
     <CometCard className="w-full">
       <div
         className={cn(
-          "relative flex h-full cursor-pointer flex-col items-stretch rounded-xl sm:rounded-2xl p-3 sm:p-4 transition-all duration-700",
-          "md:backdrop-blur-lg", // Only apply blur on larger screens
-          member.isFounder
-            ? "border-2 border-[var(--brand-pink)]/50 shadow-[0_0_30px_rgba(228,90,146,0.3)]"
-            : "border border-white/10",
+          "relative flex cursor-pointer flex-col rounded-xl sm:rounded-2xl p-3 sm:p-4 transition-all duration-700",
+          // Fixed card height for consistency across all cards
+          "h-[460px] sm:h-[500px] md:h-[540px]",
+          "md:backdrop-blur-lg",
+          // All core team members get the pretty pink border
+          "border-2 border-[var(--brand-pink)]/40 shadow-[0_0_20px_rgba(228,90,146,0.2)]",
+          // Founders get extra glow
+          member.isFounder && "border-[var(--brand-pink)]/60 shadow-[0_0_30px_rgba(228,90,146,0.35)]",
           !member.accentColor && bgColor,
         )}
         style={{
           background: getBackgroundStyle(),
         }}
       >
-        <div className="mx-1 sm:mx-2">
-          <div className="relative mt-1 sm:mt-2 aspect-[3/4] w-full rounded-xl sm:rounded-2xl">
-            {/* Ambient glow background - YouTube style */}
-            <div className="absolute inset-0 -z-10 scale-105 opacity-50 blur-2xl sm:blur-3xl">
+        {/* Image section - larger for better portraits */}
+        <div className="mx-1 sm:mx-2 h-[300px] sm:h-[320px] md:h-[340px] flex-shrink-0">
+          <div className="relative h-full w-full rounded-xl sm:rounded-2xl overflow-hidden">
+            {/* Ambient glow background */}
+            <div className="absolute inset-0 -z-10 scale-110 opacity-40 blur-2xl sm:blur-3xl">
               <Image
                 src={member.image}
                 alt=""
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                quality={90}
-                className="object-cover rounded-xl sm:rounded-2xl"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                quality={60}
+                className="object-cover"
               />
             </div>
-            {/* Main image */}
-            <div className="relative h-full w-full overflow-hidden rounded-xl sm:rounded-2xl">
+            {/* Main image - centered */}
+            <div className="relative h-full w-full overflow-hidden rounded-xl sm:rounded-2xl border border-white/10">
               <Image
                 ref={imgRef}
                 src={member.image}
                 alt={member.name}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 quality={90}
-                className="object-cover"
+                className="object-cover object-top"
                 onLoad={(e) => extractDominantColor(e.currentTarget)}
               />
             </div>
           </div>
         </div>
-        <div className="relative mt-auto">
-          {/* Text backdrop for readability */}
-          <div className="absolute inset-0 -mx-3 -mb-3 sm:-mx-4 sm:-mb-4 rounded-b-xl sm:rounded-b-2xl bg-black/60 backdrop-blur-md border-t border-white/10" />
 
-          <div className="relative flex min-h-[160px] sm:min-h-[180px] md:min-h-[220px] flex-col gap-2 sm:gap-3 p-3 sm:p-5 text-white z-10">
-            <div className="flex items-start justify-between gap-2">
+        {/* Text content section - cleaner without tags */}
+        <div className="relative flex-1 mt-2 sm:mt-3">
+          <div className="absolute inset-0 -mx-3 -mb-3 sm:-mx-4 sm:-mb-4 rounded-b-xl sm:rounded-b-2xl bg-black/80 backdrop-blur-md border-t border-white/10" />
+
+          <div className="relative flex h-full flex-col p-3 sm:p-4 text-white z-10">
+            {/* Header with role, name, and LinkedIn */}
+            <div className="flex items-start justify-between gap-2 mb-2">
               <div className="flex-1 min-w-0">
-                <span className="text-[0.6rem] sm:text-[0.7rem] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[var(--brand-pink)] mb-1 block">
+                <span className="text-[0.6rem] sm:text-[0.7rem] font-black uppercase tracking-[0.1em] text-[var(--brand-pink)] mb-0.5 block">
                   {member.role}
                 </span>
-                <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">
+                <h3 className="font-display text-lg sm:text-xl md:text-2xl font-bold tracking-tight leading-tight">
                   {member.name}
                 </h3>
               </div>
@@ -165,32 +171,18 @@ function TeamCard({
                   href={member.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-white/15 transition-all hover:bg-white/25 hover:scale-110 border border-white/20"
+                  className="group flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full bg-white/15 transition-all hover:bg-white/25 hover:scale-110 border border-white/20"
                   aria-label={`${member.name}'s LinkedIn`}
                 >
-                  <Linkedin className="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:scale-110" />
+                  <Linkedin className="h-4 w-4 transition-transform group-hover:scale-110" />
                 </a>
               )}
             </div>
 
-            <p className="mb-auto text-sm sm:text-base leading-relaxed text-white/90 font-medium font-sans">
+            {/* Bio - cleaner and more readable */}
+            <p className="text-xs sm:text-sm leading-relaxed text-white/90 font-medium line-clamp-3">
               {member.bio}
             </p>
-
-            {member.expertise && member.expertise.length > 0 ? (
-              <div className="mt-auto pt-4 flex flex-wrap gap-2">
-                {member.expertise.slice(0, 3).map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full bg-white/10 border border-white/10 px-2.5 sm:px-3 py-1 text-[0.6rem] sm:text-[0.7rem] font-bold uppercase tracking-wider text-white/80"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            ) : (
-              <div className="pt-2 sm:pt-4 h-6 sm:h-8" />
-            )}
           </div>
         </div>
       </div>
@@ -257,13 +249,13 @@ function VolunteerCard({ volunteer }: { volunteer: Volunteer }) {
 export default function TeamCaseStudy({ coreTeam, volunteers }: TeamCaseStudyProps) {
   return (
     <div className="flex flex-col gap-8 sm:gap-16">
-      {/* Core Team - Flex wrap centered for 5 members */}
-      <div className="flex flex-wrap items-stretch justify-center gap-4 sm:gap-6 md:gap-8">
+      {/* Core Team - CSS Grid with explicit 2 rows for equal heights */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-4 sm:gap-6 md:gap-8">
         {coreTeam.map((member, index) => {
           const bgColor = brandColors[index % brandColors.length];
 
           return (
-            <div key={member.id} className="flex min-w-[280px] max-w-[340px] flex-1">
+            <div key={member.id} className="h-full">
               <TeamCard member={member} bgColor={bgColor} />
             </div>
           );

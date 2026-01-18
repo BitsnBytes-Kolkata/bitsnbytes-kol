@@ -119,7 +119,7 @@ const coreTeam = [
     linkedin: "https://www.linkedin.com/in/devaanshpa/",
   },
   {
-    id: 6,
+    id: 5,
     name: "Maryam",
     role: "Social Media & Promotions Head",
     image: "/team/maryam.jpeg",
@@ -131,6 +131,20 @@ const coreTeam = [
       "Design Systems",
     ],
     linkedin: "https://www.linkedin.com/in/maryam-fatima-9719aa377/",
+  },
+  {
+    id: 6,
+    name: "Srishti",
+    role: "Operations & Communications Head",
+    image: "/team/srishti.jpeg",
+    bio: "Manages internal operations, coordinates team communications, and ensures smooth collaboration across all departments and initiatives.",
+    expertise: [
+      "Operations Management",
+      "Team Communications",
+      "Project Coordination",
+      "Process Optimization",
+    ],
+    linkedin: "https://www.linkedin.com/in/srishti-singh-ab6a1b391",
   },
 ];
 
@@ -170,12 +184,7 @@ const volunteers = [
     name: "Kavan",
     image: "/team/kavan.jpg",
   },
-  {
-    id: 12,
-    name: "Srishti",
-    image: "/team/srishti.jpeg",
-    linkedin: "https://www.linkedin.com/in/srishti-singh-ab6a1b391",
-  },
+
   {
     id: 13,
     name: "Aishwary",
