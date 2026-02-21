@@ -111,7 +111,7 @@ export default function Contact() {
                   <h3 className="font-display text-2xl font-black text-white mb-6">Get in Touch</h3>
                   <div className="space-y-8">
                     {[
-                      { icon: Mail, label: "Email", value: "hello@gobitsnbytes.org", color: "text-(--brand-pink)" },
+                      { icon: Mail, label: "Email", value: "contact@indiainnovates.org", href: "mailto:contact@indiainnovates.org", color: "text-(--brand-pink)" },
                       { icon: MapPin, label: "Location", value: "Lucknow, India", color: "text-(--brand-purple)" },
                       { icon: Clock, label: "Established", value: "Teen-led since 2025", color: "text-blue-400" },
                     ].map((info) => (
@@ -121,7 +121,11 @@ export default function Contact() {
                         </div>
                         <div>
                           <p className="text-xs font-bold uppercase tracking-widest text-white/50">{info.label}</p>
-                          <p className="text-base font-black text-white mt-0.5">{info.value}</p>
+                          {info.href ? (
+                            <a href={info.href} className="text-base font-black text-white hover:text-[var(--brand-pink)] mt-0.5 block">{info.value}</a>
+                          ) : (
+                            <p className="text-base font-black text-white mt-0.5">{info.value}</p>
+                          )}
                         </div>
                       </div>
                     ))}

@@ -95,34 +95,38 @@ export const HeroFuturistic = () => {
           </GlassContainer>
         </div>
 
-        {/* Right image card - Archive highlight */}
-        <div className="relative flex-1 min-w-0">
+        <Link href="/events" className="relative flex-1 min-w-0 block group">
           <GlassContainer
-            className="h-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto"
+            className="h-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto transition-transform duration-500 group-hover:scale-[1.02]"
             containerClassName="h-full"
-            glowColor="purple"
+            glowColor="pink"
           >
             <div className="relative h-full w-full">
               <Image
-                src="/images/432a787b-bfde-4dd0-8c2a-cb994146a3b9-1-105-c.jpeg"
-                alt="Scrapyard Lucknow teens building together"
+                src="/event_pictures/697362aa317f1_2b7a6406.webp"
+                alt="India Innovates 2026 - Upcoming tech summit"
                 fill
-                className="object-cover opacity-60 mix-blend-overlay"
+                className="object-cover opacity-60 mix-blend-overlay transition-opacity duration-500 group-hover:opacity-80 group-hover:mix-blend-normal"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
               <div className="absolute bottom-8 left-8 right-8 space-y-2">
-                <span className="inline-block px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[0.65rem] font-bold uppercase tracking-widest text-white/70">
-                  Archive highlight
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[0.65rem] font-bold uppercase tracking-widest text-emerald-400">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  Upcoming Event
                 </span>
-                <h3 className="font-display text-2xl font-black text-white">
-                  Scrapyard Lucknow · 2025
-                </h3>
+                <div>
+                  <h3 className="font-display text-2xl font-black text-white flex items-center gap-2">
+                    India Innovates 2026
+                    <ArrowRight className="h-4 w-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  </h3>
+                  <p className="text-white/60 text-sm font-medium mt-1">28 – 29 Mar 2026 · New Delhi</p>
+                </div>
               </div>
             </div>
           </GlassContainer>
-        </div>
+        </Link>
       </div>
     </section>
   );
