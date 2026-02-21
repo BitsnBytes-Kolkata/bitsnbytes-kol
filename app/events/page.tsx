@@ -42,24 +42,24 @@ const WebGLShader = dynamic(
 const stages = [
   {
     title: "Submit Your Presentation",
-    period: "24 Jan – 13 Mar 2026",
+    period: "24 Jan – 10 Mar 2026",
     copy: "Submit a presentation around the solution you have built. Best solutions get an exhibition space to display to investors, founders, policy makers, and industry leaders.",
     start: new Date("2026-01-24T00:00:00"),
-    end: new Date("2026-03-13T23:59:59"),
+    end: new Date("2026-03-10T23:59:59"),
   },
   {
     title: "Evaluation",
-    period: "1 Mar – 20 Mar 2026",
-    copy: "All registered teams showcase their solutions. Selected teams are invited to a dedicated exhibition booth at Bharat Mandapam at subsidized costs.",
-    start: new Date("2026-03-01T00:00:00"),
-    end: new Date("2026-03-20T23:59:59"),
+    period: "11 Mar – 15 Mar 2026",
+    copy: "Core Committee members and mentors will thoroughly review all submitted PPTs and shortlist teams based on quality, feasibility, innovation, and impact.",
+    start: new Date("2026-03-11T00:00:00"),
+    end: new Date("2026-03-15T23:59:59"),
   },
   {
     title: "The Grand Finale",
-    period: "28 – 29 Mar 2026",
+    period: "28 Mar 2026",
     copy: "Solutions presented to judges at Bharat Mandapam. On-the-spot evaluation by judges and ministries to declare winners across all domains.",
     start: new Date("2026-03-28T00:00:00"),
-    end: new Date("2026-03-29T23:59:59"),
+    end: new Date("2026-03-28T23:59:59"),
   },
 ];
 
@@ -206,13 +206,13 @@ export default function Events() {
                 {/* Left — key stats */}
                 <div className="space-y-0 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
                   {[
-                    { icon: <Trophy className="h-4 w-4 text-(--brand-pink)" />, label: "Prize Pool", value: "₹10,00,000" },
-                    { icon: <Users className="h-4 w-4 text-(--brand-pink)" />, label: "Team Size", value: "3 – 5 Members" },
+                    { icon: <Trophy className="h-4 w-4 text-(--brand-pink)" />, label: "Prize Pool", value: "₹10,05,000" },
+                    { icon: <Users className="h-4 w-4 text-(--brand-pink)" />, label: "Team Size", value: "3 – 6 Members" },
                     { icon: <IndianRupee className="h-4 w-4 text-(--brand-pink)" />, label: "Registration", value: "₹200" },
                     { icon: <Calendar className="h-4 w-4 text-(--brand-pink)" />, label: "Reg. Deadline", value: "5 Mar 2026, 10:59 PM IST" },
-                    { icon: <Activity className="h-4 w-4 text-(--brand-pink)" />, label: "Registered", value: "2,881+ teams" },
+                    { icon: <Activity className="h-4 w-4 text-(--brand-pink)" />, label: "Registered", value: "8,704+ teams" },
                     { icon: <Eye className="h-4 w-4 text-(--brand-pink)" />, label: "Impressions", value: "13,08,296+" },
-                    { icon: <Clock className="h-4 w-4 text-(--brand-pink)" />, label: "Timings", value: "9 AM – 7 PM, both days" },
+                    { icon: <Clock className="h-4 w-4 text-(--brand-pink)" />, label: "Timings", value: "9 AM – 7 PM" },
                   ].map((s) => (
                     <div key={s.label} className="flex items-center justify-between px-5 py-3.5">
                       <div className="flex items-center gap-2.5">
@@ -447,7 +447,7 @@ export default function Events() {
         <PageSection
           align="center"
           eyebrow="Prizes"
-          title="₹10,00,000 prize pool"
+          title="₹10,05,000 prize pool"
           description="Top solutions across every domain take home cash prizes — plus a certificate for every participant."
         >
           <GlassContainer className="overflow-x-auto" glowColor="pink" animated={false}>

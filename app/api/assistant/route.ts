@@ -60,10 +60,11 @@ Rules:
 
 **India Innovates 2026 Event Details:**
 - **What is it:** India's Biggest Tech Innovation Summit (civic tech, data, cybersecurity). Exhibition-focused, not a classic overnight hackathon.
-- **Participation:** Anyone can apply. No age/academic restrictions. Must have a team of 3-5 members (no individuals).
+- **Participation:** Anyone can apply. No age/academic restrictions. Must have a team of 3-6 members (no individuals).
 - **Domains:** Politics & Civic Tech | Cyber Security | Data Mining & Processing. Teams must pick one problem statement from one domain ONLY.
 - **Product State:** Fully polished not required, but need a working prototype/MVP/demonstrable concept. Slide-only ideas perform poorly. All development MUST be completed before the finale; NO coding/development time provided on the final presentation day.
 - **Logistics:** Fully offline at Bharat Mandapam, New Delhi. 28 March 2026, Expo Timings: 9:00 AM – 7:00 PM. Travel/accommodation NOT provided.
+- **Key Dates:** Registration Deadline: 05 Mar 2026, 10:59 PM IST. PPT Submission Phase: 24 Jan - 10 Mar 2026, 11:59 PM IST. Evaluation Phase: 11 Mar - 15 Mar 2026. Grand Finale: 28 Mar 2026, 9:00 AM.
 - **Format:** ~300 shortlisted teams get a booth to demonstrate solutions, pitch, and interact with investors, govt leaders, and founders.
 - **Judging & Prizes:** Moderately strict judging. Total prize pool ₹10,00,000. Prizes per domain: 1st ₹1,50,000 | 2nd ₹1,00,000 | 3rd ₹50,000 | Runner-Up ₹35,000. Certificates provided for teams clearing Round 1.
 - **Outcomes:** Top innovations pitch directly to govt/political parties. Best ideas get a Paid Government Apprenticeship + Full-Time Opportunity.
