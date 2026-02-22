@@ -5,6 +5,7 @@ import type { KeyboardEvent, ChangeEvent, MouseEvent as ReactMouseEvent } from "
 import { useRouter } from "next/navigation"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
+import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts"
 
 import { Mic, Send, Info, Bot, X, Trash } from "lucide-react"
 
@@ -588,9 +589,93 @@ const FloatingAiAssistant: React.FC = () => {
                             ol: ({ children }) => <ol className="my-1 list-decimal pl-4">{children}</ol>,
                             li: ({ children }) => <li className="my-0.5 text-[0.75rem]">{children}</li>,
                             strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
-                            code: ({ children }) => (
-                              <code className="rounded bg-zinc-800 px-1 py-0.5 text-[0.7rem]">{children}</code>
-                            ),
+                            a: ({ href, title, children, ...props }) => {
+                              if (title === "button" || title === "cta") {
+                                return (
+                                  <a
+                                    href={href}
+                                    className="inline-flex mt-2 mb-1 w-full sm:w-auto items-center justify-center rounded-xl bg-[var(--brand-pink)] px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-[#e45a92]/30 transition-all hover:scale-105 hover:shadow-xl hover:shadow-[#e45a92]/40 text-center"
+                                    {...props}
+                                  >
+                                    {children}
+                                  </a>
+                                )
+                              }
+                              if (title === "follow-up") {
+                                return (
+                                  <button
+                                    onClick={(e) => {
+                                      e.preventDefault()
+                                      const promptText = Array.isArray(children) ? children.join("") : String(children)
+                                      handleQuickPrompt(promptText)
+                                    }}
+                                    className="block w-full mt-2 text-left rounded-xl border border-zinc-700/80 bg-zinc-800/50 px-3 py-2.5 text-xs text-zinc-300 transition-all hover:border-[#e45a92] hover:bg-zinc-800 hover:text-white"
+                                  >
+                                    ↳ {children}
+                                  </button>
+                                )
+                              }
+                              if (href?.startsWith("#")) {
+                                return (
+                                  <a href={href} className="text-[#e45a92] underline decoration-[#e45a92]/30 underline-offset-2 hover:decoration-[#e45a92] transition-colors" {...props}>
+                                    {children}
+                                  </a>
+                                )
+                              }
+                              return (
+                                <a href={href} className="text-emerald-400 hover:text-emerald-300 underline decoration-emerald-400/30 underline-offset-2 hover:decoration-emerald-400 transition-colors" target="_blank" rel="noreferrer" {...props}>
+                                  {children}
+                                </a>
+                              )
+                            },
+                            code: ({ className, children, ...props }) => {
+                              const match = /language-(\w+)/.exec(className || "")
+                              const isChart = match && match[1] === "chart"
+
+                              if (isChart) {
+                                try {
+                                  const rawData = String(children).replace(/\n$/, "")
+                                  const data = JSON.parse(rawData)
+                                  if (Array.isArray(data)) {
+                                    return (
+                                      <div className="my-4 h-52 w-full rounded-xl bg-zinc-950/80 p-3 border border-zinc-800/80 shadow-inner">
+                                        <ResponsiveContainer width="100%" height="100%">
+                                          <BarChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                                            <XAxis dataKey="name" fontSize={10} tickLine={false} axisLine={false} stroke="#a1a1aa" />
+                                            <Tooltip
+                                              cursor={{ fill: "#27272a", opacity: 0.4 }}
+                                              contentStyle={{ backgroundColor: "#18181b", border: "1px solid #3f3f46", borderRadius: "8px", fontSize: "12px", color: "#f4f4f5" }}
+                                              itemStyle={{ color: "#e45a92" }}
+                                            />
+                                            <Bar dataKey="value" fill="#e45a92" radius={[4, 4, 0, 0]} maxBarSize={40} />
+                                          </BarChart>
+                                        </ResponsiveContainer>
+                                      </div>
+                                    )
+                                  }
+                                } catch (e) {
+                                  console.error("Failed to parse chart data", e)
+                                  return (
+                                    <div className="my-2 p-2 rounded bg-red-950/30 border border-red-900/50 text-red-400 text-xs">
+                                      Error visualizing chart data.
+                                    </div>
+                                  )
+                                }
+                              }
+
+                              const isInline = !match
+                              return (
+                                <code
+                                  className={`${isInline
+                                      ? "rounded bg-zinc-800 px-1 py-0.5 text-[0.7rem]"
+                                      : "block rounded-xl bg-zinc-950 p-3 text-[0.75rem] overflow-x-auto border border-zinc-800/80 text-zinc-300 mt-2 mb-2"
+                                    } ${className || ""}`}
+                                  {...props}
+                                >
+                                  {children}
+                                </code>
+                              )
+                            },
                           }}
                         >
                           {m.content || "..."}
