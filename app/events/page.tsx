@@ -125,6 +125,46 @@ const programSteps = [
   "Winners announced — Top 3 per domain",
 ];
 
+const faqs = [
+  {
+    q: "What is India Innovates 2026?",
+    a: "India's Biggest Tech Innovation Summit where Code Meets Constitution. Organized by MCD, DDU, IIT Kharagpur, DTC, NSUT, GGSIPU, THE FISTA, and CBPACS at Bharat Mandapam, New Delhi. It invites India's brightest student innovators to bring working products and breakthrough ideas."
+  },
+  {
+    q: "Who can participate?",
+    a: "Open to all students, professionals, and tech enthusiasts from across India. Whether you are a student, working professional, or startup founder, you are welcome to participate."
+  },
+  {
+    q: "What is the team size to participate?",
+    a: "Teams must have 3-6 members."
+  },
+  {
+    q: "What are the prerequisites considered for registering?",
+    a: "Participants may need to have knowledge and skills in areas such as electronics, programming, data analytics, and IoT technologies, depending on the theme. Participants must bring their own laptops, sensors, microcontrollers, and other necessary tools."
+  },
+  {
+    q: "Where is the venue?",
+    a: "Bharat Mandapam, Pragati Maidan, New Delhi. This state-of-the-art venue hosted the G20 Summit in 2023."
+  },
+  {
+    q: "How to register for the event?",
+    a: "Click the Register button on the Unstop registration page. Complete your registration there and our organizing team will contact you with further details."
+  }
+];
+
+const visionMission = [
+  {
+    title: "Vision",
+    icon: <Eye className="h-5 w-5 text-(--brand-pink)" />,
+    copy: "Contributing to Viksit Bharat 2047 — a developed India by its centenary of independence. Our vision is to empower young innovators to build solutions that transform governance, strengthen democracy, enhance citizen services, and secure our digital future."
+  },
+  {
+    title: "Mission",
+    icon: <Trophy className="h-5 w-5 text-(--brand-pink)" />,
+    copy: "To bridge the gap between innovation and implementation by bringing together student innovators, government bodies, and industry leaders under one roof. Our mission is to identify breakthrough ideas that can be adopted at scale to serve the nation."
+  }
+];
+
 // ── Component ─────────────────────────────────────────────────────────────
 
 export default function Events() {
@@ -519,6 +559,45 @@ export default function Events() {
               </li>
             ))}
           </ul>
+        </PageSection>
+
+        {/* ── Vision & Mission ──────────────────────────────────────── */}
+        <PageSection
+          align="center"
+          eyebrow="About The Event"
+          title="Building for the Nation"
+          description="Contributing to Viksit Bharat 2047."
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {visionMission.map((item, idx) => (
+              <GlowingCard key={item.title} animationDelay={idx * 0.1}>
+                <div className="space-y-3">
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-(--brand-pink)/30 bg-(--brand-pink)/10 text-(--brand-pink)">
+                    {item.icon}
+                  </div>
+                  <GlowingCardTitle className="mt-3">{item.title}</GlowingCardTitle>
+                  <GlowingCardDescription>{item.copy}</GlowingCardDescription>
+                </div>
+              </GlowingCard>
+            ))}
+          </div>
+        </PageSection>
+
+        {/* ── FAQs ──────────────────────────────────────────────────────── */}
+        <PageSection
+          align="center"
+          eyebrow="FAQs"
+          title="Frequently Asked Questions"
+          description="Everything you need to know about the event."
+        >
+          <div className="max-w-3xl mx-auto space-y-4">
+            {faqs.map((faq, idx) => (
+              <div key={idx} className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors text-left">
+                <h3 className="text-[15px] font-bold text-white mb-2">{faq.q}</h3>
+                <p className="text-sm text-white/60 leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </div>
         </PageSection>
 
       </main >
