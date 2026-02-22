@@ -121,7 +121,7 @@ export const HeroFuturistic = () => {
                     India Innovates 2026
                     <ArrowRight className="h-4 w-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   </h3>
-                  <p className="text-white/60 text-sm font-medium mt-1">28 – 29 Mar 2026 · New Delhi</p>
+                  <p className="text-white/60 text-sm font-medium mt-1">28 Mar 2026 · New Delhi</p>
                 </div>
               </div>
             </div>
