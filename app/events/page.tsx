@@ -118,7 +118,7 @@ const additionalOutcomes = [
 
 const programSteps = [
   "Register on Unstop",
-  "Top 300 teams receive Exhibition Booth Space",
+  "Top teams receive Exhibition Booth Space",
   "Live showcase at Bharat Mandapam",
   "On-the-spot evaluation by judges",
   "Winners announced — Top 3 per domain",
