@@ -2,15 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// Detect Safari/Firefox for performance adjustments
-const isSafari =
-  typeof navigator !== "undefined" &&
-  /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-const isFirefox =
-  typeof navigator !== "undefined" &&
-  navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
-const isLowPerfBrowser = isSafari || isFirefox;
-
 export function WebGLShader() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number | null>(null);
@@ -19,7 +10,7 @@ export function WebGLShader() {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   // Frame rate limiting - lower for Safari/Firefox
-  const targetFPS = isLowPerfBrowser ? 30 : 60;
+  const targetFPS = 60;
   const frameInterval = 1000 / targetFPS;
 
   useEffect(() => {
@@ -58,7 +49,8 @@ export function WebGLShader() {
     const gl = canvas.getContext("webgl", {
       alpha: true,
       antialias: false,
-      powerPreference: isLowPerfBrowser ? "low-power" : "default",
+      powerPreference: "default",
+      premultipliedAlpha: false,
       preserveDrawingBuffer: false,
       depth: false,
       stencil: false,
@@ -69,10 +61,7 @@ export function WebGLShader() {
       return;
     }
 
-    // Reduced pixel ratio for performance
-    const pixelRatio = isLowPerfBrowser
-      ? Math.min(window.devicePixelRatio, 1)
-      : Math.min(window.devicePixelRatio, 1.5);
+    const pixelRatio = Math.min(window.devicePixelRatio, 1.5);
 
     const vertexShaderSource = `
       attribute vec2 position;
@@ -81,23 +70,7 @@ export function WebGLShader() {
       }
     `;
 
-    // Simplified fragment shader for better performance
-    const fragmentShaderSource = isLowPerfBrowser
-      ? `
-        precision mediump float;
-        uniform vec2 resolution;
-        uniform float time;
-
-        void main() {
-          vec2 uv = gl_FragCoord.xy / resolution;
-          float wave = sin(uv.x * 2.0 + time * 0.3) * 0.5 + 0.5;
-          vec3 purple = vec3(0.243, 0.118, 0.408);
-          vec3 pink = vec3(0.894, 0.353, 0.573);
-          vec3 color = mix(purple, pink, wave * 0.4);
-          gl_FragColor = vec4(color * 0.5, 0.5);
-        }
-      `
-      : `
+    const fragmentShaderSource = `
         precision mediump float;
         uniform vec2 resolution;
         uniform float time;
@@ -117,7 +90,7 @@ export function WebGLShader() {
           vec3 color = mix(deepPurple, vibrantPink, wave * 0.5);
           color = mix(color, softCoral, wave * 0.2 * sin(time * 0.5));
 
-          gl_FragColor = vec4(color * wave, wave * 0.8);
+          gl_FragColor = vec4(color, wave * 0.8);
         }
       `;
 
@@ -216,8 +189,8 @@ export function WebGLShader() {
 
       lastFrameTimeRef.current = currentTime - (elapsed % frameInterval);
 
-      // Slower time progression for Safari/Firefox
-      time += isLowPerfBrowser ? 0.005 : 0.01;
+      // Slower time progression
+      time += 0.01;
       gl.uniform1f(timeLocation, time);
 
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
@@ -244,7 +217,7 @@ export function WebGLShader() {
   if (prefersReducedMotion) {
     return (
       <div
-        className="fixed inset-0 -z-10"
+        className="fixed inset-0 z-0 pointer-events-none"
         style={{
           background:
             "linear-gradient(135deg, #3E1E68 0%, #E45A92 50%, #FFACAC 100%)",
@@ -257,7 +230,7 @@ export function WebGLShader() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 -z-10"
+      className="fixed top-0 left-0 z-0 pointer-events-none"
       style={{
         width: "100vw",
         height: "100vh",

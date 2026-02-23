@@ -321,7 +321,7 @@ export default function RootLayout({
         />
         <ThemeProvider>
           <PageBackground />
-          <div className="relative flex min-h-screen flex-col overflow-x-hidden">
+          <div className="relative z-10 flex min-h-screen flex-col overflow-x-hidden">
             <Navigation />
             <main className="flex-1 w-full overflow-x-hidden">{children}</main>
             <Footer />
