@@ -77,7 +77,7 @@ const culturePillars = [
 export default function Impact() {
   return (
     <>
-      <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden text-white">
+      <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32">
         <WebGLShader />
         <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6">
           <GlassContainer className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">

@@ -203,6 +203,7 @@ export default function About() {
           eyebrow="About"
           title={aboutContent.title}
           description={aboutContent.description}
+          className="pt-24 md:pt-32"
         >
           <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-2 lg:gap-4">
             {aboutContent.sections.map((section, index) => {

@@ -1,9 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Terminal, X } from "lucide-react";
 
 export function WebGLShader() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number | null>(null);
   const lastFrameTimeRef = useRef<number>(0);
@@ -482,173 +485,176 @@ export function WebGLShader() {
       />
 
       {/* Stats for nerds toggle & panel */}
-      <div className="fixed bottom-4 left-4 right-4 sm:right-auto z-50 flex flex-col items-start gap-2 pointer-events-none">
-        {showStats && (
-          <div
-            className="pointer-events-auto w-full sm:w-80 max-h-[70vh] overflow-y-auto rounded-2xl border border-white/10 dark:border-white/[0.06] shadow-2xl"
-            style={{
-              background: "linear-gradient(135deg, rgba(15, 5, 28, 0.92) 0%, rgba(62, 30, 104, 0.85) 100%)",
-              boxShadow: "0 25px 70px rgba(1, 0, 8, 0.6), inset 0 1px 0 rgba(255,255,255,0.06)",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
-            }}
-          >
-            {/* Sticky header */}
+      {mounted && typeof document !== "undefined" && document.body && createPortal(
+        <div className="fixed bottom-4 left-4 right-4 sm:right-auto z-50 flex flex-col items-start gap-2 pointer-events-none">
+          {showStats && (
             <div
-              className="sticky top-0 z-10 flex items-center justify-between px-4 py-3 border-b border-white/[0.06] rounded-t-2xl"
+              className="pointer-events-auto w-full sm:w-80 max-h-[70vh] overflow-y-auto rounded-2xl border border-white/10 dark:border-white/[0.06] shadow-2xl"
               style={{
-                background: "linear-gradient(135deg, rgba(15, 5, 28, 0.97) 0%, rgba(62, 30, 104, 0.92) 100%)",
+                background: "linear-gradient(135deg, rgba(15, 5, 28, 0.92) 0%, rgba(62, 30, 104, 0.85) 100%)",
+                boxShadow: "0 25px 70px rgba(1, 0, 8, 0.6), inset 0 1px 0 rgba(255,255,255,0.06)",
                 backdropFilter: "blur(20px)",
+                WebkitBackdropFilter: "blur(20px)",
               }}
             >
-              <span className="text-xs font-semibold tracking-widest uppercase text-[#FFACAC]">
-                Stats for Nerds
-              </span>
-              <button
-                onClick={() => setShowStats(false)}
-                className="p-1 -mr-1 rounded-lg text-white/40 hover:text-white hover:bg-white/10 transition-all"
+              {/* Sticky header */}
+              <div
+                className="sticky top-0 z-10 flex items-center justify-between px-4 py-3 border-b border-white/[0.06] rounded-t-2xl"
+                style={{
+                  background: "linear-gradient(135deg, rgba(15, 5, 28, 0.97) 0%, rgba(62, 30, 104, 0.92) 100%)",
+                  backdropFilter: "blur(20px)",
+                }}
               >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
+                <span className="text-xs font-semibold tracking-widest uppercase text-[#FFACAC]">
+                  Stats for Nerds
+                </span>
+                <button
+                  onClick={() => setShowStats(false)}
+                  className="p-1 -mr-1 rounded-lg text-white/40 hover:text-white hover:bg-white/10 transition-all"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
 
-            <div className="px-4 py-3 space-y-4 text-[11px] sm:text-xs">
+              <div className="px-4 py-3 space-y-4 text-[11px] sm:text-xs">
 
-              {/* Performance */}
-              <section>
-                <h4 className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] text-[#E45A92] mb-1.5">Performance</h4>
-                <div className="space-y-0.5 text-white/70">
-                  <div className="flex justify-between gap-4"><span>Current FPS</span><span className="text-white font-medium tabular-nums">{stats.fps} <span className="text-white/30">({stats.frameTimeMs}ms)</span></span></div>
-                  <div className="flex justify-between gap-4"><span>Peak / Min FPS</span><span className="text-white font-medium tabular-nums">{stats.peakFps} / {stats.minFps}</span></div>
-                  <div className="flex justify-between gap-4"><span>Target FPS</span><span className="text-white font-medium">{stats.targetFps}</span></div>
-                  <div className="flex justify-between gap-4"><span>Total Frames</span><span className="text-white font-medium tabular-nums">{stats.totalFrames.toLocaleString()}</span></div>
-                  <div className="flex justify-between gap-4"><span>Uptime</span><span className="text-white font-medium tabular-nums">{stats.uptime}</span></div>
-                </div>
-              </section>
+                {/* Performance */}
+                <section>
+                  <h4 className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] text-[#E45A92] mb-1.5">Performance</h4>
+                  <div className="space-y-0.5 text-white/70">
+                    <div className="flex justify-between gap-4"><span>Current FPS</span><span className="text-white font-medium tabular-nums">{stats.fps} <span className="text-white/30">({stats.frameTimeMs}ms)</span></span></div>
+                    <div className="flex justify-between gap-4"><span>Peak / Min FPS</span><span className="text-white font-medium tabular-nums">{stats.peakFps} / {stats.minFps}</span></div>
+                    <div className="flex justify-between gap-4"><span>Target FPS</span><span className="text-white font-medium">{stats.targetFps}</span></div>
+                    <div className="flex justify-between gap-4"><span>Total Frames</span><span className="text-white font-medium tabular-nums">{stats.totalFrames.toLocaleString()}</span></div>
+                    <div className="flex justify-between gap-4"><span>Uptime</span><span className="text-white font-medium tabular-nums">{stats.uptime}</span></div>
+                  </div>
+                </section>
 
-              {/* Health */}
-              <section>
-                <h4 className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] text-[#E45A92] mb-1.5">Health</h4>
-                <div className="space-y-0.5 text-white/70">
-                  <div className="flex justify-between gap-4"><span>Degraded Mode</span><span className={stats.degraded ? "text-red-400 font-bold" : "text-emerald-400 font-medium"}>{stats.degraded ? "CRITICAL" : "OK"}</span></div>
-                  <div className="flex justify-between gap-4"><span>Degradation Events</span><span className={`font-medium ${stats.degradationEvents > 0 ? "text-amber-400" : "text-white"}`}>{stats.degradationEvents}</span></div>
-                  <div className="flex justify-between gap-4"><span>Reduced Motion</span><span className="text-white font-medium">{stats.reducedMotion ? "ON" : "OFF"}</span></div>
-                </div>
-              </section>
+                {/* Health */}
+                <section>
+                  <h4 className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] text-[#E45A92] mb-1.5">Health</h4>
+                  <div className="space-y-0.5 text-white/70">
+                    <div className="flex justify-between gap-4"><span>Degraded Mode</span><span className={stats.degraded ? "text-red-400 font-bold" : "text-emerald-400 font-medium"}>{stats.degraded ? "CRITICAL" : "OK"}</span></div>
+                    <div className="flex justify-between gap-4"><span>Degradation Events</span><span className={`font-medium ${stats.degradationEvents > 0 ? "text-amber-400" : "text-white"}`}>{stats.degradationEvents}</span></div>
+                    <div className="flex justify-between gap-4"><span>Reduced Motion</span><span className="text-white font-medium">{stats.reducedMotion ? "ON" : "OFF"}</span></div>
+                  </div>
+                </section>
 
-              {/* Rendering */}
-              <section>
-                <h4 className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] text-[#E45A92] mb-1.5">Rendering</h4>
-                <div className="space-y-0.5 text-white/70">
-                  <div className="flex justify-between gap-4"><span>Native DPR</span><span className="text-white font-medium tabular-nums">{stats.nativeDpr.toFixed(2)}x</span></div>
-                  <div className="flex justify-between gap-4"><span>DPR Multiplier</span><span className="text-white font-medium tabular-nums">{stats.dprMultiplier}x</span></div>
-                  <div className="flex justify-between gap-4"><span>Actual DPR</span><span className="text-white font-medium tabular-nums">{stats.actualDpr.toFixed(2)}x</span></div>
-                  <div className="flex justify-between gap-4"><span>Logical Res</span><span className="text-white font-medium tabular-nums">{stats.logicalWidth}&times;{stats.logicalHeight}</span></div>
-                  <div className="flex justify-between gap-4"><span>Render Res</span><span className="text-white font-medium tabular-nums">{Math.round(stats.canvasWidth)}&times;{Math.round(stats.canvasHeight)}</span></div>
-                  <div className="flex justify-between gap-4 text-[10px] text-white/40"><span>Pixels/Frame</span><span className="tabular-nums">~{(stats.canvasWidth * stats.canvasHeight).toLocaleString()}</span></div>
-                  <div className="flex justify-between gap-4"><span>Color Depth</span><span className="text-white font-medium">{stats.colorDepth}-bit</span></div>
-                  <div className="flex justify-between gap-4"><span>Color Gamut</span><span className={`font-medium ${stats.colorGamut !== "sRGB" ? "text-emerald-400" : "text-white"}`}>{stats.colorGamut}</span></div>
-                  <div className="flex justify-between gap-4"><span>HDR Display</span><span className={`font-medium ${stats.hdrSupported ? "text-emerald-400" : "text-white/50"}`}>{stats.hdrSupported ? "Supported" : "Standard (SDR)"}</span></div>
-                  <div className="flex justify-between gap-4"><span>Rendering In</span><span className={`font-medium ${stats.renderingGamut !== "sRGB" ? "text-emerald-400" : "text-white"}`}>{stats.renderingGamut}</span></div>
-                </div>
-              </section>
+                {/* Rendering */}
+                <section>
+                  <h4 className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] text-[#E45A92] mb-1.5">Rendering</h4>
+                  <div className="space-y-0.5 text-white/70">
+                    <div className="flex justify-between gap-4"><span>Native DPR</span><span className="text-white font-medium tabular-nums">{stats.nativeDpr.toFixed(2)}x</span></div>
+                    <div className="flex justify-between gap-4"><span>DPR Multiplier</span><span className="text-white font-medium tabular-nums">{stats.dprMultiplier}x</span></div>
+                    <div className="flex justify-between gap-4"><span>Actual DPR</span><span className="text-white font-medium tabular-nums">{stats.actualDpr.toFixed(2)}x</span></div>
+                    <div className="flex justify-between gap-4"><span>Logical Res</span><span className="text-white font-medium tabular-nums">{stats.logicalWidth}&times;{stats.logicalHeight}</span></div>
+                    <div className="flex justify-between gap-4"><span>Render Res</span><span className="text-white font-medium tabular-nums">{Math.round(stats.canvasWidth)}&times;{Math.round(stats.canvasHeight)}</span></div>
+                    <div className="flex justify-between gap-4 text-[10px] text-white/40"><span>Pixels/Frame</span><span className="tabular-nums">~{(stats.canvasWidth * stats.canvasHeight).toLocaleString()}</span></div>
+                    <div className="flex justify-between gap-4"><span>Color Depth</span><span className="text-white font-medium">{stats.colorDepth}-bit</span></div>
+                    <div className="flex justify-between gap-4"><span>Color Gamut</span><span className={`font-medium ${stats.colorGamut !== "sRGB" ? "text-emerald-400" : "text-white"}`}>{stats.colorGamut}</span></div>
+                    <div className="flex justify-between gap-4"><span>HDR Display</span><span className={`font-medium ${stats.hdrSupported ? "text-emerald-400" : "text-white/50"}`}>{stats.hdrSupported ? "Supported" : "Standard (SDR)"}</span></div>
+                    <div className="flex justify-between gap-4"><span>Rendering In</span><span className={`font-medium ${stats.renderingGamut !== "sRGB" ? "text-emerald-400" : "text-white"}`}>{stats.renderingGamut}</span></div>
+                  </div>
+                </section>
 
-              {/* Hardware */}
-              <section>
-                <h4 className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] text-[#E45A92] mb-1.5">Hardware</h4>
-                <div className="space-y-0.5 text-white/70">
-                  <div className="flex justify-between gap-4"><span>CPU Threads</span><span className="text-white font-medium tabular-nums">{stats.concurrency}</span></div>
-                  <div className="flex justify-between gap-4"><span>Device RAM</span><span className="text-white font-medium">~{stats.memory} GB</span></div>
-                  <div className="flex justify-between gap-4"><span>Platform</span><span className="text-white font-medium">{stats.platform}</span></div>
-                  <div className="flex justify-between gap-4"><span>Touch Points</span><span className="text-white font-medium tabular-nums">{stats.touchPoints}</span></div>
-                  <div className="mt-1.5 space-y-1">
-                    <div>
-                      <span className="text-white/40 text-[10px]">GPU Vendor</span>
-                      <p className="text-white/80 leading-snug break-words text-[10px] sm:text-[11px]">{stats.vendor}</p>
+                {/* Hardware */}
+                <section>
+                  <h4 className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] text-[#E45A92] mb-1.5">Hardware</h4>
+                  <div className="space-y-0.5 text-white/70">
+                    <div className="flex justify-between gap-4"><span>CPU Threads</span><span className="text-white font-medium tabular-nums">{stats.concurrency}</span></div>
+                    <div className="flex justify-between gap-4"><span>Device RAM</span><span className="text-white font-medium">~{stats.memory} GB</span></div>
+                    <div className="flex justify-between gap-4"><span>Platform</span><span className="text-white font-medium">{stats.platform}</span></div>
+                    <div className="flex justify-between gap-4"><span>Touch Points</span><span className="text-white font-medium tabular-nums">{stats.touchPoints}</span></div>
+                    <div className="mt-1.5 space-y-1">
+                      <div>
+                        <span className="text-white/40 text-[10px]">GPU Vendor</span>
+                        <p className="text-white/80 leading-snug break-words text-[10px] sm:text-[11px]">{stats.vendor}</p>
+                      </div>
+                      <div>
+                        <span className="text-white/40 text-[10px]">GPU Renderer</span>
+                        <p className="text-white/80 leading-snug break-words text-[10px] sm:text-[11px]">{stats.renderer}</p>
+                      </div>
                     </div>
-                    <div>
-                      <span className="text-white/40 text-[10px]">GPU Renderer</span>
-                      <p className="text-white/80 leading-snug break-words text-[10px] sm:text-[11px]">{stats.renderer}</p>
+                  </div>
+                </section>
+
+                {/* WebGL Context */}
+                <section>
+                  <h4 className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] text-[#E45A92] mb-1.5">WebGL Context</h4>
+                  <div className="space-y-0.5 text-white/70">
+                    <div className="flex justify-between gap-4"><span>Version</span><span className="text-white font-medium">{stats.webglVersion}</span></div>
+                    <div className="flex justify-between gap-4"><span>Max Texture</span><span className="text-white font-medium tabular-nums">{stats.maxTextureSize.toLocaleString()}px</span></div>
+                    <div className="flex justify-between gap-4"><span>Max Viewport</span><span className="text-white font-medium tabular-nums">{stats.maxViewportDims}</span></div>
+                    <div className="flex justify-between gap-4"><span>Shader Precision</span><span className="text-white font-medium">{stats.shaderPrecision}</span></div>
+                    <div className="flex justify-between gap-4"><span>Extensions</span><span className="text-white font-medium tabular-nums">{stats.extensionsCount}</span></div>
+                  </div>
+                </section>
+
+                {/* Network */}
+                <section>
+                  <h4 className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] text-[#E45A92] mb-1.5">Network</h4>
+                  <div className="space-y-0.5 text-white/70">
+                    <div className="flex justify-between gap-4"><span>Effective Type</span><span className="text-white font-medium">{stats.connectionType}</span></div>
+                    <div className="flex justify-between gap-4"><span>Downlink</span><span className="text-white font-medium tabular-nums">{stats.downlinkMbps}</span></div>
+                    <div className="flex justify-between gap-4"><span>RTT Latency</span><span className="text-white font-medium tabular-nums">{stats.rttMs}</span></div>
+                  </div>
+                </section>
+
+                {/* Build & Source */}
+                <section>
+                  <h4 className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] text-[#E45A92] mb-1.5">{"Build & Source"}</h4>
+                  <div className="space-y-0.5 text-white/70">
+                    <div className="flex justify-between gap-4"><span>Branch</span><span className="text-white font-medium">{process.env.NEXT_PUBLIC_GIT_BRANCH || "unknown"}</span></div>
+                    <div className="flex justify-between gap-4 items-center">
+                      <span>Commit</span>
+                      <a
+                        href={`${process.env.NEXT_PUBLIC_REPO_URL || "#"}/commit/${process.env.NEXT_PUBLIC_GIT_COMMIT_HASH || ""}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#FFACAC] hover:text-white underline underline-offset-2 decoration-[#FFACAC]/40 hover:decoration-white/60 transition-colors font-medium"
+                      >
+                        {process.env.NEXT_PUBLIC_GIT_COMMIT_SHORT || "unknown"}
+                      </a>
+                    </div>
+                    <div className="mt-1">
+                      <span className="text-white/40 text-[10px]">Message</span>
+                      <p className="text-white/80 leading-snug break-words text-[10px] sm:text-[11px]">{process.env.NEXT_PUBLIC_GIT_COMMIT_MESSAGE || "N/A"}</p>
+                    </div>
+                    <div className="flex justify-between gap-4 mt-0.5"><span>Commit Date</span><span className="text-white/80 text-[10px] tabular-nums">{process.env.NEXT_PUBLIC_GIT_COMMIT_DATE || "N/A"}</span></div>
+                    <div className="flex justify-between gap-4"><span>Build Time</span><span className="text-white/80 text-[10px] tabular-nums">{process.env.NEXT_PUBLIC_BUILD_TIME || "N/A"}</span></div>
+                    <div className="flex justify-between gap-4 items-center mt-1">
+                      <span>Source Code</span>
+                      <a
+                        href={process.env.NEXT_PUBLIC_REPO_URL || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#FFACAC] hover:text-white underline underline-offset-2 decoration-[#FFACAC]/40 hover:decoration-white/60 transition-colors font-medium"
+                      >
+                        {"GitHub ↗"}
+                      </a>
                     </div>
                   </div>
-                </div>
-              </section>
-
-              {/* WebGL Context */}
-              <section>
-                <h4 className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] text-[#E45A92] mb-1.5">WebGL Context</h4>
-                <div className="space-y-0.5 text-white/70">
-                  <div className="flex justify-between gap-4"><span>Version</span><span className="text-white font-medium">{stats.webglVersion}</span></div>
-                  <div className="flex justify-between gap-4"><span>Max Texture</span><span className="text-white font-medium tabular-nums">{stats.maxTextureSize.toLocaleString()}px</span></div>
-                  <div className="flex justify-between gap-4"><span>Max Viewport</span><span className="text-white font-medium tabular-nums">{stats.maxViewportDims}</span></div>
-                  <div className="flex justify-between gap-4"><span>Shader Precision</span><span className="text-white font-medium">{stats.shaderPrecision}</span></div>
-                  <div className="flex justify-between gap-4"><span>Extensions</span><span className="text-white font-medium tabular-nums">{stats.extensionsCount}</span></div>
-                </div>
-              </section>
-
-              {/* Network */}
-              <section>
-                <h4 className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] text-[#E45A92] mb-1.5">Network</h4>
-                <div className="space-y-0.5 text-white/70">
-                  <div className="flex justify-between gap-4"><span>Effective Type</span><span className="text-white font-medium">{stats.connectionType}</span></div>
-                  <div className="flex justify-between gap-4"><span>Downlink</span><span className="text-white font-medium tabular-nums">{stats.downlinkMbps}</span></div>
-                  <div className="flex justify-between gap-4"><span>RTT Latency</span><span className="text-white font-medium tabular-nums">{stats.rttMs}</span></div>
-                </div>
-              </section>
-
-              {/* Build & Source */}
-              <section>
-                <h4 className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] text-[#E45A92] mb-1.5">{"Build & Source"}</h4>
-                <div className="space-y-0.5 text-white/70">
-                  <div className="flex justify-between gap-4"><span>Branch</span><span className="text-white font-medium">{process.env.NEXT_PUBLIC_GIT_BRANCH || "unknown"}</span></div>
-                  <div className="flex justify-between gap-4 items-center">
-                    <span>Commit</span>
-                    <a
-                      href={`${process.env.NEXT_PUBLIC_REPO_URL || "#"}/commit/${process.env.NEXT_PUBLIC_GIT_COMMIT_HASH || ""}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#FFACAC] hover:text-white underline underline-offset-2 decoration-[#FFACAC]/40 hover:decoration-white/60 transition-colors font-medium"
-                    >
-                      {process.env.NEXT_PUBLIC_GIT_COMMIT_SHORT || "unknown"}
-                    </a>
-                  </div>
-                  <div className="mt-1">
-                    <span className="text-white/40 text-[10px]">Message</span>
-                    <p className="text-white/80 leading-snug break-words text-[10px] sm:text-[11px]">{process.env.NEXT_PUBLIC_GIT_COMMIT_MESSAGE || "N/A"}</p>
-                  </div>
-                  <div className="flex justify-between gap-4 mt-0.5"><span>Commit Date</span><span className="text-white/80 text-[10px] tabular-nums">{process.env.NEXT_PUBLIC_GIT_COMMIT_DATE || "N/A"}</span></div>
-                  <div className="flex justify-between gap-4"><span>Build Time</span><span className="text-white/80 text-[10px] tabular-nums">{process.env.NEXT_PUBLIC_BUILD_TIME || "N/A"}</span></div>
-                  <div className="flex justify-between gap-4 items-center mt-1">
-                    <span>Source Code</span>
-                    <a
-                      href={process.env.NEXT_PUBLIC_REPO_URL || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#FFACAC] hover:text-white underline underline-offset-2 decoration-[#FFACAC]/40 hover:decoration-white/60 transition-colors font-medium"
-                    >
-                      {"GitHub ↗"}
-                    </a>
-                  </div>
-                </div>
-              </section>
+                </section>
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        <button
-          onClick={() => setShowStats(!showStats)}
-          className="pointer-events-auto p-2 sm:p-2.5 rounded-full border border-white/[0.08] hover:border-[#E45A92]/30 transition-all text-white/20 hover:text-[#FFACAC] z-50"
-          style={{
-            background: "linear-gradient(135deg, rgba(15, 5, 28, 0.5) 0%, rgba(62, 30, 104, 0.3) 100%)",
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
-          }}
-          title="Stats for nerds"
-          aria-label="Toggle performance stats"
-        >
-          <Terminal className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
-        </button>
-      </div>
+          <button
+            onClick={() => setShowStats(!showStats)}
+            className="pointer-events-auto p-2 sm:p-2.5 rounded-full border border-white/[0.08] hover:border-[#E45A92]/30 transition-all text-white/20 hover:text-[#FFACAC] z-50"
+            style={{
+              background: "linear-gradient(135deg, rgba(15, 5, 28, 0.5) 0%, rgba(62, 30, 104, 0.3) 100%)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+            }}
+            title="Stats for nerds"
+            aria-label="Toggle performance stats"
+          >
+            <Terminal className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+          </button>
+        </div>,
+        document.body
+      )}
     </>
   );
 }

@@ -98,7 +98,7 @@ export default function CodeOfConduct() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[45vh] sm:min-h-[50vh] flex items-center justify-center overflow-hidden text-white">
+      <section className="relative min-h-[45vh] sm:min-h-[50vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32">
         <WebGLShader />
         <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 md:py-16">
           <GlassContainer className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
