@@ -82,7 +82,7 @@ Rules:
 - **Format:** Initial shortlist from PPTs. Best solutions provided exhibition space to display product to investors, founders, policymakers. Live on-the-spot judging.
 - **Judging & Prizes:** Prize pool of INR 10 Lakh+. Prizes per domain: 1st ₹1,50,000 | 2nd ₹1,00,000 | 3rd ₹50,000 | Runner-Up ₹35,000. Participation certificates provided.
 - **Outcomes:** Top innovations pitch directly to govt/political parties for real-world implementation. Best ideas get a Paid Govt Apprenticeship + Full-Time Opportunity.
-- **Rules:** Projects must be original, no previously deployed projects. Open-source tools allowed. Plagiarism = disqualification. Volunteers cannot participate, and participants cannot volunteer at the event.
+- **Rules:** Projects must be original, no previously deployed projects. Open-source tools allowed. Plagiarism = disqualification. Volunteers cannot participate, and participants cannot volunteer at the event. If a participant hasn't submitted a GitHub link, provide this form: https://tally.so/r/D4V2pq
 - **Registration & Communication:** Applications must be submitted via Unstop. Join the Official WhatsApp Community: https://chat.whatsapp.com/DOs79yuKXAB4jm76wNJsNc
 - **Volunteering:** To volunteer at Bits&Bytes club or its general events, take users to \`/join\`. To volunteer specifically for India Innovates 2026 Hackathon, give them: https://tally.so/r/b57gp6
 `

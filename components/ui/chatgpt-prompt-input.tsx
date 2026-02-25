@@ -41,25 +41,17 @@ export interface PromptBoxRef {
     setValue: (value: string) => void;
 }
 
-export interface PromptBoxProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'value' | 'onChange'> {
+export interface PromptBoxProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'value' | 'onChange' | 'onSubmit'> {
     value?: string;
     onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-    onSubmit?: (val: string) => void;
-    onVoiceToggle?: () => void;
-    isRecording?: boolean;
+    onSubmitMessage?: (val: string) => void;
 }
 
 // --- The Final, Self-Contained PromptBox Component ---
 export const PromptBox = React.forwardRef<PromptBoxRef, PromptBoxProps>(
-    ({ className, onSubmit, onVoiceToggle, isRecording, value: externalValue, onChange: externalOnChange, ...props }, ref) => {
-        // ... all state and handlers are unchanged ...
+    ({ className, onSubmitMessage, value: externalValue, onChange: externalOnChange, ...props }, ref) => {
         const internalTextareaRef = React.useRef<HTMLTextAreaElement>(null);
-        const fileInputRef = React.useRef<HTMLInputElement>(null);
         const [internalValue, setInternalValue] = React.useState("");
-        const [imagePreview, setImagePreview] = React.useState<string | null>(null);
-        const [selectedTool, setSelectedTool] = React.useState<string | null>(null);
-        const [isPopoverOpen, setIsPopoverOpen] = React.useState(false);
-        const [isImageDialogOpen, setIsImageDialogOpen] = React.useState(false);
 
         // Controlled vs uncontrolled logic
         const value = externalValue !== undefined ? externalValue : internalValue;
@@ -98,32 +90,14 @@ export const PromptBox = React.forwardRef<PromptBoxRef, PromptBoxProps>(
             }
         };
 
-        const handlePlusClick = () => { fileInputRef.current?.click(); };
-
-        const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-            const file = event.target.files?.[0];
-            if (file && file.type.startsWith("image/")) {
-                const reader = new FileReader();
-                reader.onloadend = () => { setImagePreview(reader.result as string); };
-                reader.readAsDataURL(file);
-            }
-            event.target.value = "";
-        };
-
-        const handleRemoveImage = (e: React.MouseEvent<HTMLButtonElement>) => {
-            e.stopPropagation();
-            setImagePreview(null);
-            if (fileInputRef.current) { fileInputRef.current.value = ""; }
-        };
-
-        const hasValue = value.trim().length > 0 || imagePreview;
+        const hasValue = value.trim().length > 0;
 
         const handleSubmit = (e?: React.FormEvent) => {
             if (e) e.preventDefault();
             if (!hasValue) return;
 
-            if (onSubmit) {
-                onSubmit(value);
+            if (onSubmitMessage) {
+                onSubmitMessage(value);
             }
 
             if (externalOnChange === undefined) {
@@ -140,10 +114,6 @@ export const PromptBox = React.forwardRef<PromptBoxRef, PromptBoxProps>(
 
         return (
             <div className={cn("flex flex-col rounded-3xl p-2.5 shadow-md transition-colors bg-zinc-900 border border-zinc-700/60 focus-within:border-[var(--brand-pink)] focus-within:ring-1 focus-within:ring-[var(--brand-pink)] shadow-xl w-full", className)}>
-                <input type="file" ref={fileInputRef} onChange={handleFileChange} className="hidden" accept="image/*" />
-
-                {imagePreview && (<Dialog open={isImageDialogOpen} onOpenChange={setIsImageDialogOpen}> <div className="relative mb-1 w-fit rounded-[1rem] px-1 pt-1"> <button type="button" className="transition-transform" onClick={() => setIsImageDialogOpen(true)}> <img src={imagePreview} alt="Image preview" className="h-14.5 w-14.5 rounded-[1rem]" /> </button> <button onClick={handleRemoveImage} className="absolute right-2 top-2 z-10 flex h-4 w-4 items-center justify-center rounded-full bg-white/50 dark:bg-[#303030] text-black dark:text-white transition-colors hover:bg-accent dark:hover:bg-[#515151]" aria-label="Remove image"> <XIcon className="h-4 w-4" /> </button> </div> <DialogContent> <img src={imagePreview} alt="Full size preview" className="w-full max-h-[95vh] object-contain rounded-[24px]" /> </DialogContent> </Dialog>)}
-
                 <textarea
                     ref={internalTextareaRef}
                     rows={1}
@@ -158,38 +128,13 @@ export const PromptBox = React.forwardRef<PromptBoxRef, PromptBoxProps>(
                 <div className="mt-1 p-1 pt-0">
                     <TooltipProvider delayDuration={200}>
                         <div className="flex items-center gap-2">
-                            <Tooltip> <TooltipTrigger asChild><button type="button" onClick={handlePlusClick} className="flex h-9 w-9 items-center justify-center rounded-full text-zinc-400 hover:text-zinc-200 transition-colors hover:bg-zinc-800 focus-visible:outline-none"><PlusIcon className="h-5 w-5" /><span className="sr-only">Attach image</span></button></TooltipTrigger> <TooltipContent side="top" showArrow={true}><p>Attach image (Coming Soon)</p></TooltipContent> </Tooltip>
-
-
-                            {/* Left aligned tools could go here if selected */}
-
-                            {/* MODIFIED: Right-aligned buttons container */}
                             <div className="ml-auto flex items-center gap-2">
                                 <Tooltip>
                                     <TooltipTrigger asChild>
                                         <button
                                             type="button"
-                                            onClick={onVoiceToggle}
-                                            className={cn(
-                                                "flex h-9 w-9 items-center justify-center rounded-full transition-colors focus-visible:outline-none",
-                                                isRecording
-                                                    ? "bg-red-500/20 text-red-500 hover:bg-red-500/30"
-                                                    : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800"
-                                            )}
-                                        >
-                                            <MicIcon className={cn("h-5 w-5", isRecording && "animate-pulse")} />
-                                            <span className="sr-only">Record voice</span>
-                                        </button>
-                                    </TooltipTrigger>
-                                    <TooltipContent side="top" showArrow={true}><p>Voice input</p></TooltipContent>
-                                </Tooltip>
-
-                                <Tooltip>
-                                    <TooltipTrigger asChild>
-                                        <button
-                                            type="button"
                                             onClick={() => handleSubmit()}
-                                            disabled={!hasValue && !isRecording}
+                                            disabled={!hasValue}
                                             className="flex h-9 w-9 md:h-10 md:w-10 md:px-3 md:rounded-xl md:w-auto items-center justify-center rounded-full text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none bg-[var(--brand-pink)] text-white hover:bg-[#d44c84] disabled:opacity-50"
                                         >
                                             <SendIcon className="h-5 w-5 md:mr-1.5" />

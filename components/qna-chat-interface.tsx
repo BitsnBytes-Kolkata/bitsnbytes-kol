@@ -37,21 +37,22 @@ type StoredAssistantState = {
     draft?: string
 }
 
+
+import { PromptBox } from "@/components/ui/chatgpt-prompt-input"
+
 export function QnAChatInterface() {
     const [message, setMessage] = useState("")
     const [charCount, setCharCount] = useState(0)
     const [messages, setMessages] = useState<ChatMessage[]>([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
-    const [voiceError, setVoiceError] = useState<string | null>(null)
-    const [isRecording, setIsRecording] = useState(false)
     const [modelName, setModelName] = useState("gpt-5-mini-2025-08-07")
     const [hasHydrated, setHasHydrated] = useState(false)
 
-    const textareaRef = useRef<HTMLTextAreaElement | null>(null)
+    // Using `any` ref to bridge custom PromptBoxRef since it exposes .focus()
+    const promptBoxRef = useRef<{ focus: () => void, setValue: (val: string) => void } | null>(null)
     const messagesEndRef = useRef<HTMLDivElement | null>(null)
     const nextIdRef = useRef(1)
-    const mediaRecorderRef = useRef<MediaRecorder | null>(null)
     const streamControllerRef = useRef<AbortController | null>(null)
     const router = useRouter()
 
@@ -140,13 +141,13 @@ export function QnAChatInterface() {
         setMessage(prompt)
         setCharCount(prompt.length)
         setTimeout(() => {
-            textareaRef.current?.focus()
-            textareaRef.current?.setSelectionRange(prompt.length, prompt.length)
+            promptBoxRef.current?.focus()
         }, 0)
     }
 
-    const handleSend = async () => {
-        const trimmed = message.trim()
+    const handleSend = async (manualMessagePayload?: string) => {
+        const textToUse = (typeof manualMessagePayload === "string" ? manualMessagePayload : message);
+        const trimmed = textToUse.trim();
         if (!trimmed || isLoading) return
 
         const payloadMessages = [
@@ -264,89 +265,10 @@ export function QnAChatInterface() {
         }
     }
 
-    const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-        if (e.key === "Enter" && !e.shiftKey) {
-            e.preventDefault()
-            void handleSend()
-        }
-    }
-
-    const handleVoiceToggle = async () => {
-        setVoiceError(null)
-
-        if (isRecording) {
-            mediaRecorderRef.current?.stop()
-            return
-        }
-
-        if (typeof window === "undefined" || !navigator.mediaDevices?.getUserMedia) {
-            setVoiceError("Voice capture is not supported in this browser.")
-            return
-        }
-
-        try {
-            const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-            const recorder = new MediaRecorder(stream)
-            const chunks: BlobPart[] = []
-
-            recorder.ondataavailable = (event) => {
-                if (event.data.size > 0) {
-                    chunks.push(event.data)
-                }
-            }
-
-            recorder.onstop = async () => {
-                setIsRecording(false)
-                stream.getTracks().forEach((t) => t.stop())
-
-                if (!chunks.length) return
-
-                const blob = new Blob(chunks, { type: "audio/webm" })
-                const formData = new FormData()
-                formData.append("audio", blob, "voice.webm")
-
-                try {
-                    const res = await fetch("/api/assistant/voice", {
-                        method: "POST",
-                        body: formData,
-                    })
-
-                    const data = (await res.json()) as { text?: string; error?: string }
-
-                    if (!res.ok || data.error) {
-                        const message = data.error ?? "Failed to transcribe audio."
-                        setVoiceError(message)
-                        return
-                    }
-
-                    const text = data.text ?? ""
-
-                    if (text) {
-                        setMessage((prev) => {
-                            const prefix = prev ? (prev.endsWith("\n") ? "" : "\n") : ""
-                            const combined = `${prev ?? ""}${prefix}${text}`
-                            setCharCount(combined.length)
-                            return combined
-                        })
-                    }
-                } catch (err) {
-                    console.error(err)
-                    setVoiceError("Could not transcribe your audio. Please try again.")
-                }
-            }
-
-            mediaRecorderRef.current = recorder
-            recorder.start()
-            setIsRecording(true)
-        } catch (err) {
-            console.error(err)
-            setVoiceError("Could not access your microphone. Please check permissions.")
-        }
-    }
 
     return (
-        <div className="flex flex-col h-[calc(100vh-80px)] w-full max-w-4xl mx-auto rounded-3xl overflow-hidden border border-zinc-700/60 bg-zinc-950/70 shadow-2xl backdrop-blur-3xl relative">
-            <div className="flex flex-wrap items-center justify-between gap-3 px-6 pt-5 pb-4 border-b border-zinc-800/80 bg-zinc-900/50">
+        <div className="flex flex-col h-[calc(100vh-100px)] w-full max-w-4xl mx-auto rounded-3xl overflow-hidden border border-zinc-700/60 bg-zinc-950/70 shadow-2xl backdrop-blur-3xl relative">
+            <div className="flex flex-wrap items-center justify-between gap-3 px-6 pt-5 pb-4 border-b border-zinc-800/80 bg-zinc-900/50 shrink-0">
                 <div className="flex items-center gap-3">
                     <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-[var(--brand-pink)] shadow-lg shadow-[#e45a92]/40">
                         <Bot className="w-5 h-5 text-white" />
@@ -359,9 +281,11 @@ export function QnAChatInterface() {
                     </div>
                 </div>
                 <div className="flex items-center gap-3">
-                    <span className="hidden sm:inline-block rounded-full bg-zinc-800/80 px-3 py-1 text-xs font-medium text-zinc-300">
-                        {modelName}
-                    </span>
+                    {messages.length > 0 && (
+                        <span className="hidden sm:inline-block rounded-full bg-zinc-800/80 px-3 py-1 text-[10px] font-medium text-zinc-300">
+                            {modelName}
+                        </span>
+                    )}
                     <button
                         onClick={() => {
                             setMessages([])
@@ -369,7 +293,7 @@ export function QnAChatInterface() {
                             setMessage("")
                             window.localStorage.removeItem(STORAGE_KEY)
                         }}
-                        className="flex h-9 items-center justify-center gap-2 rounded-xl bg-zinc-800/60 px-3 text-xs font-medium text-zinc-400 hover:bg-zinc-800 hover:text-red-400 border border-transparent hover:border-red-900/50 transition-all"
+                        className={`flex h-9 items-center justify-center gap-2 rounded-xl bg-zinc-800/60 px-3 text-xs font-medium border transition-all ${messages.length === 0 ? "opacity-0 invisible" : "text-zinc-400 hover:bg-zinc-800 hover:text-red-400 border-transparent hover:border-red-900/50"}`}
                         aria-label="Clear chat session"
                         title="Clear chat session"
                     >
@@ -410,7 +334,7 @@ export function QnAChatInterface() {
                                 </div>
                             )}
                             <div
-                                className={`w-fit max-w-[90%] sm:max-w-[75%] rounded-2xl px-5 py-3.5 text-[0.9rem] leading-relaxed shadow-sm ${m.role === "user"
+                                className={`w-fit max-w-[90%] sm:max-w-[85%] md:max-w-[75%] rounded-2xl px-5 py-3.5 text-[0.9rem] leading-relaxed shadow-sm ${m.role === "user"
                                     ? "bg-[#e45a92] text-white rounded-br-sm"
                                     : "border border-zinc-700/60 bg-zinc-900/90 text-zinc-100 rounded-bl-sm prose prose-invert prose-p:my-2 prose-headings:my-3 prose-ul:my-2 prose-li:my-1 max-w-none"
                                     }`}
@@ -496,7 +420,7 @@ export function QnAChatInterface() {
                                                     <code
                                                         className={`${isInline
                                                             ? "rounded-md bg-zinc-800/80 px-1.5 py-0.5 text-[0.85em] font-medium"
-                                                            : "block rounded-2xl bg-[#0d0d0f] p-4 text-[0.85em] overflow-x-auto border border-zinc-800 text-zinc-300 my-4 shadow-inner"
+                                                            : "block rounded-2xl bg-[#0d0d0f] p-4 text-[0.85em] overflow-x-auto border border-zinc-800 text-zinc-300 my-4 shadow-inner custom-scrollbar"
                                                             } ${className || ""}`}
                                                         {...props}
                                                     >
@@ -528,55 +452,18 @@ export function QnAChatInterface() {
                         </div>
                     )}
                     {error && <div className="p-3 mx-auto w-full max-w-sm text-center rounded-xl bg-red-950/50 border border-red-900/50 text-sm text-red-400">{error}</div>}
-                    {voiceError && <div className="p-3 mx-auto w-full max-w-sm text-center rounded-xl bg-amber-950/50 border border-amber-900/50 text-sm text-amber-400">{voiceError}</div>}
                 </div>
             </div>
 
-            <div className="p-4 sm:p-5 border-t border-zinc-800/80 bg-zinc-950/95 shadow-lg relative z-10">
-                <div className="relative flex items-end gap-2 bg-zinc-900 rounded-2xl border border-zinc-700/60 p-2 focus-within:border-[#e45a92] focus-within:ring-1 focus-within:ring-[#e45a92] transition-all">
-                    <textarea
-                        ref={textareaRef}
-                        value={message}
-                        onChange={handleInputChange}
-                        onKeyDown={handleKeyDown}
-                        rows={Math.min(5, Math.max(1, message.split("\n").length))}
-                        className="w-full resize-none bg-transparent px-3 py-2.5 text-base sm:text-sm text-zinc-100 outline-none placeholder:text-zinc-500 max-h-32"
-                        placeholder="Type your message here..."
-                    />
-                    <div className="flex items-center gap-2 pb-1 shrink-0">
-                        <button
-                            type="button"
-                            onClick={() => void handleVoiceToggle()}
-                            className={`p-2.5 rounded-xl transition-colors ${isRecording
-                                ? "bg-red-500/20 text-red-400 border border-red-500/50"
-                                : "bg-zinc-800/80 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-700"
-                                }`}
-                            title="Voice Input"
-                        >
-                            <Mic className={`h-5 w-5 ${isRecording ? "animate-pulse" : ""}`} />
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => void handleSend()}
-                            disabled={!message.trim() || isLoading}
-                            className="p-2.5 rounded-xl bg-[var(--brand-pink)] text-white shadow-md transition-all hover:bg-[#d44c84] disabled:cursor-not-allowed disabled:opacity-50"
-                            title="Send Message"
-                        >
-                            <Send className="h-5 w-5" />
-                        </button>
-                    </div>
-                </div>
-                <div className="flex justify-between items-center px-2 pt-2">
-                    <div className="flex items-center gap-1.5 text-xs text-zinc-500">
-                        <Info className="h-3.5 w-3.5" />
-                        <span className="hidden sm:inline">Press <kbd className="font-mono bg-zinc-800 px-1 py-0.5 rounded text-[10px]">Shift + Enter</kbd> for new line</span>
-                        <span className="sm:hidden">Send on click</span>
-                    </div>
-                    <div className="text-xs text-zinc-500">
-                        {charCount}/{MAX_CHARS}
-                    </div>
-                </div>
+            <div className="p-4 w-full bg-zinc-950/95 shrink-0 relative z-20">
+                <PromptBox
+                    ref={promptBoxRef}
+                    value={message}
+                    onChange={handleInputChange}
+                    onSubmitMessage={(msg: string) => handleSend(msg)}
+                />
             </div>
         </div>
     )
 }
+
