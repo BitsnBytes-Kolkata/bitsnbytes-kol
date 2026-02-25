@@ -1,7 +1,8 @@
 "use client"
 
 import { Mail, MapPin, Clock, Loader2, Github, Linkedin, Instagram } from "lucide-react"
-import { useState, FormEvent, Suspense } from "react"
+import { useState, FormEvent, Suspense, useRef, useEffect } from "react"
+import HCaptcha from '@hcaptcha/react-hcaptcha'
 import Link from "next/link"
 import dynamic from "next/dynamic"
 
@@ -32,6 +33,13 @@ import { GlassContainer } from "@/components/ui/glass-container"
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [status, setStatus] = useState<null | { type: "success" | "error"; message: string }>(null)
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null)
+  const [mounted, setMounted] = useState(false)
+  const captchaRef = useRef<any>(null)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -46,23 +54,31 @@ export default function Contact() {
     const subject = (formData.get("subject") as string) || ""
     const message = (formData.get("message") as string) || ""
 
+    if (!captchaToken) {
+      setStatus({ type: "error", message: "Please complete the CAPTCHA." })
+      setIsSubmitting(false)
+      return
+    }
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, subject, message }),
+        body: JSON.stringify({ name, email, subject, message, hCaptchaResponse: captchaToken }),
       })
 
       const data = await res.json()
 
       if (!res.ok || !data?.success) {
-        throw new Error(data?.error || "Failed to send message.")
+        throw new Error(data?.message || "Failed to send message.")
       }
 
       setStatus({ type: "success", message: "Message sent successfully. We’ll get back to you soon." })
       form.reset()
+      setCaptchaToken(null)
+      captchaRef.current?.resetCaptcha()
     } catch (err) {
       console.error(err)
       setStatus({
@@ -107,24 +123,24 @@ export default function Contact() {
             <GlassContainer className="p-0 overflow-hidden" glowColor="both">
               <div className="grid md:grid-cols-5 h-full">
                 {/* Info Sidebar */}
-                <div className="md:col-span-2 bg-white/5 p-5 sm:p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10">
+                <div className="md:col-span-2 bg-white/5 p-5 sm:p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10 max-w-full overflow-hidden">
                   <h3 className="font-display text-2xl font-black text-white mb-6">Get in Touch</h3>
-                  <div className="space-y-8">
+                  <div className="space-y-8 max-w-full">
                     {[
                       { icon: Mail, label: "Email", value: "hello@gobitsnbytes.org", href: "mailto:hello@gobitsnbytes.org", color: "text-(--brand-pink)" },
                       { icon: MapPin, label: "Location", value: "Lucknow, India", color: "text-(--brand-purple)" },
                       { icon: Clock, label: "Established", value: "Teen-led since 2025", color: "text-blue-400" },
                     ].map((info) => (
-                      <div key={info.label} className="flex items-start gap-4">
+                      <div key={info.label} className="flex items-start gap-4 max-w-full">
                         <div className={cn("flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10", info.color)}>
                           <info.icon className="h-6 w-6" />
                         </div>
-                        <div>
+                        <div className="min-w-0 pr-2">
                           <p className="text-xs font-bold uppercase tracking-widest text-white/50">{info.label}</p>
                           {info.href ? (
-                            <a href={info.href} className="text-base font-black text-white hover:text-[var(--brand-pink)] mt-0.5 block">{info.value}</a>
+                            <a href={info.href} className="text-base font-black text-white hover:text-[var(--brand-pink)] mt-0.5 block break-words break-all sm:break-normal">{info.value}</a>
                           ) : (
-                            <p className="text-base font-black text-white mt-0.5">{info.value}</p>
+                            <p className="text-base font-black text-white mt-0.5 break-words break-all sm:break-normal">{info.value}</p>
                           )}
                         </div>
                       </div>
@@ -133,10 +149,10 @@ export default function Contact() {
                 </div>
 
                 {/* Form Section */}
-                <div className="md:col-span-3 p-5 sm:p-8 md:p-12 bg-black/20">
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid sm:grid-cols-2 gap-6">
-                      <div className="space-y-2">
+                <div className="md:col-span-3 p-5 sm:p-8 md:p-12 bg-black/20 w-full max-w-full">
+                  <form onSubmit={handleSubmit} className="space-y-6 w-full max-w-full relative">
+                    <div className="grid sm:grid-cols-2 gap-6 w-full">
+                      <div className="space-y-2 w-full">
                         <Label htmlFor="name" className="text-sm font-bold uppercase tracking-widest text-white/70">Name</Label>
                         <Input
                           id="name"
@@ -177,6 +193,18 @@ export default function Contact() {
                         className="bg-white/5 border-white/10 rounded-2xl focus:border-(--brand-pink) focus:ring-(--brand-pink)/20 text-white placeholder:text-white/20 min-h-[150px] resize-none"
                         required
                       />
+                    </div>
+
+                    <div className="flex justify-center w-full py-2 min-h-[78px]">
+                      {mounted && (
+                        <HCaptcha
+                          ref={captchaRef}
+                          sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                          reCaptchaCompat={false}
+                          theme="dark"
+                          onVerify={setCaptchaToken}
+                        />
+                      )}
                     </div>
 
                     <Button

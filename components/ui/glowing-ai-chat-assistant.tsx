@@ -500,9 +500,9 @@ const FloatingAiAssistant: React.FC = () => {
         {isChatOpen && (
           <div
             ref={chatRef}
-            className="fixed inset-x-3 bottom-[4.5rem] sm:absolute sm:inset-x-auto sm:bottom-16 sm:right-0 w-auto sm:w-[380px] origin-bottom-right animate-slide-in-up"
+            className="fixed inset-4 bottom-[4.5rem] sm:absolute sm:inset-auto sm:bottom-16 sm:right-0 w-auto sm:w-[380px] origin-bottom-right animate-slide-in-up flex flex-col justify-end"
           >
-            <div className="relative flex max-h-[70vh] sm:max-h-[520px] flex-col overflow-hidden rounded-2xl sm:rounded-3xl border border-zinc-700/60 bg-zinc-950/95 shadow-2xl backdrop-blur-2xl">
+            <div className="relative flex w-full max-h-[80vh] sm:max-h-[520px] flex-col overflow-hidden rounded-2xl sm:rounded-3xl border border-zinc-700/60 bg-zinc-950/95 shadow-2xl backdrop-blur-2xl">
               {/* Header */}
               <div className="flex flex-wrap items-center justify-between gap-3 px-4 pt-3 pb-2">
                 <div className="flex items-center gap-2">
@@ -711,29 +711,29 @@ const FloatingAiAssistant: React.FC = () => {
                 </div>
 
                 {/* Controls */}
-                <div className="flex flex-wrap items-center justify-between gap-3 px-3 pb-3 pt-2">
+                <div className="flex items-center justify-between gap-2 px-3 pb-3 pt-2 w-full">
                   <button
                     type="button"
                     onClick={() => void handleVoiceToggle()}
-                    className={`group flex items-center gap-1 rounded-lg border px-2 py-1 text-[0.7rem] transition-colors ${isRecording
+                    className={`group flex items-center gap-1 shrink-0 rounded-lg border px-2 py-1.5 text-[0.7rem] transition-colors ${isRecording
                       ? "border-red-500/60 bg-red-500/20 text-red-300"
                       : "border-zinc-800/60 bg-zinc-900/80 text-zinc-500 hover:border-zinc-700 hover:text-zinc-200"
                       }`}
                     aria-label="Voice input"
                   >
                     <Mic className={`h-3 w-3 ${isRecording ? "animate-pulse text-red-400" : ""}`} />
-                    <span>{isRecording ? "Listening..." : "Voice"}</span>
+                    <span className="hidden sm:inline">{isRecording ? "Listening..." : "Voice"}</span>
                   </button>
 
-                  <div className="flex items-center gap-3">
-                    <span className="text-[0.7rem] text-zinc-500">
+                  <div className="flex items-center gap-2 shrink-0">
+                    <span className="text-[0.65rem] sm:text-[0.7rem] text-zinc-500 hidden xs:inline-block">
                       {charCount}/{MAX_CHARS}
                     </span>
                     <button
                       type="button"
                       onClick={() => void handleSend()}
                       disabled={!message.trim() || isLoading}
-                      className="relative inline-flex h-9 items-center justify-center rounded-xl bg-[var(--brand-pink)] px-3 text-xs font-semibold text-white shadow-lg shadow-[#e45a92]/30 transition-all hover:shadow-xl hover:shadow-[#e45a92]/40 disabled:cursor-not-allowed disabled:opacity-60"
+                      className="relative inline-flex h-8 sm:h-9 items-center justify-center rounded-xl bg-[var(--brand-pink)] px-3 sm:px-4 text-xs font-semibold text-white shadow-lg shadow-[#e45a92]/30 transition-all hover:shadow-xl hover:shadow-[#e45a92]/40 disabled:cursor-not-allowed disabled:opacity-60"
                     >
                       <Send className="mr-1.5 h-3.5 w-3.5" />
                       Ask
@@ -742,20 +742,21 @@ const FloatingAiAssistant: React.FC = () => {
                 </div>
 
                 {/* Footer helper */}
-                <div className="flex flex-wrap items-center justify-between gap-2 border-t border-zinc-800/80 px-3 py-2 text-[0.7rem] text-zinc-500">
-                  <div className="flex items-center gap-1.5">
-                    <Info className="h-3 w-3" />
-                    <span>
+                <div className="flex items-center justify-between gap-2 border-t border-zinc-800/80 px-3 py-2 text-[0.65rem] text-zinc-500 w-full overflow-hidden">
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <Info className="h-3 w-3 shrink-0" />
+                    <span className="hidden sm:inline">
                       Press{" "}
-                      <kbd className="rounded border border-zinc-700 bg-zinc-900 px-1.5 py-0.5 font-mono text-[0.65rem]">
+                      <kbd className="rounded border border-zinc-700 bg-zinc-900 px-1.5 py-0.5 font-mono text-[0.65rem] mx-1">
                         Shift + Enter
                       </kbd>{" "}
                       for a new line
                     </span>
+                    <span className="sm:hidden">Assistant</span>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                    <span>Powered by openai/{modelName}</span>
+                  <div className="flex items-center justify-end gap-1 min-w-0 pr-1 truncate">
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
+                    <span className="truncate">Powered by openai/{modelName}</span>
                   </div>
                 </div>
               </div>

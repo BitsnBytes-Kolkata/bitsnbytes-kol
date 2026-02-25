@@ -18,6 +18,7 @@ export async function POST(req: NextRequest) {
     const email = (body?.email ?? "").toString().trim()
     const subject = (body?.subject ?? "").toString().trim()
     const message = (body?.message ?? "").toString().trim()
+    const hCaptchaResponse = (body?.hCaptchaResponse ?? "").toString().trim()
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -32,6 +33,7 @@ export async function POST(req: NextRequest) {
       email,
       subject: subject || "New contact from Bits&Bytes site",
       message,
+      ...(hCaptchaResponse ? { "h-captcha-response": hCaptchaResponse } : {}),
     }
 
     const response = await fetch(WEB3FORMS_ENDPOINT, {

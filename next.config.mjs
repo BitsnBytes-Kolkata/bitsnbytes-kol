@@ -91,7 +91,7 @@ const nextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://tally.so; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https:; font-src 'self' data: https://r2cdn.perplexity.ai; connect-src 'self' https://vitals.vercel-insights.com; frame-src 'self' https://tally.so;"
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://tally.so https://hcaptcha.com https://*.hcaptcha.com; style-src 'self' 'unsafe-inline' https://hcaptcha.com https://*.hcaptcha.com; img-src 'self' blob: data: https:; font-src 'self' data: https://r2cdn.perplexity.ai; connect-src 'self' https://vitals.vercel-insights.com https://hcaptcha.com https://*.hcaptcha.com; frame-src 'self' https://tally.so https://hcaptcha.com https://*.hcaptcha.com;"
           }
         ]
       }
