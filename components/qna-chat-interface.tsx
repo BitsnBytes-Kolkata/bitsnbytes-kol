@@ -7,7 +7,7 @@ import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts"
 
-import { Mic, Send, Info, Bot, Trash } from "lucide-react"
+import { Mic, Send, Info, Bot, Trash, MapPin } from "lucide-react"
 
 interface ChatMessage {
     id: number
@@ -19,11 +19,11 @@ const MAX_CHARS = 2000
 const MAX_HISTORY = 20
 const STORAGE_KEY = "bb-qna-assistant-state-v1"
 const QUICK_PROMPTS = [
+    "Tell me about GitHub Copilot Dev Days.",
     "Tell me about India Innovates 2026.",
     "What is Bits&Bytes?",
     "Show me the impact stats.",
     "How can I join the club?",
-    "Take me to the contact page.",
 ]
 
 type StreamPayload =
@@ -308,7 +308,7 @@ export function QnAChatInterface() {
                     <div className="flex flex-col items-center justify-center h-full text-center px-4 max-w-2xl mx-auto space-y-6">
                         <div className="bg-zinc-900/80 p-5 rounded-2xl border border-zinc-800 text-sm text-zinc-300 shadow-lg">
                             <p className="mb-2 font-medium text-white text-base">Hello! I'm the Bits&Bytes AI Assistant.</p>
-                            <p>Ask me anything about our mission, team structure, hackathons like India Innovates 2026, impact stats, or how to get involved. I derive my answers purely from the public knowledge available in this project.</p>
+                            <p>Ask me anything about our mission, team structure, events like GitHub Copilot Dev Days and India Innovates 2026, impact stats, or how to get involved. I derive my answers purely from the public knowledge available in this project.</p>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
                             {QUICK_PROMPTS.map((prompt) => (
@@ -376,6 +376,26 @@ export function QnAChatInterface() {
                                                     return (
                                                         <a href={href} className="text-[#e45a92] font-medium hover:underline underline-offset-4" {...props}>
                                                             {children}
+                                                        </a>
+                                                    )
+                                                }
+                                                if (href?.includes("google.com/maps") || href?.includes("maps.app.goo.gl")) {
+                                                    return (
+                                                        <a
+                                                            href={href}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="mt-4 mb-2 flex flex-col gap-2 rounded-2xl border border-zinc-700/50 bg-zinc-900/50 p-4 transition-all hover:bg-zinc-800/80 hover:border-emerald-500/50 group no-underline"
+                                                        >
+                                                            <div className="flex items-center gap-3">
+                                                                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 group-hover:bg-emerald-500/20 transition-colors">
+                                                                    <MapPin className="h-5 w-5 text-emerald-400" />
+                                                                </div>
+                                                                <div>
+                                                                    <h4 className="font-semibold text-zinc-100 m-0">View Venue on Map</h4>
+                                                                    <p className="text-xs text-zinc-400 m-0 mt-0.5 group-hover:text-zinc-300 transition-colors">Opens in Google Maps</p>
+                                                                </div>
+                                                            </div>
                                                         </a>
                                                     )
                                                 }

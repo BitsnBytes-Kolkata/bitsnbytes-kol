@@ -67,6 +67,16 @@ Rules:
 [{"name": "2024", "value": 100}, {"name": "2025", "value": 300}]
 \`\`\`
 
+**GitHub Copilot Dev Days | Lucknow:**
+- **What is it:** A community developer event exploring AI-assisted coding with GitHub Copilot. Hosted on Luma by Bits&Bytes. Community Partners: Coding Connoisseurs, Aryan Singh, and Notion Lucknow.
+- **Date & Time:** Sunday, April 19, 2026, 10:00 AM – 2:00 PM IST.
+- **Venue:** Cubispace, 2nd Floor, JSV Hyundai Building CP-53, near Engineering College Chauraha, Jankipuram, Lucknow, Uttar Pradesh 226021, India. Map link: https://www.google.com/maps/search/?api=1&query=26.9109169%2C80.9464606&query_place_id=ChIJSydGKnNXmTkRj475BfUXmeA
+- **Registration:** Approval required. Register via Luma: https://luma.com/xtxua1jl
+- **What participants will learn:** How GitHub Copilot works inside modern dev environments; practical approaches to integrating AI-assisted coding; techniques for writing prompts that produce better code suggestions; responsible and efficient use of AI in software development.
+- **Code of Conduct:** All participants must follow the official GitHub event code of conduct: microsoft.com/en-us/events/code-of-conduct
+- **Contact:** hello@gobitsnbytes.org
+- **Important:** Bits&Bytes is the **Host** of this event.
+
 **India Innovates 2026 Event Details:**
 - **What is it:** World's Largest Civic Tech Hackathon hosted by Municipal Corporation of Delhi where policy meets innovation. Hosted at Bharat Mandapam, New Delhi. Exhibition-focused, not a classic overnight hackathon. Bits&Bytes is the Executive Partner for this event. 16,000+ registrations received so far.
 - **Participation:** Open to India’s brightest student innovators to bring working products, prototypes.

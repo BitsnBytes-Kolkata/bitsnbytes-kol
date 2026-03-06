@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect, useCallback } from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 import dynamic from "next/dynamic";
@@ -24,7 +25,37 @@ const stats = [
   { value: "10+", label: "Partner schools" },
 ];
 
+const heroEvents = [
+  {
+    image: "/images/copilot-dev-day-small.png",
+    alt: "GitHub Copilot Dev Days | Lucknow",
+    badge: "Upcoming Event",
+    title: "GitHub Copilot Dev Days",
+    subtitle: "19 Apr 2026 · Lucknow",
+    href: "/events",
+  },
+  {
+    image: "/event_pictures/697362aa317f1_2b7a6406.webp",
+    alt: "India Innovates 2026 - Upcoming tech summit",
+    badge: "Upcoming Event",
+    title: "India Innovates 2026",
+    subtitle: "28 Mar 2026 · New Delhi",
+    href: "/events",
+  },
+];
+
 export const HeroFuturistic = () => {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const nextSlide = useCallback(() => {
+    setActiveSlide((prev) => (prev + 1) % heroEvents.length);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000);
+    return () => clearInterval(interval);
+  }, [nextSlide]);
+
   return (
     <section className="relative overflow-hidden rounded-b-[1.5rem] sm:rounded-b-[2rem] md:rounded-b-[3rem] lg:rounded-b-[3.5rem] text-white w-full max-w-full">
       <WebGLShader />
@@ -47,7 +78,7 @@ export const HeroFuturistic = () => {
               {/* Main content */}
               <div className="space-y-6">
                 <h1 className="font-display text-2xl font-extrabold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tighter drop-shadow-2xl">
-                  India&apos;s boldest <br className="hidden sm:block" /> builders club
+                  India&apos;s boldest <br className="hidden sm:block" />builders club
                 </h1>
                 <p className="text-sm text-white/80 sm:text-base md:text-lg lg:text-xl max-w-2xl leading-relaxed">
                   We host premium hackathons, design/dev squads, and real-world
@@ -95,33 +126,53 @@ export const HeroFuturistic = () => {
           </GlassContainer>
         </div>
 
-        <Link href="/events" className="relative flex-1 min-w-0 block group">
+        {/* Right — Event Slideshow */}
+        <Link href={heroEvents[activeSlide].href} className="relative flex-1 min-w-0 block group">
           <GlassContainer
             className="h-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto transition-transform duration-500 group-hover:scale-[1.02]"
             containerClassName="h-full"
             glowColor="pink"
           >
-            <div className="relative h-full w-full">
-              <Image
-                src="/event_pictures/697362aa317f1_2b7a6406.webp"
-                alt="India Innovates 2026 - Upcoming tech summit"
-                fill
-                className="object-cover opacity-60 mix-blend-overlay transition-opacity duration-500 group-hover:opacity-80 group-hover:mix-blend-normal"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+            <div className="relative h-full w-full overflow-hidden">
+              {heroEvents.map((event, idx) => (
+                <div
+                  key={event.title}
+                  className={`absolute inset-0 bg-[#0a0a0d] transition-opacity duration-700 ease-in-out ${idx === activeSlide ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+                >
+                  <Image
+                    src={event.image}
+                    alt={event.alt}
+                    fill
+                    className={`object-cover transition-all duration-700 ${idx === 0 ? "object-right scale-[1.35] sm:scale-[1.5] origin-[85%_center]" : "object-center"}`}
+                    priority={idx === 0}
+                  />
+                </div>
+              ))}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/20 z-20" />
 
-              <div className="absolute bottom-8 left-8 right-8 space-y-2">
+              <div className="absolute bottom-8 left-8 right-8 space-y-2 z-30">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[0.65rem] font-bold uppercase tracking-widest text-emerald-400">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  Upcoming Event
+                  {heroEvents[activeSlide].badge}
                 </span>
                 <div>
                   <h3 className="font-display text-2xl font-black text-white flex items-center gap-2">
-                    India Innovates 2026
+                    {heroEvents[activeSlide].title}
                     <ArrowRight className="h-4 w-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   </h3>
-                  <p className="text-white/60 text-sm font-medium mt-1">28 Mar 2026 · New Delhi</p>
+                  <p className="text-white/60 text-sm font-medium mt-1">{heroEvents[activeSlide].subtitle}</p>
+                </div>
+
+                {/* Dot indicators */}
+                <div className="flex items-center gap-2 pt-2">
+                  {heroEvents.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); setActiveSlide(idx); }}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${idx === activeSlide ? "w-6 bg-(--brand-pink)" : "w-1.5 bg-white/30 hover:bg-white/50"}`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
