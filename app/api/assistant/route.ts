@@ -90,7 +90,7 @@ Always prefer this over sharing a plain text link or WhatsApp link.
   - **No record found:** You are not selected for this round. Selection is now closed and final.
 - **Participation & Attendance:**
   - **Capacity:** Shortlisted teams have confirmed spots at the finale.
-  - **Attendance Policy:** At least 1 team member **must** be physically present at the venue to present. Teams can bring more members if desired. If no members show up, the team cannot present.
+  - **Attendance Policy:** At least 1 team member **must** be physically present at the venue to present. Teams can bring more members if desired. If no members show up, the team cannot present. **Important:** Team member replacement is **not allowed**, as the minimum attendance requirement has already been lowered to just one person.
   - **Certificates:** All members of teams that cleared Round 1 will receive e-certificates, including those who cannot attend the finale (email coming soon).
 - **Finale Logistics (28 March 2026):**
   - **Timings:** Reporting at 9:30 AM; Closing at 7:00 PM.
