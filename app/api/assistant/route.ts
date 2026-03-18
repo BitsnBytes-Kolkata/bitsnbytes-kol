@@ -84,23 +84,25 @@ Always prefer this over sharing a plain text link or WhatsApp link.
 - **Important:** Bits&Bytes is the **Host** of this event.
 
 **India Innovates 2026 Event Details:**
-- **What is it:** World's Largest Civic Tech Hackathon hosted by Municipal Corporation of Delhi where policy meets innovation. Hosted at Bharat Mandapam, New Delhi. Exhibition-focused, not a classic overnight hackathon. Bits&Bytes is the Executive Partner for this event. 21,437+ registrations received so far.
-- **Participation:** Open to India’s brightest student innovators to bring working products, prototypes.
-- **Team Size:** Must have 3-6 Members.
-- **Domains:** 
-  1. Urban Solutions (Flooding engine, AQI dashboard, AI waste tracking, AI Traffic Flow).
-  2. Digital Democracy (Global Ontology Engine, AI Booth Management, Secure E-Voting, AI Avatars, AI Calling Agents, Smart CRM, AI Co-Pilot).
-  3. Open Innovation (Healthcare, Robotics, Agriculture, Fintech, Cybersecurity, etc. — Cybersecurity has been merged here for new registrations; existing Cybersecurity registrants can still present and are fully eligible for prizes).
-- **Product State:** Fully polished not required, but need a working product/prototype/breakthrough idea. Teams must submit PPT describing their idea, approach, and expected impact. All development must be completed before the Finale which is on 28 March 2026. No development/coding time on Final Presentation Day.
-- **Logistics:** Offline at Bharat Mandapam, New Delhi. 28 March 2026, 9:00 AM – 7:00 PM. Travel & accommodation not provided.
-- **Key Dates:** Registration Deadline: 05 Mar 2026, 10:59 PM IST. PPT Submission Phase: 24 Jan - 10 Mar 2026, 11:59 PM IST. Evaluation Phase: 11 Mar - 15 Mar 2026. Grand Finale: 28 Mar 2026, 9:00 AM.
-- **Format:** Initial shortlist from PPTs. Best solutions provided exhibition space to display product to investors, founders, policymakers. Live on-the-spot judging.
-- **Judging & Prizes:** Prize pool of INR 10 Lakh+. Prizes per domain: 1st ₹1,50,000 | 2nd ₹1,00,000 | 3rd ₹50,000 | Runner-Up ₹35,000. Participation certificates provided.
-- **Outcomes:** Top innovations pitch directly to govt/political parties for real-world implementation. Best ideas get a Paid Govt Apprenticeship + Full-Time Opportunity.
-- **Rules:** Projects must be original, no previously deployed projects. Open-source tools allowed. Plagiarism = disqualification. Volunteers cannot participate, and participants cannot volunteer at the event. If a participant hasn't submitted a GitHub link, provide this form: https://tally.so/r/D4V2pq
-- **Registration & Communication:** Applications must be submitted via Unstop. For the community, prefer the Discord server (show the discord-widget): Server ID 1480617556292272260, invite link https://discord.gg/BwfZKPZPQn. WhatsApp Community also available: https://chat.whatsapp.com/DOs79yuKXAB4jm76wNJsNc — but always prefer Discord over WhatsApp.
-- **Volunteering:** To volunteer at Bits&Bytes club or its general events, take users to \`/join\`. To volunteer specifically for India Innovates 2026 Hackathon, give them: https://tally.so/r/b57gp6
-- **Cybersecurity Domain Change (Important):** The Cybersecurity domain has been removed for new registrations to align with official Guinness World Record guidelines, as the event is attempting a record for the Largest Civic Tech Hackathon (and also the largest hackathon under roof). Guinness requires the hackathon to remain primarily focused on civic technology. For new registrations, Cybersecurity has been merged under the Open Innovation category. However, participants who have ALREADY registered under Cybersecurity are completely unaffected — they can still present their ideas, projects, and products; their participation is fully valid; and prizes and evaluation remain exactly the same for them. Nothing changes for existing Cybersecurity registrants — only the explicit listing of Cybersecurity has been removed for new sign-ups.
+- **Selection Status (Evaluations Complete):** Evaluations are now officially **completed**. The current selection list is final and **no further reconsiderations or additions** will be made.
+- **Result Statuses:**
+  - **Shortlisted:** You are in Round 1. Check your inbox for next steps.
+  - **No record found:** You are not selected for this round. Selection is now closed and final.
+- **Participation & Attendance:**
+  - **Capacity:** Shortlisted teams have confirmed spots at the finale.
+  - **Attendance Policy:** At least 1 team member **must** be physically present at the venue to present. Teams can bring more members if desired. If no members show up, the team cannot present.
+  - **Certificates:** All members of teams that cleared Round 1 will receive e-certificates, including those who cannot attend the finale (email coming soon).
+- **Finale Logistics (28 March 2026):**
+  - **Timings:** Reporting at 9:30 AM; Closing at 7:00 PM.
+  - **Venue:** Bharat Mandapam, New Delhi.
+  - **What to bring:** Laptop, charger, and project needs. **Important:** Internet may be unreliable due to high density; participants should arrange their own hotspot or data.
+  - **Food & Stay:** Food, travel, and accommodation are **not** provided or covered. Participants must make their own arrangements.
+- **Presentations:**
+  - **Format:** Direct presentations to judges, including officials from ministries and government bodies. No stalls or booths.
+  - **Evaluation:** Only **functional prototypes** will be evaluated. Ensure your project is working properly before presenting.
+- **Domains:** Urban Solutions, Digital Democracy, and Open Innovation (Cybersecurity is merged into Open Innovation).
+- **Prizes:** Prize pool of INR 10 Lakh+. Top innovations may receive Paid Govt Apprenticeships or Full-Time Opportunities.
+- **Communication:** For all queries, prefer Discord (Server ID 1480617556292272260).
 `
 
 const tools: OpenAI.Chat.Completions.ChatCompletionTool[] = [
