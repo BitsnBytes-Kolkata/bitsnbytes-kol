@@ -7,7 +7,7 @@ import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts"
 
-import { Mic, Send, Info, Bot, X, Trash, ThumbsUp, ThumbsDown } from "lucide-react"
+import { Mic, Send, Info, Bot, X, Trash, ThumbsUp, ThumbsDown, Download } from "lucide-react"
 
 interface ChatMessage {
   id: number
@@ -113,6 +113,8 @@ const FloatingAiAssistant: React.FC = () => {
   const [modelName, setModelName] = useState("qwen3.5-397b-a17b")
   const [hasHydrated, setHasHydrated] = useState(false)
   const [feedbackMap, setFeedbackMap] = useState<Record<number, FeedbackValue>>({})
+  const [sessionId, setSessionId] = useState<string>("")
+  const [showProactive, setShowProactive] = useState(false)
 
   const chatRef = useRef<HTMLDivElement | null>(null)
   const textareaRef = useRef<HTMLTextAreaElement | null>(null)
@@ -144,6 +146,24 @@ const FloatingAiAssistant: React.FC = () => {
     if (!isChatOpen) return
     scrollToBottom()
   }, [messages, isChatOpen, scrollToBottom])
+
+  useEffect(() => {
+    if (!hasHydrated) return
+    if (isChatOpen) {
+      setShowProactive(false)
+      return
+    }
+    
+    const proactiveKey = "bb-proactive-shown"
+    if (sessionStorage.getItem(proactiveKey)) return
+
+    const timer = setTimeout(() => {
+      setShowProactive(true)
+      sessionStorage.setItem(proactiveKey, "true")
+    }, 15000)
+    
+    return () => clearTimeout(timer)
+  }, [isChatOpen, hasHydrated, pathname])
 
   useEffect(() => {
     if (typeof window === "undefined") return
@@ -316,23 +336,56 @@ const FloatingAiAssistant: React.FC = () => {
   }
 
   // ─── Feedback helpers ──────────────────────────────────────────────────────
-  const handleFeedback = useCallback((messageId: number, value: FeedbackValue) => {
+  const handleFeedback = useCallback((messageId: number, value: FeedbackValue, messageContent?: string) => {
     setFeedbackMap((prev) => {
-      const next = { ...prev, [messageId]: prev[messageId] === value ? null : value }
-      // Persist
+      const isRemoving = prev[messageId] === value
+      const newValue = isRemoving ? null : value
+      const next = { ...prev, [messageId]: newValue }
+      
       try {
         const stored = JSON.parse(localStorage.getItem(FEEDBACK_STORAGE_KEY) ?? "[]")
         stored.push({
           messageId,
-          feedback: next[messageId],
+          feedback: newValue,
           timestamp: new Date().toISOString(),
           model: modelName,
         })
         localStorage.setItem(FEEDBACK_STORAGE_KEY, JSON.stringify(stored.slice(-200)))
+
+        // Post to Supabase
+        if (newValue !== null && sessionId) {
+          fetch("/api/assistant/feedback", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              sessionId,
+              messageId,
+              feedback: newValue,
+              messageText: messageContent || "",
+              model: modelName
+            })
+          }).catch(E => console.error("Feedback post error", E))
+        }
+
       } catch {}
       return next
     })
-  }, [modelName])
+  }, [modelName, sessionId])
+
+  const handleExport = () => {
+    let md = "# Bits&Bytes Assistant Session\n\n"
+    messages.forEach(m => {
+      const role = m.role === "user" ? "**You**" : "**Assistant**"
+      md += `${role}:\n${m.content}\n\n`
+    })
+    navigator.clipboard.writeText(md).then(() => {
+      const el = document.getElementById("export-toast")
+      if (el) {
+        el.style.opacity = "1"
+        setTimeout(() => el.style.opacity = "0", 2000)
+      }
+    })
+  }
 
   const handleSend = async () => {
     const trimmed = message.trim()
@@ -390,7 +443,7 @@ const FloatingAiAssistant: React.FC = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ messages: payloadMessages, pathname }),
+        body: JSON.stringify({ messages: payloadMessages, pathname, sessionId }),
         signal: controller.signal,
       })
 
@@ -572,6 +625,24 @@ const FloatingAiAssistant: React.FC = () => {
   return (
     <div className="fixed right-4 bottom-4 sm:right-6 sm:bottom-6 z-50">
       <div className="relative">
+        {/* Proactive tooltip */}
+        {showProactive && !isChatOpen && (
+          <div className="absolute bottom-full right-0 mb-4 w-[220px] rounded-2xl border border-zinc-700/80 bg-zinc-900/95 p-4 shadow-xl shadow-black/40 animate-in slide-in-from-bottom-5 fade-in duration-500">
+            <div className="relative">
+              <button onClick={() => setShowProactive(false)} className="absolute -top-2 -right-2 p-1 text-zinc-500 hover:text-white transition-colors">
+                <X className="h-3 w-3" />
+              </button>
+              <p className="text-xs text-zinc-200 pr-2">
+                {pathname === "/events" ? "Want help registering for an event? 🎟️" :
+                 pathname === "/join" ? "I can help you join the club! 💡" :
+                 pathname === "/contact" ? "Need to reach someone specific? Ask me! 👋" :
+                 "Hey! Want to know what we do? 🚀"}
+              </p>
+              <div className="absolute -bottom-[21px] right-3 h-3 w-3 rotate-45 border-b border-r border-zinc-700/80 bg-zinc-900/95" />
+            </div>
+          </div>
+        )}
+
         {/* Floating AI button */}
         <button
           className={`floating-ai-button relative ml-auto flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-white/40 bg-[var(--brand-pink)] shadow-lg shadow-[#e45a92]/40 transition-all duration-300 hover:scale-110 hover:shadow-xl ${isChatOpen ? "rotate-90" : "rotate-0"
@@ -614,6 +685,17 @@ const FloatingAiAssistant: React.FC = () => {
                   <span className="rounded-2xl bg-zinc-800/70 px-2 py-1 text-[0.65rem] font-medium text-zinc-200">
                     {modelName}
                   </span>
+                  <div className="relative inline-flex items-center">
+                    <span id="export-toast" className="absolute right-full mr-2 whitespace-nowrap opacity-0 transition-opacity duration-300 text-[10px] font-medium text-emerald-400 bg-emerald-400/10 px-1.5 py-0.5 rounded">Copied!</span>
+                    <button
+                      onClick={handleExport}
+                      className="inline-flex h-7 w-7 items-center justify-center rounded-full text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors"
+                      title="Export chat as Markdown"
+                      disabled={messages.length === 0}
+                    >
+                      <Download className="h-3.5 w-3.5" />
+                    </button>
+                  </div>
                   <button
                     onClick={() => {
                       setMessages([])
@@ -774,7 +856,7 @@ const FloatingAiAssistant: React.FC = () => {
                             },
                           }}
                         >
-                          {m.content || "..."}
+                          {m.content + (isLoading && m.id === messages[messages.length - 1]?.id ? " ▋" : "") || "..."}
                         </ReactMarkdown>
                       )}
                     </div>
@@ -783,7 +865,7 @@ const FloatingAiAssistant: React.FC = () => {
                     {m.role === "assistant" && m.content && m.content.length > 0 && !isLoading && (
                       <div className="flex items-center gap-1 mt-1 ml-1">
                         <button
-                          onClick={() => handleFeedback(m.id, "up")}
+                          onClick={() => handleFeedback(m.id, "up", m.content)}
                           className={`group/fb inline-flex items-center justify-center h-6 w-6 rounded-md transition-all ${
                             feedbackMap[m.id] === "up"
                               ? "bg-emerald-500/20 text-emerald-400"
@@ -795,7 +877,7 @@ const FloatingAiAssistant: React.FC = () => {
                           <ThumbsUp className="h-3 w-3" />
                         </button>
                         <button
-                          onClick={() => handleFeedback(m.id, "down")}
+                          onClick={() => handleFeedback(m.id, "down", m.content)}
                           className={`group/fb inline-flex items-center justify-center h-6 w-6 rounded-md transition-all ${
                             feedbackMap[m.id] === "down"
                               ? "bg-red-500/20 text-red-400"

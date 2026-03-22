@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
 import OpenAI, { APIError } from "openai"
 import { findExperts, recommendRoles } from "@/lib/team-data"
-
+import { searchSiteContent } from "@/lib/rag"
+import { detectFrustration } from "@/lib/sentiment"
 const openai = new OpenAI({
   apiKey: process.env.OSM_API_KEY,
   baseURL: "https://api.osmapi.com/v1",
@@ -16,14 +17,13 @@ const SSE_HEADERS = {
   Connection: "keep-alive",
 }
 
-const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit"
 
 type ClientMessage = {
   role: "user" | "assistant"
   content: string
 }
 
-type AssistantAction = { type: "navigate"; path: string } | { type: "highlight"; textSnippet: string } | { type: "submit_form"; formData: any }
+type AssistantAction = { type: "navigate"; path: string } | { type: "highlight"; textSnippet: string }
 
 const SITE_CONTEXT = `
 You are the official AI assistant for Bits&Bytes, a teen-led code club based in Lucknow.
@@ -39,10 +39,17 @@ You are the official AI assistant for Bits&Bytes, a teen-led code club based in 
 
 **How to get answers:**
 1. **For Team/Roles:** DO NOT guess. Always use the 'find_team_expert' or 'recommend_role' tools. The team structure is dynamic.
-2. **For Specific Page Content:** Use 'get_site_section' to "read" the website (Home, About, Impact, Join, Contact, Code of Conduct, Events) if the user asks for details you don't know (like specific project stats, upcoming event dates, or recent news).
-3. **For Code of Conduct Questions:** Use 'get_site_section' with section 'coc' to read the community guidelines and answer questions about behavior expectations, reporting, or community values.
+2. **For Content Search:** Use 'search_site_content' to query our knowledge base for anything related to events, rules, dates, content, about the club, contact information, etc.
+3. **For Code of Conduct Questions:** Use 'search_site_content' with a query like 'code of conduct rules' to find behavior expectations or reporting info.
 4. **For Navigation:** Use 'suggest_navigation' to guide them.
 5. **For Pointing out Info:** When you find relevant information on the current page to answer a user's question, prominently use the 'highlight_text' tool to highlight that exact snippet of text on the website for the user.
+6. **For Contact Form Submissions:** Use the 'submit_contact_form' tool. But NEVER call it until you have all required info. Guide the user conversationally:
+   - First ask for their **name**
+   - Then their **email**
+   - Then their **message** (what they want to tell the team)
+   - Optionally ask for a **subject** line
+   - Once you have name, email, and message, confirm with the user (e.g. "I'll send this to the team: [summary]. Should I go ahead?") before calling the tool.
+   - After successful submission, confirm it was sent and tell them the team will follow up.
 
 **Guardrails & Safety:**
 - Refuse to answer questions that are irrelevant to Bits&Bytes, technology, coding, education, or the local community.
@@ -152,18 +159,18 @@ const tools: OpenAI.Chat.Completions.ChatCompletionTool[] = [
   {
     type: "function",
     function: {
-      name: "get_site_section",
+      name: "search_site_content",
       description:
-        "Fetch live HTML for a section of the Bits&Bytes site. USE THIS OFTEN to read the latest content about projects, impact, about page details, or Code of Conduct guidelines.",
+        "Search the Bits&Bytes website knowledge base. USE THIS OFTEN when asked about dates, events, rules, the club, or specific facts. It searches semantically across all pages.",
       parameters: {
         type: "object",
         properties: {
-          section: {
+          query: {
             type: "string",
-            enum: ["home", "about", "impact", "join", "contact", "coc", "events"],
+            description: "The search query, e.g., 'who are the founders', 'when is Copilot Dev Days', 'what are the rules'",
           },
         },
-        required: ["section"],
+        required: ["query"],
       },
     },
   },
@@ -303,29 +310,29 @@ async function handleSubmitContactTool(args: any) {
   }
 }
 
-async function handleGetSiteSectionTool(section: string, req: NextRequest) {
-  const path = sectionToPath(section)
-  const origin = new URL(req.url).origin
-
-  const res = await fetch(`${origin}${path}`, {
-    // Always fetch fresh content while keeping this reasonably fast.
-    cache: "no-store",
-  })
-
-  const html = await res.text()
-
-  // Avoid sending extremely large payloads back into the model
-  const maxLength = 4000
-  const snippet = html.length > maxLength ? html.slice(0, maxLength) : html
-
-  return {
-    section,
-    path,
-    htmlSnippet: snippet,
-  }
-}
+// get_site_section removed in favor of semantic RAG search
 
 export async function POST(req: NextRequest) {
+  // ─── Rate limiting (10 requests per minute per IP) ───
+  const forwarded = req.headers.get("x-forwarded-for")
+  const ip = forwarded?.split(",")[0]?.trim() ?? req.headers.get("x-real-ip") ?? "anonymous"
+
+  const { rateLimit } = await import("@/lib/rate-limit")
+  const rl = rateLimit(ip, { maxRequests: 10, windowMs: 60_000 })
+
+  if (!rl.allowed) {
+    return NextResponse.json(
+      { error: "You're sending messages too quickly. Please wait a moment and try again." },
+      {
+        status: 429,
+        headers: {
+          "Retry-After": String(Math.ceil(rl.retryAfterMs / 1000)),
+          "X-RateLimit-Remaining": "0",
+        },
+      }
+    )
+  }
+
   if (!process.env.OSM_API_KEY) {
     return NextResponse.json(
       { error: "OSM_API_KEY is not configured on the server." },
@@ -337,6 +344,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json()
     const clientMessages = (body?.messages ?? []) as ClientMessage[]
     const clientPathname = (body?.pathname ?? "/").toString()
+    const sessionId = (body?.sessionId ?? "").toString()
 
     if (!Array.isArray(clientMessages) || clientMessages.length === 0) {
       return NextResponse.json({ error: "Messages array is required." }, { status: 400 })
@@ -355,10 +363,16 @@ export async function POST(req: NextRequest) {
     const currentPageLabel = PAGE_LABELS[clientPathname] ?? clientPathname
     const pageContext = `\n\n**Current Page:** The user is currently viewing the "${currentPageLabel}" page (${clientPathname}). Tailor your answers to be relevant to the content on this page when appropriate. If they ask "what's on this page" or similar, describe what this page contains.`
 
+    const lastUserMsg = clientMessages.filter(m => m.role === "user").pop()
+    const isFrustrated = lastUserMsg ? detectFrustration(lastUserMsg.content) : false
+    const frustrationHint = isFrustrated 
+      ? "\n\n**CRITICAL OP NOTE:** The user seems frustrated or confused based on their recent message. Be extra empathetic, concise, and helpful. If their issue is technical or blocked, proactively offer to connect them with the team or ask if they'd like to use the contact form."
+      : ""
+
     const baseMessages: OpenAI.Chat.ChatCompletionMessageParam[] = [
       {
         role: "system",
-        content: SITE_CONTEXT + pageContext,
+        content: SITE_CONTEXT + pageContext + frustrationHint,
       },
       ...mapClientMessagesToOpenAI(clientMessages),
     ]
@@ -460,8 +474,9 @@ export async function POST(req: NextRequest) {
           const path = normalizePath(toolArgs?.path)
           toolResult = { success: true, path }
           actionToClient = { type: "navigate" as const, path }
-        } else if (toolName === "get_site_section") {
-          toolResult = await handleGetSiteSectionTool(toolArgs?.section ?? "home", req)
+        } else if (toolName === "search_site_content") {
+          const results = await searchSiteContent(toolArgs?.query ?? "")
+          toolResult = { success: true, results }
         } else if (toolName === "find_team_expert") {
           const query = (toolArgs?.query ?? "").toString()
           const experts = findExperts(query)
@@ -488,7 +503,11 @@ export async function POST(req: NextRequest) {
     }
 
     try {
-      return await streamAssistantResponse(modelUsed, currentMessages, actionToClient)
+      return await streamAssistantResponse(modelUsed, currentMessages, actionToClient, {
+        sessionId,
+        pathname: clientPathname,
+        ip,
+      })
     } catch (streamErr) {
       console.error("Assistant stream error after tool call:", streamErr)
       return NextResponse.json(
@@ -508,7 +527,8 @@ export async function POST(req: NextRequest) {
 async function streamAssistantResponse(
   model: string,
   messages: OpenAI.Chat.ChatCompletionMessageParam[],
-  action?: AssistantAction
+  action?: AssistantAction,
+  sessionMeta?: { sessionId: string; pathname: string; ip: string }
 ) {
   const completion = await openai.chat.completions.create({
     model,
@@ -528,15 +548,46 @@ async function streamAssistantResponse(
       send({ type: "meta", model })
 
       try {
+        let fullAssistantContent = ""
+
         for await (const part of completion) {
           const delta = part.choices[0]?.delta
 
           if (delta?.content) {
+            fullAssistantContent += delta.content
             send({ type: "token", content: delta.content })
           }
         }
 
         send({ type: "done", action: action ?? null })
+
+        // Save session after stream done
+        if (sessionMeta?.sessionId) {
+          try {
+            const { createClient } = await import("@supabase/supabase-js")
+            const supabase = createClient(
+              process.env.NEXT_PUBLIC_SUPABASE_URL!,
+              process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+            )
+
+            const finalMessages = [...messages, { role: "assistant", content: fullAssistantContent }]
+
+            // Insert/update chat session asynchronously
+            supabase.from("chat_sessions").upsert({
+              session_id: sessionMeta.sessionId,
+              messages: finalMessages,
+              pathname: sessionMeta.pathname,
+              model: model,
+              ip_hash: sessionMeta.ip,
+              updated_at: new Date().toISOString()
+            }, { onConflict: "session_id" }).then(({ error }) => {
+              if (error) console.error("Failed to save chat_session:", error)
+            })
+          } catch (err) {
+            console.error("Supabase import or upsert failed in stream:", err)
+          }
+        }
+
       } catch (error) {
         console.error("Streaming error:", error)
         send({ type: "error", message: "Failed to stream assistant response." })
