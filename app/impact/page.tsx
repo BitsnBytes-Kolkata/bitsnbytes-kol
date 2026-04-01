@@ -34,20 +34,20 @@ const WebGLShader = dynamic(
 
 const highlightStats = [
   {
-    value: "200+",
-    label: "Students active",
-    description: "From across India",
-    timeframe: "Since Jan 2024 ↑",
+    value: "28,000+",
+    label: "Event Participants",
+    description: "Through India Innovates",
+    timeframe: "Mar 2026 ↑",
   },
   {
-    value: "10+",
-    label: "Schools represented",
-    description: "Cross-campus exchange",
-    timeframe: "Growing monthly ↑",
+    value: "5,000+",
+    label: "Developers",
+    description: "At our finale",
+    timeframe: "Mar 2026 ↑",
   },
   {
-    value: "15+",
-    label: "Projects shipped",
+    value: "₹10L+",
+    label: "Prize Pools",
     description: "Products, apps, AI",
     timeframe: "Building the future ↑",
   },
@@ -56,12 +56,6 @@ const highlightStats = [
     label: "Student-led",
     description: "Community built for teens",
     timeframe: "Always will be",
-  },
-  {
-    value: "21,437+",
-    label: "Registrations",
-    description: "For India Innovates 2026",
-    timeframe: "Hackathon Impact ↑",
   },
 ];
 

@@ -1,26 +1,24 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Events - India Innovates 2026 & More | Bits&Bytes",
+  title: "Events | Bits&Bytes",
   description:
-    "Bits&Bytes is the Executive Partner for India Innovates 2026 at Bharat Mandapam, New Delhi — ₹10,05,000 prize pool. Plus hackathons, coding workshops & tech events open to all students across India.",
+    "Bits&Bytes pipelines real projects. From teen-led hackathons to our production deployments at India Innovates 2026. Code meets action.",
   keywords: [
     "India Innovates 2026",
-    "Bharat Mandapam hackathon",
-    "teen hackathons india",
-    "student innovation summit India",
-    "coding workshops for students",
-    "tech events lucknow",
-    "high school hackathon india",
-    "student tech meetups",
-    "bits and bytes executive partner",
+    "hackathons",
+    "coding events",
+    "teen tech events",
+    "Bharat Mandapam events",
+    "Bits&Bytes events",
+    "student hackathons",
   ],
   alternates: {
     canonical: "https://gobitsnbytes.org/events",
   },
   openGraph: {
-    title: "India Innovates 2026 & Events | Bits&Bytes",
-    description: "Bits&Bytes is the Executive Partner for India Innovates 2026 at Bharat Mandapam — ₹10,05,000 prize pool. Register now on Unstop.",
+    title: "Events | Bits&Bytes",
+    description: "Bits&Bytes pipelines real projects. From teen-led hackathons to our production deployments at India Innovates 2026.",
     url: "https://gobitsnbytes.org/events",
     type: "website",
   },
@@ -40,12 +38,12 @@ const eventsJsonLd = {
         "@type": "Event",
         name: "India Innovates 2026",
         description:
-          "India's Biggest Tech Innovation Summit — Where Code Meets Constitution. Bits&Bytes is the Executive Partner. ₹10,05,000 prize pool across Urban Solutions, Digital Democracy, and Open Innovation domains.",
+          "World's Largest Civic Tech Hackathon. Bits&Bytes served as the Official Executive Partner. ₹10 Lakh+ prize pool across Applied AI, Robotics & Drones, and Civic Tech & Defence domains.",
         startDate: "2026-03-28",
-        endDate: "2026-03-29",
+        endDate: "2026-03-28",
         eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-        eventStatus: "https://schema.org/EventScheduled",
-        url: "https://unstop.com/conferences/india-innovates-2026-municipal-corporation-of-delhi-1625920",
+        eventStatus: "https://schema.org/EventMovedOnline",
+        url: "https://indiainnovates.org",
         location: {
           "@type": "Place",
           name: "Bharat Mandapam",
@@ -58,7 +56,7 @@ const eventsJsonLd = {
         },
         organizer: {
           "@type": "Organization",
-          name: "Municipal Corporation of Delhi",
+          name: "HN Group & MCD",
         },
       },
     },

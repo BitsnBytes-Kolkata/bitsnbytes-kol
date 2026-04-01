@@ -21,7 +21,7 @@ const siteContent = [
   {
     page: "/",
     section: "hero",
-    content: "Bits&Bytes is India's boldest teen-led hackathons & tech movements. We build, ship, and iterate. Currently hosting India Innovates 2026."
+    content: "Bits&Bytes is India's boldest teen-led hackathons & tech movements. We build, ship, and iterate. Powered by high-agency builders."
   },
   {
     page: "/about",
@@ -36,7 +36,7 @@ const siteContent = [
   {
     page: "/events",
     section: "india-innovates",
-    content: "India Innovates Hackathon 2026. Finale on March 28, 2026 at Bharat Mandapam, New Delhi. Domains: Urban Solutions, Digital Democracy, Open Innovation. Prize pool of INR 10 Lakh+. Bits&Bytes is the Executive Partner."
+    content: "India Innovates Hackathon 2026 Archive. Held on March 28, 2026 at Bharat Mandapam, New Delhi (9 AM-7 PM). Organized by HN Group and MCD with DDU, IIT Kharagpur, DTC, NSUT, and GGSIPU. Scale: 1.26+ crore applicants narrowed to 28,000+, then 5,000+, then 15 teams. Domains: Urban Solutions, Digital Democracy, Open Innovation. Prize pool: ₹10 Lakh+ with ₹1L/₹75K/₹50K/₹25K per domain. GobitsnBytes / Bits&Bytes served as the Official Executive Partner."
   },
   {
     page: "/join",

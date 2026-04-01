@@ -24,7 +24,7 @@ const FEEDBACK_STORAGE_KEY = "bb-assistant-feedback-v1"
 const QUICK_PROMPTS = [
   "Tell me about GitHub Copilot Dev Days.",
   "How do I join the Copilot event?",
-  "Tell me about India Innovates 2026.",
+  "Tell me about India Innovates 2026 Archive.",
   "What are the domains for India Innovates?",
   "What is the Bits&Bytes club?",
   "How can I join Bits&Bytes?",
@@ -52,7 +52,7 @@ const SMART_FAQ: FaqEntry[] = [
   },
   {
     patterns: ["india innovates", "hackathon 2026", "ii 2026", "india innovates 2026"],
-    answer: "**India Innovates Hackathon 2026** 🏆\n\nBits&Bytes is the **Executive Partner** of this national hackathon.\n\n- 📅 **Finale:** March 28, 2026 at Bharat Mandapam, New Delhi\n- 🏅 **Prize pool:** ₹10 Lakh+\n- 🌐 **Domains:** Urban Solutions, Digital Democracy, Open Innovation\n\nEvaluations are now complete. Check results on the site!\n\n[What are the domains?](# \"follow-up\")  \n[Join the Discord](# \"follow-up\")",
+    answer: "**India Innovates 2026 (Archive)**\n\nBits&Bytes served as the **Official Executive Partner**.\n\n- **Date:** March 28, 2026\n- **Venue:** Bharat Mandapam, New Delhi\n- **Scale:** 1.26+ crore applicants, narrowed to 28,000+, then 5,000+, and finally 15 teams\n- **Domains:** Urban Solutions, Digital Democracy, and Open Innovation\n- **Status:** Event closed and archived\n\n[Tell me about Copilot Dev Days](# \"follow-up\")",
   },
   {
     patterns: ["who founded", "founders", "who started", "who created", "team", "leadership"],

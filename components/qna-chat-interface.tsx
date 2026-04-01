@@ -21,8 +21,8 @@ const STORAGE_KEY = "bb-qna-assistant-state-v1"
 const QUICK_PROMPTS = [
     "Tell me about GitHub Copilot Dev Days.",
     "How do I join the Copilot event?",
-    "Tell me about India Innovates 2026.",
-    "What are the domains for India Innovates?",
+  "Tell me about India Innovates 2026 Archive.",
+  "What domains did India Innovates have?",
     "What is the Bits&Bytes club?",
     "How can I join Bits&Bytes?",
 ]
@@ -309,7 +309,7 @@ export function QnAChatInterface() {
                     <div className="flex flex-col items-center justify-center h-full text-center px-4 max-w-2xl mx-auto space-y-6">
                         <div className="bg-zinc-900/80 p-5 rounded-2xl border border-zinc-800 text-sm text-zinc-300 shadow-lg">
                             <p className="mb-2 font-medium text-white text-base">Hello! I'm the Bits&Bytes AI Assistant.</p>
-                            <p>Ask me anything about our mission, team structure, events like GitHub Copilot Dev Days and India Innovates 2026, impact stats, or how to get involved. I derive my answers purely from the public knowledge available in this project.</p>
+                            <p>Ask me anything about our mission, team structure, events like GitHub Copilot Dev Days and the India Innovates 2026 Archive, impact stats, or how to get involved. I derive my answers purely from the public knowledge available in this project.</p>>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
                             {QUICK_PROMPTS.map((prompt) => (

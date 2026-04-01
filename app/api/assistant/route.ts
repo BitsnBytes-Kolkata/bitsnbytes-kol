@@ -76,11 +76,14 @@ Rules:
 - **Venue:** Cubispace, Jankipuram, Lucknow.
 - **Registration:** Approval required. Register via Luma: https://luma.com/xtxua1jl
 
-**India Innovates 2026 Event Details:**
-- **Executive Partner:** Bits&Bytes is the Executive Partner of this national hackathon finale on March 28, 2026 at Bharat Mandapam, New Delhi.
-- **Attendance Policy:** At least 1 team member **must** be physically present to present. Replacement is **not allowed**.
-- **Prizes:** Prize pool of INR 10 Lakh+. Top innovations may receive Paid Govt Apprenticeships or Full-Time Opportunities.
-- **Communication:** For all queries, prefer Discord (Server ID 1480617556292272260).
+**India Innovates 2026 Archive Details:**
+- **Executive Partner:** Bits&Bytes served as the Official Executive Partner for this massive deployment on March 28, 2026 at Bharat Mandapam, New Delhi.
+- **Scale:** World's Largest Civic Tech Hackathon. 1.26+ crore applicants, narrowed to 28,000+, then 5,000+, and finally 15 teams.
+- **Domains:** Urban Solutions, Digital Democracy, and Open Innovation.
+- **Prizes:** Prize pool of INR 10 Lakh+ with ₹1L/₹75K/₹50K/₹25K per domain.
+- **Dignitaries:** Confirmed attendees include Delhi CM Rekha Gupta, Bihar Assembly Speaker, and MP Manoj Tiwari (North East Delhi).
+- **Post-event:** Selected teams moved to a ministry-level presentation stage.
+- **Status:** The event is now archived.
 `
 
 const tools: OpenAI.Chat.Completions.ChatCompletionTool[] = [

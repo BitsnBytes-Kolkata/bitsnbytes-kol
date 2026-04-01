@@ -3,32 +3,22 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { PageSection } from "@/components/page-section";
 import { GlassContainer } from "@/components/ui/glass-container";
-import {
-  GlowingCard,
-  GlowingCardTitle,
-  GlowingCardDescription,
-  GlowingCardNumber,
-} from "@/components/ui/glowing-card";
-import { Button } from "@/components/ui/button";
 import { Gallery4 } from "@/components/ui/gallery4";
+import { Button } from "@/components/ui/button";
 import {
-  ExternalLink,
   Trophy,
   Users,
   Calendar,
   MapPin,
   Clock,
-  Database,
-  Landmark,
-  Lightbulb,
   Building2,
-  Check,
-  ChevronRight,
   Activity,
   Eye,
+  Check,
+  ExternalLink,
 } from "lucide-react";
 
 const WebGLShader = dynamic(
@@ -36,139 +26,10 @@ const WebGLShader = dynamic(
   { loading: () => null, ssr: false },
 );
 
-// ── Static data ──────────────────────────────────────────────────────────────
-
-const stages = [
-  {
-    title: "Submit Your Presentation",
-    period: "24 Jan – 10 Mar 2026",
-    copy: "Submit a presentation around the solution you have built. Best solutions get an exhibition space to display to investors, founders, policy makers, and industry leaders.",
-    start: new Date("2026-01-24T00:00:00"),
-    end: new Date("2026-03-10T23:59:59"),
-  },
-  {
-    title: "Evaluation",
-    period: "11 Mar – 15 Mar 2026",
-    copy: "Core Committee members and mentors will thoroughly review all submitted PPTs and shortlist teams based on quality, feasibility, innovation, and impact.",
-    start: new Date("2026-03-11T00:00:00"),
-    end: new Date("2026-03-15T23:59:59"),
-  },
-  {
-    title: "The Grand Finale",
-    period: "28 Mar 2026",
-    copy: "Solutions presented to judges at Bharat Mandapam. On-the-spot evaluation by judges and ministries to declare winners across all domains.",
-    start: new Date("2026-03-28T00:00:00"),
-    end: new Date("2026-03-28T23:59:59"),
-  },
-];
-
-const problemStatements: { domain: string; items: string[] }[] = [
-  {
-    domain: "Politics & Civic Tech",
-    items: [
-      "AI-powered Avatar Platform",
-      "AI-powered Inbound/Outbound Calling Agent",
-      "Hyper-Local Targeting Engine",
-      "Smart Political CRM (P-CRM)",
-      "Secure E-Voting System",
-      "AI Co-Pilot for Politicians",
-      "VR Townhall Platform",
-      "AI-powered Social Media Management System",
-    ],
-  },
-  {
-    domain: "Data Mining and Processing",
-    items: [
-      "AI-powered Global Ontology Engine",
-      "AI-Driven Booth Management System",
-      "Party Worker Management System",
-      "AI-driven Sentiment Analysis Engine",
-    ],
-  },
-];
-
-const domainIcon: Record<string, React.ReactNode> = {
-  "Politics & Civic Tech": <Landmark className="h-3.5 w-3.5" />,
-  "Data Mining and Processing": <Database className="h-3.5 w-3.5" />,
-  "Open Innovation": <Lightbulb className="h-3.5 w-3.5" />,
-};
-
-const prizeRows = [
-  { pos: "1st Prize", politics: "₹1,50,000", data: "₹1,50,000" },
-  { pos: "2nd Prize", politics: "₹1,00,000", data: "₹1,00,000" },
-  { pos: "3rd Prize", politics: "₹50,000", data: "₹50,000" },
-  { pos: "Runner-up", politics: "₹35,000", data: "₹35,000" },
-];
-
-const additionalOutcomes = [
-  { title: "Pitch to Power", copy: "Present your solution directly to government bodies and political parties." },
-  { title: "Gov Apprenticeship", copy: "Paid government apprenticeship with potential for a full-time opportunity." },
-  { title: "Cultural Night", copy: "Exclusive cultural programme hosted for all participants after the exhibition." },
-  { title: "Round 1 Certs", copy: "Participation certificates awarded for all teams completing Round 1." },
-  { title: "Open to All", copy: "No age, college, or background restrictions — eligibility is universal." },
-];
-
-const programSteps = [
-  "Register on Unstop",
-  "Top teams receive Exhibition Booth Space",
-  "Live showcase at Bharat Mandapam",
-  "On-the-spot evaluation by judges",
-  "Winners announced — Top 3 per domain",
-];
-
-const faqs = [
-  {
-    q: "What is India Innovates 2026?",
-    a: "India's Biggest Tech Innovation Summit where Code Meets Constitution. Organized by MCD, DDU, IIT Kharagpur, DTC, NSUT, GGSIPU, THE FISTA, and CBPACS at Bharat Mandapam, New Delhi, with Bits&Bytes as the Executive Partner. It invites India's brightest student innovators to bring working products and breakthrough ideas."
-  },
-  {
-    q: "What is Bits&Bytes' role in the event?",
-    a: "As the Executive Partner, Bits&Bytes handles everything operational: managing participant groups, answering queries, designing social media creatives, creating docs/SOPs, conducting college outreach, and leading full on-ground coordination."
-  },
-  {
-    q: "Who can participate?",
-    a: "Open to all students, professionals, and tech enthusiasts from across India. Whether you are a student, working professional, or startup founder, you are welcome to participate."
-  },
-  {
-    q: "What is the team size to participate?",
-    a: "Teams must have 3-6 members."
-  },
-  {
-    q: "What are the prerequisites considered for registering?",
-    a: "Participants may need to have knowledge and skills in areas such as electronics, programming, data analytics, and IoT technologies, depending on the theme. Participants must bring their own laptops, sensors, microcontrollers, and other necessary tools."
-  },
-  {
-    q: "Where is the venue?",
-    a: "Bharat Mandapam, Pragati Maidan, New Delhi. This state-of-the-art venue hosted the G20 Summit in 2023."
-  },
-  {
-    q: "How to register for the event?",
-    a: "Click the Register button on the Unstop registration page. Complete your registration there and our organizing team will contact you with further details."
-  }
-];
-
-const visionMission = [
-  {
-    title: "Vision",
-    icon: <Eye className="h-5 w-5 text-(--brand-pink)" />,
-    copy: "Contributing to Viksit Bharat 2047 — a developed India by its centenary of independence. Our vision is to empower young innovators to build solutions that transform governance, strengthen democracy, enhance citizen services, and secure our digital future."
-  },
-  {
-    title: "Mission",
-    icon: <Trophy className="h-5 w-5 text-(--brand-pink)" />,
-    copy: "To bridge the gap between innovation and implementation by bringing together student innovators, government bodies, and industry leaders under one roof. Our mission is to identify breakthrough ideas that can be adopted at scale to serve the nation."
-  }
-];
-
 // ── Component ─────────────────────────────────────────────────────────────
 
 export default function Events() {
   const [activeEvent, setActiveEvent] = useState<"all" | "copilot" | "india-innovates">("all");
-  const now = useMemo(() => new Date(), []);
-  const liveIndexes = useMemo(
-    () => new Set(stages.map((s, i) => (now >= s.start && now <= s.end ? i : -1)).filter((i) => i !== -1)),
-    [now],
-  );
 
   return (
     <>
@@ -225,7 +86,7 @@ export default function Events() {
               : "text-white/60 hover:text-white hover:bg-white/5"
               }`}
           >
-            India Innovates 2026
+            Archived: India Innovates
           </button>
         </div>
 
@@ -353,9 +214,9 @@ export default function Events() {
         {(activeEvent === "all" || activeEvent === "india-innovates") && (
           <>
             <PageSection
-              eyebrow="Upcoming · Mar 28"
+              eyebrow="Archived · Mar 28, 2026"
               title="India Innovates 2026"
-              description="India's Biggest Tech Innovation Summit — Where Code Meets Constitution."
+              description="World's Largest Civic Tech Hackathon."
             >
               <GlassContainer glowColor="pink" animated={false} className="overflow-hidden">
 
@@ -371,105 +232,112 @@ export default function Events() {
                   />
                 </div>
 
-                {/* ── Details grid ── */}
+                {/* ── Details ── */}
                 <div className="p-6 sm:p-8 md:p-10">
-                  {/* Badges row */}
-                  <div className="flex flex-wrap items-center gap-2 mb-6">
+                  <div className="flex flex-wrap items-center gap-2 mb-8">
                     <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white bg-(--brand-pink)">
-                      Conference / Innovation Summit
+                      Archived Event
                     </span>
-                    <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-emerald-400">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                      Registration Open
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
-                      <Users className="h-3 w-3 text-(--brand-pink)" />
-                      21,437 Registered
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 text-xs text-white/50">
-                      <Image src="/images/mcd.jpeg" alt="MCD Logo" width={16} height={16} className="rounded-full object-cover" />
-                      Municipal Corporation of Delhi
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
+                      <Trophy className="h-3 w-3 text-(--brand-pink)" />
+                      Official Executive Partner: Bits&Bytes
                     </span>
                   </div>
 
-                  {/* Stats + details two-column */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="prose prose-invert max-w-none text-white/80 space-y-6">
+                    <p className="text-lg text-white font-medium">
+                      <strong>India Innovates 2026</strong> is now archived. <strong>Bits&Bytes (GobitsnBytes)</strong> was listed as the <strong>Official Executive Partner</strong> for the finale.
+                    </p>
 
-                    {/* Left — key stats */}
-                    <div className="space-y-0 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
-                      {[
-                        { icon: <Trophy className="h-4 w-4 text-(--brand-pink)" />, label: "Prize Pool", value: "₹10,05,000" },
-                        { icon: <Users className="h-4 w-4 text-(--brand-pink)" />, label: "Team Size", value: "3 – 6 Members" },
-                        { icon: <Calendar className="h-4 w-4 text-(--brand-pink)" />, label: "Reg. Deadline", value: "5 Mar 2026, 10:59 PM IST" },
-                        { icon: <Activity className="h-4 w-4 text-(--brand-pink)" />, label: "Registrations", value: "21,437" },
-                        { icon: <Eye className="h-4 w-4 text-(--brand-pink)" />, label: "Impressions", value: "13,08,296+" },
-                        { icon: <Clock className="h-4 w-4 text-(--brand-pink)" />, label: "Timings", value: "9 AM – 7 PM" },
-                      ].map((s) => (
-                        <div key={s.label} className="flex items-center justify-between px-5 py-3.5">
-                          <div className="flex items-center gap-2.5">
-                            {s.icon}
-                            <span className="text-sm text-white/60 font-medium">{s.label}</span>
-                          </div>
-                          <span className="text-sm font-black text-white text-right">{s.value}</span>
-                        </div>
-                      ))}
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Event Summary</h2>
+                      <p>
+                        India Innovates 2026 was presented as the <strong>World's Largest Civic Tech Hackathon</strong>, held on <strong>March 28, 2026</strong> at <strong>Bharat Mandapam, Pragati Maidan, New Delhi</strong> (9 AM - 7 PM). Organizers included <strong>HN Group</strong> and <strong>MCD</strong>, with partner institutions such as <strong>IIT Kharagpur, NSUT, GGSIPU, and DDU</strong>. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-pink) hover:underline">[indiainnovates]</Link>
+                      </p>
                     </div>
 
-                    {/* Right — domains, quick info, CTA */}
-                    <div className="flex flex-col gap-5">
-                      {/* Domains */}
-                      <div>
-                        <p className="text-[10px] uppercase tracking-widest font-semibold text-white/40 mb-2.5">Challenge Domains</p>
-                        <div className="flex flex-wrap gap-2">
-                          {["Politics & Civic Tech", "Data Mining and Processing", "Open Innovation"].map((d) => (
-                            <span key={d} className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/80">
-                              {domainIcon[d]}{d}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Additional outcomes quick list */}
-                      <div>
-                        <p className="text-[10px] uppercase tracking-widest font-semibold text-white/40 mb-2.5">Win Beyond Cash</p>
-                        <ul className="space-y-1.5">
-                          {[
-                            "Pitch directly to government & political parties",
-                            "Paid government apprenticeship opportunity",
-                            "Cultural Night for all participants",
-                          ].map((item) => (
-                            <li key={item} className="flex items-start gap-2 text-xs text-white/65">
-                              <Check className="h-3.5 w-3.5 shrink-0 mt-0.5 text-(--brand-pink)" />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Rules quick note */}
-                      <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-xs text-white/50 leading-relaxed space-y-1">
-                        <p className="font-semibold text-white/70 text-[11px] uppercase tracking-wider mb-1">Key Rules</p>
-                        <p>• Projects must be original & built for this event</p>
-                        <p>• Plagiarism = instant disqualification</p>
-                        <p>• Open-source tools & datasets allowed</p>
-                        <p>• Jury decisions are final</p>
-                      </div>
-
-                      {/* CTA */}
-                      <Button
-                        asChild
-                        className="w-full rounded-2xl bg-(--brand-pink) py-5 text-sm font-bold text-white shadow-[0_0_24px_rgba(228,90,146,0.35)] hover:opacity-90 mt-auto"
-                      >
-                        <Link
-                          href="https://unstop.com/conferences/india-innovates-2026-municipal-corporation-of-delhi-1625920"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Register on Unstop
-                          <ExternalLink className="ml-2 h-4 w-4" />
-                        </Link>
-                      </Button>
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Scale</h2>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li><strong>1.26 crore+</strong> total applicants nationwide. <Link href="https://www.tribuneindia.com/news/j-k/ju-team-among-top-15-at-india-innovates-2026/" target="_blank" className="text-(--brand-pink) hover:underline">[tribuneindia]</Link></li>
+                        <li><strong>28,000+ to 5,000+ to 15 teams</strong> across three elimination rounds. <Link href="https://www.dailyexcelsior.com/ju-students-outshine-at-india-innovates-2026/" target="_blank" className="text-(--brand-pink) hover:underline">[dailyexcelsior]</Link></li>
+                        <li><strong>₹10 lakh+</strong> prize pool, including <strong>₹1L, ₹75K, ₹50K, and ₹25K per domain</strong>. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-pink) hover:underline">[indiainnovates]</Link></li>
+                        <li>Domains: <strong>Urban Solutions, Digital Democracy, and Open Innovation</strong>. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-pink) hover:underline">[indiainnovates]</Link></li>
+                      </ul>
                     </div>
+
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Finale Format</h2>
+                      <p>
+                        It was not a build-on-site round. Teams developed in advance, and the final day focused on <strong>live product demonstrations</strong> reviewed by investors, officials, diplomats, and founders. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-pink) hover:underline">[indiainnovates]</Link>
+                      </p>
+                    </div>
+
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Dignitaries and Finalists</h2>
+                      <p>
+                        Confirmed attendees included <strong>Delhi CM Rekha Gupta</strong>, the <strong>Bihar Assembly Speaker</strong>, and <strong>MP Manoj Tiwari (North East Delhi)</strong>. <Link href="https://www.newdelhitimes.com/delhi-cm-rekha-gupta-attends-india-innovates-2026-hackathon-highlights-youth-driven-innovation/" target="_blank" className="text-(--brand-pink) hover:underline">[newdelhitimes]</Link>
+                      </p>
+                      <p>
+                        <strong>Team Dupahar</strong> from the University of Jammu reached the Top 15 and was reported as the only finalist team from J&K. <Link href="https://www.tribuneindia.com/news/j-k/ju-team-among-top-15-at-india-innovates-2026/" target="_blank" className="text-(--brand-pink) hover:underline">[tribuneindia]</Link>
+                      </p>
+                    </div>
+
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Post-Event Pathway</h2>
+                      <p>
+                        Following the finale, selected teams entered a <strong>ministry-level presentation stage</strong> for post-event review and exposure. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-pink) hover:underline">[indiainnovates]</Link>
+                      </p>
+                    </div>
+
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Media and Social Coverage</h2>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li><code>#IndiaInnovates2026</code> was trending on X (Twitter) on event day. <Link href="https://x.com/search?q=%23IndiaInnovates2026" target="_blank" className="text-(--brand-pink) hover:underline">[x]</Link></li>
+                        <li>Event updates were also posted by Delhi CM via official channels. <Link href="https://www.newdelhitimes.com/delhi-cm-rekha-gupta-attends-india-innovates-2026-hackathon-highlights-youth-driven-innovation/" target="_blank" className="text-(--brand-pink) hover:underline">[newdelhitimes]</Link></li>
+                        <li>Coverage includes Tribune India, Daily Excelsior, and New Delhi Times. <Link href="https://www.dailyexcelsior.com/ju-students-outshine-at-india-innovates-2026/" target="_blank" className="text-(--brand-pink) hover:underline">[dailyexcelsior]</Link></li>
+                        <li>The @hn.india account described it as a historic moment involving 5,000 innovators. <Link href="https://www.instagram.com/p/DWMfnECE8Eu/" target="_blank" className="text-(--brand-pink) hover:underline">[instagram]</Link></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </GlassContainer>
+            </PageSection>
+
+            {/* ── Event Video ─────────────────────────────────────────────── */}
+            <PageSection
+              align="left"
+              className="pb-0"
+            >
+              <GlassContainer glowColor="pink" animated={false} className="p-4 sm:p-6 md:p-8">
+                <div className="space-y-5">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div className="space-y-1">
+                      <h3 className="text-lg sm:text-xl font-bold text-white">Event Video</h3>
+                      <p className="text-sm text-white/65">Stage highlights and on-floor moments from the finale.</p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-white/70">
+                        Archive Footage
+                      </span>
+                      <span className="inline-flex items-center rounded-full border border-(--brand-pink)/40 bg-(--brand-pink)/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-(--brand-pink)">
+                        March 2026
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="relative overflow-hidden rounded-[1.4rem] border border-white/15 bg-gradient-to-b from-white/10 to-white/[0.03] p-2 shadow-[0_20px_70px_rgba(0,0,0,0.45)]">
+                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(228,90,146,0.18),transparent_45%)]" />
+                    <video
+                      className="relative z-10 w-full rounded-[1rem] border border-white/10 bg-black/50"
+                      controls
+                      playsInline
+                      preload="metadata"
+                      poster="/event_pictures/HEe923ub0AE-92F.jpg"
+                    >
+                      <source src="/event_pictures/india-innovates-2026-stage-address.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
                   </div>
                 </div>
               </GlassContainer>
@@ -486,267 +354,50 @@ export default function Events() {
                 items={[
                   {
                     id: "img-1",
-                    title: "Opening Ceremony",
-                    description: "The energy was palpable as we kickstarted the hackathon.",
+                    title: "Opening Address",
+                    description: "Main stage opening session at India Innovates 2026.",
                     href: "#",
-                    image: "/event_pictures/697362a9af5f9_2b7a6686.webp",
+                    image: "/event_pictures/HEe93oOakAAi2Mi.jpg",
                   },
                   {
                     id: "img-2",
-                    title: "Deep Coding",
-                    description: "Teams engaged in intense coding sessions.",
+                    title: "Plenary Session",
+                    description: "Live address from the central stage at Bharat Mandapam.",
                     href: "#",
-                    image: "/event_pictures/697362a9bfbb7_2b7a6474.webp",
+                    image: "/event_pictures/HEe923ub0AE-92F.jpg",
                   },
                   {
                     id: "img-3",
-                    title: "Mentorship",
-                    description: "Industry experts guiding the builders.",
+                    title: "Jury Interaction",
+                    description: "On-floor demo review with students and evaluators.",
                     href: "#",
-                    image: "/event_pictures/697362a9ed0a0_2b7a6465.webp",
+                    image: "/event_pictures/866d62697f3d42819e2007714047a3a80001af45.jpg",
                   },
                   {
                     id: "img-4",
-                    title: "Collaboration",
-                    description: "Hackers teaming up to build something great.",
+                    title: "Participant Teams",
+                    description: "Student teams preparing for demonstrations in the main hall.",
                     href: "#",
-                    image: "/event_pictures/697362aa203ce_2b7a6472.webp",
+                    image: "/event_pictures/3d53b4900bb7c0176eadb242c495cbfb3634ffb3.jpg",
                   },
                   {
                     id: "img-5",
-                    title: "Project Showcases",
-                    description: "Presenting the final prototypes to the judges.",
+                    title: "Build Table",
+                    description: "Final-stage hardware and prototype iteration under evaluation windows.",
                     href: "#",
-                    image: "/event_pictures/697362aa29673_2b7a6578__1_.webp",
+                    image: "/event_pictures/1ae8b9183c456f721ab4a04a7cbd0268ce3b2e97.jpg",
                   },
                   {
                     id: "img-6",
-                    title: "Judging Details",
-                    description: "Going through the projects thoroughly.",
+                    title: "Hall View",
+                    description: "Full auditorium turnout during keynote and showcase rounds.",
                     href: "#",
-                    image: "/event_pictures/697362aa2c388_2b7a6482.webp",
-                  },
-                  {
-                    id: "img-7",
-                    title: "Networking",
-                    description: "Building connections that last beyond the event.",
-                    href: "#",
-                    image: "/event_pictures/697362aa317f1_2b7a6406.webp",
-                  },
-                  {
-                    id: "img-8",
-                    title: "Winners Announcement",
-                    description: "Celebrating the hard work and innovation.",
-                    href: "#",
-                    image: "/event_pictures/697362aa3a417_2b7a6874.webp",
+                    image: "/event_pictures/HEe923uagAATqvy.jpg",
                   },
                 ]}
               />
             </PageSection>
 
-            {/* ── How It Works ──────────────────────────────────────────────── */}
-            <PageSection
-              align="center"
-              eyebrow="India Innovates: Program Structure"
-              title="How it works"
-              description="Five steps from registration to the winners' announcement."
-            >
-              <GlassContainer glowColor="both" animated={false} className="p-6 sm:p-8">
-                <div className="grid grid-cols-1 sm:grid-cols-5 gap-6">
-                  {programSteps.map((step, idx) => (
-                    <div key={step} className="relative flex flex-col items-center text-center gap-3">
-                      {/* connector line (desktop only) */}
-                      {idx < programSteps.length - 1 && (
-                        <div className="hidden sm:block absolute top-5 left-[58%] right-0 h-px bg-gradient-to-r from-white/20 to-transparent pointer-events-none" />
-                      )}
-                      <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-(--brand-pink)/40 bg-(--brand-pink)/10 text-sm font-black text-(--brand-pink)">
-                        {idx + 1}
-                      </div>
-                      <p className="text-xs sm:text-[11px] text-white/70 font-medium leading-snug">{step}</p>
-                    </div>
-                  ))}
-                </div>
-              </GlassContainer>
-            </PageSection>
-
-            {/* ── Event Stages timeline ─────────────────────────────────────── */}
-            <PageSection
-              align="center"
-              eyebrow="India Innovates: Timeline"
-              title="Three stages to the finale"
-              description="From submitting your idea to standing on the floor at Bharat Mandapam."
-            >
-              <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 lg:gap-4">
-                {stages.map((stage, idx) => (
-                  <li key={stage.title} className={["md:[grid-area:1/1/2/5]", "md:[grid-area:1/5/2/9]", "md:[grid-area:1/9/2/13]"][idx]}>
-                    <GlowingCard animationDelay={idx * 0.1}>
-                      <div className="space-y-3">
-                        <div className="flex items-center justify-between">
-                          <GlowingCardNumber index={idx + 1} />
-                          {liveIndexes.has(idx) && (
-                            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-emerald-400">
-                              <span className="relative flex h-1.5 w-1.5">
-                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                              </span>
-                              Live
-                            </span>
-                          )}
-                        </div>
-                        <GlowingCardTitle className="mt-3">{stage.title}</GlowingCardTitle>
-                        <p className="text-xs font-semibold text-(--brand-pink)">{stage.period}</p>
-                        <GlowingCardDescription>{stage.copy}</GlowingCardDescription>
-                      </div>
-                    </GlowingCard>
-                  </li>
-                ))}
-              </ul>
-            </PageSection>
-
-            {/* ── Problem Statements ────────────────────────────────────────── */}
-            <PageSection
-              align="center"
-              eyebrow="India Innovates: Challenge Domains"
-              title="What are you building?"
-              description="Pick a domain, pick a problem. Every statement is a real challenge waiting for a real solution."
-            >
-              <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 lg:gap-4">
-                {problemStatements.map(({ domain, items }, idx) => (
-                  <li key={domain} className={["md:[grid-area:1/1/2/7]", "md:[grid-area:1/7/2/13]"][idx]}>
-                    <GlowingCard animationDelay={idx * 0.1}>
-                      <div className="space-y-4">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5">
-                          <span className="text-(--brand-pink)">{domainIcon[domain]}</span>
-                          <span className="text-xs font-bold text-white">{domain}</span>
-                        </div>
-                        <ul className="space-y-2.5">
-                          {items.map((item) => (
-                            <li key={item} className="flex items-start gap-2.5 text-sm text-white/65">
-                              <ChevronRight className="h-3.5 w-3.5 shrink-0 mt-0.5 text-(--brand-pink)" />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </GlowingCard>
-                  </li>
-                ))}
-              </ul>
-            </PageSection>
-
-            {/* ── Prize Pool ────────────────────────────────────────────────── */}
-            <PageSection
-              align="center"
-              eyebrow="India Innovates: Prizes"
-              title="₹10,05,000 prize pool"
-              description="Top solutions across every domain take home cash prizes — plus a certificate for every participant."
-            >
-              <GlassContainer className="overflow-x-auto" glowColor="pink" animated={false}>
-                <div className="p-2">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="border-b border-white/10">
-                        <th className="px-5 py-4 text-left text-xs font-semibold uppercase tracking-wider text-white/50">Position</th>
-                        <th className="px-5 py-4 text-left text-xs font-semibold uppercase tracking-wider text-white/50">
-                          <span className="inline-flex items-center gap-1.5"><Landmark className="h-3.5 w-3.5 text-(--brand-pink)" />Politics &amp; Civic Tech</span>
-                        </th>
-                        <th className="px-5 py-4 text-left text-xs font-semibold uppercase tracking-wider text-white/50">
-                          <span className="inline-flex items-center gap-1.5"><Database className="h-3.5 w-3.5 text-(--brand-pink)" />Data Mining</span>
-                        </th>
-
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {prizeRows.map((row, i) => (
-                        <tr key={row.pos} className={`border-b border-white/5 transition-colors hover:bg-white/5 ${i === 0 ? "bg-(--brand-pink)/5" : ""}`}>
-                          <td className="px-5 py-4 font-semibold text-white">
-                            {i === 0 && <Trophy className="inline h-3.5 w-3.5 mr-1.5 text-amber-400" />}
-                            {row.pos}
-                          </td>
-                          <td className="px-5 py-4 text-white/85">{row.politics} <span className="text-[10px] text-white/40">+ Cert</span></td>
-                          <td className="px-5 py-4 text-white/85">{row.data}    <span className="text-[10px] text-white/40">+ Cert</span></td>
-                        </tr>
-                      ))}
-                      <tr>
-                        <td colSpan={3} className="px-5 py-3 text-xs text-white/40 italic">
-                          All registered participants receive a Participation Certificate.
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </GlassContainer>
-            </PageSection>
-
-            {/* ── Additional Outcomes ──────────────────────────────────────── */}
-            <PageSection
-              align="center"
-              eyebrow="India Innovates: Beyond the Prize"
-              title="What you actually walk away with"
-              description="Cash is just the start. India Innovates 2026 opens doors no other hackathon can."
-            >
-              <ul className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-6 gap-4">
-                {additionalOutcomes.map(({ title, copy }, idx) => (
-                  <li
-                    key={title}
-                    className={
-                      idx === 0 || idx === 1 || idx === 2
-                        ? "sm:col-span-2 lg:col-span-2"
-                        : idx === 3
-                          ? "sm:col-span-2 lg:col-span-2 lg:col-start-2"
-                          : "sm:col-span-2 sm:col-start-2 lg:col-span-2 lg:col-start-4"
-                    }
-                  >
-                    <GlowingCard animationDelay={idx * 0.08}>
-                      <div className="space-y-3">
-                        <GlowingCardNumber index={idx + 1} />
-                        <GlowingCardTitle className="mt-3">{title}</GlowingCardTitle>
-                        <GlowingCardDescription>{copy}</GlowingCardDescription>
-                      </div>
-                    </GlowingCard>
-                  </li>
-                ))}
-              </ul>
-            </PageSection>
-
-            {/* ── Vision & Mission ──────────────────────────────────────── */}
-            <PageSection
-              align="center"
-              eyebrow="India Innovates: Vision"
-              title="Building for the Nation"
-              description="Contributing to Viksit Bharat 2047."
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {visionMission.map((item, idx) => (
-                  <GlowingCard key={item.title} animationDelay={idx * 0.1}>
-                    <div className="space-y-3">
-                      <div className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-(--brand-pink)/30 bg-(--brand-pink)/10 text-(--brand-pink)">
-                        {item.icon}
-                      </div>
-                      <GlowingCardTitle className="mt-3">{item.title}</GlowingCardTitle>
-                      <GlowingCardDescription>{item.copy}</GlowingCardDescription>
-                    </div>
-                  </GlowingCard>
-                ))}
-              </div>
-            </PageSection>
-
-            {/* ── FAQs ──────────────────────────────────────────────────────── */}
-            <PageSection
-              align="center"
-              eyebrow="India Innovates: FAQs"
-              title="Frequently Asked Questions"
-              description="Everything you need to know about the event."
-            >
-              <div className="max-w-3xl mx-auto space-y-4">
-                {faqs.map((faq, idx) => (
-                  <div key={idx} className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors text-left">
-                    <h3 className="text-[15px] font-bold text-white mb-2">{faq.q}</h3>
-                    <p className="text-sm text-white/60 leading-relaxed">{faq.a}</p>
-                  </div>
-                ))}
-              </div>
-            </PageSection>
           </>
         )}
 
