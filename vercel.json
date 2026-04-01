@@ -48,12 +48,6 @@
         }
       ]
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/"
-    }
   ]
 }
 
