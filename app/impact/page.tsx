@@ -77,7 +77,10 @@ const culturePillars = [
 export default function Impact() {
   return (
     <>
-      <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32">
+      <section
+        className="relative min-h-[72vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32"
+        aria-labelledby="impact-hero-title"
+      >
         <WebGLShader />
         <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6">
           <GlassContainer className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
@@ -89,10 +92,10 @@ export default function Impact() {
                 </span>
                 Impact
               </span>
-              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-extrabold text-white tracking-tighter drop-shadow-2xl">
+              <h1 id="impact-hero-title" className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-extrabold text-white tracking-tighter drop-shadow-2xl">
                 Our impact hits <br className="hidden sm:block" /> beyond the venue walls
               </h1>
-              <p className="max-w-2xl text-base sm:text-lg md:text-xl text-white/80 font-medium leading-relaxed">
+              <p className="max-w-2xl text-base sm:text-lg md:text-xl text-white/85 font-medium leading-relaxed">
                 From first-high-schooler hackathons to squads embedded inside
                 local schools, we design experiences that get teens
                 building—and ship the outcomes publicly.
@@ -128,7 +131,7 @@ export default function Impact() {
                         <span className="text-4xl font-black text-white">
                           {stat.value}
                         </span>
-                        <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-(--brand-pink)">
+                        <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-(--brand-pink)">
                           {stat.timeframe}
                         </span>
                       </div>

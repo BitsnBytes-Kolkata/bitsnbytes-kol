@@ -34,7 +34,10 @@ export default function Events() {
   return (
     <>
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[72vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32">
+      <section
+        className="relative min-h-[70vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32"
+        aria-labelledby="events-hero-title"
+      >
         <WebGLShader />
         <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6">
           <GlassContainer className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
@@ -46,10 +49,10 @@ export default function Events() {
                 </span>
                 Events
               </span>
-              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-extrabold text-white tracking-tighter drop-shadow-2xl">
+              <h1 id="events-hero-title" className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-extrabold text-white tracking-tighter drop-shadow-2xl">
                 Where code meets <br className="hidden sm:block" /> every boundary
               </h1>
-              <p className="max-w-2xl text-base sm:text-lg md:text-xl text-white/80 font-medium leading-relaxed">
+              <p className="max-w-2xl text-base sm:text-lg md:text-xl text-white/85 font-medium leading-relaxed">
                 Join thousands of student innovators at hackathons, summits, and workshops that
                 turn teen builders into tomorrow&apos;s founders and policymakers.
               </p>
@@ -60,30 +63,43 @@ export default function Events() {
 
       <main className="bg-transparent flex flex-col pt-12">
         {/* ── Event Toggle Tabs ────────────────────────────────────────── */}
-        <div className="mx-auto flex flex-wrap w-fit items-center justify-center gap-2 rounded-[2rem] border border-white/10 bg-white/5 p-1.5 backdrop-blur-md mb-8">
+        <div
+          className="mx-auto flex w-fit max-w-[95vw] flex-wrap items-center justify-center gap-2 rounded-[2rem] border border-white/10 bg-white/5 p-1.5 backdrop-blur-md mb-8"
+          role="tablist"
+          aria-label="Filter events"
+        >
           <button
+            type="button"
             onClick={() => setActiveEvent("all")}
+            aria-selected={activeEvent === "all"}
+            role="tab"
             className={`rounded-full px-5 py-2.5 text-sm font-bold transition-all ${activeEvent === "all"
               ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.3)]"
-              : "text-white/60 hover:text-white hover:bg-white/5"
+              : "text-white/70 hover:text-white hover:bg-white/5"
               }`}
           >
             All Events
           </button>
           <button
+            type="button"
             onClick={() => setActiveEvent("copilot")}
+            aria-selected={activeEvent === "copilot"}
+            role="tab"
             className={`rounded-full px-5 py-2.5 text-sm font-bold transition-all ${activeEvent === "copilot"
               ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.3)]"
-              : "text-white/60 hover:text-white hover:bg-white/5"
+              : "text-white/70 hover:text-white hover:bg-white/5"
               }`}
           >
             GitHub Copilot Dev Days
           </button>
           <button
+            type="button"
             onClick={() => setActiveEvent("india-innovates")}
+            aria-selected={activeEvent === "india-innovates"}
+            role="tab"
             className={`rounded-full px-5 py-2.5 text-sm font-bold transition-all ${activeEvent === "india-innovates"
               ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.3)]"
-              : "text-white/60 hover:text-white hover:bg-white/5"
+              : "text-white/70 hover:text-white hover:bg-white/5"
               }`}
           >
             Archived: India Innovates

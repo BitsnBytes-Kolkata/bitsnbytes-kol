@@ -10,16 +10,38 @@ const openai = new OpenAI({
 })
 
 export async function generateEmbedding(text: string): Promise<number[]> {
+  const input = text.replace(/\n/g, " ").trim()
+  if (!input) {
+    throw new Error("Cannot generate embedding for empty input")
+  }
+
   const response = await openai.embeddings.create({
     model: "openai/text-embedding-3-small",
-    input: text.replace(/\n/g, " "),
+    input,
     dimensions: 384,
   })
-  return response.data[0].embedding
+
+  const embedding = response?.data?.[0]?.embedding
+  if (!Array.isArray(embedding) || embedding.length === 0) {
+    console.error("Embedding API returned an unexpected payload", {
+      hasData: Array.isArray(response?.data),
+      firstItemType: typeof response?.data?.[0],
+      model: response?.model,
+    })
+    throw new Error("Embedding API returned no embedding vector")
+  }
+
+  return embedding
 }
 
 export async function searchSiteContent(query: string, matchCount = 3): Promise<string[]> {
-  const queryEmbedding = await generateEmbedding(query)
+  let queryEmbedding: number[]
+  try {
+    queryEmbedding = await generateEmbedding(query)
+  } catch (error) {
+    console.error("Failed to generate query embedding:", error)
+    return []
+  }
 
   // This relies on a Postgres function:
   /*
@@ -61,5 +83,5 @@ export async function searchSiteContent(query: string, matchCount = 3): Promise<
     return []
   }
 
-  return (data as any[]).map(d => d.content)
+  return (data as any[]).map((d) => d.content)
 }

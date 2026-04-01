@@ -27,7 +27,8 @@ const stats = [
 
 const heroEvents = [
   {
-    image: "/images/copilot-dev-day-small.png",
+    image: "/images/github-copilot-hero-desktop.png",
+    imageMobile: "/images/github-copilot-hero-mobile.png",
     alt: "GitHub Copilot Dev Days | Lucknow",
     badge: "Upcoming Event",
     status: "upcoming",
@@ -37,6 +38,7 @@ const heroEvents = [
   },
   {
     image: "/event_pictures/HEe923uagAATqvy.jpg",
+    imageMobile: "/event_pictures/HEe923uagAATqvy.jpg",
     alt: "India Innovates 2026 archive",
     badge: "Archived Event",
     status: "archived",
@@ -59,11 +61,14 @@ export const HeroFuturistic = () => {
   }, [nextSlide]);
 
   return (
-    <section className="relative overflow-hidden rounded-b-[1.5rem] sm:rounded-b-[2rem] md:rounded-b-[3rem] lg:rounded-b-[3.5rem] text-white w-full max-w-full">
+    <section
+      className="relative overflow-hidden rounded-b-[1.5rem] sm:rounded-b-[2rem] md:rounded-b-[3rem] lg:rounded-b-[3.5rem] text-white w-full max-w-full"
+      aria-labelledby="home-hero-title"
+    >
       <WebGLShader />
       <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-12 px-3 pb-6 pt-20 sm:px-4 sm:pb-8 sm:pt-20 md:px-6 md:pb-16 md:pt-24 lg:pb-20 lg:pt-28 lg:flex-row lg:items-stretch lg:gap-16 box-border">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-12 px-4 pb-8 pt-20 sm:px-6 sm:pb-10 sm:pt-20 md:px-6 md:pb-16 md:pt-24 lg:pb-20 lg:pt-28 lg:flex-row lg:items-stretch lg:gap-16 box-border">
         {/* Left content card */}
         <div className="flex-[1.2] min-w-0">
           <GlassContainer
@@ -79,7 +84,7 @@ export const HeroFuturistic = () => {
 
               {/* Main content */}
               <div className="space-y-6">
-                <h1 className="font-display text-2xl font-extrabold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tighter drop-shadow-2xl">
+                <h1 id="home-hero-title" className="font-display text-2xl font-extrabold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tighter drop-shadow-2xl">
                   India&apos;s boldest <br className="hidden sm:block" />builders club
                 </h1>
                 <p className="text-sm text-white/80 sm:text-base md:text-lg lg:text-xl max-w-2xl leading-relaxed">
@@ -93,7 +98,7 @@ export const HeroFuturistic = () => {
               <div className="flex flex-col gap-4 sm:flex-row w-full mt-2">
                 <Button
                   asChild
-                  className="w-full sm:flex-1 h-12 sm:h-14 px-6 sm:px-8 rounded-full bg-(--brand-pink) text-sm sm:text-base font-bold text-white shadow-[0_0_30px_rgba(228,90,146,0.5)] hover:shadow-[0_0_50px_rgba(228,90,146,0.7)] transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full sm:flex-1 h-12 sm:h-14 px-6 sm:px-8 rounded-full bg-(--brand-pink) text-sm sm:text-base font-bold text-white shadow-[0_0_30px_rgba(228,90,146,0.5)] hover:shadow-[0_0_50px_rgba(228,90,146,0.7)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20"
                 >
                   <Link href="/join" className="flex items-center justify-center gap-2">
                     Join the crew
@@ -103,7 +108,7 @@ export const HeroFuturistic = () => {
                 <Button
                   asChild
                   variant="outline"
-                  className="w-full sm:flex-1 h-12 sm:h-14 px-6 sm:px-8 rounded-full border-white/20 bg-white/5 text-sm sm:text-base font-semibold text-white backdrop-blur-md hover:bg-white/10 transition-all hover:scale-[1.02]"
+                  className="w-full sm:flex-1 h-12 sm:h-14 px-6 sm:px-8 rounded-full border-white/20 bg-white/5 text-sm sm:text-base font-semibold text-white backdrop-blur-md hover:bg-white/10 transition-all hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20"
                 >
                   <Link href="/impact" className="flex items-center justify-center">See what we&apos;ve built</Link>
                 </Button>
@@ -117,7 +122,7 @@ export const HeroFuturistic = () => {
                       <p className="text-lg sm:text-xl md:text-3xl font-black text-white">
                         {stat.value}
                       </p>
-                      <p className="text-[8px] sm:text-[10px] uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white/50 font-bold">
+                      <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.12em] sm:tracking-[0.18em] text-white/60 font-bold">
                         {stat.label}
                       </p>
                     </div>
@@ -129,7 +134,11 @@ export const HeroFuturistic = () => {
         </div>
 
         {/* Right — Event Slideshow */}
-        <Link href={heroEvents[activeSlide].href} className="relative flex-1 min-w-0 block group">
+        <Link
+          href={heroEvents[activeSlide].href}
+          className="relative flex-1 min-w-0 block group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 rounded-[1.75rem]"
+          aria-label={`View details for ${heroEvents[activeSlide].title}`}
+        >
           <GlassContainer
             className="h-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto transition-transform duration-500 group-hover:scale-[1.02]"
             containerClassName="h-full"
@@ -145,7 +154,14 @@ export const HeroFuturistic = () => {
                     src={event.image}
                     alt={event.alt}
                     fill
-                    className={`object-cover transition-all duration-700 ${idx === 0 ? "object-right scale-[1.35] sm:scale-[1.5] origin-[85%_center]" : "object-center"}`}
+                    className={`hidden sm:block object-cover transition-all duration-700 ${idx === 0 ? "object-center scale-[1.05]" : "object-center"}`}
+                    priority={idx === 0}
+                  />
+                  <Image
+                    src={event.imageMobile ?? event.image}
+                    alt={event.alt}
+                    fill
+                    className={`block sm:hidden object-cover transition-all duration-700 ${idx === 0 ? "object-center scale-[1.02]" : "object-center"}`}
                     priority={idx === 0}
                   />
                 </div>
@@ -176,13 +192,15 @@ export const HeroFuturistic = () => {
                 </div>
 
                 {/* Dot indicators */}
-                <div className="flex items-center gap-2 pt-2">
+                <div className="flex items-center gap-2 pt-2" role="tablist" aria-label="Hero event slides">
                   {heroEvents.map((_, idx) => (
                     <button
                       key={idx}
+                      type="button"
                       onClick={(e) => { e.preventDefault(); e.stopPropagation(); setActiveSlide(idx); }}
                       className={`h-1.5 rounded-full transition-all duration-300 ${idx === activeSlide ? "w-6 bg-(--brand-pink)" : "w-1.5 bg-white/30 hover:bg-white/50"}`}
                       aria-label={`Go to slide ${idx + 1}`}
+                      aria-current={idx === activeSlide}
                     />
                   ))}
                 </div>

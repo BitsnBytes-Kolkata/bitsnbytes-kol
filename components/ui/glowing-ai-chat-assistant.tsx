@@ -22,12 +22,12 @@ const MAX_HISTORY = 8
 const STORAGE_KEY = "bb-floating-assistant-state-v1"
 const FEEDBACK_STORAGE_KEY = "bb-assistant-feedback-v1"
 const QUICK_PROMPTS = [
-  "Tell me about GitHub Copilot Dev Days.",
-  "How do I join the Copilot event?",
-  "Tell me about India Innovates 2026 Archive.",
-  "What are the domains for India Innovates?",
-  "What is the Bits&Bytes club?",
-  "How can I join Bits&Bytes?",
+  "When is GitHub Copilot Dev Days and how do I register?",
+  "Give me a verified summary of India Innovates 2026 archive.",
+  "What were the official domains for India Innovates 2026?",
+  "Who are the founders and core team at Bits&Bytes?",
+  "How can I join Bits&Bytes this month?",
+  "Show upcoming and archived events.",
 ]
 
 // ─── Smart FAQ: instant answers without API calls ────────────────────────────
@@ -36,19 +36,19 @@ type FaqEntry = { patterns: string[]; answer: string }
 const SMART_FAQ: FaqEntry[] = [
   {
     patterns: ["what is bits", "what is bitsnbytes", "bits and bytes", "bits&bytes", "about bits", "tell me about bits"],
-    answer: "**Bits&Bytes** is a teen-led code club based in Lucknow, India 🇮🇳. We build hackathons, workshops, and real projects — all run by students for students.\n\n[Learn more about us](/about \"cta\")\n\n[Who founded it?](# \"follow-up\")  \n[How can I join?](# \"follow-up\")",
+    answer: "**Bits&Bytes** is a teen-led code club based in Lucknow, India. We run hackathons, workshops, and product-focused build programs led by students.\n\n[Learn more about us](/about \"cta\")\n\n[Who founded it?](# \"follow-up\")  \n[How can I join?](# \"follow-up\")",
   },
   {
     patterns: ["how to join", "how can i join", "join bits", "become a member", "sign up", "get involved"],
-    answer: "Joining is easy! 🚀\n\n1. **Join our Discord** — introduce yourself\n2. **Attend a workshop** or study session\n3. **Contribute** to an open-source project\n\n[Join Bits&Bytes](/join \"cta\")\n\n[What events are coming up?](# \"follow-up\")",
+    answer: "To join Bits&Bytes:\n\n1. Join our community channels\n2. Attend an active workshop or event\n3. Start contributing to a live project track\n\n[Join Bits&Bytes](/join \"cta\")\n\n[What events are coming up?](# \"follow-up\")",
   },
   {
     patterns: ["contact", "email", "reach out", "get in touch", "how to contact"],
-    answer: "You can reach us at:\n\n- 📧 **Email:** hello@gobitsnbytes.org\n- 💬 **Discord:** linked from our website\n- 🔗 **LinkedIn:** [Bits&Bytes](https://www.linkedin.com/company/gobitsbytes)\n\n[Contact Page](/contact \"cta\")",
+    answer: "You can reach us at:\n\n- **Email:** hello@gobitsnbytes.org\n- **Discord:** available from the website\n- **LinkedIn:** [Bits&Bytes](https://www.linkedin.com/company/gobitsbytes)\n\n[Contact Page](/contact \"cta\")",
   },
   {
     patterns: ["copilot dev days", "copilot event", "github copilot", "april 19", "cubispace"],
-    answer: "**GitHub Copilot Dev Days | Lucknow** 🎉\n\n- 📅 **Date:** Sunday, April 19, 2026, 10 AM – 2 PM IST\n- 📍 **Venue:** Cubispace, Jankipuram, Lucknow\n- 🎟️ Registration requires approval\n\nHosted by Bits&Bytes!\n\n[Register on Luma](https://luma.com/xtxua1jl \"cta\")\n\n[What will I learn?](# \"follow-up\")",
+    answer: "**GitHub Copilot Dev Days | Lucknow**\n\n- **Date:** Sunday, April 19, 2026\n- **Time:** 10:00 AM - 2:00 PM IST\n- **Venue:** Cubispace, Jankipuram, Lucknow\n- **Registration:** Approval required\n\n[Register on Luma](https://luma.com/xtxua1jl \"cta\")\n\n[What will I learn?](# \"follow-up\")",
   },
   {
     patterns: ["india innovates", "hackathon 2026", "ii 2026", "india innovates 2026"],
@@ -64,19 +64,19 @@ const SMART_FAQ: FaqEntry[] = [
   },
   {
     patterns: ["where are you", "location", "based in", "city", "lucknow"],
-    answer: "We're based in **Lucknow, India** 🇮🇳 — but our community spans across the country! Our events are primarily held in Lucknow, with some partner events in other cities.\n\n[See upcoming events](/events \"cta\")",
+    answer: "We are based in **Lucknow, India**, and we collaborate with students and partners across other cities as well.\n\n[See events](/events \"cta\")",
   },
   {
     patterns: ["what do you do", "activities", "what does bits", "programs", "workshops"],
-    answer: "At Bits&Bytes we run:\n\n- 🏗️ **Hackathons** — like Scrapyard Lucknow\n- 🎓 **Workshops** — weekly tech sessions\n- 💻 **Build nights** — ship real projects\n- 🤝 **Mentorship** — pair beginners with experienced devs\n\n[See our focus areas](/ \"cta\")\n\n[What events are coming up?](# \"follow-up\")",
+    answer: "At Bits&Bytes we run:\n\n- **Hackathons**\n- **Workshops**\n- **Build programs**\n- **Mentorship and team projects**\n\n[See our focus areas](/ \"cta\")\n\n[What events are active now?](# \"follow-up\")",
   },
   {
     patterns: ["events", "upcoming event", "next event", "what events"],
-    answer: "**Upcoming Events:**\n\n1. 🎉 **GitHub Copilot Dev Days | Lucknow** — April 19, 2026 at Cubispace\n2. 🏆 **India Innovates 2026 Finale** — March 28, 2026 at Bharat Mandapam, Delhi (Executive Partner)\n\n[View all events](/events \"cta\")\n\n[Tell me about Copilot Dev Days](# \"follow-up\")",
+    answer: "**Events Snapshot:**\n\n1. **GitHub Copilot Dev Days | Lucknow** — Upcoming\n2. **India Innovates 2026** — Archived\n\n[View all events](/events \"cta\")\n\n[Tell me about Copilot Dev Days](# \"follow-up\")",
   },
   {
     patterns: ["akshat achievement", "akshat's achievement", "what has akshat done", "akshat projects", "akshats' achievements"],
-    answer: "**Akshat Kushwaha** is our Technical Lead. His key achievements include:\n\n- 🏗️ **Core Infrastructure:** Built the foundational Bits&Bytes website using Next.js 14 and WebGL.\n- 🎟️ **Event Platforms:** Developed the Scrapyard event registration and management platform.\n- 🤖 **AI Projects:** Created **StudyBuddy AI** and the **CodeReview Discord Bot**.\n- ☁️ **Technical Strategy:** Leading AI/LLMOps and cloud infrastructure for all club projects.\n\n[See our projects](/projects \"cta\")",
+    answer: "**Akshat Kushwaha** is Co-Founder and Technical Lead at Bits&Bytes, focused on production-grade systems, AI-native workflows, and platform reliability for club projects.\n\n[See our projects](/projects \"cta\")",
   },
 ]
 

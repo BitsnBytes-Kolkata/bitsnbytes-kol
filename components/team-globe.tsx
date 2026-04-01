@@ -128,6 +128,33 @@ export default function TeamGlobe() {
         arcAlt: 0.15,
         color: "#E45A92",
       },
+      {
+        order: 10,
+        startLat: 26.8467, // Lucknow
+        startLng: 80.9462,
+        endLat: 30.901, // Ludhiana
+        endLng: 75.8573,
+        arcAlt: 0.14,
+        color: "#FFACAC",
+      },
+      {
+        order: 11,
+        startLat: 26.8467, // Lucknow
+        startLng: 80.9462,
+        endLat: 13.0827, // Chennai (Madras)
+        endLng: 80.2707,
+        arcAlt: 0.24,
+        color: "#5D2F77",
+      },
+      {
+        order: 12,
+        startLat: 26.8467, // Lucknow
+        startLng: 80.9462,
+        endLat: 19.076, // Mumbai
+        endLng: 72.8777,
+        arcAlt: 0.18,
+        color: "#E45A92",
+      },
     ],
     [],
   );

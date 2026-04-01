@@ -93,7 +93,10 @@ export default function Join() {
       <Script src="https://tally.so/widgets/embed.js" strategy="lazyOnload" />
 
       {/* Hero Section */}
-      <section className="relative min-h-[40vh] sm:min-h-[50vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32">
+      <section
+        className="relative min-h-[40vh] sm:min-h-[50vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32"
+        aria-labelledby="join-hero-title"
+      >
         <WebGLShader />
         <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 md:py-24">
           <GlassContainer className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
@@ -105,7 +108,7 @@ export default function Join() {
                 </span>
                 Applications Open
               </span>
-              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight font-black text-white tracking-tighter drop-shadow-2xl">
+              <h1 id="join-hero-title" className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight font-black text-white tracking-tighter drop-shadow-2xl">
                 Join the crew
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-medium">
@@ -135,7 +138,7 @@ export default function Join() {
                   data-tally-align-left="1"
                   data-tally-hide-title="1"
                   data-tally-overlay="1"
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-(--brand-pink) px-10 py-4 text-lg md:text-xl font-black text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-all hover:scale-[1.03] w-full sm:w-auto max-w-xs"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-(--brand-pink) px-10 py-4 text-lg md:text-xl font-black text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-all hover:scale-[1.03] focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 w-full sm:w-auto max-w-xs"
                 >
                   Apply to Join
                   <ArrowRight className="h-6 w-6 shrink-0 transition-transform group-hover:translate-x-1" />
@@ -233,10 +236,10 @@ export default function Join() {
         {/* Final CTA */}
         <PageSection align="center">
           <div className="mx-auto max-w-2xl text-center space-y-4 sm:space-y-6">
-            <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-foreground dark:text-white">
+            <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-white">
               Ready to start building?
             </h2>
-            <p className="text-sm sm:text-base text-muted-foreground px-4 sm:px-0">
+            <p className="text-sm sm:text-base text-white/70 px-4 sm:px-0">
               Join 200+ teen builders who are shipping real projects and growing
               together.
             </p>
@@ -247,12 +250,12 @@ export default function Join() {
               data-tally-align-left="1"
               data-tally-hide-title="1"
               data-tally-overlay="1"
-              className="group rounded-full bg-[var(--brand-pink)] px-8 sm:px-10 py-5 sm:py-6 text-sm sm:text-base font-semibold text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-all hover:scale-105 w-full sm:w-auto"
+              className="group rounded-full bg-[var(--brand-pink)] px-8 sm:px-10 py-5 sm:py-6 text-sm sm:text-base font-semibold text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-all hover:scale-105 focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 w-full sm:w-auto"
             >
               Apply Now
               <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
             </Button>
-            <p className="text-xs sm:text-sm text-muted-foreground">
+            <p className="text-xs sm:text-sm text-white/60">
               Questions? Reach us at{" "}
               <a
                 href="mailto:contact@indiainnovates.org"

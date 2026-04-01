@@ -1,13 +1,13 @@
 "use client"
 
-import React, { useState, useRef, useEffect, useCallback } from "react"
-import type { KeyboardEvent, ChangeEvent } from "react"
+import { useState, useRef, useEffect, useCallback } from "react"
+import type { ChangeEvent } from "react"
 import { useRouter } from "next/navigation"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts"
 
-import { Mic, Send, Info, Bot, Trash, MapPin } from "lucide-react"
+import { Bot, Trash, MapPin } from "lucide-react"
 
 interface ChatMessage {
     id: number
@@ -19,12 +19,12 @@ const MAX_CHARS = 2000
 const MAX_HISTORY = 20
 const STORAGE_KEY = "bb-qna-assistant-state-v1"
 const QUICK_PROMPTS = [
-    "Tell me about GitHub Copilot Dev Days.",
-    "How do I join the Copilot event?",
-  "Tell me about India Innovates 2026 Archive.",
-  "What domains did India Innovates have?",
-    "What is the Bits&Bytes club?",
-    "How can I join Bits&Bytes?",
+        "When is GitHub Copilot Dev Days and how do I register?",
+        "Give me a verified summary of India Innovates 2026 archive.",
+        "What were the official India Innovates 2026 domains?",
+        "Who are the founders and core team at Bits&Bytes?",
+        "How can I join Bits&Bytes this month?",
+        "Show me upcoming events and archived events.",
 ]
 
 type StreamPayload =
@@ -43,11 +43,10 @@ import { PromptBox } from "@/components/ui/chatgpt-prompt-input"
 
 export function QnAChatInterface() {
     const [message, setMessage] = useState("")
-    const [charCount, setCharCount] = useState(0)
     const [messages, setMessages] = useState<ChatMessage[]>([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
-    const [modelName, setModelName] = useState("qwen3.5-397b-a17b")
+    const [modelName, setModelName] = useState("assistant")
     const [hasHydrated, setHasHydrated] = useState(false)
 
     // Using `any` ref to bridge custom PromptBoxRef since it exposes .focus()
@@ -102,7 +101,6 @@ export function QnAChatInterface() {
                 }
                 if (typeof parsed.draft === "string") {
                     setMessage(parsed.draft)
-                    setCharCount(parsed.draft.length)
                 }
             }
         } catch (err) {
@@ -135,12 +133,10 @@ export function QnAChatInterface() {
         const value = e.target.value
         if (value.length > MAX_CHARS) return
         setMessage(value)
-        setCharCount(value.length)
     }
 
     const handleQuickPrompt = (prompt: string) => {
         setMessage(prompt)
-        setCharCount(prompt.length)
         setTimeout(() => {
             promptBoxRef.current?.focus()
         }, 0)
@@ -170,7 +166,6 @@ export function QnAChatInterface() {
 
         appendMessage(userMessage)
         setMessage("")
-        setCharCount(0)
         setIsLoading(true)
         setError(null)
 
@@ -246,7 +241,7 @@ export function QnAChatInterface() {
 
             updateMessageContent(assistantMessageId, (prev) => {
                 if (prev && prev.trim().length > 0) return prev
-                if (navigatePath) return "Taking you there! 🚀"
+                if (navigatePath) return "Taking you there now."
                 return "I'm not sure about that based on the information publicly available on this site."
             })
 
@@ -268,7 +263,11 @@ export function QnAChatInterface() {
 
 
     return (
-        <div className="flex flex-col h-full w-full max-w-4xl mx-auto rounded-none sm:rounded-3xl overflow-hidden border-0 sm:border border-zinc-700/60 bg-zinc-950/70 shadow-2xl backdrop-blur-3xl relative">
+        <div
+            className="flex flex-col h-full w-full max-w-4xl mx-auto rounded-none sm:rounded-3xl overflow-hidden border-0 sm:border border-zinc-700/60 bg-zinc-950/70 shadow-2xl backdrop-blur-3xl relative"
+            role="region"
+            aria-label="Bits and Bytes chat assistant"
+        >
             <div className="flex flex-wrap items-center justify-between gap-3 px-6 pt-5 pb-4 border-b border-zinc-800/80 bg-zinc-900/50 shrink-0">
                 <div className="flex items-center gap-3">
                     <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-[var(--brand-pink)] shadow-lg shadow-[#e45a92]/40">
@@ -288,15 +287,16 @@ export function QnAChatInterface() {
                         </span>
                     )}
                     <button
+                        type="button"
                         onClick={() => {
                             setMessages([])
-                            setCharCount(0)
                             setMessage("")
                             window.localStorage.removeItem(STORAGE_KEY)
                         }}
-                        className={`flex h-9 items-center justify-center gap-2 rounded-xl bg-zinc-800/60 px-3 text-xs font-medium border transition-all ${messages.length === 0 ? "opacity-0 invisible" : "text-zinc-400 hover:bg-zinc-800 hover:text-red-400 border-transparent hover:border-red-900/50"}`}
+                        className={`flex h-9 items-center justify-center gap-2 rounded-xl bg-zinc-800/60 px-3 text-xs font-medium border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e45a92] focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 ${messages.length === 0 ? "opacity-0 invisible" : "text-zinc-400 hover:bg-zinc-800 hover:text-red-400 border-transparent hover:border-red-900/50"}`}
                         aria-label="Clear chat session"
                         title="Clear chat session"
+                        disabled={messages.length === 0}
                     >
                         <Trash className="h-4 w-4" />
                         <span className="hidden sm:inline">Clear Chat</span>
@@ -304,12 +304,16 @@ export function QnAChatInterface() {
                 </div>
             </div>
 
-            <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 relative text-zinc-100 scroll-smooth">
+            <div
+                className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 relative text-zinc-100 scroll-smooth"
+                aria-live="polite"
+                aria-relevant="additions text"
+            >
                 {messages.length === 0 && (
                     <div className="flex flex-col items-center justify-center h-full text-center px-4 max-w-2xl mx-auto space-y-6">
                         <div className="bg-zinc-900/80 p-5 rounded-2xl border border-zinc-800 text-sm text-zinc-300 shadow-lg">
-                            <p className="mb-2 font-medium text-white text-base">Hello! I'm the Bits&Bytes AI Assistant.</p>
-                            <p>Ask me anything about our mission, team structure, events like GitHub Copilot Dev Days and the India Innovates 2026 Archive, impact stats, or how to get involved. I derive my answers purely from the public knowledge available in this project.</p>>
+                            <p className="mb-2 font-medium text-white text-base">Hello, I am the Bits&Bytes Assistant.</p>
+                            <p>Ask about verified event details, founder and team information, joining process, partnerships, or page navigation. I only answer from public data available in this project.</p>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
                             {QUICK_PROMPTS.map((prompt) => (
@@ -317,7 +321,7 @@ export function QnAChatInterface() {
                                     key={prompt}
                                     type="button"
                                     onClick={() => handleQuickPrompt(prompt)}
-                                    className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-3 text-sm text-zinc-300 text-left transition hover:border-[#e45a92]/60 hover:bg-zinc-800 hover:text-white group flex items-start gap-3"
+                                    className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-3 text-sm text-zinc-300 text-left transition hover:border-[#e45a92]/60 hover:bg-zinc-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e45a92] focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 group flex items-start gap-3"
                                 >
                                     <span className="text-[#e45a92] opacity-70 group-hover:opacity-100 mt-0.5">↳</span>
                                     <span>{prompt}</span>
@@ -335,7 +339,7 @@ export function QnAChatInterface() {
                                 </div>
                             )}
                             <div
-                                className={`w-fit max-w-[90%] sm:max-w-[85%] md:max-w-[75%] rounded-2xl px-5 py-3.5 text-[0.9rem] leading-relaxed shadow-sm ${m.role === "user"
+                                className={`w-fit max-w-[90%] sm:max-w-[85%] md:max-w-[75%] rounded-2xl px-5 py-3.5 text-[0.95rem] leading-relaxed shadow-sm break-words ${m.role === "user"
                                     ? "bg-[#e45a92] text-white rounded-br-sm"
                                     : "border border-zinc-700/60 bg-zinc-900/90 text-zinc-100 rounded-bl-sm prose prose-invert prose-p:my-2 prose-headings:my-3 prose-ul:my-2 prose-li:my-1 max-w-none"
                                     }`}
@@ -352,7 +356,9 @@ export function QnAChatInterface() {
                                                     return (
                                                         <a
                                                             href={href}
-                                                            className="inline-flex my-2 w-full sm:w-auto items-center justify-center rounded-xl bg-[var(--brand-pink)] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#e45a92]/30 transition-all hover:scale-105 hover:shadow-xl hover:shadow-[#e45a92]/40"
+                                                            className="inline-flex my-2 w-full sm:w-auto items-center justify-center rounded-xl bg-[var(--brand-pink)] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#e45a92]/30 transition-all hover:scale-105 hover:shadow-xl hover:shadow-[#e45a92]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900"
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
                                                             {...props}
                                                         >
                                                             {children}
@@ -362,6 +368,7 @@ export function QnAChatInterface() {
                                                 if (title === "follow-up") {
                                                     return (
                                                         <button
+                                                            type="button"
                                                             onClick={(e) => {
                                                                 e.preventDefault()
                                                                 const promptText = Array.isArray(children) ? children.join("") : String(children)
@@ -386,6 +393,7 @@ export function QnAChatInterface() {
                                                             href={href}
                                                             target="_blank"
                                                             rel="noopener noreferrer"
+                                                            aria-label="Open venue on Google Maps"
                                                             className="mt-4 mb-2 flex flex-col gap-2 rounded-2xl border border-zinc-700/50 bg-zinc-900/50 p-4 transition-all hover:bg-zinc-800/80 hover:border-emerald-500/50 group no-underline"
                                                         >
                                                             <div className="flex items-center gap-3">
