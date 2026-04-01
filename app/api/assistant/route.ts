@@ -4,12 +4,15 @@ import { findExperts, recommendRoles } from "@/lib/team-data"
 import { searchSiteContent } from "@/lib/rag"
 import { detectFrustration } from "@/lib/sentiment"
 const openai = new OpenAI({
-  apiKey: process.env.OSM_API_KEY,
-  baseURL: "https://api.osmapi.com/v1",
+  apiKey: process.env.HACKCLUB_PROXY_API_KEY,
+  baseURL: "https://ai.hackclub.com/proxy/v1",
+  defaultHeaders: {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  }
 })
 
-const PRIMARY_MODEL = "qwen3.5-397b-a17b"
-const FALLBACK_MODEL = "qwen3.5-397b-a17b"
+const PRIMARY_MODEL = "google/gemini-3-flash-preview"
+const FALLBACK_MODEL = "google/gemini-2.5-flash"
 
 const SSE_HEADERS = {
   "Content-Type": "text/event-stream",
@@ -407,7 +410,7 @@ export async function POST(req: NextRequest) {
         break // No more tool calls required
       }
 
-      // osmAPI requires content to be a string (not null).
+      // HackClub API requires content to be a string (not null).
       // When the model makes tool calls, the SDK sets content to null.
       currentMessages.push({
         ...message,

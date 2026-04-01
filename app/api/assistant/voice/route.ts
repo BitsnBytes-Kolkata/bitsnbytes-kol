@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from "next/server"
 import OpenAI, { APIError } from "openai"
 
 const openai = new OpenAI({
-  apiKey: process.env.OSM_API_KEY,
-  baseURL: "https://api.osmapi.com/v1",
+  apiKey: process.env.HACKCLUB_PROXY_API_KEY,
+  baseURL: "https://ai.hackclub.com/proxy/v1",
 })
 
 export async function POST(req: NextRequest) {

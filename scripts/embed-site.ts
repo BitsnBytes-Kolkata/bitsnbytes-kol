@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js"
-import { pipeline } from "@xenova/transformers"
+import OpenAI from "openai"
 import * as dotenv from "dotenv"
 
 dotenv.config({ path: ".env" })
@@ -8,6 +8,14 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 )
+
+const openai = new OpenAI({
+  apiKey: process.env.HACKCLUB_PROXY_API_KEY,
+  baseURL: "https://ai.hackclub.com/proxy/v1",
+  defaultHeaders: {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  }
+})
 
 const siteContent = [
   {
@@ -38,32 +46,80 @@ const siteContent = [
 ]
 
 async function run() {
-  console.log("Loading local embedding model...")
-  const extractor = await pipeline("feature-extraction", "Xenova/all-MiniLM-L6-v2", {
-    quantized: true,
-  })
+  console.log("Fetching existing embeddings...")
+  const { data: existingEmbeddings, error: fetchError } = await supabase.from("site_embeddings").select("id, page, section, content")
+  
+  if (fetchError) {
+    console.error("Failed to fetch existing embeddings:", fetchError)
+    return
+  }
 
-  console.log("Generating embeddings and pushing to Supabase...")
+  const existingMap = new Map()
+  for (const item of existingEmbeddings) {
+    existingMap.set(`${item.page}-${item.section}`, item)
+  }
+
+  console.log("Checking for updates and new content...")
+  const processedKeys = new Set()
 
   for (const item of siteContent) {
-    console.log(`Embedding ${item.page} - ${item.section}...`)
+    const key = `${item.page}-${item.section}`
+    processedKeys.add(key)
+
+    const existing = existingMap.get(key)
+    if (existing && existing.content === item.content) {
+      console.log(`Skipping ${key} - content unchanged.`)
+      continue
+    }
+
+    console.log(`Embedding ${key}...`)
     try {
-      const output = await extractor(item.content.replace(/\n/g, " "), { pooling: "mean", normalize: true })
-      const embedding = Array.from(output.data)
-
-      const { error } = await supabase.from("site_embeddings").insert({
-        page: item.page,
-        section: item.section,
-        content: item.content,
-        embedding,
+      const rawResponse = await fetch("https://ai.hackclub.com/proxy/v1/embeddings", {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer " + process.env.HACKCLUB_PROXY_API_KEY,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "openai/text-embedding-3-small",
+          input: item.content.replace(/\n/g, " "),
+          dimensions: 384,
+        })
       })
+      const response = await rawResponse.json()
+      
+      const embedding = response.data[0].embedding
 
-      if (error) console.error("Failed to insert:", error)
-      else console.log("Success")
+      if (existing) {
+        const { error } = await supabase.from("site_embeddings").update({
+          content: item.content,
+          embedding,
+        }).eq("id", existing.id)
+        if (error) console.error(`Failed to update ${key}:`, error)
+        else console.log(`Success updated ${key}`)
+      } else {
+        const { error } = await supabase.from("site_embeddings").insert({
+          page: item.page,
+          section: item.section,
+          content: item.content,
+          embedding,
+        })
+        if (error) console.error(`Failed to insert ${key}:`, error)
+        else console.log(`Success inserted ${key}`)
+      }
     } catch (e) {
-      console.error("Local embedding failed:", e)
+      console.error(`Local embedding failed for ${key}:`, e)
     }
   }
+
+  // Delete removed items
+  for (const [key, item] of existingMap.entries()) {
+    if (!processedKeys.has(key)) {
+      console.log(`Removing deleted content: ${key}`)
+      await supabase.from("site_embeddings").delete().eq("id", item.id)
+    }
+  }
+
   console.log("Done embedding site.")
 }
 

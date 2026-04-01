@@ -1,17 +1,21 @@
 import { supabase } from "./supabase"
-import { pipeline } from "@xenova/transformers"
+import OpenAI from "openai"
 
-let extractor: any = null
+const openai = new OpenAI({
+  apiKey: process.env.HACKCLUB_PROXY_API_KEY,
+  baseURL: "https://ai.hackclub.com/proxy/v1",
+  defaultHeaders: {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  }
+})
 
 export async function generateEmbedding(text: string): Promise<number[]> {
-  if (!extractor) {
-    extractor = await pipeline("feature-extraction", "Xenova/all-MiniLM-L6-v2", {
-      quantized: true,
-    })
-  }
-
-  const output = await extractor(text.replace(/\n/g, " "), { pooling: "mean", normalize: true })
-  return Array.from(output.data)
+  const response = await openai.embeddings.create({
+    model: "openai/text-embedding-3-small",
+    input: text.replace(/\n/g, " "),
+    dimensions: 384,
+  })
+  return response.data[0].embedding
 }
 
 export async function searchSiteContent(query: string, matchCount = 3): Promise<string[]> {
