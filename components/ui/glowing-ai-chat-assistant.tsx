@@ -9,6 +9,137 @@ import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts"
 
 import { Mic, Send, Info, Bot, X, Trash, ThumbsUp, ThumbsDown, Download } from "lucide-react"
 
+type CountdownPayload = {
+  event: string
+  date: string
+}
+
+type MemberCardPayload = {
+  name: string
+  role: string
+  photo?: string
+  socials?: {
+    github?: string
+    linkedin?: string
+  }
+}
+
+type ProjectIdea = {
+  title: string
+  description: string
+  tech_stack?: string[]
+  difficulty?: "beginner" | "intermediate" | "advanced"
+  why_it_fits_theme?: string
+}
+
+function formatRemaining(ms: number) {
+  if (ms <= 0) return { dd: "00", hh: "00", mm: "00", ss: "00", done: true }
+  const totalSeconds = Math.floor(ms / 1000)
+  const dd = Math.floor(totalSeconds / 86400)
+  const hh = Math.floor((totalSeconds % 86400) / 3600)
+  const mm = Math.floor((totalSeconds % 3600) / 60)
+  const ss = totalSeconds % 60
+  return {
+    dd: String(dd).padStart(2, "0"),
+    hh: String(hh).padStart(2, "0"),
+    mm: String(mm).padStart(2, "0"),
+    ss: String(ss).padStart(2, "0"),
+    done: false,
+  }
+}
+
+function CountdownCard({ payload }: { payload: CountdownPayload }) {
+  const [now, setNow] = useState(() => Date.now())
+  const target = new Date(payload.date).getTime()
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setNow(Date.now()), 1000)
+    return () => window.clearInterval(timer)
+  }, [])
+
+  if (!Number.isFinite(target)) {
+    return <div className="my-2 p-2 rounded bg-red-950/30 border border-red-900/50 text-red-400 text-xs">Invalid countdown date format.</div>
+  }
+
+  const remaining = formatRemaining(target - now)
+  return (
+    <div className="my-3 rounded-xl border border-zinc-700/70 bg-zinc-950/90 p-3">
+      <p className="text-[11px] uppercase tracking-widest text-zinc-400">Event Countdown</p>
+      <h4 className="mt-1 text-sm font-semibold text-white">{payload.event}</h4>
+      {remaining.done ? (
+        <p className="mt-2 text-xs text-emerald-400">This event has started.</p>
+      ) : (
+        <div className="mt-3 grid grid-cols-4 gap-2 text-center">
+          {[{ label: "DD", value: remaining.dd }, { label: "HH", value: remaining.hh }, { label: "MM", value: remaining.mm }, { label: "SS", value: remaining.ss }].map((item) => (
+            <div key={item.label} className="rounded-lg border border-zinc-700/60 bg-zinc-900/80 px-2 py-2">
+              <div className="text-sm font-bold text-white">{item.value}</div>
+              <div className="text-[10px] text-zinc-400">{item.label}</div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function TeamMemberCard({ payload }: { payload: MemberCardPayload }) {
+  return (
+    <div className="my-3 rounded-xl border border-zinc-700/70 bg-zinc-950/90 p-3">
+      <div className="flex items-center gap-3">
+        {payload.photo ? (
+          <img src={payload.photo} alt={payload.name} className="h-12 w-12 rounded-full object-cover border border-zinc-700/70" />
+        ) : (
+          <div className="h-12 w-12 rounded-full border border-zinc-700/70 bg-zinc-900/70" />
+        )}
+        <div>
+          <p className="text-sm font-semibold text-white">{payload.name}</p>
+          <span className="inline-flex mt-1 rounded-full border border-zinc-700/60 bg-zinc-900/80 px-2 py-0.5 text-[10px] uppercase tracking-wide text-zinc-300">
+            {payload.role}
+          </span>
+        </div>
+      </div>
+      <div className="mt-3 flex items-center gap-2">
+        {payload.socials?.github && (
+          <a href={payload.socials.github} target="_blank" rel="noreferrer" className="text-xs rounded-lg border border-zinc-700/70 px-2 py-1 text-zinc-200 hover:border-zinc-500">
+            GitHub
+          </a>
+        )}
+        {payload.socials?.linkedin && (
+          <a href={payload.socials.linkedin} target="_blank" rel="noreferrer" className="text-xs rounded-lg border border-zinc-700/70 px-2 py-1 text-zinc-200 hover:border-zinc-500">
+            LinkedIn
+          </a>
+        )}
+      </div>
+    </div>
+  )
+}
+
+function ProjectCards({ ideas }: { ideas: ProjectIdea[] }) {
+  return (
+    <div className="my-3 space-y-2">
+      {ideas.map((idea, idx) => (
+        <div key={`${idea.title}-${idx}`} className="rounded-xl border border-zinc-700/70 bg-zinc-950/90 p-3">
+          <div className="flex items-center justify-between gap-2">
+            <p className="text-sm font-semibold text-white">{idea.title}</p>
+            {idea.difficulty && (
+              <span className="text-[10px] uppercase tracking-wide rounded-full border border-zinc-700/70 bg-zinc-900/80 px-2 py-0.5 text-zinc-300">
+                {idea.difficulty}
+              </span>
+            )}
+          </div>
+          <p className="mt-1 text-xs text-zinc-300">{idea.description}</p>
+          {Array.isArray(idea.tech_stack) && idea.tech_stack.length > 0 && (
+            <p className="mt-2 text-[11px] text-zinc-400">Stack: {idea.tech_stack.join(" • ")}</p>
+          )}
+          {idea.why_it_fits_theme && (
+            <p className="mt-2 text-[11px] text-emerald-300">Theme fit: {idea.why_it_fits_theme}</p>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
+
 interface ChatMessage {
   id: number
   role: "user" | "assistant"
@@ -119,6 +250,7 @@ const FloatingAiAssistant: React.FC = () => {
   const [feedbackMap, setFeedbackMap] = useState<Record<number, FeedbackValue>>({})
   const [sessionId, setSessionId] = useState<string>("")
   const [showProactive, setShowProactive] = useState(false)
+  const ctaClickedRef = useRef(false)
 
   const chatRef = useRef<HTMLDivElement | null>(null)
   const textareaRef = useRef<HTMLTextAreaElement | null>(null)
@@ -398,8 +530,9 @@ const FloatingAiAssistant: React.FC = () => {
     })
   }
 
-  const handleSend = async () => {
-    const trimmed = message.trim()
+  const handleSend = async (manualMessagePayload?: string) => {
+    const textToUse = typeof manualMessagePayload === "string" ? manualMessagePayload : message
+    const trimmed = textToUse.trim()
     if (!trimmed || isLoading) return
 
     // ─── Smart FAQ: try instant answer first ──────────────────────────────
@@ -432,8 +565,10 @@ const FloatingAiAssistant: React.FC = () => {
     }
 
     appendMessage(userMessage)
-    setMessage("")
-    setCharCount(0)
+    if (typeof manualMessagePayload !== "string") {
+      setMessage("")
+      setCharCount(0)
+    }
     setIsLoading(true)
     setError(null)
 
@@ -552,6 +687,68 @@ const FloatingAiAssistant: React.FC = () => {
       setIsLoading(false)
     }
   }
+
+  const sendMessage = (text: string) => {
+    setIsChatOpen(true)
+    void handleSend(text)
+  }
+
+  useEffect(() => {
+    const nudges: Record<string, { delayMs: number; text: string }> = {
+      "/join": { delayMs: 45_000, text: "need help figuring out which role fits you?" },
+      "/events": { delayMs: 30_000, text: "want me to walk you through the upcoming events?" },
+      "/contact": { delayMs: 20_000, text: "want me to help you send a message to the team directly?" },
+    }
+
+    const config = nudges[pathname]
+    if (!config) return
+
+    const shownKey = `bb-proactive-nudge-${pathname}`
+    if (typeof window !== "undefined" && window.sessionStorage.getItem(shownKey)) return
+
+    let timer: number | null = null
+
+    const schedule = () => {
+      if (timer) window.clearTimeout(timer)
+      if (ctaClickedRef.current || isLoading) return
+      timer = window.setTimeout(() => {
+        if (ctaClickedRef.current) return
+        if (typeof window !== "undefined") {
+          window.sessionStorage.setItem(shownKey, "true")
+        }
+        sendMessage(config.text)
+      }, config.delayMs)
+    }
+
+    const interactionHandler = () => schedule()
+    const clickHandler = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null
+      if (!target) return
+      if (target.closest("a[href], button, [role='button'], [data-tally-open]")) {
+        ctaClickedRef.current = true
+        if (timer) window.clearTimeout(timer)
+        return
+      }
+      schedule()
+    }
+
+    schedule()
+    window.addEventListener("mousemove", interactionHandler)
+    window.addEventListener("keydown", interactionHandler)
+    window.addEventListener("scroll", interactionHandler, { passive: true })
+    window.addEventListener("touchstart", interactionHandler, { passive: true })
+    window.addEventListener("click", clickHandler)
+
+    return () => {
+      if (timer) window.clearTimeout(timer)
+      window.removeEventListener("mousemove", interactionHandler)
+      window.removeEventListener("keydown", interactionHandler)
+      window.removeEventListener("scroll", interactionHandler)
+      window.removeEventListener("touchstart", interactionHandler)
+      window.removeEventListener("click", clickHandler)
+      ctaClickedRef.current = false
+    }
+  }, [pathname, isLoading])
 
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -863,8 +1060,12 @@ const FloatingAiAssistant: React.FC = () => {
                               )
                             },
                             code: ({ className, children, ...props }) => {
-                              const match = /language-(\w+)/.exec(className || "")
-                              const isChart = match && match[1] === "chart"
+                              const match = /language-([\w-]+)/.exec(className || "")
+                              const language = match?.[1]
+                              const isChart = language === "chart"
+                              const isCountdown = language === "countdown"
+                              const isMemberCard = language === "member_card"
+                              const isProjectCard = language === "project_card"
 
                               if (isChart) {
                                 try {
@@ -895,6 +1096,47 @@ const FloatingAiAssistant: React.FC = () => {
                                     </div>
                                   )
                                 }
+                              }
+
+                              if (isCountdown) {
+                                try {
+                                  const payload = JSON.parse(String(children).replace(/\n$/, "")) as CountdownPayload
+                                  if (payload?.event && payload?.date) {
+                                    return <CountdownCard payload={payload} />
+                                  }
+                                } catch (e) {
+                                  console.error("Failed to parse countdown data", e)
+                                }
+                                return <div className="my-2 p-2 rounded bg-red-950/30 border border-red-900/50 text-red-400 text-xs">Error visualizing countdown data.</div>
+                              }
+
+                              if (isMemberCard) {
+                                try {
+                                  const payload = JSON.parse(String(children).replace(/\n$/, "")) as MemberCardPayload
+                                  if (payload?.name && payload?.role) {
+                                    return <TeamMemberCard payload={payload} />
+                                  }
+                                } catch (e) {
+                                  console.error("Failed to parse member card data", e)
+                                }
+                                return <div className="my-2 p-2 rounded bg-red-950/30 border border-red-900/50 text-red-400 text-xs">Error visualizing team member card.</div>
+                              }
+
+                              if (isProjectCard) {
+                                try {
+                                  const payload = JSON.parse(String(children).replace(/\n$/, ""))
+                                  const ideas: ProjectIdea[] = Array.isArray(payload)
+                                    ? payload
+                                    : Array.isArray(payload?.ideas)
+                                      ? payload.ideas
+                                      : []
+                                  if (ideas.length > 0) {
+                                    return <ProjectCards ideas={ideas.slice(0, 3)} />
+                                  }
+                                } catch (e) {
+                                  console.error("Failed to parse project card data", e)
+                                }
+                                return <div className="my-2 p-2 rounded bg-red-950/30 border border-red-900/50 text-red-400 text-xs">Error visualizing project ideas.</div>
                               }
 
                               const isInline = !match
