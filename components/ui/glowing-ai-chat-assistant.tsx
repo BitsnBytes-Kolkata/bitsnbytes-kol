@@ -23,11 +23,11 @@ const STORAGE_KEY = "bb-floating-assistant-state-v1"
 const FEEDBACK_STORAGE_KEY = "bb-assistant-feedback-v1"
 const QUICK_PROMPTS = [
   "When is GitHub Copilot Dev Days and how do I register?",
-  "Give me a verified summary of India Innovates 2026 archive.",
   "What were the official domains for India Innovates 2026?",
   "Who are the founders and core team at Bits&Bytes?",
   "How can I join Bits&Bytes this month?",
   "Show upcoming and archived events.",
+  "Draw a vintage steampunk airship! 🎨",
 ]
 
 // ─── Smart FAQ: instant answers without API calls ────────────────────────────
@@ -44,7 +44,7 @@ const SMART_FAQ: FaqEntry[] = [
   },
   {
     patterns: ["contact", "email", "reach out", "get in touch", "how to contact"],
-    answer: "You can reach us at:\n\n- **Email:** hello@gobitsnbytes.org\n- **Discord:** available from the website\n- **LinkedIn:** [Bits&Bytes](https://www.linkedin.com/company/gobitsbytes)\n\n[Contact Page](/contact \"cta\")",
+    answer: "You can reach us at:\n\n- **Email:** hello@gobitsnbytes.org\n- **WhatsApp Community:** https://chat.whatsapp.com/DvAIRLgEEBxISR8bsb9kVg\n- **LinkedIn:** [Bits&Bytes](https://www.linkedin.com/company/gobitsbytes)\n\n[Contact Page](/contact \"cta\")",
   },
   {
     patterns: ["copilot dev days", "copilot event", "github copilot", "april 19", "cubispace"],
@@ -60,7 +60,7 @@ const SMART_FAQ: FaqEntry[] = [
   },
   {
     patterns: ["discord", "community link", "whatsapp group", "discord server"],
-    answer: "Here's the India Innovates community Discord:\n\n```discord-widget\n1480617556292272260\n```\n\nFor Bits&Bytes general community, check the link on our website header!",
+    answer: "Join the Bits&Bytes community here:\n\n[Join WhatsApp Community](https://chat.whatsapp.com/DvAIRLgEEBxISR8bsb9kVg \"cta\")\n\n[What events are coming up?](# \"follow-up\")",
   },
   {
     patterns: ["where are you", "location", "based in", "city", "lucknow"],
@@ -208,8 +208,15 @@ const FloatingAiAssistant: React.FC = () => {
 
   useEffect(() => {
     if (!hasHydrated || typeof window === "undefined") return
+
+    // Clean base64 strings before saving so we don't blow up localStorage limit!
+    const safeMessages = messages.map(m => ({
+      ...m,
+      content: m.content.replace(/data:image\/[^;]+;base64,[A-Za-z0-9+/=]+/g, "https://placehold.co/600x400/27272a/e45a92?text=Image+Removed+For+Storage")
+    }))
+
     const payload: StoredAssistantState = {
-      messages,
+      messages: safeMessages,
       isChatOpen,
       draft: message,
     }
@@ -501,6 +508,23 @@ const FloatingAiAssistant: React.FC = () => {
               setTimeout(() => {
                 performHighlight(actionData.textSnippet as string)
               }, 120)
+            } else if (actionData?.type === "generate_image") {
+              const { prompt, modelChoice, aspectRatio } = actionData as any;
+              updateMessageContent(assistantMessageId, (prev) => prev + "\n\n%%GENERATE_LOADER%%\n\n");
+              
+              fetch("/api/assistant/image", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ prompt, modelChoice, aspectRatio })
+              }).then(r => r.json()).then(data => {
+                if (data.base64) {
+                  updateMessageContent(assistantMessageId, (prev) => prev.replace("%%GENERATE_LOADER%%", `![Generated Image](${data.base64})`));
+                } else {
+                  updateMessageContent(assistantMessageId, (prev) => prev.replace("%%GENERATE_LOADER%%", `*Failed to generate image: ${data.error || 'Unknown error'}*`));
+                }
+              }).catch(err => {
+                updateMessageContent(assistantMessageId, (prev) => prev.replace("%%GENERATE_LOADER%%", `*Image generation failed.*`));
+              });
             }
           }
         }
@@ -762,8 +786,36 @@ const FloatingAiAssistant: React.FC = () => {
                       ) : (
                         <ReactMarkdown
                           remarkPlugins={[remarkGfm]}
+                          urlTransform={(value) => value}
                           components={{
-                            p: ({ children }) => <p className="my-1 text-[0.75rem]">{children}</p>,
+                            p: ({ children }) => {
+                              const text = Array.isArray(children) ? children.join("") : String(children);
+                              if (text.includes("%%GENERATE_LOADER%%")) {
+                                return (
+                                  <div className="relative overflow-hidden rounded-xl bg-zinc-800/80 w-full aspect-video border border-zinc-700/50 flex items-center justify-center p-4 my-2">
+                                    <div className="absolute inset-0 w-[200%] bg-gradient-to-r from-transparent via-[#e45a92]/20 to-transparent animate-[scan_2s_ease-in-out_infinite]" style={{ animationName: "scan" }} />
+                                    <style>{`
+                                      @keyframes scan {
+                                        0% { transform: translateX(-100%); }
+                                        100% { transform: translateX(50%); }
+                                      }
+                                    `}</style>
+                                    <div className="flex flex-col items-center gap-3 relative z-10">
+                                      <div className="flex gap-1.5 justify-center">
+                                        <div className="h-2 w-2 rounded-full bg-[var(--brand-pink)] animate-bounce" style={{ animationDelay: '0ms' }} />
+                                        <div className="h-2 w-2 rounded-full bg-[var(--brand-pink)] animate-bounce" style={{ animationDelay: '150ms' }} />
+                                        <div className="h-2 w-2 rounded-full bg-[var(--brand-pink)] animate-bounce" style={{ animationDelay: '300ms' }} />
+                                      </div>
+                                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--brand-pink)] animate-pulse shadow-black drop-shadow-md">Synthesizing Pixels</span>
+                                    </div>
+                                  </div>
+                                )
+                              }
+                              return <p className="my-1 text-[0.75rem]">{children}</p>
+                            },
+                            img: ({ src, alt }) => (
+                              <img src={src} alt={alt} className="rounded-xl border border-zinc-700/50 shadow-lg shadow-black/20 w-full object-cover my-2 hover:scale-[1.02] transition-transform duration-300" />
+                            ),
                             h1: ({ children }) => <h1 className="my-2 text-sm font-bold">{children}</h1>,
                             h2: ({ children }) => <h2 className="my-2 text-sm font-semibold">{children}</h2>,
                             h3: ({ children }) => <h3 className="my-1.5 text-xs font-semibold">{children}</h3>,

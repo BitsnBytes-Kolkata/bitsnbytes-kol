@@ -12,14 +12,14 @@ import { Button } from "@/components/ui/button";
 
 const strategicPartners = [
   {
-    name: "Hack Club AI",
-    logo: "https://assets.hackclub.com/icon-square.svg",
-    url: "https://ai.hackclub.com/",
-    role: "AI Partner",
-    description: "Empowering teen hackers with high-quality access to the best OS AI models and APIs.",
-    features: ["Fast Inference", "Multi-model", "For Teen Hackers"],
-    color: "red",
-    icon: <Cpu className="w-5 h-5 text-red-500" />,
+    name: "osmAPI",
+    logo: "/partners/OSM-API-Light-BBO_4Eff.png",
+    url: "https://www.osmapi.com/",
+    role: "API Partner",
+    description: "One Awesome API for everything AI. Route to OpenAI, Anthropic, Google & 14+ LLM providers.",
+    features: ["Universal Router", "Multi-model", "Fast Inference"],
+    color: "blue",
+    icon: <Cpu className="w-5 h-5 text-blue-500" />,
   },
   {
     name: "YRI Fellowship",

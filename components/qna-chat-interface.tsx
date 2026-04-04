@@ -234,6 +234,24 @@ export function QnAChatInterface() {
                         const actionData = payload.action
                         if (actionData?.type === "navigate" && typeof actionData.path === "string") {
                             navigatePath = actionData.path
+                        } else if (actionData?.type === "generate_image") {
+                            const { prompt, modelChoice, aspectRatio } = actionData as any;
+                            updateMessageContent(assistantMessageId, (prev) => prev + "\n\n%%GENERATE_LOADER%%\n\n");
+                            
+                            fetch("/api/assistant/image", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({ prompt, modelChoice, aspectRatio })
+                            }).then(r => r.json()).then(data => {
+                                console.log("Image generation returned from API:", data);
+                                if (data.base64) {
+                                  updateMessageContent(assistantMessageId, (prev) => prev.replace("%%GENERATE_LOADER%%", `![Generated Image](${data.base64})`));
+                                } else {
+                                  updateMessageContent(assistantMessageId, (prev) => prev.replace("%%GENERATE_LOADER%%", `*Failed to generate image: ${data.error || 'Unknown error'}*`));
+                                }
+                            }).catch(err => {
+                                updateMessageContent(assistantMessageId, (prev) => prev.replace("%%GENERATE_LOADER%%", `*Image generation failed.*`));
+                            });
                         }
                     }
                 }
@@ -349,8 +367,36 @@ export function QnAChatInterface() {
                                 ) : (
                                     <ReactMarkdown
                                         remarkPlugins={[remarkGfm]}
+                                        urlTransform={(value) => value}
                                         components={{
-                                            p: ({ children }) => <p className="leading-relaxed">{children}</p>,
+                                            p: ({ children }) => {
+                                              const text = Array.isArray(children) ? children.join("") : String(children);
+                                              if (text.includes("%%GENERATE_LOADER%%")) {
+                                                return (
+                                                  <div className="relative overflow-hidden rounded-xl bg-zinc-800/80 w-full aspect-video border border-zinc-700/50 flex items-center justify-center p-4 my-2">
+                                                    <div className="absolute inset-0 w-[200%] bg-gradient-to-r from-transparent via-[#e45a92]/20 to-transparent animate-[scan_2s_ease-in-out_infinite]" style={{ animationName: "scan" }} />
+                                                    <style>{`
+                                                      @keyframes scan {
+                                                        0% { transform: translateX(-100%); }
+                                                        100% { transform: translateX(50%); }
+                                                      }
+                                                    `}</style>
+                                                    <div className="flex flex-col items-center gap-3 relative z-10">
+                                                      <div className="flex gap-1.5 justify-center">
+                                                        <div className="h-2 w-2 rounded-full bg-[var(--brand-pink)] animate-bounce" style={{ animationDelay: '0ms' }} />
+                                                        <div className="h-2 w-2 rounded-full bg-[var(--brand-pink)] animate-bounce" style={{ animationDelay: '150ms' }} />
+                                                        <div className="h-2 w-2 rounded-full bg-[var(--brand-pink)] animate-bounce" style={{ animationDelay: '300ms' }} />
+                                                      </div>
+                                                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--brand-pink)] animate-pulse shadow-black drop-shadow-md">Synthesizing Pixels</span>
+                                                    </div>
+                                                  </div>
+                                                )
+                                              }
+                                              return <p className="leading-relaxed">{children}</p>
+                                            },
+                                            img: ({ src, alt }) => (
+                                              <img src={src} alt={alt} className="rounded-xl border border-zinc-700/50 shadow-lg shadow-black/20 w-full object-cover my-2 hover:scale-[1.02] transition-transform duration-300" />
+                                            ),
                                             a: ({ href, title, children, ...props }) => {
                                                 if (title === "button" || title === "cta") {
                                                     return (
@@ -431,7 +477,6 @@ export function QnAChatInterface() {
                                                                 src={`https://discord.com/widget?id=${serverId}&theme=dark`}
                                                                 width="100%"
                                                                 height="400"
-                                                                allowTransparency={true}
                                                                 frameBorder="0"
                                                                 sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
                                                                 className="block"

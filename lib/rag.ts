@@ -1,13 +1,7 @@
 import { supabase } from "./supabase"
-import OpenAI from "openai"
 
-const openai = new OpenAI({
-  apiKey: process.env.HACKCLUB_PROXY_API_KEY,
-  baseURL: "https://ai.hackclub.com/proxy/v1",
-  defaultHeaders: {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-  }
-})
+const EMBEDDING_MODEL = "openai/text-embedding-3-small"
+const EMBEDDING_DIMENSIONS = 1536
 
 export async function generateEmbedding(text: string): Promise<number[]> {
   const input = text.replace(/\n/g, " ").trim()
@@ -15,15 +9,49 @@ export async function generateEmbedding(text: string): Promise<number[]> {
     throw new Error("Cannot generate embedding for empty input")
   }
 
-  const response = await openai.embeddings.create({
-    model: "openai/text-embedding-3-small",
-    input,
-    dimensions: 384,
+  const apiKey = process.env.HACKCLUB_PROXY_API_KEY
+  if (!apiKey) {
+    throw new Error("HACKCLUB_PROXY_API_KEY is not configured")
+  }
+
+  const raw = await fetch("https://ai.hackclub.com/proxy/v1/embeddings", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: EMBEDDING_MODEL,
+      dimensions: EMBEDDING_DIMENSIONS,
+      input,
+    }),
   })
+
+  const textResponse = await raw.text()
+
+  let response: any
+  try {
+    response = JSON.parse(textResponse)
+  } catch {
+    throw new Error("Embedding API returned non-JSON response")
+  }
+
+  if (response?.error?.message) {
+    throw new Error(`Embedding API error: ${response.error.message}`)
+  }
+
+  if (!raw.ok) {
+    try {
+      throw new Error(`Embedding API HTTP ${raw.status}: ${JSON.stringify(response)}`)
+    } catch {
+      throw new Error(`Embedding API HTTP ${raw.status}`)
+    }
+  }
 
   const embedding = response?.data?.[0]?.embedding
   if (!Array.isArray(embedding) || embedding.length === 0) {
     console.error("Embedding API returned an unexpected payload", {
+      responseType: typeof response,
       hasData: Array.isArray(response?.data),
       firstItemType: typeof response?.data?.[0],
       model: response?.model,
@@ -46,7 +74,7 @@ export async function searchSiteContent(query: string, matchCount = 3): Promise<
   // This relies on a Postgres function:
   /*
     create or replace function match_site_sections (
-      query_embedding vector(384),
+      query_embedding vector(1536),
       match_threshold float,
       match_count int
     )
@@ -74,7 +102,7 @@ export async function searchSiteContent(query: string, matchCount = 3): Promise<
 
   const { data, error } = await supabase.rpc("match_site_sections", {
     query_embedding: queryEmbedding,
-    match_threshold: 0.5, // Reduced threshold since MiniLM vectors behave slightly differently than ada-002
+    match_threshold: 0.5,
     match_count: matchCount,
   })
 

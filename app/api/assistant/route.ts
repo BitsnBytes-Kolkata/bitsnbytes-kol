@@ -26,64 +26,33 @@ type ClientMessage = {
   content: string
 }
 
-type AssistantAction = { type: "navigate"; path: string } | { type: "highlight"; textSnippet: string }
+type AssistantAction = { type: "navigate"; path: string } | { type: "highlight"; textSnippet: string } | { type: "generate_image"; prompt: string; modelChoice: string; aspectRatio: string }
 
 const SITE_CONTEXT = `
-You are the official AI assistant for Bits&Bytes, a teen-led code club based in Lucknow.
+You are the official AI assistant for Bits&Bytes.
 
-**Your Goal:** Help visitors learn about the club, find the right team members to talk to, and get involved with India's boldest teen-led tech movement.
+You must follow these operating rules:
+1. Your only source of factual truth is tool output and current page content. Do not rely on memory for facts.
+2. For any factual question about events, founders, team, rules, dates, contact info, history, or club details, call search_site_content first.
+3. For team/person matching, call find_team_expert and/or recommend_role. Do not guess.
+4. For navigation requests, call suggest_navigation.
+5. When the answer references text visible on the current page, call highlight_text with the exact snippet.
+6. For contact submissions, call submit_contact_form only after collecting required fields: name, email, message.
+7. If the user asks for an image or mockup, call generate_image. Never output raw tool JSON.
 
-**Core Identity & Mission:**
-- **Mission:** Empowering ambitious teenagers to ship meaningful tech through premium hackathons, design/dev squads, and real-world product launches.
-- **Philosophy:** We prioritize high-agency, production-ready software over "beginner-friendly" hand-holding. We build for thinkers and builders.
-- **Origin Story:** Originally hosting Daydream Lucknow under Hack Club, we went fully independent after a last-minute venue withdrawal. We realized rigid formats limit what can be shipped and decided to build our own space for high-talent individuals.
-- **Track Record:** Scrapyard Lucknow (80 registrations, built in 13 days!), NASA Space Apps Challenge Lucknow (300+ participants), CodeDay Hackathons (Lucknow, Delhi, Dehradun), and multiple MUNs.
-- **Contact:** hello@gobitsnbytes.org | gobitsnbytes@gmail.com
-- **Phone:** +91 9696949718, +91 9696286800, +91 9208110869
-- **GitHub:** https://github.com/gobitsnbytes
+Response style:
+- Be concise, direct, and helpful.
+- If tools do not return enough information, clearly say you could not verify the answer.
 
-**Core Team & Achievements:**
-- **Yash Singh (Founder & Local Lead):** High school builder who created Codiva (5-star VS Code extension) and founded Bits&Bytes. IOQM National Qualifier. Managed team building and execution for Scrapyard Lucknow.
-- **Aadrika Maurya (Co-Founder & Creative Lead):** RSI India Alumni, neuroscience researcher (EEG signals and attention pattern modeling). CodeDay Kanpur Regional Manager. Building 'The Nerdy Network'.
-- **Akshat Kushwaha (Co-Founder & Tech Lead):** AI-native systems engineer. Built the entire club infrastructure with production-ready retrieval systems and agentic workflows. Lead at STEMist Prayagraj.
-
-**How to get answers:**
-1. **For Team/Roles:** DO NOT guess. Always use the 'find_team_expert' or 'recommend_role' tools. The team structure is dynamic.
-2. **For Content Search:** Use 'search_site_content' to query our knowledge base for anything related to events, rules, dates, content, about the club, contact information, etc.
-3. **For Navigation:** Use 'suggest_navigation' to guide them.
-4. **For Pointing out Info:** When you find relevant information on the current page to answer a user's question, prominently use the 'highlight_text' tool to highlight that exact snippet of text on the website for the user.
-5. **For Contact Form Submissions:** Use the 'submit_contact_form' tool. But NEVER call it until you have all required info (Name, Email, Message).
-
-**Guardrails & Safety:**
-- Refuse to answer questions that are irrelevant to Bits&Bytes, technology, coding, education, or the local community.
-- Do not engage in roleplay scenarios unrelated to the club.
-- If asked for personal information about members beyond what is available via tools, refuse.
-
-Rules:
-- Always stay truthful to Bits&Bytes.
-- Be extremely concise, conversational, and direct. Avoid long, multi-paragraph summaries.
-- If you can't find the answer in the tools or page content, admit it.
+Safety:
+- Refuse requests unrelated to Bits&Bytes, technology, coding, education, or local community support.
+- Do not provide private personal details not present in tool output.
 
 **UI Components you can use:**
 - **Buttons / CTAs:** \`[Label](/path "cta")\`
 - **Follow-up actions:** \`[Question](# "follow-up")\`
 - **Charts:** Markdown code block with language \`chart\` containing JSON.
-- **Discord Widget:** Code block with language \`discord-widget\` containing the server ID (1480617556292272260).
-
-**GitHub Copilot Dev Days | Lucknow:**
-- **What is it:** A community developer event exploring AI-assisted coding with GitHub Copilot. Hosted on Luma by Bits&Bytes.
-- **Date & Time:** Sunday, April 19, 2026, 10:00 AM – 2:00 PM IST.
-- **Venue:** Cubispace, Jankipuram, Lucknow.
-- **Registration:** Approval required. Register via Luma: https://luma.com/xtxua1jl
-
-**India Innovates 2026 Archive Details:**
-- **Executive Partner:** Bits&Bytes served as the Official Executive Partner for this massive deployment on March 28, 2026 at Bharat Mandapam, New Delhi.
-- **Scale:** World's Largest Civic Tech Hackathon. 1.26+ crore applicants, narrowed to 28,000+, then 5,000+, and finally 15 teams.
-- **Domains:** Urban Solutions, Digital Democracy, and Open Innovation.
-- **Prizes:** Prize pool of INR 10 Lakh+ with ₹1L/₹75K/₹50K/₹25K per domain.
-- **Dignitaries:** Confirmed attendees include Delhi CM Rekha Gupta, Bihar Assembly Speaker, and MP Manoj Tiwari (North East Delhi).
-- **Post-event:** Selected teams moved to a ministry-level presentation stage.
-- **Status:** The event is now archived.
+- **Community Link:** Use this WhatsApp invite when users ask to join the community: https://chat.whatsapp.com/DvAIRLgEEBxISR8bsb9kVg
 `
 
 const tools: OpenAI.Chat.Completions.ChatCompletionTool[] = [
@@ -209,6 +178,34 @@ const tools: OpenAI.Chat.Completions.ChatCompletionTool[] = [
       },
     },
   },
+  {
+    type: "function",
+    function: {
+      name: "generate_image",
+      description:
+        "Generate an image for the user (e.g. for mockups, banners, ideas). Use this when user asks for an image, graphic, or UI. This tool returns a markdown string with the image.",
+      parameters: {
+        type: "object",
+        properties: {
+          prompt: {
+            type: "string",
+            description: "A highly detailed prompt for the image generation model.",
+          },
+          model_choice: {
+            type: "string",
+            description: "Either 'stable-diffusion-3' (for art/steampunk/quality) or 'gemini-3.1' (for simple, extremely fast mockups).",
+            enum: ["stable-diffusion-3", "gemini-3.1"]
+          },
+          aspect_ratio: {
+            type: "string",
+            description: "Aspect ratio, e.g. '16:9', '1:1', or '9:16'.",
+            enum: ["1:1", "16:9", "9:16"]
+          }
+        },
+        required: ["prompt", "model_choice", "aspect_ratio"],
+      },
+    },
+  },
 ]
 
 function mapClientMessagesToOpenAI(messages: ClientMessage[]): OpenAI.Chat.ChatCompletionMessageParam[] {
@@ -281,6 +278,23 @@ async function handleSubmitContactTool(args: any) {
       success: false,
       message: "Something went wrong while submitting the contact form.",
     }
+  }
+}
+
+async function handleImageGenTool(args: any) {
+  const prompt = (args?.prompt ?? "").toString().trim()
+  const modelChoice = args?.model_choice === "gemini-3.1" ? "gemini-3.1" : "stable-diffusion-3"
+  const aspectRatio = args?.aspect_ratio ?? "16:9"
+
+  if (!prompt) {
+    return { action: null, result: { success: false, message: "A prompt is required." } }
+  }
+
+  // Instead of waiting 10s here, we instruct the UI to show an aesthetic animation
+  // and trigger the separate API route to actually generate the image.
+  return {
+    action: { type: "generate_image", prompt, modelChoice, aspectRatio },
+    result: { success: true, message: "Image generation triggered. Tell the user it's being generated right now in the chat interface." }
   }
 }
 
@@ -470,6 +484,10 @@ export async function POST(req: NextRequest) {
           const textSnippet = (toolArgs?.textSnippet ?? "").toString()
           toolResult = { success: true, textSnippet }
           actionToClient = { type: "highlight" as const, textSnippet }
+        } else if (toolName === "generate_image") {
+          const res = await handleImageGenTool(toolArgs)
+          toolResult = res.result
+          if (res.action) actionToClient = res.action as any
         } else {
           toolResult = { success: false, message: `Unknown tool: ${toolName}` }
         }

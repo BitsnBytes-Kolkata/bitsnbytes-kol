@@ -1,6 +1,7 @@
 import { createClient } from "@supabase/supabase-js"
-import OpenAI from "openai"
 import * as dotenv from "dotenv"
+import * as fs from "fs"
+import * as path from "path"
 
 dotenv.config({ path: ".env" })
 
@@ -9,114 +10,157 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 )
 
-const openai = new OpenAI({
-  apiKey: process.env.HACKCLUB_PROXY_API_KEY,
-  baseURL: "https://ai.hackclub.com/proxy/v1",
-  defaultHeaders: {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-  }
-})
+const EMBEDDING_MODEL = "openai/text-embedding-3-small"
+const EMBEDDING_DIMENSIONS = 1536
 
-const siteContent = [
-  {
-    page: "/",
-    section: "hero",
-    content: "Bits&Bytes is India's boldest teen-led hackathons & tech movements. We build, ship, and iterate. Powered by high-agency builders."
-  },
-  {
-    page: "/about",
-    section: "team",
-    content: "Our team: Founder Yash (Leadership, Events), Co-founder Aadrika (Creative Strategist, Design), Co-founder Akshat Kushwaha (Technical Lead, Full-stack), Devansh (Backend), Maryam (Social Media), and Srishti (Operations)."
-  },
-  {
-    page: "/events",
-    section: "copilot",
-    content: "GitHub Copilot Dev Days | Lucknow. April 19, 2026, 10 AM - 2 PM IST at Cubispace, Lucknow. Registration via Luma."
-  },
-  {
-    page: "/events",
-    section: "india-innovates",
-    content: "India Innovates Hackathon 2026 Archive. Held on March 28, 2026 at Bharat Mandapam, New Delhi (9 AM-7 PM). Organized by HN Group and MCD with DDU, IIT Kharagpur, DTC, NSUT, and GGSIPU. Scale: 1.26+ crore applicants narrowed to 28,000+, then 5,000+, then 15 teams. Domains: Urban Solutions, Digital Democracy, Open Innovation. Prize pool: ₹10 Lakh+ with ₹1L/₹75K/₹50K/₹25K per domain. GobitsnBytes / Bits&Bytes served as the Official Executive Partner."
-  },
-  {
-    page: "/join",
-    section: "info",
-    content: "Join Bits&Bytes by attending our workshops, joining Discord, or signing up on the official join page."
-  }
-]
+type SiteChunk = { page: string; section: string; content: string }
 
-async function run() {
-  console.log("Fetching existing embeddings...")
-  const { data: existingEmbeddings, error: fetchError } = await supabase.from("site_embeddings").select("id, page, section, content")
-  
-  if (fetchError) {
-    console.error("Failed to fetch existing embeddings:", fetchError)
-    return
+function normalizeSectionKey(section: string): string {
+  return section.substring(0, 50).replace(/[^a-zA-Z0-9_-]/g, "_")
+}
+
+function parseMarkdownToBlocks(markdown: string, page: string): SiteChunk[] {
+  const blocks: SiteChunk[] = []
+  const lines = markdown.split("\n")
+
+  let currentSection = "Overview"
+  let currentLines: string[] = []
+
+  const flush = () => {
+    const content = currentLines.join("\n").trim()
+    if (!content) return
+
+    const formattedContent =
+      currentSection === "Overview"
+        ? content
+        : `## ${currentSection}\n\n${content}`
+
+    blocks.push({
+      page,
+      section: currentSection,
+      content: formattedContent,
+    })
   }
 
-  const existingMap = new Map()
-  for (const item of existingEmbeddings) {
-    existingMap.set(`${item.page}-${item.section}`, item)
-  }
+  for (const line of lines) {
+    const headerMatch = line.match(/^##\s+(.+)$/)
 
-  console.log("Checking for updates and new content...")
-  const processedKeys = new Set()
-
-  for (const item of siteContent) {
-    const key = `${item.page}-${item.section}`
-    processedKeys.add(key)
-
-    const existing = existingMap.get(key)
-    if (existing && existing.content === item.content) {
-      console.log(`Skipping ${key} - content unchanged.`)
+    if (headerMatch) {
+      flush()
+      currentSection = headerMatch[1].trim()
+      currentLines = []
       continue
     }
 
-    console.log(`Embedding ${key}...`)
-    try {
-      const rawResponse = await fetch("https://ai.hackclub.com/proxy/v1/embeddings", {
-        method: "POST",
-        headers: {
-          "Authorization": "Bearer " + process.env.HACKCLUB_PROXY_API_KEY,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          model: "openai/text-embedding-3-small",
-          input: item.content.replace(/\n/g, " "),
-          dimensions: 384,
-        })
-      })
-      const response = await rawResponse.json()
-      
-      const embedding = response.data[0].embedding
+    currentLines.push(line)
+  }
 
-      if (existing) {
-        const { error } = await supabase.from("site_embeddings").update({
-          content: item.content,
-          embedding,
-        }).eq("id", existing.id)
-        if (error) console.error(`Failed to update ${key}:`, error)
-        else console.log(`Success updated ${key}`)
-      } else {
-        const { error } = await supabase.from("site_embeddings").insert({
-          page: item.page,
-          section: item.section,
-          content: item.content,
-          embedding,
-        })
-        if (error) console.error(`Failed to insert ${key}:`, error)
-        else console.log(`Success inserted ${key}`)
-      }
-    } catch (e) {
-      console.error(`Local embedding failed for ${key}:`, e)
+  flush()
+  return blocks
+}
+
+async function generateEmbedding(inputText: string): Promise<number[] | null> {
+  const apiKey = process.env.HACKCLUB_PROXY_API_KEY
+  if (!apiKey) {
+    console.error("HACKCLUB_PROXY_API_KEY is not configured")
+    return null
+  }
+
+  const raw = await fetch("https://ai.hackclub.com/proxy/v1/embeddings", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: EMBEDDING_MODEL,
+      dimensions: EMBEDDING_DIMENSIONS,
+      input: inputText,
+    }),
+  })
+
+  let response: any
+  const textResponse = await raw.text()
+  try {
+    response = JSON.parse(textResponse)
+  } catch {
+    console.error("Embedding API returned non-JSON response")
+    return null
+  }
+
+  if (response?.error?.message) {
+    console.error("Embedding API error:", response.error.message)
+    return null
+  }
+
+  if (!raw.ok) {
+    console.error(`Embedding API HTTP ${raw.status}:`, response)
+    return null
+  }
+
+  const embedding = response?.data?.[0]?.embedding
+  if (!Array.isArray(embedding)) {
+    return null
+  }
+
+  return embedding
+}
+
+async function run() {
+  console.log("Clearing existing embeddings from site_embeddings...")
+  const { error: clearError } = await supabase
+    .from("site_embeddings")
+    .delete()
+    .not("id", "is", null)
+
+  if (clearError) {
+    console.error("Failed to clear existing embeddings:", clearError)
+    return
+  }
+
+  const filePaths = [
+    { absPath: path.resolve(process.cwd(), "public/llms.txt"), endpoint: "/llms.txt" },
+    { absPath: path.resolve(process.cwd(), "agents.md"), endpoint: "/agents.md" }
+  ]
+
+  let siteContent: SiteChunk[] = []
+
+  // Load and parse markdown
+  for (const { absPath, endpoint } of filePaths) {
+    if (fs.existsSync(absPath)) {
+      const markdown = fs.readFileSync(absPath, "utf-8")
+      const blocks = parseMarkdownToBlocks(markdown, endpoint)
+      siteContent = siteContent.concat(blocks)
+      console.log(`Parsed ${blocks.length} chunks from ${endpoint}`)
+    } else {
+      console.warn(`File not found: ${absPath}`)
     }
   }
 
-  // Delete removed items
-  for (const [key, item] of existingMap.entries()) {
-    if (!processedKeys.has(key)) {
-      console.log(`Removing deleted content: ${key}`)
-      await supabase.from("site_embeddings").delete().eq("id", item.id)
+  console.log(`Embedding ${siteContent.length} chunks...`)
+
+  for (const item of siteContent) {
+    const safeSection = normalizeSectionKey(item.section)
+    const key = `${item.page}-${safeSection}`
+
+    console.log(`Embedding ${key} with ${EMBEDDING_MODEL} (${EMBEDDING_DIMENSIONS} dims)...`)
+    try {
+      const embedding = await generateEmbedding(item.content.replace(/\n/g, " ").trim())
+      if (!Array.isArray(embedding) || embedding.length !== EMBEDDING_DIMENSIONS) {
+        console.error(`Unexpected embedding shape for ${key}:`, embedding?.length)
+        continue
+      }
+
+      const { error } = await supabase.from("site_embeddings").insert({
+        page: item.page,
+        section: safeSection,
+        content: item.content,
+        embedding,
+      })
+      if (error) console.error(`Failed to insert ${key}:`, error)
+      else console.log(`Success inserted ${key}`)
+    } catch (e) {
+      console.error(`Local embedding failed for ${key}:`, e)
     }
   }
 
