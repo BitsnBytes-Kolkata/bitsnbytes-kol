@@ -92,7 +92,7 @@ const nextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://tally.so https://hcaptcha.com https://*.hcaptcha.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://hcaptcha.com https://*.hcaptcha.com; img-src 'self' blob: data: https:; font-src 'self' data: https://r2cdn.perplexity.ai; connect-src 'self' https://vitals.vercel-insights.com https://hcaptcha.com https://*.hcaptcha.com https://*.supabase.co https://cloudflareinsights.com; frame-src 'self' https://tally.so https://hcaptcha.com https://*.hcaptcha.com https://discord.com https://*.discord.com;"
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://tally.so https://hcaptcha.com https://*.hcaptcha.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://hcaptcha.com https://*.hcaptcha.com; img-src 'self' blob: data: https:; font-src 'self' data: https://r2cdn.perplexity.ai; connect-src 'self' https://vitals.vercel-insights.com https://hcaptcha.com https://*.hcaptcha.com https://*.supabase.co https://cloudflareinsights.com; frame-src 'self' https://tally.so https://hcaptcha.com https://*.hcaptcha.com https://discord.com https://*.discord.com https://*.notion.site https://www.notion.so;"
           }
         ]
       }

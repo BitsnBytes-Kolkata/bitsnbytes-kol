@@ -70,7 +70,7 @@ const coreTeam = [
       "AI / ML Scaling",
       "GoDOT Game Dev",
     ],
-    linkedin: "https://www.linkedin.com/in/yash-vardhan-singh/",
+    linkedin: "https://www.linkedin.com/in/yash-vardhan-singh-a41540270/",
     accentColor: "#3E1E68", // Deep Purple
     isFounder: true,
   },

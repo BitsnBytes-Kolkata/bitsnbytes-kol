@@ -25,7 +25,8 @@ const WebGLShader = dynamic(
   },
 );
 
-import Script from "next/script";
+const NOTION_JOIN_FORM_URL =
+  "https://perfect-dinghy-781.notion.site/33949ed2fc338035bd3bef46155035f5?pvs=105";
 
 const benefits = [
   {
@@ -90,8 +91,6 @@ import { GlassContainer } from "@/components/ui/glass-container";
 export default function Join() {
   return (
     <>
-      <Script src="https://tally.so/widgets/embed.js" strategy="lazyOnload" />
-
       {/* Hero Section */}
       <section
         className="relative min-h-[40vh] sm:min-h-[50vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32"
@@ -132,16 +131,18 @@ export default function Join() {
                 </div>
 
                 <Button
-                  data-tally-open="n02RGZ"
-                  data-tally-layout="modal"
-                  data-tally-width="700"
-                  data-tally-align-left="1"
-                  data-tally-hide-title="1"
-                  data-tally-overlay="1"
+                  asChild
                   className="group inline-flex items-center justify-center gap-2 rounded-full bg-(--brand-pink) px-10 py-4 text-lg md:text-xl font-black text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-all hover:scale-[1.03] focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 w-full sm:w-auto max-w-xs"
                 >
-                  Apply to Join
-                  <ArrowRight className="h-6 w-6 shrink-0 transition-transform group-hover:translate-x-1" />
+                  <a
+                    href={NOTION_JOIN_FORM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Bits&Bytes join form in Notion"
+                  >
+                    Apply to Join
+                    <ArrowRight className="h-6 w-6 shrink-0 transition-transform group-hover:translate-x-1" />
+                  </a>
                 </Button>
 
                 <p className="text-sm text-white/50 font-medium">
@@ -149,6 +150,7 @@ export default function Join() {
                 </p>
               </div>
             </GlassContainer>
+
           </div>
         </PageSection>
 
@@ -244,24 +246,26 @@ export default function Join() {
               together.
             </p>
             <Button
-              data-tally-open="n02RGZ"
-              data-tally-layout="modal"
-              data-tally-width="700"
-              data-tally-align-left="1"
-              data-tally-hide-title="1"
-              data-tally-overlay="1"
+              asChild
               className="group rounded-full bg-[var(--brand-pink)] px-8 sm:px-10 py-5 sm:py-6 text-sm sm:text-base font-semibold text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-all hover:scale-105 focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 w-full sm:w-auto"
             >
-              Apply Now
-              <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
+              <a
+                href={NOTION_JOIN_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Bits&Bytes join form in Notion"
+              >
+                Apply Now
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
+              </a>
             </Button>
             <p className="text-xs sm:text-sm text-white/60">
               Questions? Reach us at{" "}
               <a
-                href="mailto:contact@indiainnovates.org"
+                href="mailto:hello@gobitsnbytes.org"
                 className="font-bold text-[var(--brand-pink)] hover:underline"
               >
-                contact@indiainnovates.org
+                hello@gobitsnbytes.org
               </a>
             </p>
           </div>
