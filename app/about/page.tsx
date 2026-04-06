@@ -160,6 +160,12 @@ const volunteers = [
     image: "/team/jaagruti.jpeg",
   },
   {
+    id: 14,
+    name: "Adithya",
+    image: "/team/adithya.jpg", // Add the image to public/team/adithya.jpg if available
+    linkedin: "https://www.linkedin.com/in/adithya---k/",
+  },
+  {
     id: 5,
     name: "Saksham",
     image: "/team/saksham.jpeg",
