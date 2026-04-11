@@ -9,7 +9,7 @@ const testimonials = [
   {
     quote: "Leading this community has shown me that there's no limit to what ambitious teens can achieve when they have the right ecosystem to build in.",
     author: "Yash",
-    role: "Founder & Local Lead",
+    role: "Co-Founder & Organisation Lead",
     company: "Bits&Bytes",
   },
   {

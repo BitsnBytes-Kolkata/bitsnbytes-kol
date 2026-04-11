@@ -144,7 +144,7 @@ export function Features() {
                                     </div>
                                     <div className="relative ml-[calc(50%-1.25rem)] flex items-center gap-3 transition-transform hover:scale-105">
                                         <div className="ring-white/10 size-14 ring-2 rounded-2xl overflow-hidden border border-white/20">
-                                            <Image className="size-full object-cover" src="/team/akshat.webp" alt="Akshat" width={56} height={56} />
+                                            <Image className="size-full object-cover" src="/team/akshat.jpg" alt="Akshat" width={56} height={56} />
                                         </div>
                                         <span className="block h-fit rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-bold text-white shadow-sm backdrop-blur-md">Akshat Kushwaha</span>
                                     </div>

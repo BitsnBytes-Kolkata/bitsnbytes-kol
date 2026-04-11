@@ -187,7 +187,7 @@ const SMART_FAQ: FaqEntry[] = [
   },
   {
     patterns: ["who founded", "founders", "who started", "who created", "team", "leadership"],
-    answer: "Bits&Bytes was co-founded by:\n\n- **Yash** — Founder & Local Lead\n- **Aadrika** — Co-Founder & Chief Creative Strategist\n- **Akshat Kushwaha** — Co-Founder & Technical Lead\n\nPlus an amazing core team: Devansh (Backend), Maryam (Social Media), and Srishti (Operations)!\n\n[Meet the team](/about \"cta\")",
+    answer: "Bits&Bytes was co-founded by:\n\n- **Yash** — Co-Founder & Organisation Lead\n- **Aadrika** — Co-Founder & Chief Creative Strategist\n- **Akshat Kushwaha** — Co-Founder & Technical Lead\n\nPlus an amazing core team: Devansh (Backend), Maryam (Social Media), and Srishti (Operations)!\n\n[Meet the team](/about \"cta\")",
   },
   {
     patterns: ["discord", "community link", "whatsapp group", "discord server"],

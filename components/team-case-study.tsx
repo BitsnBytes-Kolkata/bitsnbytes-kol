@@ -24,6 +24,7 @@ interface Volunteer {
   name: string;
   image: string;
   linkedin?: string;
+  section: "Creatives" | "Tech" | "Outreach";
 }
 
 interface TeamCaseStudyProps {
@@ -228,7 +229,7 @@ function VolunteerCard({ volunteer }: { volunteer: Volunteer }) {
           {volunteer.name}
         </h4>
         <span className="text-[0.6rem] sm:text-xs font-medium uppercase tracking-wider text-[var(--brand-pink)]/80">
-          Volunteer
+          Contributor
         </span>
         {/* Fixed height container for LinkedIn to keep grids aligned */}
         <div className="mt-1 h-7 flex items-center justify-center">
@@ -250,6 +251,13 @@ function VolunteerCard({ volunteer }: { volunteer: Volunteer }) {
 }
 
 export default function TeamCaseStudy({ coreTeam, volunteers }: TeamCaseStudyProps) {
+  const sectionOrder: Volunteer["section"][] = ["Creatives", "Tech", "Outreach"];
+  const sectionLabels: Record<Volunteer["section"], string> = {
+    Creatives: "Creative Contributor",
+    Tech: "Tech Contributor",
+    Outreach: "Outreach Contributor",
+  };
+
   return (
     <div className="flex flex-col gap-8 sm:gap-16">
       {/* Core Team - CSS Grid with explicit 2 rows for equal heights */}
@@ -272,16 +280,33 @@ export default function TeamCaseStudy({ coreTeam, volunteers }: TeamCaseStudyPro
         </div>
         <div className="relative bg-background px-4 sm:px-6">
           <span className="text-xs sm:text-sm font-medium uppercase tracking-widest text-[var(--brand-pink)]/70">
-            Volunteers
+            Contributors
           </span>
         </div>
       </div>
 
-      {/* Volunteers Section - Improved Grid for Alignment */}
-      <div className="flex flex-wrap items-start justify-center gap-6 sm:gap-10 md:gap-14 lg:gap-16">
-        {volunteers.map((volunteer) => (
-          <VolunteerCard key={volunteer.id} volunteer={volunteer} />
-        ))}
+      {/* Volunteers Section - Grouped by function */}
+      <div className="flex flex-col gap-8 sm:gap-10">
+        {sectionOrder.map((section) => {
+          const sectionVolunteers = volunteers.filter(
+            (volunteer) => volunteer.section === section,
+          );
+
+          if (sectionVolunteers.length === 0) return null;
+
+          return (
+            <section key={section} className="space-y-4 sm:space-y-5">
+              <h3 className="text-center text-sm sm:text-base font-bold uppercase tracking-[0.2em] text-[var(--brand-pink)]/90">
+                {sectionLabels[section]}
+              </h3>
+              <div className="flex flex-wrap items-start justify-center gap-6 sm:gap-10 md:gap-14 lg:gap-16">
+                {sectionVolunteers.map((volunteer) => (
+                  <VolunteerCard key={volunteer.id} volunteer={volunteer} />
+                ))}
+              </div>
+            </section>
+          );
+        })}
       </div>
     </div>
   );

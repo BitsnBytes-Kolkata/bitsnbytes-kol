@@ -60,7 +60,7 @@ const coreTeam = [
   {
     id: 1,
     name: "Yash Singh",
-    role: "Founder & Local Lead",
+    role: "Co-Founder & Organisation Lead",
     image: "/team/yash.jpeg",
     bio: "High school student who builds things that matter—from VS Code extensions with thousands of users to hackathons with 400+ participants. IOQM National Qualifier and Educator at STEMist Lucknow, teaching underrepresented talent.",
     expertise: [
@@ -95,7 +95,7 @@ const coreTeam = [
     id: 3,
     name: "Akshat Kushwaha",
     role: "Co-Founder & Technical Lead",
-    image: "/team/akshat.webp",
+    image: "/team/akshat.jpg",
     bio: "AI-native systems engineer who asks what happens when software fails—building production workflows and retrieval architectures that survive real constraints. Lead at STEMist Prayagraj, defining high-performance engineering culture.",
     expertise: [
       "LLMOps / RAG",
@@ -158,48 +158,63 @@ const volunteers = [
     id: 11,
     name: "Jaagruti",
     image: "/team/jaagruti.jpeg",
+    section: "Creatives",
   },
   {
-    id: 14,
-    name: "Adithya",
-    image: "/team/adhitya.png", // Corrected image path and extension
-    linkedin: "https://www.linkedin.com/in/adithya---k/",
+    id: 16,
+    name: "Vareesha",
+    image: "/team/vareesha.jpg",
+    linkedin: "https://www.linkedin.com/in/vareesha-mehdi-a669203ab/",
+    section: "Creatives",
+  },
+  {
+    id: 13,
+    name: "Aishwary",
+    image: "/team/aishwary.jpeg",
+    linkedin: "https://www.linkedin.com/in/ashlovesnoodle",
+    section: "Creatives",
   },
   {
     id: 5,
     name: "Saksham",
     image: "/team/saksham.jpeg",
     linkedin: "https://www.linkedin.com/in/sakshm/",
-  },
-  {
-    id: 10,
-    name: "Kaustubh",
-    image: "/team/kaustubh.jpeg",
-    linkedin: "https://www.linkedin.com/in/kaustubh-shaw-905ab3381/",
+    section: "Tech",
   },
   {
     id: 7,
     name: "Areeb",
     image: "/team/areeb.png",
     linkedin: "https://www.linkedin.com/in/areeb-ahmad-066547315/",
+    section: "Tech",
+  },
+  {
+    id: 15,
+    name: "Prakhar",
+    image: "/team/prakhar.png",
+    linkedin: "https://www.linkedin.com/in/prakharrdev/",
+    section: "Tech",
+  },
+  {
+    id: 14,
+    name: "Adithya",
+    image: "/team/adhitya.png", // Corrected image path and extension
+    linkedin: "https://www.linkedin.com/in/adithya---k/",
+    section: "Outreach",
   },
   {
     id: 8,
     name: "Atharva",
     image: "/team/atharva.jpg",
     linkedin: "https://www.linkedin.com/in/atharvaupadhyay/",
+    section: "Outreach",
   },
   {
-    id: 9,
-    name: "Kavan",
-    image: "/team/kavan.jpg",
-  },
-
-  {
-    id: 13,
-    name: "Aishwary",
-    image: "/team/aishwary.jpeg",
-    linkedin: "https://www.linkedin.com/in/ashlovesnoodle",
+    id: 17,
+    name: "Aanjaneya",
+    image: "/team/aanjaneya.jpg",
+    linkedin: "https://www.linkedin.com/in/aanjaneya-tripathi-0700a4346/",
+    section: "Outreach",
   },
 ];
 

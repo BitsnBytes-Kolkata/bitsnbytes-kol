@@ -35,7 +35,7 @@ const testimonials = [
     quote:
       "We pair first-time coders with experienced mentors, so everyone ships something real. The confidence boost is unreal.",
     name: "Yash",
-    title: "Co-Founder & Local Lead",
+    title: "Co-Founder & Organisation Lead",
     image: "/team/yash.jpeg",
   },
   {

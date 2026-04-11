@@ -24,7 +24,7 @@ Quick reference for “who to ping for what”.
 
 | Name | Role | Superpowers |
 |-----------|---------------------------|---------------------------------------------------------|
-| **Yash Singh** | Founder & Local Lead | STEM Prodigy, AI Prototyping, Competitive Math, Debate |
+| **Yash Singh** | Co-Founder & Organisation Lead | STEM Prodigy, AI Prototyping, Competitive Math, Debate |
 | **Aadrika Maurya** | Co-Founder & Chief Creative Strategist | Neuroscience Research (EEG), Brand Strategy, Regional Management |
 | **Akshat Kushwaha** | Co-Founder & Technical Lead | Production-Grade Engineering, AI/LLMOps |
 | **Devaansh Pathak** | Founding Member & Backend Lead | Backend Architecture, Partnership Economics, Database Systems |
@@ -37,7 +37,7 @@ Quick reference for “who to ping for what”.
 
 ### 3.1 Leadership
 
-#### Yash Singh – Founder & Local Lead
+#### Yash Singh – Co-Founder & Organisation Lead
 - **Expertise:** Mathematics (IOQM), AI Prototyping, Full-Stack Dev, Hardware Experiments
 - **Achievements:** 
   - Created **Codiva**, a 5-star rated VS Code extension with thousands of users.

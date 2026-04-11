@@ -35,6 +35,7 @@ const nextConfig = {
   images: {
     // Enable image optimization for Vercel
     domains: [],
+    qualities: [60, 75, 85, 90],
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
