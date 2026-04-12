@@ -33,8 +33,8 @@ Bits&Bytes is India's boldest teen-led code club and nonprofit, based in Lucknow
 
 ## Leadership Team (Core Team)
 - **Yash**: Founder & Local Lead – Leads entire organization, coords teams, tech architect.
-- **Aadrika**: Co-Founder & Chief Creative Strategist – Branding, design, promotional campaigns.
-- **Akshat Kushwaha**: Co-Founder & Technical Lead – Website, programming projects, AI & LLMOps, cloud.
+- **Aadrika**: Co-Founder & Chief Creative Strategist – Branding, design, promotional campaigns. GitHub: https://github.com/Aadrika08, Website: https://aadrikasportfolio.framer.website/
+- **Akshat Kushwaha**: Co-Founder & Technical Lead – Website, programming projects, AI & LLMOps, cloud. Website: https://a3ro.dev, GitHub: https://github.com/a3ro-dev
 - **Devansh**: Founding Member & Backend Lead – Backend dev, database arch, community outreach.
 - **Maryam**: Social Media & Promotions Head – Designs visuals, brand consistency.
 - **Srishti**: Operations & Communications Head – Internal ops, team communications.
@@ -87,4 +87,3 @@ Bits&Bytes is India's boldest teen-led code club and nonprofit, based in Lucknow
 
 ---
 Last updated: February 2026
-

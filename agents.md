@@ -58,6 +58,8 @@ Quick reference for “who to ping for what”.
   - Regional Manager for CodeDay Kanpur.
   - Building 'The Nerdy Network'.
 - **Profiles:**
+  - LinkedIn: https://www.linkedin.com/in/aadrika-maurya/
+  - Website: https://aadrikasportfolio.framer.website/
   - GitHub: https://github.com/Aadrika08
 - **Owns:** Visual identity, campaign planning, and cross-city scaling.
 
@@ -68,7 +70,7 @@ Quick reference for “who to ping for what”.
   - **Lead at STEMist Prayagraj**: Defining high-performance engineering culture for young builders across the city.
   - **Lead Architect**: Built the entire Bits&Bytes production-grade tech infrastructure from scratch.
 - **Profiles:**
-  - Website: https://www.a3ro.dev
+  - Website: https://a3ro.dev
   - GitHub: https://github.com/a3ro-dev
 - **Owns:** System architecture, technical stability, and shifting the club towards production-ready software.
 

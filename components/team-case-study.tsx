@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useRef, type CSSProperties } from "react";
 import { CometCard } from "@/components/ui/comet-card";
 import { cn } from "@/lib/utils";
-import { Linkedin, User } from "lucide-react";
+import { Github, Globe, Linkedin, User, type LucideIcon } from "lucide-react";
 
 export interface CoreTeamMember {
   id: number;
@@ -14,6 +14,11 @@ export interface CoreTeamMember {
   image: string;
   expertise?: string[];
   linkedin?: string;
+  socials?: {
+    linkedin?: string;
+    github?: string;
+    website?: string;
+  };
   accentColor?: string;
   imagePosition?: string;
   mobileImagePosition?: string;
@@ -113,6 +118,30 @@ function TeamCard({
     return undefined;
   };
 
+  const linkedinHref = member.socials?.linkedin ?? member.linkedin;
+
+  const socialLinks = [
+    linkedinHref && {
+      href: linkedinHref,
+      label: `${member.name}'s LinkedIn`,
+      icon: Linkedin,
+    },
+    member.socials?.github && {
+      href: member.socials.github,
+      label: `${member.name}'s GitHub`,
+      icon: Github,
+    },
+    member.socials?.website && {
+      href: member.socials.website,
+      label: `${member.name}'s website`,
+      icon: Globe,
+    },
+  ].filter(Boolean) as Array<{
+    href: string;
+    label: string;
+    icon: LucideIcon;
+  }>;
+
   return (
     <CometCard className="w-full">
       <div
@@ -180,16 +209,21 @@ function TeamCard({
                   {member.name}
                 </h3>
               </div>
-              {member.linkedin && (
-                <a
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full bg-white/15 transition-all hover:bg-white/25 hover:scale-110 border border-white/20"
-                  aria-label={`${member.name}'s LinkedIn`}
-                >
-                  <Linkedin className="h-4 w-4 transition-transform group-hover:scale-110" />
-                </a>
+              {socialLinks.length > 0 && (
+                <div className="flex shrink-0 items-center gap-1.5">
+                  {socialLinks.map(({ href, label, icon: Icon }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-white/20 bg-white/15 transition-all hover:scale-110 hover:bg-white/25"
+                      aria-label={label}
+                    >
+                      <Icon className="h-4 w-4 transition-transform group-hover:scale-110" />
+                    </a>
+                  ))}
+                </div>
               )}
             </div>
 

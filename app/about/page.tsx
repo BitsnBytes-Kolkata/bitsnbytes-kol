@@ -91,7 +91,11 @@ const coreTeam: CoreTeamMember[] = [
       "Regional Management",
       "Brand Development",
     ],
-    linkedin: "https://in.linkedin.com/in/aadrika-maurya",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/aadrika-maurya/",
+      github: "https://github.com/Aadrika08",
+      website: "https://aadrikasportfolio.framer.website/",
+    },
     accentColor: "#E45A92", // Vibrant Pink
     isFounder: true,
   },
@@ -108,7 +112,11 @@ const coreTeam: CoreTeamMember[] = [
       "FastAPI / Python",
       "System Design",
     ],
-    linkedin: "https://www.linkedin.com/in/akshat-singh-kushwaha/",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/akshat-singh-kushwaha/",
+      github: "https://github.com/a3ro-dev",
+      website: "https://a3ro.dev",
+    },
     accentColor: "#5D2F77", // Rich Plum
     isFounder: true,
   },
