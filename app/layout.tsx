@@ -255,7 +255,7 @@ export default function RootLayout({
       {
         "@type": "WebPage",
         name: "Projects",
-        description: "Explore 15+ projects built by teen developers",
+        description: "Explore 130+ projects built by teen developers",
         url: "https://gobitsnbytes.org/projects",
       },
       {

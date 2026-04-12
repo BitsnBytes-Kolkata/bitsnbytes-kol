@@ -9,9 +9,9 @@ This file provides context for AI agents and LLM-powered search engines about Bi
 ## Quick Facts
 - **Founded:** 2024
 - **Location:** Lucknow, Uttar Pradesh, India
-- **Members:** 200+ active student developers from across India
-- **Projects Shipped:** 15+ real-world products (apps, web, AI)
-- **Partner Schools:** 10+ and growing
+- **Members:** 1500+ active student developers from across India
+- **Projects Shipped:** 130+ real-world products (apps, web, AI)
+- **Partner Schools:** 100+ and growing
 - **Membership Cost:** FREE (Always 100% student-led)
 - **Age Range:** 13-19 years old
 
@@ -62,7 +62,7 @@ Bits&Bytes is India's boldest teen-led code club and nonprofit, based in Lucknow
 ## Website Structure
 - **/** - Homepage with overview and impact stats
 - **/about** - Team profiles and mission details
-- **/projects** - Showcase of 15+ teen-built projects
+- **/projects** - Showcase of 130+ teen-built projects
 - **/events** - Upcoming hackathons and workshops
 - **/impact** - Community statistics and success stories
 - **/join** - Free membership application

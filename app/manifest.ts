@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Bits&Bytes - India's Teen-Led Code Club",
     short_name: "Bits&Bytes",
-    description: "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer. 1500+ active members, 15+ shipped projects.",
+    description: "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer. 1500+ active members, 130+ shipped projects.",
     start_url: "/",
     scope: "/",
     display: "standalone",

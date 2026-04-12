@@ -8,7 +8,7 @@ export function Features() {
         <div className="mx-auto max-w-6xl">
             <div className="relative">
                 <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
-                    {/* Card 1: 200+ Members (Replaces Customizable) */}
+                    {/* Card 1: 1500+ Members (Replaces Customizable) */}
                     <GlassContainer
                         containerClassName="col-span-full lg:col-span-2"
                         className="flex p-0 overflow-hidden"
@@ -22,7 +22,7 @@ export function Features() {
                                         fill="currentColor"
                                     />
                                 </svg>
-                                <span className="mx-auto block w-fit text-5xl md:text-6xl font-black text-white tracking-tighter">200+</span>
+                                <span className="mx-auto block w-fit text-5xl md:text-6xl font-black text-white tracking-tighter">1500+</span>
                             </div>
                             <h2 className="mt-8 text-center text-2xl font-black text-white uppercase tracking-widest">Across India</h2>
                         </div>
@@ -43,7 +43,7 @@ export function Features() {
                         </div>
                     </GlassContainer>
 
-                    {/* Card 3: 15+ Projects */}
+                    {/* Card 3: 130+ Projects */}
                     <GlassContainer
                         containerClassName="col-span-full sm:col-span-3 lg:col-span-2"
                         className="overflow-hidden p-8 md:p-12"
@@ -79,7 +79,7 @@ export function Features() {
                             </svg>
                         </div>
                         <div className="relative z-10 mt-10 space-y-3 text-center">
-                            <h2 className="text-2xl font-black text-white px-2">15+ Projects</h2>
+                            <h2 className="text-2xl font-black text-white px-2">130+ Projects</h2>
                             <p className="text-base text-white/60 font-medium">From apps to AI, shipping to production.</p>
                         </div>
                     </GlassContainer>
