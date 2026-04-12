@@ -30,10 +30,10 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "What is Bits and Bytes?",
+      name: "What is Bits&Bytes?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Bits and Bytes is a student-led tech club that runs hackathons and other events. Our hackathons follow the usual format but aren't traditional—we have some inspirations from Hack Club style hackathons. Our focus is on creativity; lots of attendees are newer to coding.",
+        text: "Bits&Bytes is a student-led tech club that runs hackathons and other events. Our hackathons follow the usual format but aren't traditional—we have some inspirations from Hack Club style hackathons. Our focus is on creativity; lots of attendees are newer to coding.",
       },
     },
     {
@@ -70,7 +70,7 @@ const faqJsonLd = {
     },
     {
       "@type": "Question",
-      name: "Can I volunteer for Bits and Bytes?",
+      name: "Can I volunteer for Bits&Bytes?",
       acceptedAnswer: {
         "@type": "Answer",
         text: "Absolutely! We're almost always looking for help with organizers, general day-of volunteers, workshops, and mentors. Reach out through our contact page to learn more.",

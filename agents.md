@@ -44,7 +44,12 @@ Quick reference for “who to ping for what”.
   - National Qualifier for the **Indian Mathematics Olympiad (IOQM)**.
   - Lead Organizer for Scrapyard Lucknow and Mentor at NASA Space Apps Challenge (helping 400+ participants).
   - Educator at **STEMist Lucknow**, teaching CS to underprivileged students.
+  - **Profiles:**
+  - Website: https://www.yashvibe.codes
+  - GitHub: https://github.com/yashclouded
+
 - **Owns:** Organizational strategy, event timelines, and high-impact outreach.
+
 
 #### Aadrika Maurya – Co-Founder & Chief Creative Strategist
 - **Expertise:** Neuroscience (EEG/Attention modeling), Creative Strategy, Regional Management
@@ -65,8 +70,6 @@ Quick reference for “who to ping for what”.
 - **Profiles:**
   - Website: https://www.a3ro.dev
   - GitHub: https://github.com/a3ro-dev
-  - Website: https://yashvibe.codes/
-  - GitHub: https://github.com/yashclouded
 - **Owns:** System architecture, technical stability, and shifting the club towards production-ready software.
 
 ---
@@ -76,7 +79,7 @@ Quick reference for “who to ping for what”.
 - **Scrapyard Lucknow:** 80 registrations, 50 participants, 10k+ impressions. Executed in 13 days.
 - **NASA Space Apps Challenge Lucknow:** 300+ participants.
 - **CodeDay Hackathons:** Across Lucknow, Delhi, and Dehradun.
-- **Web Presence:** gobitsnbytes.org serves thousands of monthly visitors with 100+ active members.
+- **Web Presence:** gobitsnbytes.org serves thousands of monthly visitors with 1000+ active members.
 
 ---
 
