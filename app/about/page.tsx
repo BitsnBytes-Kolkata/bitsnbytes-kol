@@ -20,17 +20,6 @@ const TeamCaseStudy = dynamic(() => import("@/components/team-case-study"), {
   ssr: true,
 });
 
-const WebGLShader = dynamic(
-  () =>
-    import("@/components/ui/web-gl-shader").then((mod) => ({
-      default: mod.WebGLShader,
-    })),
-  {
-    loading: () => null,
-    ssr: false,
-  },
-);
-
 const aboutContent = {
   title: "About Bits&Bytes",
   description:
@@ -90,7 +79,7 @@ const coreTeam: CoreTeamMember[] = [
     image: "/team/aadrika.png",
     mobileImagePosition: "center 20%",
     isFeatured: true,
-    bio: "RSI India Alumni who conducted neuroscience research on EEG signals and attention pattern modeling. Regional Manager for CodeDay Kanpur and building 'The Nerdy Network'.",
+    bio: "RSI India Alumni who conducted neuroscience research on EEG signals and attention pattern modeling. Regional Manager for CodeDay Kanpur and a creative strategist for student-led initiatives.",
     expertise: [
       "Neuroscience (EEG)",
       "Creative Strategy",
@@ -250,7 +239,6 @@ const volunteers: Volunteer[] = [
 export default function About() {
   return (
     <>
-      <WebGLShader />
       <main className="relative z-10 bg-transparent">
         <PageSection
           align="center"
