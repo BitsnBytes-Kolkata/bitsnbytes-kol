@@ -128,7 +128,10 @@ export default function FAQ() {
                 participate.
               </p>
             </div>
-            </div>
+          </div>
+        </div>
+      </section>
+
       <main className="relative z-10 bg-transparent">
         {/* FAQ Accordion */}
         <PageSection>

@@ -114,7 +114,10 @@ export default function CodeOfConduct() {
                 TL;DR: Be nice. Be cool. Don't cause chaos.
               </div>
             </div>
-            </div>
+          </div>
+        </div>
+      </section>
+
       <main className="relative z-10 bg-transparent">
         {/* What We Stand For */}
         <PageSection

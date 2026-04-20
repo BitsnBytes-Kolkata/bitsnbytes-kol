@@ -115,7 +115,7 @@ export default function Join() {
                 connect you with squads, mentors, and live projects.
               </p>
             </div>
-          </GlassContainer>
+          </div>
         </div>
       </section>
 

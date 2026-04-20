@@ -101,7 +101,13 @@ export default function Impact() {
                 building—and ship the outcomes publicly.
               </p>
             </div>
-            </div>
+          </div>
+        </div>
+      </section>
+
+      <main className="bg-transparent">
+        <PageSection
+          title="Building the future with teen-led squads"
           description="Workshops, hackathons, and labs unlock hands-on practice, industry mentorship, and opportunities to deploy solutions in schools and communities."
         >
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">

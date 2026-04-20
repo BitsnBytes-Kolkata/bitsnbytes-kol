@@ -112,7 +112,10 @@ export default function Contact() {
                 Partner with us on hackathons, workshops, or custom experiences for schools across Lucknow.
               </p>
             </div>
-            </div>
+          </div>
+        </div>
+      </section>
+
       <main className="relative z-10 bg-transparent">
         <PageSection
           align="center"
