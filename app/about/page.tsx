@@ -294,6 +294,7 @@ export default function About() {
           title="Meet the Agents"
           description="A tight crew of designers, engineers, club leads, and storytellers powering the Kolkata fork and teen-led tech movements across the city of joy."
         >
+          <Suspense fallback={<LoadingInline />}>
             <TeamCaseStudy coreTeam={coreTeam} volunteers={volunteers} />
           </Suspense>
           <p className="mt-4 sm:mt-6 text-center text-xs sm:text-sm text-muted-foreground px-4 sm:px-0">
