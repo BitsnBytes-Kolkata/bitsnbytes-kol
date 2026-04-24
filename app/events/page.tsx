@@ -74,7 +74,7 @@ export default function Events() {
             aria-selected={activeEvent === "all"}
             role="tab"
             className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "all"
-              ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.3)]"
+              ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(197,49,46,0.3)]"
               : "text-white/70 hover:text-white hover:bg-white/5"
               }`}
           >
@@ -86,7 +86,7 @@ export default function Events() {
             aria-selected={activeEvent === "copilot"}
             role="tab"
             className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "copilot"
-              ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.3)]"
+              ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(197,49,46,0.3)]"
               : "text-white/70 hover:text-white hover:bg-white/5"
               }`}
           >
@@ -98,7 +98,7 @@ export default function Events() {
             aria-selected={activeEvent === "execron"}
             role="tab"
             className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "execron"
-              ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.3)]"
+              ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(197,49,46,0.3)]"
               : "text-white/70 hover:text-white hover:bg-white/5"
               }`}
           >
@@ -110,7 +110,7 @@ export default function Events() {
             aria-selected={activeEvent === "india-innovates"}
             role="tab"
             className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "india-innovates"
-              ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.3)]"
+              ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(197,49,46,0.3)]"
               : "text-white/70 hover:text-white hover:bg-white/5"
               }`}
           >
