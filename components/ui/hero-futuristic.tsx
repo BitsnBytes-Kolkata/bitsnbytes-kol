@@ -84,7 +84,7 @@ export const HeroFuturistic = () => {
               {/* Main content */}
               <div className="space-y-6">
                 <h1 id="home-hero-title" className="font-display text-2xl font-extrabold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tighter drop-shadow-2xl">
-                  India&apos;s boldest <br className="hidden sm:block" />builders club
+                  Kolkata&apos;s boldest <br className="hidden sm:block" />builders club
                 </h1>
                 <p className="text-sm text-white/80 sm:text-base md:text-lg lg:text-xl max-w-2xl leading-relaxed">
                   We host premium hackathons, design/dev squads, and real-world
