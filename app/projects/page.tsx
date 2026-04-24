@@ -179,9 +179,9 @@ export default function Projects() {
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32">
         <WebGLShader />
         <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6 py-12 md:py-24">
-          <div className="relative border-2 border-[var(--brand-pink)]/30 rounded-[32px] md:rounded-[40px] p-1.5 md:p-2 backdrop-blur-sm bg-black/10">
-            <div className="relative border-2 border-[var(--brand-pink)]/50 rounded-[28px] md:rounded-[36px] py-8 px-4 sm:px-10 overflow-hidden bg-black/40 backdrop-blur-xl">
-              <div className="absolute inset-0 bg-[var(--brand-purple)]/20" />
+          <div className="relative border-2 border-[var(--brand-red)]/30 rounded-[32px] md:rounded-[40px] p-1.5 md:p-2 backdrop-blur-sm bg-black/10">
+            <div className="relative border-2 border-[var(--brand-red)]/50 rounded-[28px] md:rounded-[36px] py-8 px-4 sm:px-10 overflow-hidden bg-black/40 backdrop-blur-xl">
+              <div className="absolute inset-0 bg-[var(--brand-blue)]/20" />
               <div className="relative z-10 space-y-4 text-center">
                 <p className="text-[10px] md:text-xs uppercase tracking-[0.35em] text-white/70">
                   Showcase
@@ -205,7 +205,7 @@ export default function Projects() {
           <div className="glass-card relative isolate overflow-hidden p-6 shadow-xl">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               <div>
-                <p className="text-3xl font-bold text-[var(--brand-pink)]">
+                <p className="text-3xl font-bold text-[var(--brand-red)]">
                   25+
                 </p>
                 <p className="text-sm text-muted-foreground">
@@ -213,19 +213,19 @@ export default function Projects() {
                 </p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-[var(--brand-pink)]">
+                <p className="text-3xl font-bold text-[var(--brand-red)]">
                   100+
                 </p>
                 <p className="text-sm text-muted-foreground">Active members</p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-[var(--brand-pink)]">
+                <p className="text-3xl font-bold text-[var(--brand-red)]">
                   10k+
                 </p>
                 <p className="text-sm text-muted-foreground">Impressions</p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-[var(--brand-pink)]">
+                <p className="text-3xl font-bold text-[var(--brand-red)]">
                   5k+
                 </p>
                 <p className="text-sm text-muted-foreground">Users served</p>
@@ -256,7 +256,7 @@ export default function Projects() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute top-4 left-4">
-                    <span className="inline-flex items-center rounded-full bg-[var(--brand-pink)] px-3 py-1 text-xs font-semibold text-white">
+                    <span className="inline-flex items-center rounded-full bg-[var(--brand-red)] px-3 py-1 text-xs font-semibold text-white">
                       Featured
                     </span>
                   </div>
@@ -285,7 +285,7 @@ export default function Projects() {
                       {project.team.slice(0, 3).map((member, i) => (
                         <div
                           key={member}
-                          className="h-8 w-8 rounded-full border-2 border-background bg-[var(--brand-pink)]/20 flex items-center justify-center text-xs font-medium text-[var(--brand-pink)]"
+                          className="h-8 w-8 rounded-full border-2 border-background bg-[var(--brand-red)]/20 flex items-center justify-center text-xs font-medium text-[var(--brand-red)]"
                           style={{ zIndex: 3 - i }}
                         >
                           {member[0]}
@@ -359,7 +359,7 @@ export default function Projects() {
                 className={cn(
                   "rounded-full px-4 py-2 text-sm font-medium transition-transform transition-colors transition-opacity duration-300",
                   activeCategory === category.value
-                    ? "bg-[var(--brand-pink)] text-white shadow-[var(--glow-soft)]"
+                    ? "bg-[var(--brand-red)] text-white shadow-[var(--glow-soft)]"
                     : "border border-white/20 bg-white/5 text-muted-foreground hover:border-white/40 hover:text-foreground",
                 )}
               >
@@ -462,7 +462,7 @@ export default function Projects() {
               <Button
                 variant="link"
                 onClick={() => setActiveCategory("all")}
-                className="mt-2 text-[var(--brand-pink)]"
+                className="mt-2 text-[var(--brand-red)]"
               >
                 View all projects
               </Button>
@@ -484,7 +484,7 @@ export default function Projects() {
             <div className="mt-6 flex flex-wrap justify-center gap-4">
               <Button
                 asChild
-                className="rounded-full bg-[var(--brand-pink)] text-white shadow-[var(--glow-strong)] hover:scale-105 transition-transform"
+                className="rounded-full bg-[var(--brand-red)] text-white shadow-[var(--glow-strong)] hover:scale-105 transition-transform"
               >
                 <Link href="/join">Join the Club</Link>
               </Button>
@@ -502,3 +502,4 @@ export default function Projects() {
     </>
   );
 }
+

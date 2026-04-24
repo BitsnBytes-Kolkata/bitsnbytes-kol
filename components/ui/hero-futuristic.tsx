@@ -77,14 +77,14 @@ export const HeroFuturistic = () => {
             <div className="flex flex-col h-full gap-6 sm:gap-8 md:gap-10">
               {/* Teen-led badge */}
               <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 sm:px-4 sm:py-1.5 text-[0.6rem] sm:text-[0.65rem] font-bold uppercase tracking-[0.25em] sm:tracking-[0.35em] text-white/80 backdrop-blur-md shadow-inner">
-                <Sparkles className="h-3 w-3 text-(--brand-pink)" />
+                <Sparkles className="h-3 w-3 text-(--brand-red)" />
                 TEEN-LED
               </span>
 
               {/* Main content */}
               <div className="space-y-6">
                 <h1 id="home-hero-title" className="font-display text-2xl font-extrabold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tighter drop-shadow-2xl">
-                  Kolkata&apos;s boldest <br className="hidden sm:block" />builders club
+                  India&apos;s boldest <br className="hidden sm:block" />builders club
                 </h1>
                 <p className="text-sm text-white/80 sm:text-base md:text-lg lg:text-xl max-w-2xl leading-relaxed">
                   We host premium hackathons, design/dev squads, and real-world
@@ -97,7 +97,7 @@ export const HeroFuturistic = () => {
               <div className="flex flex-col gap-4 sm:flex-row w-full mt-2">
                 <Button
                   asChild
-                  className="w-full sm:flex-1 h-12 sm:h-14 px-6 sm:px-8 rounded-full bg-(--brand-pink) text-sm sm:text-base font-bold text-white shadow-[0_0_30px_rgba(197,49,46,0.5)] hover:shadow-[0_0_50px_rgba(197,49,46,0.7)] transition-transform transition-colors transition-opacity hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20"
+                  className="w-full sm:flex-1 h-12 sm:h-14 px-6 sm:px-8 rounded-full bg-(--brand-red) text-sm sm:text-base font-bold text-white shadow-[0_0_30px_rgba(197,49,46,0.5)] hover:shadow-[0_0_50px_rgba(197,49,46,0.7)] transition-transform transition-colors transition-opacity hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20"
                 >
                   <Link href="/join" className="flex items-center justify-center gap-2">
                     Join the crew
@@ -141,7 +141,7 @@ export const HeroFuturistic = () => {
           <GlassContainer
             className="h-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto transition-transform duration-500 group-hover:scale-[1.02]"
             containerClassName="h-full"
-            glowColor="pink"
+            glowColor="blue"
           >
             <div className="relative h-full w-full overflow-hidden">
               {heroEvents.map((event, idx) => (
@@ -199,7 +199,7 @@ export const HeroFuturistic = () => {
                       key={idx}
                       type="button"
                       onClick={(e) => { e.preventDefault(); e.stopPropagation(); setActiveSlide(idx); }}
-                      className={`h-1.5 rounded-full transition-transform transition-colors transition-opacity duration-300 ${idx === activeSlide ? "w-6 bg-(--brand-pink)" : "w-1.5 bg-white/30 hover:bg-white/50"}`}
+                      className={`h-1.5 rounded-full transition-transform transition-colors transition-opacity duration-300 ${idx === activeSlide ? "w-6 bg-(--brand-red)" : "w-1.5 bg-white/30 hover:bg-white/50"}`}
                       aria-label={`Go to slide ${idx + 1}`}
                       aria-current={idx === activeSlide}
                     />
@@ -215,3 +215,4 @@ export const HeroFuturistic = () => {
 };
 
 export default HeroFuturistic;
+

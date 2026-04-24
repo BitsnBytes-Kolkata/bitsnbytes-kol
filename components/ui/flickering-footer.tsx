@@ -247,7 +247,7 @@ export function FlickeringFooter() {
                     <Link href="/" className="flex items-center gap-3">
                         <div className="relative grid h-10 w-10 place-items-center rounded-xl bg-black text-white shadow-[0_8px_30px_rgba(197,49,46,0.4)]">
                             <Image src={logo} alt="Kolkata fork of BitsnBytes logo" width={28} height={28} className="h-6 w-6 object-contain" priority />
-                            <div className="absolute inset-0 rounded-xl border-2 border-[var(--brand-pink)]" />
+                            <div className="absolute inset-0 rounded-xl border-2 border-[var(--brand-red)]" />
                         </div>
                         <div>
                             <p className="font-display text-base font-semibold text-foreground leading-tight">Kolkata fork of BitsnBytes</p>
@@ -312,7 +312,7 @@ export function FlickeringFooter() {
                         className="absolute inset-0 h-full w-full"
                         squareSize={2}
                         gridGap={tablet ? 2 : 3}
-                        color="var(--brand-pink)"
+                        color="var(--brand-red)"
                         maxOpacity={0.25}
                         flickerChance={0.09}
                     />
@@ -322,7 +322,7 @@ export function FlickeringFooter() {
                         className="absolute inset-0 h-full w-full"
                         squareSize={2}
                         gridGap={tablet ? 2 : 3}
-                        color="var(--brand-coral)"
+                        color="var(--brand-yellow)"
                         maxOpacity={0.35}
                         flickerChance={0.14}
                     />
@@ -332,7 +332,7 @@ export function FlickeringFooter() {
                         className="absolute inset-0 h-full w-full"
                         squareSize={2}
                         gridGap={tablet ? 2 : 3}
-                        color="var(--brand-amber)"
+                        color="var(--brand-yellow-light)"
                         maxOpacity={0.15}
                         flickerChance={0.05}
                     />
@@ -346,3 +346,4 @@ export function FlickeringFooter() {
 }
 
 export default FlickeringFooter;
+

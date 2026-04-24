@@ -98,14 +98,14 @@ export function MiniNavbar() {
             <div
                 className="absolute inset-0 -m-2 rounded-full
                      hidden md:block
-                     bg-[var(--brand-pink)]
+                     bg-[var(--brand-red)]
                      opacity-20 filter blur-lg pointer-events-none
                      transition-transform transition-colors transition-opacity duration-300 ease-out
                      group-hover:opacity-40 group-hover:blur-xl group-hover:-m-3"
             ></div>
             <Link
                 href="/join"
-                className="relative z-10 flex items-center justify-center gap-1.5 px-5 py-2 text-xs font-black text-white bg-[var(--brand-pink)] rounded-full hover:brightness-110 active:scale-95 transition-transform transition-colors transition-opacity duration-200 w-full md:w-auto"
+                className="relative z-10 flex items-center justify-center gap-1.5 px-5 py-2 text-xs font-black text-white bg-[var(--brand-red)] rounded-full hover:brightness-110 active:scale-95 transition-transform transition-colors transition-opacity duration-200 w-full md:w-auto"
             >
                 Join Now
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -181,7 +181,7 @@ export function MiniNavbar() {
                                     onClick={() => setIsOpen(false)}
                                     className={cn(
                                         "text-lg font-bold transition-colors w-full text-center py-2",
-                                        pathname === link.href ? "text-[var(--brand-pink)]" : "text-white/70 hover:text-white"
+                                        pathname === link.href ? "text-[var(--brand-red)]" : "text-white/70 hover:text-white"
                                     )}
                                 >
                                     {link.label}
@@ -198,3 +198,4 @@ export function MiniNavbar() {
         </header>
     );
 }
+

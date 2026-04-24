@@ -195,7 +195,7 @@ export const Component = () => {
 
   return (
     <div
-      className="min-h-screen h-full flex items-center justify-center font-light relative overflow-hidden w-full bg-[var(--brand-purple)]"
+      className="min-h-screen h-full flex items-center justify-center font-light relative overflow-hidden w-full bg-[var(--brand-blue)]"
       style={{
         animation: "moveBackground 60s linear infinite",
       }}
@@ -216,5 +216,6 @@ export const Component = () => {
 };
 
 export { GlassEffect, GlassDock, GlassButton, GlassFilter };
+
 
 

@@ -60,3 +60,4 @@ const testimonials = [
     image: "/team/kaustubh.jpeg",
   },
 ];
+

@@ -113,7 +113,7 @@ export const PromptBox = React.forwardRef<PromptBoxRef, PromptBoxProps>(
         }
 
         return (
-            <div className={cn("flex flex-col rounded-3xl p-2.5 shadow-md transition-colors bg-zinc-900 border border-zinc-700/60 focus-within:border-[var(--brand-pink)] focus-within:ring-1 focus-within:ring-[var(--brand-pink)] shadow-xl w-full", className)}>
+            <div className={cn("flex flex-col rounded-3xl p-2.5 shadow-md transition-colors bg-zinc-900 border border-zinc-700/60 focus-within:border-[var(--brand-red)] focus-within:ring-1 focus-within:ring-[var(--brand-red)] shadow-xl w-full", className)}>
                 <textarea
                     ref={internalTextareaRef}
                     rows={1}
@@ -135,7 +135,7 @@ export const PromptBox = React.forwardRef<PromptBoxRef, PromptBoxProps>(
                                             type="button"
                                             onClick={() => handleSubmit()}
                                             disabled={!hasValue}
-                                            className="flex h-9 w-9 md:h-10 md:w-10 md:px-3 md:rounded-xl md:w-auto items-center justify-center rounded-full text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none bg-[var(--brand-pink)] text-white hover:bg-[#d44c84] disabled:opacity-50"
+                                            className="flex h-9 w-9 md:h-10 md:w-10 md:px-3 md:rounded-xl md:w-auto items-center justify-center rounded-full text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none bg-[var(--brand-red)] text-white hover:bg-[#d44c84] disabled:opacity-50"
                                         >
                                             <SendIcon className="h-5 w-5 md:mr-1.5" />
                                             <span className="hidden md:inline">Ask</span>
@@ -153,3 +153,4 @@ export const PromptBox = React.forwardRef<PromptBoxRef, PromptBoxProps>(
     }
 );
 PromptBox.displayName = "PromptBox";
+

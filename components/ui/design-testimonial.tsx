@@ -136,7 +136,7 @@ export function Testimonial() {
                 className="mb-6 md:mb-8"
               >
                 <span className="inline-flex items-center gap-2 text-xs font-mono text-muted-foreground border border-border rounded-full px-3 py-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-pink)]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-red)]" />
                   {current.company}
                 </span>
               </motion.div>
@@ -195,7 +195,7 @@ export function Testimonial() {
                 >
                   {/* Animated line before name */}
                   <motion.div
-                    className="w-8 h-px bg-[var(--brand-pink)]"
+                    className="w-8 h-px bg-[var(--brand-red)]"
                     initial={{ transform: "scaleX(0)" }}
                     animate={{ transform: "scaleX(1)" }}
                     transition={{ duration: 0.6, delay: 0.3 }}
@@ -212,7 +212,7 @@ export function Testimonial() {
               <div className="flex items-center gap-4">
                 <motion.button
                   onClick={goPrev}
-                  className="group relative w-12 h-12 rounded-full border border-border flex items-center justify-center overflow-hidden hover:border-[var(--brand-pink)] transition-colors"
+                  className="group relative w-12 h-12 rounded-full border border-border flex items-center justify-center overflow-hidden hover:border-[var(--brand-red)] transition-colors"
                   whileTap={{ scale: 0.95 }}
                   aria-label="Previous testimonial"
                 >
@@ -226,7 +226,7 @@ export function Testimonial() {
                     height="18"
                     viewBox="0 0 16 16"
                     fill="none"
-                    className="relative z-10 text-foreground group-hover:text-[var(--brand-pink)] transition-colors"
+                    className="relative z-10 text-foreground group-hover:text-[var(--brand-red)] transition-colors"
                   >
                     <path
                       d="M10 12L6 8L10 4"
@@ -247,7 +247,7 @@ export function Testimonial() {
 
                 <motion.button
                   onClick={goNext}
-                  className="group relative w-12 h-12 rounded-full border border-border flex items-center justify-center overflow-hidden hover:border-[var(--brand-pink)] transition-colors"
+                  className="group relative w-12 h-12 rounded-full border border-border flex items-center justify-center overflow-hidden hover:border-[var(--brand-red)] transition-colors"
                   whileTap={{ scale: 0.95 }}
                   aria-label="Next testimonial"
                 >
@@ -261,7 +261,7 @@ export function Testimonial() {
                     height="18"
                     viewBox="0 0 16 16"
                     fill="none"
-                    className="relative z-10 text-foreground group-hover:text-[var(--brand-pink)] transition-colors"
+                    className="relative z-10 text-foreground group-hover:text-[var(--brand-red)] transition-colors"
                   >
                     <path
                       d="M6 4L10 8L6 12"
@@ -295,3 +295,4 @@ export function Testimonial() {
     </div>
   )
 }
+

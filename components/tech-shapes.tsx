@@ -8,7 +8,7 @@ const cards = [
   {
     title: "Learn",
     copy: "Master web dev, mobile, and cutting-edge makerspace tech.",
-    bg: "bg-[var(--brand-plum)]",
+    bg: "bg-[var(--brand-blue-dark)]",
     text: "text-white",
     graphic: (
       <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -19,8 +19,8 @@ const cards = [
   {
     title: "Collaborate",
     copy: "Build ambitious projects with passionate peers across schools.",
-    bg: "bg-[var(--brand-coral)]",
-    text: "text-[var(--brand-purple)]",
+    bg: "bg-[var(--brand-yellow)]",
+    text: "text-[var(--brand-blue)]",
     graphic: (
       <svg viewBox="0 0 100 100" className="w-full h-full">
         <rect x="20" y="20" width="60" height="60" fill="white" opacity="0.3" />
@@ -31,7 +31,7 @@ const cards = [
   {
     title: "Hack",
     copy: "Turn creativity into prototypes, MVPs, and real-world impact.",
-    bg: "bg-[var(--brand-pink)]",
+    bg: "bg-[var(--brand-red)]",
     text: "text-white",
     graphic: (
       <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -62,9 +62,9 @@ export default function TechShapes({ className }: TechShapesProps) {
               <div className="font-display text-2xl font-bold">{card.title}</div>
               <p className="mt-3 text-sm text-foreground/80 dark:text-white/80">{card.copy}</p>
             </div>
-            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-[var(--brand-pink)]">
+            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-[var(--brand-red)]">
               Explore
-              <span className="h-px w-6 bg-[var(--brand-pink)]" />
+              <span className="h-px w-6 bg-[var(--brand-red)]" />
             </span>
           </div>
         </div>
@@ -72,3 +72,4 @@ export default function TechShapes({ className }: TechShapesProps) {
     </div>
   )
 }
+

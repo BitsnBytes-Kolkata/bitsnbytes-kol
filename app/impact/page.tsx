@@ -36,7 +36,7 @@ const highlightStats = [
   {
     value: "1,500+",
     label: "Active Community Members",
-    description: "Teen builders across Kolkata & beyond",
+    description: "Teen builders across India",
     timeframe: "Growing fast ↑",
   },
   {
@@ -87,8 +87,8 @@ export default function Impact() {
             <div className="flex flex-col items-center gap-6">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-white/90 backdrop-blur-md shadow-inner">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-(--brand-pink) opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-(--brand-pink)" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-(--brand-red) opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-(--brand-red)" />
                 </span>
                 Impact
               </span>
@@ -119,7 +119,7 @@ export default function Impact() {
               </GlassContainer>
             </div>
             <div className="order-1 lg:order-2">
-              <GlassContainer className="p-8 h-full" glowColor="pink">
+              <GlassContainer className="p-8 h-full" glowColor="red">
                 <div className="space-y-6">
                   {highlightStats.map((stat, index) => (
                     <div
@@ -131,7 +131,7 @@ export default function Impact() {
                         <span className="text-4xl font-black text-white">
                           {stat.value}
                         </span>
-                        <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-(--brand-pink)">
+                        <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-(--brand-red)">
                           {stat.timeframe}
                         </span>
                       </div>
@@ -188,7 +188,7 @@ export default function Impact() {
                 <GlassContainer
                   className="flex h-full min-h-[440px] flex-col p-6"
                   containerClassName="h-full"
-                  glowColor={idx % 2 === 0 ? "pink" : "purple"}
+                  glowColor={idx % 2 === 0 ? "red" : "blue"}
                 >
                   <CardItem
                     translateZ="100"
@@ -216,9 +216,9 @@ export default function Impact() {
                     {card.copy}
                   </CardItem>
                   <CardItem translateZ="40" className="mt-6">
-                    <div className="inline-flex items-center gap-3 text-sm font-black text-(--brand-pink) uppercase tracking-widest">
+                    <div className="inline-flex items-center gap-3 text-sm font-black text-(--brand-red) uppercase tracking-widest">
                       <span>0{idx + 1}</span>
-                      <div className="h-px w-12 bg-gradient-to-r from-(--brand-pink) to-transparent" />
+                      <div className="h-px w-12 bg-gradient-to-r from-(--brand-red) to-transparent" />
                     </div>
                   </CardItem>
                 </GlassContainer>
@@ -261,3 +261,4 @@ export default function Impact() {
     </>
   );
 }
+

@@ -429,7 +429,7 @@ export function QnAChatInterface() {
         >
             <div className="flex flex-wrap items-center justify-between gap-3 px-6 pt-5 pb-4 border-b border-zinc-800/80 bg-zinc-900/50 shrink-0">
                 <div className="flex items-center gap-3">
-                    <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-[var(--brand-pink)] shadow-lg shadow-[#e45a92]/40">
+                    <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-[var(--brand-red)] shadow-lg shadow-[#e45a92]/40">
                         <Bot className="w-5 h-5 text-white" />
                     </div>
                     <div className="flex flex-col">
@@ -524,11 +524,11 @@ export function QnAChatInterface() {
                                                     `}</style>
                                                     <div className="flex flex-col items-center gap-3 relative z-10">
                                                       <div className="flex gap-1.5 justify-center">
-                                                        <div className="h-2 w-2 rounded-full bg-[var(--brand-pink)] animate-bounce" style={{ animationDelay: '0ms' }} />
-                                                        <div className="h-2 w-2 rounded-full bg-[var(--brand-pink)] animate-bounce" style={{ animationDelay: '150ms' }} />
-                                                        <div className="h-2 w-2 rounded-full bg-[var(--brand-pink)] animate-bounce" style={{ animationDelay: '300ms' }} />
+                                                        <div className="h-2 w-2 rounded-full bg-[var(--brand-red)] animate-bounce" style={{ animationDelay: '0ms' }} />
+                                                        <div className="h-2 w-2 rounded-full bg-[var(--brand-red)] animate-bounce" style={{ animationDelay: '150ms' }} />
+                                                        <div className="h-2 w-2 rounded-full bg-[var(--brand-red)] animate-bounce" style={{ animationDelay: '300ms' }} />
                                                       </div>
-                                                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--brand-pink)] animate-pulse shadow-black drop-shadow-md">Synthesizing Pixels</span>
+                                                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--brand-red)] animate-pulse shadow-black drop-shadow-md">Synthesizing Pixels</span>
                                                     </div>
                                                   </div>
                                                 )
@@ -543,7 +543,7 @@ export function QnAChatInterface() {
                                                     return (
                                                         <a
                                                             href={href}
-                                                            className="inline-flex my-2 w-full sm:w-auto items-center justify-center rounded-xl bg-[var(--brand-pink)] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#e45a92]/30 transition-transform transition-colors transition-opacity hover:scale-105 hover:shadow-xl hover:shadow-[#e45a92]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900"
+                                                            className="inline-flex my-2 w-full sm:w-auto items-center justify-center rounded-xl bg-[var(--brand-red)] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#e45a92]/30 transition-transform transition-colors transition-opacity hover:scale-105 hover:shadow-xl hover:shadow-[#e45a92]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900"
                                                             target="_blank"
                                                             rel="noopener noreferrer"
                                                             {...props}
@@ -748,4 +748,5 @@ export function QnAChatInterface() {
         </div>
     )
 }
+
 

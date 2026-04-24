@@ -73,8 +73,8 @@ const colorVariants: Record<
   },
   primary: {
     outer: "bg-[#1a0b2c]",
-    inner: "bg-[var(--brand-purple)]",
-    button: "bg-[var(--brand-pink)]",
+    inner: "bg-[var(--brand-blue)]",
+    button: "bg-[var(--brand-red)]",
     textColor: "text-white",
   },
   success: {
@@ -161,4 +161,5 @@ export const MetalButton = React.forwardRef<HTMLButtonElement, MetalButtonProps>
 })
 
 export { liquidButtonVariants }
+
 

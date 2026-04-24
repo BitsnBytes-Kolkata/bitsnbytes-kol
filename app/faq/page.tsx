@@ -154,8 +154,8 @@ export default function FAQ() {
                       {faq.question}
                     </h3>
                     <div className={cn(
-                      "flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-(--brand-pink) transition-transform transition-colors transition-opacity duration-300",
-                      isOpen && "rotate-180 bg-(--brand-pink) text-white border-(--brand-pink)/50"
+                      "flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-(--brand-red) transition-transform transition-colors transition-opacity duration-300",
+                      isOpen && "rotate-180 bg-(--brand-red) text-white border-(--brand-red)/50"
                     )}>
                       <ChevronDown className="h-6 w-6" />
                     </div>
@@ -193,7 +193,7 @@ export default function FAQ() {
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
                 asChild
-                className="group rounded-full bg-(--brand-pink) px-10 py-7 text-lg font-black text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-transform transition-colors transition-opacity hover:scale-105 w-full sm:w-auto"
+                className="group rounded-full bg-(--brand-red) px-10 py-7 text-lg font-black text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-transform transition-colors transition-opacity hover:scale-105 w-full sm:w-auto"
               >
                 <Link href="/contact">
                   Contact Us
@@ -214,3 +214,4 @@ export default function FAQ() {
     </>
   );
 }
+

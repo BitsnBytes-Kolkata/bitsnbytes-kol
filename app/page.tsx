@@ -41,7 +41,7 @@ const Testimonial = dynamic(
 // GlassIcons removed in favor of Features bento grid
 
 const stats = [
-  { value: "1500+", label: "Active members", detail: "Across the city of joy" },
+  { value: "1500+", label: "Active members", detail: "Across Kolkata" },
   { value: "130+", label: "Projects shipped", detail: "from apps to AI" },
   { value: "100+", label: "Partner schools", detail: "and growing" },
 ];
@@ -67,7 +67,7 @@ export default function Home() {
               <GlassContainer
                 key={stat.label}
                 className="p-8"
-                glowColor={stat.label === "Projects shipped" ? "pink" : "purple"}
+                glowColor={stat.label === "Projects shipped" ? "red" : stat.label === "Partner schools" ? "yellow" : "blue"}
               >
                 <div className="space-y-4">
                   <p className="text-5xl font-black text-white tracking-tighter">
@@ -111,3 +111,4 @@ export default function Home() {
     </>
   );
 }
+

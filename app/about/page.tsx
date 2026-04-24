@@ -276,7 +276,7 @@ export default function About() {
           align="center"
           eyebrow="Team"
           title="Meet the Agents"
-          description="A tight crew of designers, engineers, club leads, and storytellers powering the Kolkata fork and teen-led tech movements across the city of joy."
+          description="A tight crew of designers, engineers, club leads, and storytellers powering the Kolkata fork and teen-led tech movements across India."
         >
           <Suspense fallback={<LoadingInline />}>
             <TeamCaseStudy coreTeam={coreTeam} volunteers={volunteers} />
@@ -289,3 +289,4 @@ export default function About() {
     </>
   );
 }
+

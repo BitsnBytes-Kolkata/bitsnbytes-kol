@@ -5,7 +5,7 @@ interface GlassContainerProps {
     children: React.ReactNode;
     className?: string;
     containerClassName?: string;
-    glowColor?: "pink" | "purple" | "both" | "none";
+    glowColor?: "red" | "blue" | "yellow" | "both" | "none";
     animated?: boolean;
 }
 
@@ -26,7 +26,7 @@ export function GlassContainer({
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
             <div className={cn(
-                "relative overflow-hidden rounded-xl sm:rounded-2xl md:rounded-[2.25rem] border border-white/10 bg-black/20",
+                "relative overflow-hidden rounded-xl sm:rounded-2xl md:rounded-[2.25rem] border border-(--brand-off-white)/10 bg-black/40",
                 className
             )}>
                 {/* Animated glass shine */}
@@ -41,12 +41,16 @@ export function GlassContainer({
             </div>
 
             {/* Ambient glows */}
-            {(glowColor === "pink" || glowColor === "both") && (
-                <div className="absolute -bottom-24 -left-24 h-48 w-48 rounded-full bg-(--brand-pink)/10 blur-[80px] transition-opacity duration-500 group-hover:opacity-100 opacity-50" />
+            {(glowColor === "red" || glowColor === "both") && (
+                <div className="absolute -bottom-24 -left-24 h-48 w-48 rounded-full bg-(--brand-red)/20 blur-[80px] transition-opacity duration-500 group-hover:opacity-100 opacity-50" />
             )}
-            {(glowColor === "purple" || glowColor === "both") && (
-                <div className="absolute -bottom-24 -right-24 h-48 w-48 rounded-full bg-(--brand-purple)/10 blur-[80px] transition-opacity duration-500 group-hover:opacity-100 opacity-50" />
+            {(glowColor === "blue" || glowColor === "both") && (
+                <div className="absolute -bottom-24 -right-24 h-48 w-48 rounded-full bg-(--brand-blue)/20 blur-[80px] transition-opacity duration-500 group-hover:opacity-100 opacity-50" />
+            )}
+            {glowColor === "yellow" && (
+                <div className="absolute -bottom-24 -left-1/2 -right-1/2 mx-auto h-48 w-48 rounded-full bg-(--brand-yellow)/15 blur-[80px] transition-opacity duration-500 group-hover:opacity-100 opacity-50" />
             )}
         </div>
     );
 }
+

@@ -194,12 +194,12 @@ function VolunteerCard({ volunteer }: { volunteer: Volunteer }) {
     <div className="group relative flex flex-col items-center w-24 sm:w-32">
       <div className="relative mb-2 sm:mb-3">
         {/* Glow effect */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[var(--brand-purple)] via-[var(--brand-pink)] to-[var(--brand-plum)] opacity-50 blur-lg group-hover:opacity-80 transition-opacity duration-300" />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[var(--brand-blue)] via-[var(--brand-red)] to-[var(--brand-blue-dark)] opacity-50 blur-lg group-hover:opacity-80 transition-opacity duration-300" />
 
         {/* Avatar container */}
-        <div className="relative h-16 w-16 sm:h-20 sm:w-20 overflow-hidden rounded-full border-2 border-white/20 bg-gradient-to-br from-[var(--brand-purple)] to-[var(--brand-plum)] group-hover:border-[var(--brand-pink)]/50 transition-transform transition-colors transition-opacity duration-300 group-hover:scale-105">
+        <div className="relative h-16 w-16 sm:h-20 sm:w-20 overflow-hidden rounded-full border-2 border-white/20 bg-gradient-to-br from-[var(--brand-blue)] to-[var(--brand-blue-dark)] group-hover:border-[var(--brand-red)]/50 transition-transform transition-colors transition-opacity duration-300 group-hover:scale-105">
           {isPlaceholder || imageError ? (
-            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[var(--brand-purple)]/80 to-[var(--brand-plum)]/80">
+            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[var(--brand-blue)]/80 to-[var(--brand-blue-dark)]/80">
               <User className="h-8 w-8 sm:h-10 sm:w-10 text-white/60" />
             </div>
           ) : (
@@ -220,7 +220,7 @@ function VolunteerCard({ volunteer }: { volunteer: Volunteer }) {
         <h4 className="font-semibold text-sm sm:text-base text-white truncate w-full px-1">
           {volunteer.name}
         </h4>
-        <span className="text-[0.6rem] sm:text-xs font-medium uppercase tracking-wider text-[var(--brand-pink)]/80">
+        <span className="text-[0.6rem] sm:text-xs font-medium uppercase tracking-wider text-[var(--brand-red)]/80">
           Contributor
         </span>
         {/* Fixed height container for LinkedIn to keep grids aligned */}
@@ -271,7 +271,7 @@ export default function TeamCaseStudy({ coreTeam, volunteers }: TeamCaseStudyPro
           <div className="w-full border-t border-white/10" />
         </div>
         <div className="relative bg-background px-4 sm:px-6">
-          <span className="text-xs sm:text-sm font-medium uppercase tracking-widest text-[var(--brand-pink)]/70">
+          <span className="text-xs sm:text-sm font-medium uppercase tracking-widest text-[var(--brand-red)]/70">
             Contributors
           </span>
         </div>
@@ -288,7 +288,7 @@ export default function TeamCaseStudy({ coreTeam, volunteers }: TeamCaseStudyPro
 
           return (
             <section key={section} className="space-y-4 sm:space-y-5">
-              <h3 className="text-center text-sm sm:text-base font-bold uppercase tracking-[0.2em] text-[var(--brand-pink)]/90">
+              <h3 className="text-center text-sm sm:text-base font-bold uppercase tracking-[0.2em] text-[var(--brand-red)]/90">
                 {sectionLabels[section]}
               </h3>
               <div className="flex flex-wrap items-start justify-center gap-6 sm:gap-10 md:gap-14 lg:gap-16">
@@ -303,3 +303,4 @@ export default function TeamCaseStudy({ coreTeam, volunteers }: TeamCaseStudyPro
     </div>
   );
 }
+

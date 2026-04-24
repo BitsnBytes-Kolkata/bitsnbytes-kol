@@ -110,7 +110,7 @@ export default function CodeOfConduct() {
               <h1 className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight font-black text-white tracking-tighter drop-shadow-2xl">
                 Code of Conduct
               </h1>
-              <div className="inline-block bg-(--brand-pink) text-white px-8 py-4 rounded-full text-lg md:text-xl font-black shadow-[0_0_40px_rgba(228,90,146,0.6)] animate-bounce-subtle">
+              <div className="inline-block bg-(--brand-red) text-white px-8 py-4 rounded-full text-lg md:text-xl font-black shadow-[0_0_40px_rgba(228,90,146,0.6)] animate-bounce-subtle">
                 TL;DR: Be nice. Be cool. Don't cause chaos.
               </div>
             </div>
@@ -153,7 +153,7 @@ export default function CodeOfConduct() {
                 glowColor={index % 2 === 0 ? "pink" : "purple"}
               >
                 <div className="flex items-start gap-4 md:gap-6">
-                  <div className="flex h-12 w-12 md:h-14 md:w-14 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-(--brand-pink) shadow-inner">
+                  <div className="flex h-12 w-12 md:h-14 md:w-14 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-(--brand-red) shadow-inner">
                     <value.icon className="h-6 w-6 md:h-7 md:w-7" />
                   </div>
                   <div className="min-w-0">
@@ -185,7 +185,7 @@ export default function CodeOfConduct() {
                     key={index}
                     className="flex items-start gap-4 text-base md:text-lg text-white font-medium"
                   >
-                    <span className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-(--brand-pink) shadow-[0_0_10px_var(--brand-pink)]" />
+                    <span className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-(--brand-red) shadow-[0_0_10px_var(--brand-red)]" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -288,14 +288,14 @@ export default function CodeOfConduct() {
             <GlassContainer className="p-8 md:p-12 text-center" glowColor="pink">
               <div className="space-y-8">
                 <div className="flex flex-col md:flex-row items-center gap-6 p-6 rounded-3xl bg-white/5 border border-white/10 shadow-inner">
-                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.5)]">
+                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-(--brand-red) text-white shadow-[0_0_20px_rgba(228,90,146,0.5)]">
                     <Mail className="h-8 w-8" />
                   </div>
                   <div className="text-center md:text-left">
                     <p className="text-sm text-white/50 font-bold uppercase tracking-[0.2em] mb-1">Email us at</p>
                     <a
                       href="mailto:hello@gobitsnbytes.org"
-                      className="text-2xl md:text-3xl font-black text-white hover:text-(--brand-pink) transition-colors tracking-tighter"
+                      className="text-2xl md:text-3xl font-black text-white hover:text-(--brand-red) transition-colors tracking-tighter"
                     >
                       hello@gobitsnbytes.org
                     </a>
@@ -320,7 +320,7 @@ export default function CodeOfConduct() {
           <GlassContainer className="p-10 md:p-20 text-center" glowColor="both">
             <p className="text-xl md:text-3xl font-black text-white leading-tight max-w-3xl mx-auto tracking-tighter">
               "Kolkata fork of BitsnBytes exists to be a positive, creative, exciting space.
-              <span className="block mt-2 text-(--brand-pink)">
+              <span className="block mt-2 text-(--brand-red)">
                 Help us keep it that way.
               </span>
               "
@@ -329,7 +329,7 @@ export default function CodeOfConduct() {
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
                 asChild
-                className="group rounded-full bg-(--brand-pink) px-10 py-7 text-lg font-black text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-transform transition-colors transition-opacity hover:scale-105 w-full sm:w-auto"
+                className="group rounded-full bg-(--brand-red) px-10 py-7 text-lg font-black text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-transform transition-colors transition-opacity hover:scale-105 w-full sm:w-auto"
               >
                 <Link href="/join">
                   Join the Community
@@ -350,3 +350,4 @@ export default function CodeOfConduct() {
     </>
   );
 }
+

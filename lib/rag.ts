@@ -113,3 +113,4 @@ export async function searchSiteContent(query: string, matchCount = 3): Promise<
 
   return (data as any[]).map((d) => d.content)
 }
+

@@ -203,7 +203,7 @@ export const InfiniteMovingCards = ({
               className={cn(
                 "h-1.5 sm:h-2 rounded-full transition-transform transition-colors transition-opacity duration-300",
                 activeIndex === idx
-                  ? "w-4 sm:w-6 bg-[var(--brand-pink)]"
+                  ? "w-4 sm:w-6 bg-[var(--brand-red)]"
                   : "w-1.5 sm:w-2 bg-white/30 hover:bg-white/50",
               )}
             />
@@ -234,3 +234,4 @@ export const InfiniteMovingCards = ({
     </div>
   );
 };
+

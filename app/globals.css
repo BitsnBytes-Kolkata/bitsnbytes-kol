@@ -9,40 +9,41 @@
     --font-serif-brand: "Georgia Pro", Georgia, "Times New Roman", serif;
     --font-script-brand: "Palm Club", "Brush Script MT", "Segoe Script", cursive;
 
-    --brand-purple: #0066B3;
-    --brand-plum: #004d87;
-    --brand-pink: #C5312E;
-    --brand-coral: #FFD400;
-    --brand-amber: #ffdf33;
+    --brand-blue: #0066B3;
+    --brand-blue-dark: #004d87;
+    --brand-red: #C5312E;
+    --brand-yellow: #FFD400;
+    --brand-yellow-light: #ffdf33;
+    --brand-off-white: #FAF7EF;
     --brand-midnight: #050a14;
     --brand-ink: #02050a;
 
     --background: #02050a;
     --foreground: #FAF7EF;
-    --card: rgba(6, 14, 36, 0.88);
-    --card-foreground: #ddeeff;
+    --card: rgba(10, 20, 45, 0.92);
+    --card-foreground: #FAF7EF;
     --popover: rgba(5, 12, 32, 0.96);
-    --popover-foreground: #ddeeff;
-    --muted: rgba(200, 220, 255, 0.08);
-    --muted-foreground: rgba(200, 220, 255, 0.68);
-    --border: rgba(200, 220, 255, 0.12);
-    --input: rgba(200, 220, 255, 0.1);
+    --popover-foreground: #FAF7EF;
+    --muted: rgba(250, 247, 239, 0.08);
+    --muted-foreground: rgba(250, 247, 239, 0.75);
+    --border: rgba(0, 102, 179, 0.2);
+    --input: rgba(0, 102, 179, 0.15);
 
-    --primary: var(--brand-pink);
+    --primary: var(--brand-red);
     --primary-foreground: #ffffff;
-    --secondary: rgba(37, 99, 235, 0.2);
-    --secondary-foreground: #ddeeff;
-    --accent: var(--brand-coral);
-    --accent-foreground: #03070f;
+    --secondary: rgba(0, 102, 179, 0.25);
+    --secondary-foreground: #FAF7EF;
+    --accent: var(--brand-yellow);
+    --accent-foreground: #02050a;
     --destructive: #f04438;
     --destructive-foreground: #ffffff;
 
-    --ring: rgba(56, 189, 248, 0.4);
+    --ring: rgba(0, 102, 179, 0.5);
     --radius: 18px;
 
-    --glow-strong: 0 20px 70px rgba(0, 102, 179, 0.3);
-    --glow-soft: 0 10px 32px rgba(197, 49, 46, 0.25);
-    --shadow-card: 0 20px 60px rgba(2, 5, 16, 0.65);
+    --glow-strong: 0 20px 70px rgba(0, 102, 179, 0.4);
+    --glow-soft: 0 10px 32px rgba(197, 49, 46, 0.3);
+    --shadow-card: 0 20px 60px rgba(2, 5, 16, 0.8);
 
     --chart-1: oklch(0.646 0.222 41.116);
     --chart-2: oklch(0.6 0.118 184.704);
@@ -52,7 +53,7 @@
 
     --sidebar: rgba(5, 12, 32, 0.88);
     --sidebar-foreground: #ddeeff;
-    --sidebar-primary: var(--brand-pink);
+    --sidebar-primary: var(--brand-red);
     --sidebar-primary-foreground: #ffffff;
     --sidebar-accent: rgba(56, 189, 248, 0.18);
     --sidebar-accent-foreground: #bae6fd;
@@ -76,7 +77,7 @@
     --primary-foreground: #03070f;
     --secondary: rgba(200, 220, 255, 0.08);
     --secondary-foreground: #ddeeff;
-    --accent: var(--brand-coral);
+    --accent: var(--brand-yellow);
     --accent-foreground: #03070f;
     --destructive: #f87171;
     --destructive-foreground: #03070f;
@@ -89,7 +90,7 @@
 
     --sidebar: rgba(3, 8, 22, 0.92);
     --sidebar-foreground: #ddeeff;
-    --sidebar-primary: var(--brand-pink);
+    --sidebar-primary: var(--brand-red);
     --sidebar-primary-foreground: #ffffff;
     --sidebar-accent: rgba(56, 189, 248, 0.16);
     --sidebar-accent-foreground: #bae6fd;
@@ -202,7 +203,7 @@
     }
 
     .section-eyebrow {
-        @apply mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-secondary px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-secondary-foreground;
+        @apply mb-4 inline-flex items-center gap-2 rounded-full border border-(--brand-blue)/30 bg-(--brand-off-white) px-4 py-1 text-[0.7rem] font-bold uppercase tracking-[0.35em] text-(--brand-blue);
     }
 
     .glass-panel {
@@ -225,9 +226,9 @@
     }
 
     .glass-card {
-        background: hsla(0, 0%, 100%, 0.18);
-        box-shadow: 0 0 0 0.1em hsla(0, 0%, 100%, 0.3) inset;
-        @apply rounded-3xl border border-white/20 dark:border-white/10 dark:bg-white/10;
+        background: rgba(250, 247, 239, 0.05);
+        box-shadow: 0 0 0 0.1em rgba(250, 247, 239, 0.1) inset;
+        @apply rounded-3xl border border-(--brand-off-white)/10;
         /* Use transform instead of translate for better GPU acceleration */
         transform: translateY(0) translateZ(0);
         transition:
@@ -271,9 +272,9 @@
 
     .bg-grid-faint {
         background-image:
-            linear-gradient(rgba(0, 102, 179, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 212, 0, 0.08) 1px, transparent 1px);
-        background-size: 120px 120px;
+            linear-gradient(rgba(0, 102, 179, 0.12) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 212, 0, 0.1) 1px, transparent 1px);
+        background-size: 100px 100px;
     }
 
     .bg-noise-texture {
@@ -536,24 +537,24 @@
         animation-delay: -1.25s;
     }
 
-    .text-brand-purple {
-        color: var(--brand-purple);
+    .text-brand-blue {
+        color: var(--brand-blue);
     }
 
-    .text-brand-plum {
-        color: var(--brand-plum);
+    .text-brand-blue-dark {
+        color: var(--brand-blue-dark);
     }
 
-    .text-brand-pink {
-        color: var(--brand-pink);
+    .text-brand-red {
+        color: var(--brand-red);
     }
 
-    .text-brand-coral {
-        color: var(--brand-coral);
+    .text-brand-yellow {
+        color: var(--brand-yellow);
     }
 
     .solid-border {
-        border: 2px solid var(--brand-pink);
+        border: 2px solid var(--brand-red);
     }
 
     .lighting-button {
@@ -641,3 +642,4 @@
         }
     }
 }
+

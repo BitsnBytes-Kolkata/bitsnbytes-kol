@@ -26,3 +26,4 @@ export default function CodeOfConductLayout({
 }) {
   return <>{children}</>;
 }
+

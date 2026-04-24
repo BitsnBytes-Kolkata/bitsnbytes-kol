@@ -42,7 +42,7 @@ export default function TextGlitchDemo() {
             <TextGlitch 
               text="COLLABORATE" 
               hoverText="BUILD TOGETHER" 
-              className="!bg-[var(--brand-purple)] !border-b-[#ffacac]/50"
+              className="!bg-[var(--brand-blue)] !border-b-[#ffacac]/50"
               delay={0.6} 
             />
           </div>
@@ -51,4 +51,5 @@ export default function TextGlitchDemo() {
     </main>
   )
 }
+
 

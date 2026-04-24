@@ -43,3 +43,4 @@ export function WebGLShader({ className = "" }: WebGLShaderProps) {
     </div>
   );
 }
+

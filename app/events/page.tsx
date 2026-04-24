@@ -44,8 +44,8 @@ export default function Events() {
             <div className="flex flex-col items-center gap-6">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-white/90 backdrop-blur-md shadow-inner">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-(--brand-pink) opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-(--brand-pink)" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-(--brand-red) opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-(--brand-red)" />
                 </span>
                 Events
               </span>
@@ -74,7 +74,7 @@ export default function Events() {
             aria-selected={activeEvent === "all"}
             role="tab"
             className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "all"
-              ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(197,49,46,0.3)]"
+              ? "bg-(--brand-red) text-white shadow-[0_0_20px_rgba(197,49,46,0.3)]"
               : "text-white/70 hover:text-white hover:bg-white/5"
               }`}
           >
@@ -86,7 +86,7 @@ export default function Events() {
             aria-selected={activeEvent === "copilot"}
             role="tab"
             className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "copilot"
-              ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(197,49,46,0.3)]"
+              ? "bg-(--brand-red) text-white shadow-[0_0_20px_rgba(197,49,46,0.3)]"
               : "text-white/70 hover:text-white hover:bg-white/5"
               }`}
           >
@@ -98,7 +98,7 @@ export default function Events() {
             aria-selected={activeEvent === "execron"}
             role="tab"
             className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "execron"
-              ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(197,49,46,0.3)]"
+              ? "bg-(--brand-red) text-white shadow-[0_0_20px_rgba(197,49,46,0.3)]"
               : "text-white/70 hover:text-white hover:bg-white/5"
               }`}
           >
@@ -110,7 +110,7 @@ export default function Events() {
             aria-selected={activeEvent === "india-innovates"}
             role="tab"
             className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "india-innovates"
-              ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(197,49,46,0.3)]"
+              ? "bg-(--brand-red) text-white shadow-[0_0_20px_rgba(197,49,46,0.3)]"
               : "text-white/70 hover:text-white hover:bg-white/5"
               }`}
           >
@@ -143,7 +143,7 @@ export default function Events() {
               <div className="p-6 sm:p-8 md:p-10">
                 {/* Badges row */}
                 <div className="flex flex-wrap items-center gap-2 mb-6">
-                  <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white bg-(--brand-pink)">
+                  <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white bg-(--brand-red)">
                     Archived Event
                   </span>
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
@@ -174,7 +174,7 @@ export default function Events() {
                     <div>
                       <h2 className="text-xl font-bold text-white mb-2">Partners & Details</h2>
                       <p>
-                        The event was hosted by <strong>Kolkata fork of BitsnBytes</strong>, with community partners including <strong>Coding Connoisseurs</strong>, <strong>Aryan Singh</strong>, and <strong>Notion Kolkata</strong>. All participants observed the official <Link href="https://www.microsoft.com/en-us/events/code-of-conduct" target="_blank" rel="noopener noreferrer" className="text-(--brand-pink) hover:underline underline-offset-2">GitHub Event Code of Conduct</Link>.
+                        The event was hosted by <strong>Kolkata fork of BitsnBytes</strong>, with community partners including <strong>Coding Connoisseurs</strong>, <strong>Aryan Singh</strong>, and <strong>Notion Kolkata</strong>. All participants observed the official <Link href="https://www.microsoft.com/en-us/events/code-of-conduct" target="_blank" rel="noopener noreferrer" className="text-(--brand-red) hover:underline underline-offset-2">GitHub Event Code of Conduct</Link>.
                       </p>
                     </div>
                   </div>
@@ -182,10 +182,10 @@ export default function Events() {
                   <div className="space-y-6">
                     <div className="space-y-0 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
                       {[
-                        { icon: <Calendar className="h-4 w-4 text-(--brand-pink)" />, label: "Date", value: "Apr 19, 2026" },
-                        { icon: <MapPin className="h-4 w-4 text-(--brand-pink)" />, label: "Venue", value: "Kolkata" },
-                        { icon: <Users className="h-4 w-4 text-(--brand-pink)" />, label: "Format", value: "In-Person Workshop" },
-                        { icon: <Check className="h-4 w-4 text-(--brand-pink)" />, label: "Status", value: "Concluded" },
+                        { icon: <Calendar className="h-4 w-4 text-(--brand-red)" />, label: "Date", value: "Apr 19, 2026" },
+                        { icon: <MapPin className="h-4 w-4 text-(--brand-red)" />, label: "Venue", value: "Kolkata" },
+                        { icon: <Users className="h-4 w-4 text-(--brand-red)" />, label: "Format", value: "In-Person Workshop" },
+                        { icon: <Check className="h-4 w-4 text-(--brand-red)" />, label: "Status", value: "Concluded" },
                       ].map((s) => (
                         <div key={s.label} className="flex items-center justify-between px-5 py-3.5">
                           <div className="flex items-center gap-2.5">
@@ -276,7 +276,7 @@ export default function Events() {
               <div className="relative w-full overflow-hidden rounded-t-[2.25rem] bg-white/5 flex items-center justify-center min-h-[320px] border-b border-white/10">
                 <div className="text-center p-8">
                   <div className="inline-flex items-center justify-center p-4 rounded-full bg-white/5 border border-white/10 mb-4">
-                    <Activity className="h-12 w-12 text-(--brand-pink)" />
+                    <Activity className="h-12 w-12 text-(--brand-red)" />
                   </div>
                   <h3 className="text-2xl font-black tracking-tight text-white mb-2">Execron 1.0</h3>
                   <p className="text-white/60 font-medium">Build. Break. Repeat. Ship Something Real.</p>
@@ -286,15 +286,15 @@ export default function Events() {
               {/* ── Details ── */}
               <div className="p-6 sm:p-8 md:p-10">
                 <div className="flex flex-wrap items-center gap-2 mb-8">
-                  <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white bg-(--brand-pink)">
+                  <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white bg-(--brand-red)">
                     Archived Event
                   </span>
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
-                    <Trophy className="h-3 w-3 text-(--brand-pink)" />
+                    <Trophy className="h-3 w-3 text-(--brand-red)" />
                     In Collaboration with TechKriti '26, IIT Kanpur
                   </span>
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
-                    <Building2 className="h-3 w-3 text-(--brand-pink)" />
+                    <Building2 className="h-3 w-3 text-(--brand-red)" />
                     IIT Kanpur
                   </span>
                 </div>
@@ -340,10 +340,10 @@ export default function Events() {
                   <div className="space-y-6">
                     <div className="space-y-0 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
                       {[
-                        { icon: <Calendar className="h-4 w-4 text-(--brand-pink)" />, label: "Date", value: "Mar 19–22, 2026" },
-                        { icon: <MapPin className="h-4 w-4 text-(--brand-pink)" />, label: "Venue", value: "IIT Kanpur" },
-                        { icon: <Users className="h-4 w-4 text-(--brand-pink)" />, label: "Team Size", value: "1–4 members" },
-                        { icon: <Building2 className="h-4 w-4 text-(--brand-pink)" />, label: "Partners", value: "ByteForge, Kolkata fork of BitsnBytes" },
+                        { icon: <Calendar className="h-4 w-4 text-(--brand-red)" />, label: "Date", value: "Mar 19–22, 2026" },
+                        { icon: <MapPin className="h-4 w-4 text-(--brand-red)" />, label: "Venue", value: "IIT Kanpur" },
+                        { icon: <Users className="h-4 w-4 text-(--brand-red)" />, label: "Team Size", value: "1–4 members" },
+                        { icon: <Building2 className="h-4 w-4 text-(--brand-red)" />, label: "Partners", value: "ByteForge, Kolkata fork of BitsnBytes" },
                       ].map((s) => (
                         <div key={s.label} className="flex items-center justify-between px-5 py-3.5">
                           <div className="flex items-center gap-2.5">
@@ -444,11 +444,11 @@ export default function Events() {
                 {/* ── Details ── */}
                 <div className="p-6 sm:p-8 md:p-10">
                   <div className="flex flex-wrap items-center gap-2 mb-8">
-                    <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white bg-(--brand-pink)">
+                    <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white bg-(--brand-red)">
                       Archived Event
                     </span>
                     <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
-                      <Trophy className="h-3 w-3 text-(--brand-pink)" />
+                      <Trophy className="h-3 w-3 text-(--brand-red)" />
                       Official Executive Partner: Kolkata fork of BitsnBytes
                     </span>
                   </div>
@@ -461,51 +461,51 @@ export default function Events() {
                     <div>
                       <h2 className="text-xl font-bold text-white mb-2">Event Summary</h2>
                       <p>
-                        India Innovates 2026 was presented as the <strong>World's Largest Civic Tech Hackathon</strong>, held on <strong>March 28, 2026</strong> at <strong>Bharat Mandapam, Pragati Maidan, New Delhi</strong> (9 AM - 7 PM). Organizers included <strong>HN Group</strong> and <strong>MCD</strong>, with partner institutions such as <strong>IIT Kharagpur, NSUT, GGSIPU, and DDU</strong>. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-pink) hover:underline">[indiainnovates]</Link>
+                        India Innovates 2026 was presented as the <strong>World's Largest Civic Tech Hackathon</strong>, held on <strong>March 28, 2026</strong> at <strong>Bharat Mandapam, Pragati Maidan, New Delhi</strong> (9 AM - 7 PM). Organizers included <strong>HN Group</strong> and <strong>MCD</strong>, with partner institutions such as <strong>IIT Kharagpur, NSUT, GGSIPU, and DDU</strong>. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-red) hover:underline">[indiainnovates]</Link>
                       </p>
                     </div>
 
                     <div>
                       <h2 className="text-xl font-bold text-white mb-2">Scale</h2>
                       <ul className="list-disc pl-5 space-y-1">
-                        <li><strong>1.26 crore+</strong> total applicants nationwide. <Link href="https://www.tribuneindia.com/news/j-k/ju-team-among-top-15-at-india-innovates-2026/" target="_blank" className="text-(--brand-pink) hover:underline">[tribuneindia]</Link></li>
-                        <li><strong>28,000+ to 5,000+ to 15 teams</strong> across three elimination rounds. <Link href="https://www.dailyexcelsior.com/ju-students-outshine-at-india-innovates-2026/" target="_blank" className="text-(--brand-pink) hover:underline">[dailyexcelsior]</Link></li>
-                        <li><strong>₹10 lakh+</strong> prize pool, including <strong>₹1L, ₹75K, ₹50K, and ₹25K per domain</strong>. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-pink) hover:underline">[indiainnovates]</Link></li>
-                        <li>Domains: <strong>Urban Solutions, Digital Democracy, and Open Innovation</strong>. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-pink) hover:underline">[indiainnovates]</Link></li>
+                        <li><strong>1.26 crore+</strong> total applicants nationwide. <Link href="https://www.tribuneindia.com/news/j-k/ju-team-among-top-15-at-india-innovates-2026/" target="_blank" className="text-(--brand-red) hover:underline">[tribuneindia]</Link></li>
+                        <li><strong>28,000+ to 5,000+ to 15 teams</strong> across three elimination rounds. <Link href="https://www.dailyexcelsior.com/ju-students-outshine-at-india-innovates-2026/" target="_blank" className="text-(--brand-red) hover:underline">[dailyexcelsior]</Link></li>
+                        <li><strong>₹10 lakh+</strong> prize pool, including <strong>₹1L, ₹75K, ₹50K, and ₹25K per domain</strong>. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-red) hover:underline">[indiainnovates]</Link></li>
+                        <li>Domains: <strong>Urban Solutions, Digital Democracy, and Open Innovation</strong>. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-red) hover:underline">[indiainnovates]</Link></li>
                       </ul>
                     </div>
 
                     <div>
                       <h2 className="text-xl font-bold text-white mb-2">Finale Format</h2>
                       <p>
-                        It was not a build-on-site round. Teams developed in advance, and the final day focused on <strong>live product demonstrations</strong> reviewed by investors, officials, diplomats, and founders. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-pink) hover:underline">[indiainnovates]</Link>
+                        It was not a build-on-site round. Teams developed in advance, and the final day focused on <strong>live product demonstrations</strong> reviewed by investors, officials, diplomats, and founders. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-red) hover:underline">[indiainnovates]</Link>
                       </p>
                     </div>
 
                     <div>
                       <h2 className="text-xl font-bold text-white mb-2">Dignitaries and Finalists</h2>
                       <p>
-                        Confirmed attendees included <strong>Delhi CM Rekha Gupta</strong>, the <strong>Bihar Assembly Speaker</strong>, and <strong>MP Manoj Tiwari (North East Delhi)</strong>. <Link href="https://www.newdelhitimes.com/delhi-cm-rekha-gupta-attends-india-innovates-2026-hackathon-highlights-youth-driven-innovation/" target="_blank" className="text-(--brand-pink) hover:underline">[newdelhitimes]</Link>
+                        Confirmed attendees included <strong>Delhi CM Rekha Gupta</strong>, the <strong>Bihar Assembly Speaker</strong>, and <strong>MP Manoj Tiwari (North East Delhi)</strong>. <Link href="https://www.newdelhitimes.com/delhi-cm-rekha-gupta-attends-india-innovates-2026-hackathon-highlights-youth-driven-innovation/" target="_blank" className="text-(--brand-red) hover:underline">[newdelhitimes]</Link>
                       </p>
                       <p>
-                        <strong>Team Dupahar</strong> from the University of Jammu reached the Top 15 and was reported as the only finalist team from J&K. <Link href="https://www.tribuneindia.com/news/j-k/ju-team-among-top-15-at-india-innovates-2026/" target="_blank" className="text-(--brand-pink) hover:underline">[tribuneindia]</Link>
+                        <strong>Team Dupahar</strong> from the University of Jammu reached the Top 15 and was reported as the only finalist team from J&K. <Link href="https://www.tribuneindia.com/news/j-k/ju-team-among-top-15-at-india-innovates-2026/" target="_blank" className="text-(--brand-red) hover:underline">[tribuneindia]</Link>
                       </p>
                     </div>
 
                     <div>
                       <h2 className="text-xl font-bold text-white mb-2">Post-Event Pathway</h2>
                       <p>
-                        Following the finale, selected teams entered a <strong>ministry-level presentation stage</strong> for post-event review and exposure. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-pink) hover:underline">[indiainnovates]</Link>
+                        Following the finale, selected teams entered a <strong>ministry-level presentation stage</strong> for post-event review and exposure. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-red) hover:underline">[indiainnovates]</Link>
                       </p>
                     </div>
 
                     <div>
                       <h2 className="text-xl font-bold text-white mb-2">Media and Social Coverage</h2>
                       <ul className="list-disc pl-5 space-y-1">
-                        <li><code>#IndiaInnovates2026</code> was trending on X (Twitter) on event day. <Link href="https://x.com/search?q=%23IndiaInnovates2026" target="_blank" className="text-(--brand-pink) hover:underline">[x]</Link></li>
-                        <li>Event updates were also posted by Delhi CM via official channels. <Link href="https://www.newdelhitimes.com/delhi-cm-rekha-gupta-attends-india-innovates-2026-hackathon-highlights-youth-driven-innovation/" target="_blank" className="text-(--brand-pink) hover:underline">[newdelhitimes]</Link></li>
-                        <li>Coverage includes Tribune India, Daily Excelsior, and New Delhi Times. <Link href="https://www.dailyexcelsior.com/ju-students-outshine-at-india-innovates-2026/" target="_blank" className="text-(--brand-pink) hover:underline">[dailyexcelsior]</Link></li>
-                        <li>The @hn.india account described it as a historic moment involving 5,000 innovators. <Link href="https://www.instagram.com/p/DWMfnECE8Eu/" target="_blank" className="text-(--brand-pink) hover:underline">[instagram]</Link></li>
+                        <li><code>#IndiaInnovates2026</code> was trending on X (Twitter) on event day. <Link href="https://x.com/search?q=%23IndiaInnovates2026" target="_blank" className="text-(--brand-red) hover:underline">[x]</Link></li>
+                        <li>Event updates were also posted by Delhi CM via official channels. <Link href="https://www.newdelhitimes.com/delhi-cm-rekha-gupta-attends-india-innovates-2026-hackathon-highlights-youth-driven-innovation/" target="_blank" className="text-(--brand-red) hover:underline">[newdelhitimes]</Link></li>
+                        <li>Coverage includes Tribune India, Daily Excelsior, and New Delhi Times. <Link href="https://www.dailyexcelsior.com/ju-students-outshine-at-india-innovates-2026/" target="_blank" className="text-(--brand-red) hover:underline">[dailyexcelsior]</Link></li>
+                        <li>The @hn.india account described it as a historic moment involving 5,000 innovators. <Link href="https://www.instagram.com/p/DWMfnECE8Eu/" target="_blank" className="text-(--brand-red) hover:underline">[instagram]</Link></li>
                       </ul>
                     </div>
                   </div>
@@ -529,7 +529,7 @@ export default function Events() {
                       <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-white/70">
                         Archive Footage
                       </span>
-                      <span className="inline-flex items-center rounded-full border border-(--brand-pink)/40 bg-(--brand-pink)/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-(--brand-pink)">
+                      <span className="inline-flex items-center rounded-full border border-(--brand-red)/40 bg-(--brand-red)/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-(--brand-red)">
                         March 2026
                       </span>
                     </div>
@@ -614,3 +614,4 @@ export default function Events() {
     </>
   );
 }
+

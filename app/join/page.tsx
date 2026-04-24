@@ -102,8 +102,8 @@ export default function Join() {
             <div className="flex flex-col items-center gap-6">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-white/90 backdrop-blur-md shadow-inner">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-(--brand-pink) opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-(--brand-pink)" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-(--brand-red) opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-(--brand-red)" />
                 </span>
                 Applications Open
               </span>
@@ -126,13 +126,13 @@ export default function Join() {
             <GlassContainer className="p-8 md:p-12 text-center" glowColor="both">
               <div className="flex flex-col items-center gap-6">
                 <div className="inline-flex items-center gap-2 text-xs sm:text-sm text-white/60 font-bold uppercase tracking-widest">
-                  <Clock className="h-4 w-4 text-(--brand-pink)" />
+                  <Clock className="h-4 w-4 text-(--brand-red)" />
                   <span>Takes less than 2 minutes</span>
                 </div>
 
                 <Button
                   asChild
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-(--brand-pink) px-10 py-4 text-lg md:text-xl font-black text-white shadow-lg shadow-[#C5312E]/20 hover:shadow-xl hover:shadow-[#C5312E]/40 transition-transform transition-colors transition-opacity hover:scale-[1.03] focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 w-full sm:w-auto max-w-xs"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-(--brand-red) px-10 py-4 text-lg md:text-xl font-black text-white shadow-lg shadow-[#C5312E]/20 hover:shadow-xl hover:shadow-[#C5312E]/40 transition-transform transition-colors transition-opacity hover:scale-[1.03] focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 w-full sm:w-auto max-w-xs"
                 >
                   <a
                     href={NOTION_JOIN_FORM_URL}
@@ -169,7 +169,7 @@ export default function Join() {
                 glowColor={index % 2 === 0 ? "pink" : "purple"}
               >
                 <div className="flex items-start gap-4 md:gap-6">
-                  <div className="flex h-12 w-12 md:h-14 md:w-14 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-(--brand-pink) shadow-inner">
+                  <div className="flex h-12 w-12 md:h-14 md:w-14 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-(--brand-red) shadow-inner">
                     <benefit.icon className="h-6 w-6 md:h-7 md:w-7" />
                   </div>
                   <div className="min-w-0">
@@ -201,7 +201,7 @@ export default function Join() {
                     key={index}
                     className="flex items-start gap-4 text-base md:text-lg text-white font-medium"
                   >
-                    <CheckCircle2 className="h-6 w-6 shrink-0 text-(--brand-pink) mt-0.5" />
+                    <CheckCircle2 className="h-6 w-6 shrink-0 text-(--brand-red) mt-0.5" />
                     <span>{expectation}</span>
                   </li>
                 ))}
@@ -247,7 +247,7 @@ export default function Join() {
             </p>
             <Button
               asChild
-              className="group rounded-full bg-[var(--brand-pink)] px-8 sm:px-10 py-5 sm:py-6 text-sm sm:text-base font-semibold text-white shadow-lg shadow-[#C5312E]/20 hover:shadow-xl hover:shadow-[#C5312E]/40 transition-transform transition-colors transition-opacity hover:scale-105 focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 w-full sm:w-auto"
+              className="group rounded-full bg-[var(--brand-red)] px-8 sm:px-10 py-5 sm:py-6 text-sm sm:text-base font-semibold text-white shadow-lg shadow-[#C5312E]/20 hover:shadow-xl hover:shadow-[#C5312E]/40 transition-transform transition-colors transition-opacity hover:scale-105 focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 w-full sm:w-auto"
             >
               <a
                 href={NOTION_JOIN_FORM_URL}
@@ -263,7 +263,7 @@ export default function Join() {
               Questions? Reach us at{" "}
               <a
                 href="mailto:hello@gobitsnbytes.org"
-                className="font-bold text-[var(--brand-pink)] hover:underline"
+                className="font-bold text-[var(--brand-red)] hover:underline"
               >
                 hello@gobitsnbytes.org
               </a>
@@ -274,3 +274,4 @@ export default function Join() {
     </>
   );
 }
+

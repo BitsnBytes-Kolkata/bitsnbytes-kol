@@ -26,3 +26,4 @@ export function detectFrustration(message: string): boolean {
   if (!message || message.length < 5) return false
   return FRUSTRATION_PATTERNS.some((pattern) => pattern.test(message))
 }
+

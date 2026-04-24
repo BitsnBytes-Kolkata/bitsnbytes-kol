@@ -76,3 +76,4 @@ export function rateLimit(key: string, config: RateLimitConfig): RateLimitResult
   const retryAfterMs = windowMs - elapsed
   return { allowed: false, remaining: 0, retryAfterMs }
 }
+

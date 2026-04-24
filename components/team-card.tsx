@@ -58,3 +58,4 @@ export default function TeamCard({ member }: { member: any }) {
     </div>
   )
 }
+

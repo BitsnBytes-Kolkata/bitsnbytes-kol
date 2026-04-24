@@ -75,7 +75,7 @@ export function CardPattern({
     <div className="pointer-events-none">
       <div className="absolute inset-0 rounded-2xl [mask-image:linear-gradient(white,transparent)] group-hover/card:opacity-50" />
       <motion.div
-        className="absolute inset-0 rounded-2xl bg-[var(--brand-plum)] opacity-0 group-hover/card:opacity-100 backdrop-blur-xl transition duration-500"
+        className="absolute inset-0 rounded-2xl bg-[var(--brand-blue-dark)] opacity-0 group-hover/card:opacity-100 backdrop-blur-xl transition duration-500"
         style={style}
       />
       <motion.div
@@ -116,5 +116,6 @@ export const Icon = ({ className, ...rest }: React.SVGProps<SVGSVGElement>) => {
     </svg>
   );
 };
+
 
 

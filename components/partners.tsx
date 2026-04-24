@@ -29,7 +29,7 @@ const strategicPartners = [
     description: "Advancing scientific research and building the next generation of innovators through the fellowship.",
     features: ["Research Hub", "Fellowships", "Open Science"],
     color: "purple",
-    icon: <Sparkles className="w-5 h-5 text-(--brand-purple)" />,
+    icon: <Sparkles className="w-5 h-5 text-(--brand-blue)" />,
   },
   {
     name: "z.ai",
@@ -39,7 +39,7 @@ const strategicPartners = [
     description: "Intelligent chat experiences and frontier language model integrations for the modern developer.",
     features: ["Neural Chat", "LLM Native", "Agentic IC"],
     color: "pink",
-    icon: <Zap className="w-5 h-5 text-(--brand-pink)" />,
+    icon: <Zap className="w-5 h-5 text-(--brand-red)" />,
   },
 ];
 
@@ -73,7 +73,7 @@ export function Partners() {
               <CardItem
                 as="p"
                 translateZ="60"
-                className="text-[10px] font-black uppercase tracking-[0.2em] text-(--brand-pink) mb-2"
+                className="text-[10px] font-black uppercase tracking-[0.2em] text-(--brand-red) mb-2"
               >
                 {partner.role}
               </CardItem>
@@ -111,7 +111,7 @@ export function Partners() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="rounded-xl border-white/10 bg-white/5 text-white font-black hover:bg-(--brand-pink) hover:border-(--brand-pink) hover:text-white transition-transform transition-colors transition-opacity group-hover/card:translate-x-1"
+                    className="rounded-xl border-white/10 bg-white/5 text-white font-black hover:bg-(--brand-red) hover:border-(--brand-red) hover:text-white transition-transform transition-colors transition-opacity group-hover/card:translate-x-1"
                     asChild
                   >
                     <Link href={partner.url} target="__blank">
@@ -131,7 +131,7 @@ export function Partners() {
               {/* Decorative Corner Glow */}
               <div 
                 className={`absolute -bottom-10 -right-10 w-48 h-48 rounded-full opacity-0 filter blur-3xl pointer-events-none group-hover/card:opacity-20 transition-opacity duration-1000 ${
-                  partner.color === "pink" ? "bg-(--brand-pink)" : "bg-(--brand-purple)"
+                  partner.color === "pink" ? "bg-(--brand-red)" : "bg-(--brand-blue)"
                 }`} 
               />
             </CardBody>
@@ -141,9 +141,10 @@ export function Partners() {
       
       {/* Background Section Ambient Elements */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-0 w-full h-[120%] opacity-20 pointer-events-none select-none">
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-(--brand-pink) rounded-full filter blur-[200px] opacity-10 animate-pulse" />
-        <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-(--brand-purple) rounded-full filter blur-[200px] opacity-10 animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-(--brand-red) rounded-full filter blur-[200px] opacity-10 animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-(--brand-blue) rounded-full filter blur-[200px] opacity-10 animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
     </PageSection>
   );
 }
+

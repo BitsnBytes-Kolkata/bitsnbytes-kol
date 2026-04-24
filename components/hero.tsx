@@ -7,13 +7,13 @@ import { ShaderAnimation } from "@/components/ui/shader-animation"
 
 export default function Hero() {
   return (
-    <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-[var(--brand-purple)] text-white">
+    <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-[var(--brand-blue)] text-white">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="animate-slide-in-up">
-            <div className="inline-block px-4 py-2 bg-[var(--brand-coral)]/20 rounded-full mb-6">
-              <span className="text-sm font-medium text-[var(--brand-pink)]">Welcome to Bits&Bytes</span>
+            <div className="inline-block px-4 py-2 bg-[var(--brand-yellow)]/20 rounded-full mb-6">
+              <span className="text-sm font-medium text-[var(--brand-red)]">Welcome to Bits&Bytes</span>
             </div>
             <div className="mb-6">
               <TextGlitch
@@ -32,7 +32,7 @@ export default function Hero() {
               <Link
                 href="/join"
                 prefetch={true}
-                className="inline-flex items-center justify-center px-8 py-3 bg-[var(--brand-pink)] text-white rounded-full font-medium hover:bg-[var(--brand-plum)] transition-transform transition-colors transition-opacity hover:shadow-lg hover:shadow-[var(--brand-pink)]/30 group"
+                className="inline-flex items-center justify-center px-8 py-3 bg-[var(--brand-red)] text-white rounded-full font-medium hover:bg-[var(--brand-blue-dark)] transition-transform transition-colors transition-opacity hover:shadow-lg hover:shadow-[var(--brand-red)]/30 group"
               >
                 Join Us Now <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
               </Link>
@@ -48,26 +48,26 @@ export default function Hero() {
             <div className="flex items-center gap-6">
               <span className="text-sm text-white/70">Follow us:</span>
               <a href="https://github.com/gobitsnbytes" target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-white/10 rounded-full transition-colors group">
-                <Github size={20} className="text-white group-hover:text-[var(--brand-coral)]" />
+                <Github size={20} className="text-white group-hover:text-[var(--brand-yellow)]" />
               </a>
               <a href="https://www.linkedin.com/company/gobitsbytes" target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-white/10 rounded-full transition-colors group">
-                <Linkedin size={20} className="text-white group-hover:text-[var(--brand-coral)]" />
+                <Linkedin size={20} className="text-white group-hover:text-[var(--brand-yellow)]" />
               </a>
               <a href="https://www.instagram.com/bitsnbytes.lko" target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-white/10 rounded-full transition-colors group">
-                <Twitter size={20} className="text-white group-hover:text-[var(--brand-coral)]" />
+                <Twitter size={20} className="text-white group-hover:text-[var(--brand-yellow)]" />
               </a>
             </div>
           </div>
 
           {/* Right Visual: Shader animation + overlayed stats */}
-          <div className="relative h-full min-h-[500px] animate-fade-in rounded-3xl overflow-hidden border border-[var(--brand-coral)]/40 bg-[var(--brand-ink)]">
+          <div className="relative h-full min-h-[500px] animate-fade-in rounded-3xl overflow-hidden border border-[var(--brand-yellow)]/40 bg-[var(--brand-ink)]">
             <ShaderAnimation />
 
             {/* Overlay content */}
             <div className="pointer-events-none absolute inset-0 flex flex-col justify-between p-6 sm:p-8">
               {/* Top pill */}
               <div className="inline-flex items-center gap-2 rounded-full bg-black/50 border border-white/10 px-3 py-1 text-[0.7rem] sm:text-xs uppercase tracking-[0.2em] text-white/80 backdrop-blur-md">
-                <span className="w-2 h-2 rounded-full bg-[var(--brand-pink)]" />
+                <span className="w-2 h-2 rounded-full bg-[var(--brand-red)]" />
                 Teen-led hackathons
               </div>
 
@@ -79,15 +79,15 @@ export default function Hero() {
                   </p>
                   <div className="grid grid-cols-3 gap-3">
                     <div>
-                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-coral)]">1500+</p>
+                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-yellow)]">1500+</p>
                       <p className="text-[0.65rem] sm:text-xs text-white/60">Members</p>
                     </div>
                     <div>
-                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-pink)]">130+</p>
+                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-red)]">130+</p>
                       <p className="text-[0.65rem] sm:text-xs text-white/60">Projects</p>
                     </div>
                     <div>
-                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-plum)]">100+</p>
+                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-blue-dark)]">100+</p>
                       <p className="text-[0.65rem] sm:text-xs text-white/60">Schools</p>
                     </div>
                   </div>
@@ -100,3 +100,4 @@ export default function Hero() {
     </section>
   )
 }
+

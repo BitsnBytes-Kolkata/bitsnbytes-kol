@@ -35,3 +35,4 @@ export default function ImpactVisualization() {
     </div>
   )
 }
+

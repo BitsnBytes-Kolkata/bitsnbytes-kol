@@ -221,3 +221,4 @@ function DockIcon({ children, className, ...rest }: DockIconProps) {
 }
 
 export { Dock, DockIcon, DockItem, DockLabel };
+

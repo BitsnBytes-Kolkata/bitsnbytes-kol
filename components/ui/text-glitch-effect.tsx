@@ -116,8 +116,8 @@ export function TextGlitch({ text, hoverText, href, className = "", delay = 0 }:
       ref={textRef}
       className={`
         text-[10vw] font-bold leading-none tracking-tight m-0 
-        text-[var(--brand-coral)]
-        border-b border-[var(--brand-plum)]/30
+        text-[var(--brand-yellow)]
+        border-b border-[var(--brand-blue-dark)]/30
         flex flex-col items-start justify-center relative
         transition-transform transition-colors transition-opacity duration-500 ease-out
         cursor-pointer
@@ -157,4 +157,5 @@ export function TextGlitch({ text, hoverText, href, className = "", delay = 0 }:
     </h1>
   )
 }
+
 

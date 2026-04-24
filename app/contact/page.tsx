@@ -26,7 +26,7 @@ const WebGLShader = dynamic(() => import("@/components/ui/web-gl-shader").then(m
 })
 
 const fieldClass =
-  "w-full rounded-2xl border border-white/20 bg-card/90 px-4 py-3 text-base text-foreground shadow-inner shadow-black/5 transition focus:border-[var(--brand-pink)] focus:outline-none focus:ring-2 focus:ring-[var(--brand-pink)]/30 dark:border-white/15 dark:bg-white/5 dark:text-white"
+  "w-full rounded-2xl border border-white/20 bg-card/90 px-4 py-3 text-base text-foreground shadow-inner shadow-black/5 transition focus:border-[var(--brand-red)] focus:outline-none focus:ring-2 focus:ring-[var(--brand-red)]/30 dark:border-white/15 dark:bg-white/5 dark:text-white"
 
 import { GlassContainer } from "@/components/ui/glass-container"
 
@@ -119,8 +119,8 @@ export default function Contact() {
                   <h3 className="font-display text-2xl font-black text-white mb-6">Get in Touch</h3>
                   <div className="space-y-8 max-w-full">
                     {[
-                      { icon: Mail, label: "Email", value: "hello@gobitsnbytes.org", href: "mailto:hello@gobitsnbytes.org", color: "text-(--brand-pink)" },
-                      { icon: MapPin, label: "Location", value: "Kolkata, India", color: "text-(--brand-purple)" },
+                      { icon: Mail, label: "Email", value: "hello@gobitsnbytes.org", href: "mailto:hello@gobitsnbytes.org", color: "text-(--brand-red)" },
+                      { icon: MapPin, label: "Location", value: "Kolkata, India", color: "text-(--brand-blue)" },
                       { icon: Clock, label: "Established", value: "Teen-led since 2025", color: "text-blue-400" },
                     ].map((info) => (
                       <div key={info.label} className="flex items-start gap-4 max-w-full">
@@ -130,7 +130,7 @@ export default function Contact() {
                         <div className="min-w-0 pr-2">
                           <p className="text-xs font-bold uppercase tracking-widest text-white/50">{info.label}</p>
                           {info.href ? (
-                            <a href={info.href} className="text-base font-black text-white hover:text-[var(--brand-pink)] mt-0.5 block break-words break-all sm:break-normal">{info.value}</a>
+                            <a href={info.href} className="text-base font-black text-white hover:text-[var(--brand-red)] mt-0.5 block break-words break-all sm:break-normal">{info.value}</a>
                           ) : (
                             <p className="text-base font-black text-white mt-0.5 break-words break-all sm:break-normal">{info.value}</p>
                           )}
@@ -150,7 +150,7 @@ export default function Contact() {
                           id="name"
                           name="name"
                           placeholder="Your name"
-                          className="h-14 bg-white/5 border-white/10 rounded-2xl focus:border-(--brand-pink) focus:ring-(--brand-pink)/20 text-white placeholder:text-white/20"
+                          className="h-14 bg-white/5 border-white/10 rounded-2xl focus:border-(--brand-red) focus:ring-(--brand-red)/20 text-white placeholder:text-white/20"
                           required
                         />
                       </div>
@@ -161,7 +161,7 @@ export default function Contact() {
                           name="email"
                           type="email"
                           placeholder="you@email.com"
-                          className="h-14 bg-white/5 border-white/10 rounded-2xl focus:border-(--brand-pink) focus:ring-(--brand-pink)/20 text-white placeholder:text-white/20"
+                          className="h-14 bg-white/5 border-white/10 rounded-2xl focus:border-(--brand-red) focus:ring-(--brand-red)/20 text-white placeholder:text-white/20"
                           required
                         />
                       </div>
@@ -172,7 +172,7 @@ export default function Contact() {
                         id="subject"
                         name="subject"
                         placeholder="Reason for reaching out"
-                        className="h-14 bg-white/5 border-white/10 rounded-2xl focus:border-(--brand-pink) focus:ring-(--brand-pink)/20 text-white placeholder:text-white/20"
+                        className="h-14 bg-white/5 border-white/10 rounded-2xl focus:border-(--brand-red) focus:ring-(--brand-red)/20 text-white placeholder:text-white/20"
                       />
                     </div>
                     <div className="space-y-2">
@@ -182,7 +182,7 @@ export default function Contact() {
                         name="message"
                         rows={5}
                         placeholder="Tell us what's on your mind..."
-                        className="bg-white/5 border-white/10 rounded-2xl focus:border-(--brand-pink) focus:ring-(--brand-pink)/20 text-white placeholder:text-white/20 min-h-[150px] resize-none"
+                        className="bg-white/5 border-white/10 rounded-2xl focus:border-(--brand-red) focus:ring-(--brand-red)/20 text-white placeholder:text-white/20 min-h-[150px] resize-none"
                         required
                       />
                     </div>
@@ -202,7 +202,7 @@ export default function Contact() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="group w-full h-16 rounded-full bg-(--brand-pink) text-lg font-black text-white shadow-lg shadow-[#C5312E]/20 hover:shadow-xl hover:shadow-[#C5312E]/40 transition-transform transition-colors transition-opacity hover:scale-[1.02] disabled:opacity-50"
+                      className="group w-full h-16 rounded-full bg-(--brand-red) text-lg font-black text-white shadow-lg shadow-[#C5312E]/20 hover:shadow-xl hover:shadow-[#C5312E]/40 transition-transform transition-colors transition-opacity hover:scale-[1.02] disabled:opacity-50"
                     >
                       {isSubmitting ? (
                         <>
@@ -248,7 +248,7 @@ export default function Contact() {
                     className="group"
                   >
                     <GlassContainer className="px-8 py-4 flex items-center gap-3 transition-transform group-hover:scale-105" glowColor="none">
-                      <social.icon className="h-5 w-5 text-(--brand-pink) transition-transform group-hover:rotate-12" />
+                      <social.icon className="h-5 w-5 text-(--brand-red) transition-transform group-hover:rotate-12" />
                       <span className="font-black text-white uppercase tracking-widest text-xs">{social.label}</span>
                     </GlassContainer>
                   </Link>
@@ -261,3 +261,4 @@ export default function Contact() {
     </>
   )
 }
+

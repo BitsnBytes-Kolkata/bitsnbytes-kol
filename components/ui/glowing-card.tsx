@@ -65,8 +65,8 @@ export function GlowingCard({
                 </div>
 
                 {/* Ambient glows that sync with group hover */}
-                <div className="absolute -bottom-24 -left-24 h-48 w-48 rounded-full bg-(--brand-pink)/10 blur-[80px] transition-opacity duration-500 group-hover:opacity-100 opacity-50" />
-                <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-(--brand-purple)/10 blur-[80px] transition-opacity duration-500 group-hover:opacity-100 opacity-50" />
+                <div className="absolute -bottom-24 -left-24 h-48 w-48 rounded-full bg-(--brand-red)/10 blur-[80px] transition-opacity duration-500 group-hover:opacity-100 opacity-50" />
+                <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-(--brand-blue)/10 blur-[80px] transition-opacity duration-500 group-hover:opacity-100 opacity-50" />
             </div>
         </div>
     );
@@ -128,7 +128,7 @@ interface GlowingCardNumberProps {
 export function GlowingCardNumber({ index, className }: GlowingCardNumberProps) {
     return (
         <p className={cn(
-            "text-xs font-semibold uppercase tracking-[0.35em] text-[var(--brand-pink)]",
+            "text-xs font-semibold uppercase tracking-[0.35em] text-[var(--brand-red)]",
             className
         )}>
             {String(index).padStart(2, '0')}
@@ -137,3 +137,4 @@ export function GlowingCardNumber({ index, className }: GlowingCardNumberProps) 
 }
 
 export { GlowingEffect };
+

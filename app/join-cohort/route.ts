@@ -6,3 +6,4 @@ export function GET(request: NextRequest) {
 }
 
 export const dynamic = 'force-static';
+
