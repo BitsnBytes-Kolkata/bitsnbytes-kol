@@ -61,23 +61,11 @@ export default function Contact() {
     }
 
     try {
-      const { createClient } = await import("@supabase/supabase-js")
-      const supabase = createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-      )
-
-      const { error } = await supabase.from("contacts").insert({
-        name,
-        email,
-        subject: subject || null,
-        message,
-        source: "website",
-      })
-
-      if (error) {
-        throw new Error(error.message || "Failed to send message.")
-      }
+      // Supabase integration removed for lean/static rebrand
+      console.log("Form submission (simulated):", { name, email, subject, message })
+      
+      // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 800))
 
       setStatus({ type: "success", message: "Message sent successfully. We'll get back to you soon." })
       form.reset()
