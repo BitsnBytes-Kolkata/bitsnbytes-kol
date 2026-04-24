@@ -109,7 +109,7 @@ export default function Contact() {
                 Let's co-create <br className="hidden sm:block" /> the next big sprint
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-medium">
-                Partner with us on hackathons, workshops, or custom experiences for schools across Lucknow.
+                Partner with us on hackathons, workshops, or custom experiences for schools across Kolkata.
               </p>
             </div>
           </div>
@@ -132,7 +132,7 @@ export default function Contact() {
                   <div className="space-y-8 max-w-full">
                     {[
                       { icon: Mail, label: "Email", value: "hello@gobitsnbytes.org", href: "mailto:hello@gobitsnbytes.org", color: "text-(--brand-pink)" },
-                      { icon: MapPin, label: "Location", value: "Lucknow, India", color: "text-(--brand-purple)" },
+                      { icon: MapPin, label: "Location", value: "Kolkata, India", color: "text-(--brand-purple)" },
                       { icon: Clock, label: "Established", value: "Teen-led since 2025", color: "text-blue-400" },
                     ].map((info) => (
                       <div key={info.label} className="flex items-start gap-4 max-w-full">
@@ -214,7 +214,7 @@ export default function Contact() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="group w-full h-16 rounded-full bg-(--brand-pink) text-lg font-black text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-transform transition-colors transition-opacity hover:scale-[1.02] disabled:opacity-50"
+                      className="group w-full h-16 rounded-full bg-(--brand-pink) text-lg font-black text-white shadow-lg shadow-[#C5312E]/20 hover:shadow-xl hover:shadow-[#C5312E]/40 transition-transform transition-colors transition-opacity hover:scale-[1.02] disabled:opacity-50"
                     >
                       {isSubmitting ? (
                         <>
@@ -250,7 +250,7 @@ export default function Contact() {
                 {[
                   { icon: Github, label: "GitHub", href: "https://github.com/gobitsnbytes" },
                   { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/gobitsbytes" },
-                  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/bitsnbytes.lko" },
+                  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/bitsnbyteskol" },
                 ].map((social) => (
                   <Link
                     key={social.label}

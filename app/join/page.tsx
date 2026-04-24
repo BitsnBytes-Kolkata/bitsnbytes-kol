@@ -77,12 +77,12 @@ const faqs = [
   {
     question: "Is there a membership fee?",
     answer:
-      "Bits&Bytes is completely free to join. We believe tech education should be accessible to all students.",
+      "Kolkata fork of BitsnBytes is completely free to join. We believe tech education should be accessible to all students.",
   },
   {
-    question: "I'm not from Lucknow. Can I still join?",
+    question: "I'm not from Kolkata. Can I still join?",
     answer:
-      "Absolutely! While we started in Lucknow, we now have members across India. Most activities happen online via Discord.",
+      "Absolutely! While we started in Kolkata, we now have members across India. Most activities happen online via Discord.",
   },
 ];
 
@@ -111,7 +111,7 @@ export default function Join() {
                 Join the crew
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-medium">
-                Tell us how you want to build with the Bits&Bytes club. We'll
+                Tell us how you want to build with the Kolkata fork of BitsnBytes. We'll
                 connect you with squads, mentors, and live projects.
               </p>
             </div>
@@ -132,13 +132,13 @@ export default function Join() {
 
                 <Button
                   asChild
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-(--brand-pink) px-10 py-4 text-lg md:text-xl font-black text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-transform transition-colors transition-opacity hover:scale-[1.03] focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 w-full sm:w-auto max-w-xs"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-(--brand-pink) px-10 py-4 text-lg md:text-xl font-black text-white shadow-lg shadow-[#C5312E]/20 hover:shadow-xl hover:shadow-[#C5312E]/40 transition-transform transition-colors transition-opacity hover:scale-[1.03] focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 w-full sm:w-auto max-w-xs"
                 >
                   <a
                     href={NOTION_JOIN_FORM_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Open Bits&Bytes join form in Notion"
+                    aria-label="Open Kolkata fork of BitsnBytes join form in Notion"
                   >
                     Apply to Join
                     <ArrowRight className="h-6 w-6 shrink-0 transition-transform group-hover:translate-x-1" />
@@ -159,7 +159,7 @@ export default function Join() {
           align="center"
           eyebrow="Why Join"
           title="What you'll get as a member"
-          description="Being part of Bits&Bytes means more than just a Discord invite. Here's what awaits you."
+          description="Being part of the Kolkata fork of BitsnBytes means more than just a Discord invite. Here's what awaits you."
         >
           <div className="grid gap-6 md:grid-cols-2">
             {benefits.map((benefit, index) => (
@@ -191,7 +191,7 @@ export default function Join() {
           align="center"
           eyebrow="Expectations"
           title="What we look for"
-          description="We want to make sure Bits&Bytes is the right fit for you."
+          description="We want to make sure the Kolkata fork of BitsnBytes is the right fit for you."
         >
           <div className="mx-auto max-w-2xl">
             <GlassContainer className="p-8 md:p-10" glowColor="purple">
@@ -247,13 +247,13 @@ export default function Join() {
             </p>
             <Button
               asChild
-              className="group rounded-full bg-[var(--brand-pink)] px-8 sm:px-10 py-5 sm:py-6 text-sm sm:text-base font-semibold text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-transform transition-colors transition-opacity hover:scale-105 focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 w-full sm:w-auto"
+              className="group rounded-full bg-[var(--brand-pink)] px-8 sm:px-10 py-5 sm:py-6 text-sm sm:text-base font-semibold text-white shadow-lg shadow-[#C5312E]/20 hover:shadow-xl hover:shadow-[#C5312E]/40 transition-transform transition-colors transition-opacity hover:scale-105 focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 w-full sm:w-auto"
             >
               <a
                 href={NOTION_JOIN_FORM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Open Bits&Bytes join form in Notion"
+                aria-label="Open Kolkata fork of BitsnBytes join form in Notion"
               >
                 Apply Now
                 <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />

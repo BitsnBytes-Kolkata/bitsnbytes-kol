@@ -12,7 +12,7 @@ const WebGLShader = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0a0908] via-[#2f0a13] to-[#8f2d0c]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#02050a] via-[#004d87] to-[#0066B3]" />
     ),
   },
 );
@@ -29,11 +29,11 @@ const heroEvents = [
   {
     image: "/images/github-copilot-hero-desktop.png",
     imageMobile: "/images/github-copilot-hero-mobile.png",
-    alt: "GitHub Copilot Dev Days | Lucknow",
+    alt: "GitHub Copilot Dev Days | Kolkata",
     badge: "Upcoming Event",
     status: "upcoming",
     title: "GitHub Copilot Dev Days",
-    subtitle: "19 Apr 2026 · Lucknow",
+    subtitle: "Coming Soon · Kolkata",
     href: "/events",
   },
   {
@@ -84,12 +84,12 @@ export const HeroFuturistic = () => {
               {/* Main content */}
               <div className="space-y-6">
                 <h1 id="home-hero-title" className="font-display text-2xl font-extrabold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tighter drop-shadow-2xl">
-                  India&apos;s boldest <br className="hidden sm:block" />builders club
+                  Kolkata&apos;s boldest <br className="hidden sm:block" />builders club
                 </h1>
                 <p className="text-sm text-white/80 sm:text-base md:text-lg lg:text-xl max-w-2xl leading-relaxed">
                   We host premium hackathons, design/dev squads, and real-world
                   launches—run entirely by students who want to ship things that
-                  matter.
+                  matter. City of Joy, city of builders.
                 </p>
               </div>
 
@@ -97,7 +97,7 @@ export const HeroFuturistic = () => {
               <div className="flex flex-col gap-4 sm:flex-row w-full mt-2">
                 <Button
                   asChild
-                  className="w-full sm:flex-1 h-12 sm:h-14 px-6 sm:px-8 rounded-full bg-(--brand-pink) text-sm sm:text-base font-bold text-white shadow-[0_0_30px_rgba(228,90,146,0.5)] hover:shadow-[0_0_50px_rgba(228,90,146,0.7)] transition-transform transition-colors transition-opacity hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20"
+                  className="w-full sm:flex-1 h-12 sm:h-14 px-6 sm:px-8 rounded-full bg-(--brand-pink) text-sm sm:text-base font-bold text-white shadow-[0_0_30px_rgba(197,49,46,0.5)] hover:shadow-[0_0_50px_rgba(197,49,46,0.7)] transition-transform transition-colors transition-opacity hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20"
                 >
                   <Link href="/join" className="flex items-center justify-center gap-2">
                     Join the crew

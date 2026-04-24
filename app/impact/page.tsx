@@ -36,13 +36,13 @@ const highlightStats = [
   {
     value: "1,500+",
     label: "Active Community Members",
-    description: "Teen builders across India",
+    description: "Teen builders across Kolkata & beyond",
     timeframe: "Growing fast ↑",
   },
   {
     value: "2,700",
     label: "Submissions Evaluated",
-    description: "Reviewed by the Bits&Bytes team in a 3-day sprint",
+    description: "Reviewed by the Kolkata fork of BitsnBytes team in a 3-day sprint",
     timeframe: "3 days ↑",
   },
   {
@@ -152,7 +152,7 @@ export default function Impact() {
         <PageSection
           align="center"
           eyebrow="Event highlight"
-          title="Scrapyard Lucknow 2024"
+          title="Scrapyard Kolkata 2024"
           description={
             <span className="mx-auto block max-w-2xl">
               Our debut hackathon united 40+ coders, designers, filmmakers, and

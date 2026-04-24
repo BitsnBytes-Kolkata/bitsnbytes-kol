@@ -1,13 +1,11 @@
-# Bits&Bytes Official Website
+# Kolkata fork of BitsnBytes
 
-Official platform for Bits&Bytes, a teen-led coding community based in Lucknow, India. This repository powers the public website, community pages, and an AI assistant with retrieval and tool-calling support.
+Official platform for the Kolkata fork of BitsnBytes, a teen-led coding community based in Kolkata, India. This repository powers the public website and community pages.
 
 ## What This Project Includes
 
-- Next.js App Router website for community pages, events, projects, join, and contact.
-- AI assistant API with SSE streaming responses and tool-calling flows.
-- Semantic search (RAG) over selected site content using embeddings.
-- Supabase-backed forms and chat session persistence.
+- Next.js App Router website for community pages, events, join, and contact.
+- Supabase-backed forms.
 - Production-oriented frontend with 3D/interactive UI components.
 
 ## Tech Stack
@@ -78,31 +76,16 @@ App runs at `http://localhost:3000`.
 .
 |- app/                     # Next.js App Router pages and API routes
 |  |- api/
-|  |  |- assistant/         # AI assistant, feedback, image, voice
 |  |  |- join/              # Join form ingestion
 |  |  |- discord/           # Discord-related endpoint(s)
-|  |- about/ contact/ events/ impact/ join/ projects/ faq/ ...
+|  |- about/ contact/ events/ impact/ join/ faq/ ...
 |- components/              # Shared and UI components
-|- lib/                     # RAG, Supabase, rate limit, sentiment, team logic
+|- lib/                     # Supabase, team logic
 |- public/                  # Static assets (images, llms.txt, sitemap, etc.)
-|- scripts/embed-site.ts    # Embeds selected docs into site_embeddings table
 |- comic/                   # Comic/sticker generation utilities
 ```
 
 ## API Overview
-
-### `POST /api/assistant`
-
-Main AI assistant endpoint.
-
-- Input: user message history, current pathname, session ID
-- Output: `text/event-stream` (SSE) with token streaming and final action payload
-- Includes:
-	- rate limiting (`10 requests/min/IP`)
-	- intent bypass for fast navigation/contact/WhatsApp responses
-	- tool-calling loop
-	- model fallback behavior
-	- optional semantic response cache
 
 ### `POST /api/join`
 
@@ -118,48 +101,15 @@ Optional fields:
 - `experience`
 - `interests` (array, stored as comma-separated text)
 
-### `POST /api/assistant/feedback`
-
-Appends per-message feedback into `chat_sessions.feedback` in Supabase.
-
-### `POST /api/assistant/image`
-
-Image generation endpoint used by assistant tools.
-
-- Stable Diffusion path: NVIDIA endpoint (`NVIDIA_KEY`)
-- Gemini path: Hack Club proxy (`HACKCLUB_PROXY_API_KEY`)
-
 ## Database Expectations (Supabase)
 
 At minimum, the code currently assumes tables like:
 
 - `join_requests`
-- `chat_sessions`
-- `site_embeddings`
 - `contacts`
 - `sponsor_leads`
 
-Also expected:
-- vector search support for embeddings (used by RAG search flows)
-
 See `TECHNICAL_DOCUMENTATION.md` for deeper schema and function examples.
-
-## Embedding Site Content for RAG
-
-The script `scripts/embed-site.ts` currently reads:
-
-- `public/llms.txt`
-- `agents.md`
-
-Then it generates embeddings and inserts chunks into `site_embeddings`.
-
-Run with:
-
-```bash
-pnpm tsx scripts/embed-site.ts
-```
-
-(Use your preferred TS runtime if `tsx` is not installed globally.)
 
 ## Deployment
 
@@ -181,7 +131,7 @@ The app also injects git metadata at build time in `next.config.mjs`.
 ## Documentation
 
 - High-level technical reference: `TECHNICAL_DOCUMENTATION.md`
-- Organization and team handbook used for assistant context: `agents.md`
+- Organization and team handbook: `agents.md`
 
 ## Contributing
 

@@ -41,7 +41,7 @@ const Testimonial = dynamic(
 // GlassIcons removed in favor of Features bento grid
 
 const stats = [
-  { value: "1500+", label: "Active members", detail: "across India" },
+  { value: "1500+", label: "Active members", detail: "Across the city of joy" },
   { value: "130+", label: "Projects shipped", detail: "from apps to AI" },
   { value: "100+", label: "Partner schools", detail: "and growing" },
 ];
@@ -60,7 +60,7 @@ export default function Home() {
         <PageSection
           eyebrow="Impact"
           title="Club-powered learning with real outcomes"
-          description="We're a teen-led code club where workshops, hackathons, and build nights lead directly to shipped projects and new opportunities."
+          description="We're the Kolkata fork of BitsnBytes where workshops, hackathons, and build nights lead directly to shipped projects and new opportunities."
         >
           <div className="grid gap-6 md:grid-cols-3">
             {stats.map((stat) => (

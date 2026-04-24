@@ -122,7 +122,7 @@ export default function Events() {
         {(activeEvent === "all" || activeEvent === "copilot") && (
           <PageSection
             eyebrow="Archived · Apr 19"
-            title="GitHub Copilot Dev Days | Lucknow"
+            title="GitHub Copilot Dev Days | Kolkata"
             description="AI-Assisted Coding with GitHub Copilot — A Community Developer Event."
           >
             <GlassContainer glowColor="pink" animated={false} className="overflow-hidden">
@@ -131,7 +131,7 @@ export default function Events() {
               <div className="relative w-full overflow-hidden rounded-t-[2.25rem] bg-white/5">
                 <Image
                   src="/images/copilot-dev-day.png"
-                  alt="GitHub Copilot Dev Days | Lucknow"
+                  alt="GitHub Copilot Dev Days | Kolkata"
                   width={1920}
                   height={640}
                   className="w-full h-auto object-cover"
@@ -147,7 +147,7 @@ export default function Events() {
                     Archived Event
                   </span>
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
-                    Hosted by Bits&amp;Bytes
+                    Hosted by Kolkata fork of BitsnBytes
                   </span>
                 </div>
 
@@ -157,7 +157,7 @@ export default function Events() {
                     <div>
                       <h2 className="text-xl font-bold text-white mb-2">Event Summary</h2>
                       <p>
-                        <strong>GitHub Copilot Dev Days</strong> was a community developer event in Lucknow that brought together students, developers, and technology enthusiasts to explore how AI-assisted development works in real projects.
+                        <strong>GitHub Copilot Dev Days</strong> was a community developer event in Kolkata that brought together students, developers, and technology enthusiasts to explore how AI-assisted development works in real projects.
                       </p>
                     </div>
 
@@ -174,7 +174,7 @@ export default function Events() {
                     <div>
                       <h2 className="text-xl font-bold text-white mb-2">Partners & Details</h2>
                       <p>
-                        The event was hosted by <strong>Bits&Bytes</strong>, with community partners including <strong>Coding Connoisseurs</strong>, <strong>Aryan Singh</strong>, and <strong>Notion Lucknow</strong>. All participants observed the official <Link href="https://www.microsoft.com/en-us/events/code-of-conduct" target="_blank" rel="noopener noreferrer" className="text-(--brand-pink) hover:underline underline-offset-2">GitHub Event Code of Conduct</Link>.
+                        The event was hosted by <strong>Kolkata fork of BitsnBytes</strong>, with community partners including <strong>Coding Connoisseurs</strong>, <strong>Aryan Singh</strong>, and <strong>Notion Kolkata</strong>. All participants observed the official <Link href="https://www.microsoft.com/en-us/events/code-of-conduct" target="_blank" rel="noopener noreferrer" className="text-(--brand-pink) hover:underline underline-offset-2">GitHub Event Code of Conduct</Link>.
                       </p>
                     </div>
                   </div>
@@ -183,7 +183,7 @@ export default function Events() {
                     <div className="space-y-0 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
                       {[
                         { icon: <Calendar className="h-4 w-4 text-(--brand-pink)" />, label: "Date", value: "Apr 19, 2026" },
-                        { icon: <MapPin className="h-4 w-4 text-(--brand-pink)" />, label: "Venue", value: "Cubispace, Lucknow" },
+                        { icon: <MapPin className="h-4 w-4 text-(--brand-pink)" />, label: "Venue", value: "Kolkata" },
                         { icon: <Users className="h-4 w-4 text-(--brand-pink)" />, label: "Format", value: "In-Person Workshop" },
                         { icon: <Check className="h-4 w-4 text-(--brand-pink)" />, label: "Status", value: "Concluded" },
                       ].map((s) => (
@@ -343,7 +343,7 @@ export default function Events() {
                         { icon: <Calendar className="h-4 w-4 text-(--brand-pink)" />, label: "Date", value: "Mar 19–22, 2026" },
                         { icon: <MapPin className="h-4 w-4 text-(--brand-pink)" />, label: "Venue", value: "IIT Kanpur" },
                         { icon: <Users className="h-4 w-4 text-(--brand-pink)" />, label: "Team Size", value: "1–4 members" },
-                        { icon: <Building2 className="h-4 w-4 text-(--brand-pink)" />, label: "Partners", value: "ByteForge, Bits&Bytes" },
+                        { icon: <Building2 className="h-4 w-4 text-(--brand-pink)" />, label: "Partners", value: "ByteForge, Kolkata fork of BitsnBytes" },
                       ].map((s) => (
                         <div key={s.label} className="flex items-center justify-between px-5 py-3.5">
                           <div className="flex items-center gap-2.5">
@@ -449,13 +449,13 @@ export default function Events() {
                     </span>
                     <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
                       <Trophy className="h-3 w-3 text-(--brand-pink)" />
-                      Official Executive Partner: Bits&Bytes
+                      Official Executive Partner: Kolkata fork of BitsnBytes
                     </span>
                   </div>
 
                   <div className="prose prose-invert max-w-none text-white/80 space-y-6">
                     <p className="text-lg text-white font-medium">
-                      <strong>India Innovates 2026</strong> is now archived. <strong>Bits&Bytes (GobitsnBytes)</strong> was listed as the <strong>Official Executive Partner</strong> for the finale.
+                      <strong>India Innovates 2026</strong> is now archived. <strong>Kolkata fork of BitsnBytes (GobitsnBytes)</strong> was listed as the <strong>Official Executive Partner</strong> for the finale.
                     </p>
 
                     <div>

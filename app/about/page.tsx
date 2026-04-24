@@ -21,14 +21,14 @@ const TeamCaseStudy = dynamic(() => import("@/components/team-case-study"), {
 });
 
 const aboutContent = {
-  title: "About Bits&Bytes",
+  title: "About the Kolkata fork of BitsnBytes",
   description:
     "We are a teen-led code club dedicated to empowering high-agency individuals to ship production-grade technology through real-world product launches.",
   sections: [
     {
       title: "The Origin Story",
       description:
-        "Originally hosting Daydream Lucknow under Hack Club, we faced a last-minute venue withdrawal. We decided to go fully independent to bypass rigid formats and deliver actual value to builders.",
+        "Originally hosting Daydream Kolkata under Hack Club, we faced a last-minute venue withdrawal. We decided to fork BitsnBytes to bypass rigid formats and deliver actual value to builders.",
     },
     {
       title: "High Agency Only",
@@ -56,7 +56,7 @@ const coreTeam: CoreTeamMember[] = [
     role: "Co-Founder & Organisation Lead",
     image: "/team/yash.jpeg",
     mobileImagePosition: "center 18%",
-    bio: "High school student who builds things that matter—from VS Code extensions with thousands of users to hackathons with 400+ participants. IOQM National Qualifier and Educator at STEMist Lucknow, teaching underrepresented talent.",
+    bio: "High school student who builds things that matter—from VS Code extensions with thousands of users to hackathons with 400+ participants. IOQM National Qualifier and Educator at STEMist Kolkata, teaching underrepresented talent.",
     expertise: [
       "Mathematics (IOQM)",
       "Full-Stack Dev",
@@ -69,7 +69,7 @@ const coreTeam: CoreTeamMember[] = [
       github: "https://github.com/yashclouded",
       website: "https://yashvibe.codes/",
     },
-    accentColor: "#3E1E68", // Deep Purple
+    accentColor: "#0066B3", // Kolkata Blue
     isFounder: true,
   },
   {
@@ -91,7 +91,7 @@ const coreTeam: CoreTeamMember[] = [
       github: "https://github.com/Aadrika08",
       website: "https://aadrikasportfolio.framer.website/",
     },
-    accentColor: "#E45A92", // Vibrant Pink
+    accentColor: "#C5312E", // Kolkata Red
     isFounder: true,
   },
   {
@@ -114,7 +114,7 @@ const coreTeam: CoreTeamMember[] = [
       github: "https://github.com/a3ro-dev",
       website: "https://a3ro.dev",
     },
-    accentColor: "#5D2F77", // Rich Plum
+    accentColor: "#FFD400", // Kolkata Yellow
     isFounder: true,
   },
   {
@@ -276,7 +276,7 @@ export default function About() {
           align="center"
           eyebrow="Team"
           title="Meet the Agents"
-          description="A tight crew of designers, engineers, club leads, and storytellers powering India-wide teen-led tech movements."
+          description="A tight crew of designers, engineers, club leads, and storytellers powering the Kolkata fork and teen-led tech movements across the city of joy."
         >
           <Suspense fallback={<LoadingInline />}>
             <TeamCaseStudy coreTeam={coreTeam} volunteers={volunteers} />

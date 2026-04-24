@@ -43,12 +43,12 @@ const faqs: FAQItem[] = [
       "Also totally ok; many students work by themselves. We do find that students have more fun when participating as a team, however.",
   },
   {
-    question: "What is Bits and Bytes?",
+    question: "What is the Kolkata fork of BitsnBytes?",
     answer:
-      "Bits and Bytes is a student-led tech club that runs hackathons and other events. Our hackathons follow the usual format but aren't traditional—we have some inspirations from Hack Club style hackathons. Our focus is on creativity; lots of attendees are newer to coding. If that sounds like fun to you, we'd love to have you!",
+      "Kolkata fork of BitsnBytes is a student-led tech club that runs hackathons and other events. Our hackathons follow the usual format but aren't traditional—we have some inspirations from Hack Club style hackathons. Our focus is on creativity; lots of attendees are newer to coding. If that sounds like fun to you, we'd love to have you!",
   },
   {
-    question: "Can I volunteer for Bits and Bytes?",
+    question: "Can I volunteer for the Kolkata fork of BitsnBytes?",
     answer:
       "Absolutely! We're almost always looking for help with the following: organizers, general day-of volunteers, workshops, and mentors. Reach out to us through our contact page to learn more.",
   },
@@ -63,12 +63,12 @@ const faqs: FAQItem[] = [
       "Common projects vary, but in general, most attendees create games, a sizable minority create mobile apps, and a small number create websites or electronics projects. You can technically even create non-coding projects; we've seen people present paintings and record albums before. If you're not sure what you want to make, you'll also have the opportunity to join an existing team.",
   },
   {
-    question: "Can I show existing projects at Bits and Bytes?",
+    question: "Can I show existing projects at the Kolkata fork of BitsnBytes?",
     answer:
       "No, you cannot show existing projects at our hackathons. All projects must be created during the event.",
   },
   {
-    question: "Can parents attend Bits and Bytes?",
+    question: "Can parents attend the Kolkata fork of BitsnBytes?",
     answer:
       "For security reasons, parents are generally not allowed on the main premises. However, they can attend the kickoffs and presentation awards. Parents may also attend if they are accepted as a volunteer and pass a background check and training, or are a chaperone for a school group.",
   },
@@ -124,7 +124,7 @@ export default function FAQ() {
                 Frequently Asked <br className="hidden sm:block" /> Questions
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-medium">
-                Everything you need to know about Bits and Bytes and how to
+                Everything you need to know about the Kolkata fork of BitsnBytes and how to
                 participate.
               </p>
             </div>

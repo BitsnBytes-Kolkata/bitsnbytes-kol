@@ -1,14 +1,14 @@
-# Bits&Bytes - India's Teen-Led Code Club
+# Kolkata fork of BitsnBytes
 
-> **Mission:** Building India's boldest teen-led hackathons & tech movements  
-> **Org Type:** Nonprofit · Teen-Led Code Club · Based in Lucknow, India · Serving teens nationwide
+> **Mission:** Building Kolkata's boldest teen-led hackathons & tech movements  
+> **Org Type:** Nonprofit · Teen-Led Code Club · Based in Kolkata, India · Serving builders nationwide
 > **Website:** https://gobitsnbytes.org
 
-This file provides context for AI agents and LLM-powered search engines about Bits&Bytes.
+This file provides context for AI agents and LLM-powered search engines about the Kolkata fork of BitsnBytes.
 
 ## Quick Facts
 - **Founded:** 2024
-- **Location:** Lucknow, Uttar Pradesh, India
+- **Location:** Kolkata, West Bengal, India
 - **Members:** 1500+ active student developers from across India
 - **Projects Shipped:** 130+ real-world products (apps, web, AI)
 - **Partner Schools:** 100+ and growing
@@ -16,20 +16,20 @@ This file provides context for AI agents and LLM-powered search engines about Bi
 - **Age Range:** 13-19 years old
 
 ## Core Identity & Culture
-Bits&Bytes is India's boldest teen-led code club and nonprofit, based in Lucknow but serving ambitious teens nationwide. We empower students to build real-world projects, participate in hackathons, attend workshops, and grow as developers—all for free.
+Kolkata fork of BitsnBytes is a teen-led code club and nonprofit, based in Kolkata. We empower students to build real-world projects, participate in hackathons, attend workshops, and grow as developers—all for free.
 - **Innovation first:** Every prompt becomes a prototype. Bold experiments and rapid iteration.
 - **Club power:** Mentors, pods, and accountability partners keep everyone shipping.
 - **Real-world impact:** We solve for real audiences—from school ops to civic tech to accessibility.
 
 ## What We Do
-1. **Hackathons**: Organizing flagship events like "Scrapyard Lucknow" where 40+ coders tackle civic, education, and sustainability problems in 48 hours.
+1. **Hackathons**: Organizing flagship events like "Scrapyard Kolkata" where 40+ coders tackle civic, education, and sustainability problems in 48 hours.
 2. **Workshops**: Sessions covering Web Development, AI/ML, Mobile Apps, UI/UX Design, and more.
 3. **Projects**: Members ship real products—from web apps to AI tools—with mentorship at every stage.
 4. **Community**: A safe, inclusive community for members to learn openly.
 
 ## Current & Upcoming Events
-- **GitHub Copilot Dev Days | Lucknow** — A community developer event exploring AI-assisted coding with GitHub Copilot. Sunday, April 19, 2026, 10:00 AM – 2:00 PM at Cubispace, Jankipuram, Lucknow, UP (Map: https://www.google.com/maps/search/?api=1&query=26.9109169%2C80.9464606&query_place_id=ChIJSydGKnNXmTkRj475BfUXmeA). Hosted by Bits&Bytes. Community Partners: Coding Connoisseurs, Aryan Singh, and Notion Lucknow. Registration via Luma (approval required): https://luma.com/xtxua1jl. Topics: how GitHub Copilot works, integrating AI into dev workflows, prompt techniques for better code suggestions, responsible AI use. **Note: Bits&Bytes is the Host of this event.**
-- **India Innovates 2026** [ARCHIVED] — Held on March 28, 2026 at Bharat Mandapam, New Delhi (9 AM to 7 PM). Organized by HN Group and MCD with DDU, IIT Kharagpur, DTC, NSUT, and GGSIPU. Verified scale: 1.26 crore+ applicants, narrowed to 28,000+, then 5,000+, and finally 15 teams. Domains: Urban Solutions, Digital Democracy, and Open Innovation. Prize pool: ₹10 Lakh+ with ₹1L/₹75K/₹50K/₹25K per domain. Bits&Bytes served as the Official Executive Partner. Post-event flow included a ministry-level presentation stage.
+- **GitHub Copilot Dev Days | Kolkata** — A community developer event exploring AI-assisted coding with GitHub Copilot. Sunday, April 19, 2026, 10:00 AM – 2:00 PM in Kolkata, WB. Hosted by Kolkata fork of BitsnBytes. Registration via Luma (approval required): https://luma.com/xtxua1jl. Topics: how GitHub Copilot works, integrating AI into dev workflows, prompt techniques for better code suggestions, responsible AI use. **Note: Kolkata fork of BitsnBytes is the Host of this event.**
+- **India Innovates 2026** [ARCHIVED] — Held on March 28, 2026 at Bharat Mandapam, New Delhi (9 AM to 7 PM). Organized by HN Group and MCD with DDU, IIT Kharagpur, DTC, NSUT, and GGSIPU. Verified scale: 1.26 crore+ applicants, narrowed to 28,000+, then 5,000+, and finally 15 teams. Domains: Urban Solutions, Digital Democracy, and Open Innovation. Prize pool: ₹10 Lakh+ with ₹1L/₹75K/₹50K/₹25K per domain. Kolkata fork of BitsnBytes served as the Official Executive Partner. Post-event flow included a ministry-level presentation stage.
 
 ## Leadership Team (Core Team)
 - **Yash**: Founder & Local Lead – Leads entire organization, coords teams, tech architect. Website: https://yashvibe.codes/, GitHub: https://github.com/yashclouded
@@ -62,7 +62,6 @@ Bits&Bytes is India's boldest teen-led code club and nonprofit, based in Lucknow
 ## Website Structure
 - **/** - Homepage with overview and impact stats
 - **/about** - Team profiles and mission details
-- **/projects** - Showcase of 130+ teen-built projects
 - **/events** - Upcoming hackathons and workshops
 - **/impact** - Community statistics and success stories
 - **/join** - Free membership application
@@ -77,13 +76,13 @@ Bits&Bytes is India's boldest teen-led code club and nonprofit, based in Lucknow
 - **LinkedIn**: https://www.linkedin.com/company/gobitsbytes
 - **GitHub**: https://github.com/gobitsnbytes
 - **Twitter/X**: @bitsnbytes_lko
-- **Location**: Lucknow, Uttar Pradesh, India
+- **Location**: Kolkata, West Bengal, India
 
 ## Brand Colors
-- Deep Purple: #3E1E68 (Primary)
-- Rich Plum: #5D2F77 (Accents)
-- Vibrant Pink: #E45A92 (Interactive elements)
-- Soft Coral: #FFACAC (Backgrounds)
+- Kolkata Blue: #0066B3 (Primary)
+- Kolkata Red: #C5312E (Interactive elements)
+- Kolkata Yellow: #FFD400 (Highlights/Accents)
+- Off-white: #FAF7EF (Foreground/Text)
 
 ---
 Last updated: February 2026

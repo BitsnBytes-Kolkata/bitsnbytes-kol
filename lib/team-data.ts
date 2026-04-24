@@ -9,16 +9,32 @@ export interface TeamMember {
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
+    name: "Shoryavardhaan Gupta",
+    role: "Kolkata Fork Lead",
+    superpowers: ["Community Building", "Event Operations", "Teen Leadership", "Builder Culture"],
+    achievements: [
+      "Founding the Kolkata fork of BitsnBytes — city of joy, city of builders",
+      "Driving the Kolkata fork's identity with an electric blue, bold AMPed energy",
+      "Building a high-agency teen builder community in Kolkata"
+    ],
+    talkToMeWhen: [
+      "You want to join or collaborate with the Kolkata chapter",
+      "You have ideas for hackathons or build nights in Kolkata",
+      "You want to talk about growing the teen tech culture in West Bengal"
+    ],
+    department: "Leadership"
+  },
+  {
     name: "Yash Singh",
     role: "Co-Founder & Organisation Lead",
     superpowers: ["Full-Stack Engineering", "Mathematics (IOQM)", "AI / LLM Intelligence", "Game Dev (GoDOT)", "Three.js & Creative Coding"],
     achievements: [
-      "Founder of Bits&Bytes (gobitsnbytes.org), leading 100+ active members in student-led tech culture",
+      "Founder of the Kolkata fork of BitsnBytes (gobitsnbytes.org), leading 100+ active members in student-led tech culture",
       "Created Codiva: A 5-star rated VS Code extension that gamifies coding for thousands of users",
       "National Qualifier for the Indian Mathematics Olympiad (IOQM)",
       "Built Alem (AI notes app <25MB) and MailAF (AI cold outreach automation)",
-      "Educator at STEMist Lucknow, teaching Computer Science to underprivileged students with talent",
-      "Lead Organizer for Scrapyard Lucknow and Galactic Local Mentor at NASA Space Apps Challenge"
+      "Educator at STEMist Kolkata, teaching Computer Science to underprivileged students with talent",
+      "Lead Organizer for Scrapyard Kolkata and Galactic Local Mentor at NASA Space Apps Challenge"
     ],
     talkToMeWhen: [
       "You want to discuss community building or scaling high-agency movements",
@@ -50,11 +66,11 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: "Co-Founder & Technical Lead",
     superpowers: ["Production-Grade Engineering", "LLMOps & RAG Architecture", "Agentic Workflows", "Next.js 16 / React 19", "System Design"],
     achievements: [
-      "AI-native systems engineer; lead architect for the entire Bits&Bytes production-grade tech infrastructure",
+      "AI-native systems engineer; lead architect for the entire Kolkata fork of BitsnBytes production-grade tech infrastructure",
       "Designed high-performance efficient retrieval systems for complex AI workflows",
       "Developed reliable long-running autonomous execution stacks for complex tool orchestration",
       "Chapter Lead @ STEMist Education, founding builder-focused STEM culture at Boys High School, Prayagraj",
-      "Project Lead for the Bits&Bytes Platform, turning community operations into durable infrastructure"
+      "Project Lead for the Kolkata fork of BitsnBytes Platform, turning community operations into durable infrastructure"
     ],
     talkToMeWhen: [
       "You care about the edge cases where AI systems usually break and want to build for real constraints",
@@ -69,7 +85,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: "Founding Member & Backend Lead",
     superpowers: ["Backend Architecture", "Database Systems", "Partnership Economics"],
     achievements: [
-      "Co-Architected the high-performance backend systems for the Bits&Bytes platform",
+      "Co-Architected the high-performance backend systems for the Kolkata fork of BitsnBytes platform",
       "Executed partnerships that delivered genuine ROI for sponsors across multiple cities"
     ],
     talkToMeWhen: [
@@ -85,7 +101,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     superpowers: ["Visual Communication", "Brand Consistency", "Impact Storytelling", "Social Strategy"],
     achievements: [
       "Generating 10k+ impressions for club events through strategic storytelling",
-      "Maintains the premium Bits&Bytes brand identity across all social channels",
+      "Maintains the premium Kolkata fork of BitsnBytes brand identity across all social channels",
       "Orchestrated promotions for GitHub Copilot Dev Days and multiple CodeDay hackathons"
     ],
     talkToMeWhen: [

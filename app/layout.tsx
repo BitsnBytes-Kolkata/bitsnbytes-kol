@@ -10,7 +10,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { PageBackground } from "@/components/page-background";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import { FloatingAiAssistant } from "@/components/client-only-components";
+
 
 const anton = Anton({
   subsets: ["latin"],
@@ -40,32 +40,32 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://gobitsnbytes.org"),
   manifest: "/manifest.webmanifest",
   title: {
-    default: "Bits&Bytes - India's Teen-Led Code Club | Hackathons & Tech Community",
-    template: "%s | Bits&Bytes",
+    default: "Kolkata fork of BitsnBytes",
+    template: "%s | Kolkata fork of BitsnBytes",
   },
   description:
     "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer. 1500+ active members and 2700+ participant submissions evaluated in 3 days.",
   keywords: [
     "Bits and Bytes",
     "bits&bytes",
-    "teen code club india",
-    "india hackathons for students",
-    "student developers india",
-    "coding club lucknow",
-    "tech events india",
+    "teen code club kolkata",
+    "kolkata hackathons for students",
+    "student developers kolkata",
+    "coding club kolkata",
+    "tech events kolkata",
     "learn coding for teens",
     "teen programmers community",
-    "hackathons in india 2025",
-    "coding classes for teens india",
+    "hackathons in kolkata 2026",
+    "coding classes for teens kolkata",
     "high school coding club",
     "teen tech community",
-    "youth coding programs india",
-    "student hackathon india",
-    "free coding club india",
+    "youth coding programs kolkata",
+    "student hackathon kolkata",
+    "free coding club kolkata",
   ],
-  authors: [{ name: "Bits&Bytes Team", url: "https://gobitsnbytes.org/about" }],
-  creator: "Bits&Bytes",
-  publisher: "Bits&Bytes",
+  authors: [{ name: "Kolkata fork of BitsnBytes Team", url: "https://gobitsnbytes.org/about" }],
+  creator: "Kolkata fork of BitsnBytes",
+  publisher: "Kolkata fork of BitsnBytes",
   formatDetection: {
     email: true,
     address: true,
@@ -94,10 +94,10 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: "https://gobitsnbytes.org",
-    siteName: "Bits&Bytes",
-    title: "Bits&Bytes - India's Teen-Led Code Club | Hackathons & Tech Community",
+    siteName: "Kolkata fork of BitsnBytes",
+    title: "Kolkata fork of BitsnBytes",
     description:
-      "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer. 1500+ active members with proven high-velocity execution.",
+      "Join the Kolkata fork of BitsnBytes. Build real projects, attend hackathons, and grow as a developer.",
     images: [
       {
         url: "/og-image.png",
@@ -110,9 +110,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bits&Bytes - India's Teen-Led Code Club",
+    title: "Kolkata fork of BitsnBytes",
     description:
-      "Join India's boldest teen-led code club. 1500+ active members building real products with high-velocity execution.",
+      "Join the Kolkata fork of BitsnBytes. Build real projects, attend hackathons, and grow as a developer.",
     images: ["/og-image.png"],
     creator: "@bitsnbytes_lko",
     site: "@bitsnbytes_lko",
@@ -123,13 +123,13 @@ export const metadata: Metadata = {
   category: "education",
   classification: "Nonprofit Teen Code Club",
   other: {
-    "msapplication-TileColor": "#3E1E68",
+    "msapplication-TileColor": "#0066B3",
     "apple-mobile-web-app-capable": "yes",
     "apple-mobile-web-app-status-bar-style": "black-translucent",
   },
   icons: {
-    icon: [{ url: "/logo.svg", type: "image/svg+xml" }],
-    shortcut: [{ url: "/logo.svg", type: "image/svg+xml" }],
+    icon: [{ url: "/logo-kolkata.png", type: "image/png" }],
+    shortcut: [{ url: "/logo-kolkata.png", type: "image/png" }],
   },
 };
 
@@ -143,23 +143,23 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
     "@id": "https://gobitsnbytes.org/#organization",
-    name: "Bits&Bytes",
-    alternateName: ["Bits and Bytes", "BitsNBytes", "Bits & Bytes"],
+    name: "Kolkata fork of BitsnBytes",
+    alternateName: ["Kolkata fork of BitsnBytes"],
     url: "https://gobitsnbytes.org",
     logo: {
       "@type": "ImageObject",
-      url: "https://gobitsnbytes.org/logo.svg",
+      url: "https://gobitsnbytes.org/logo-kolkata.png",
       width: 512,
       height: 512,
     },
     image: "https://gobitsnbytes.org/og-image.png",
     description:
-      "India's boldest teen-led code club. We run hackathons, workshops, and build real projects with 1500+ student developers across India.",
+      "India's boldest teen-led code club. We run hackathons, workshops, and build real projects with 1500+ student developers across Kolkata.",
     foundingDate: "2024",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Lucknow",
-      addressRegion: "Uttar Pradesh",
+      addressLocality: "Kolkata",
+      addressRegion: "West Bengal",
       addressCountry: "IN",
     },
     areaServed: {
@@ -198,8 +198,8 @@ export default function RootLayout({
     "@type": "WebSite",
     "@id": "https://gobitsnbytes.org/#website",
     url: "https://gobitsnbytes.org",
-    name: "Bits&Bytes",
-    description: "India's teen-led code club for hackathons, workshops, and building real projects",
+    name: "Kolkata fork of BitsnBytes",
+    description: "Kolkata fork of BitsnBytes for hackathons, workshops, and building real projects",
     publisher: {
       "@id": "https://gobitsnbytes.org/#organization",
     },
@@ -240,12 +240,6 @@ export default function RootLayout({
         name: "About Us",
         description: "Learn about Bits&Bytes - India's teen-led code club",
         url: "https://gobitsnbytes.org/about",
-      },
-      {
-        "@type": "WebPage",
-        name: "Projects",
-        description: "Explore 130+ projects built by teen developers",
-        url: "https://gobitsnbytes.org/projects",
       },
       {
         "@type": "WebPage",
@@ -312,9 +306,7 @@ export default function RootLayout({
             <Navigation />
             <main className="flex-1 w-full overflow-x-hidden">{children}</main>
             <Footer />
-            <Suspense fallback={null}>
-              <FloatingAiAssistant />
-            </Suspense>
+
           </div>
           <Analytics />
           <SpeedInsights />

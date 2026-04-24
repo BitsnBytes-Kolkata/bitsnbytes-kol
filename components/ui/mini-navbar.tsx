@@ -7,14 +7,13 @@ import { usePathname } from "next/navigation";
 import { Menu, X, ArrowUpRight, Github } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import logo from "@public/logo.svg";
+import logo from "@public/logo-kolkata.png";
 
 const NAV_LINKS = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/events", label: "Events" },
     { href: "/impact", label: "Impact" },
-    { href: "/qna", label: "QnA" },
 ];
 
 const AnimatedNavLink = ({
@@ -135,7 +134,7 @@ export function MiniNavbar() {
                     <div className="relative h-8 w-8 flex items-center justify-center rounded-lg bg-white overflow-hidden p-1.5">
                         <Image
                             src={logo}
-                            alt="Bits&Bytes logo"
+                            alt="Kolkata fork of BitsnBytes logo"
                             width={20}
                             height={20}
                             className="object-contain invert"

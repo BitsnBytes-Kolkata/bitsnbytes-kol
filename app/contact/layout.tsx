@@ -3,7 +3,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact Us - Get in Touch with Bits&Bytes",
   description:
-    "Contact Bits&Bytes team for partnerships, volunteering, questions or collaboration. Reach India's teen-led code club based in Lucknow, Uttar Pradesh.",
+    "Contact Bits&Bytes team for partnerships, volunteering, questions or collaboration. Reach India's teen-led code club based in Kolkata, West Bengal.",
   keywords: [
     "contact bits and bytes",
     "teen code club contact",

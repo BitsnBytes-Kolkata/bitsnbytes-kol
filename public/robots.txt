@@ -1,4 +1,4 @@
-# Robots.txt for Bits&Bytes (gobitsnbytes.org)
+# Robots.txt for Kolkata fork of BitsnBytes (gobitsnbytes.org)
 # SEO-optimized crawler directives
 
 User-agent: *

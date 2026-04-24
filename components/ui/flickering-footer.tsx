@@ -8,7 +8,7 @@ import Image from "next/image";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Github, Instagram, Linkedin, Mail, MapPin } from "lucide-react";
-import logo from "@public/logo.svg";
+import logo from "@public/logo-kolkata.png";
 
 // Helper function to convert any CSS color to rgba
 export const getRGBA = (
@@ -245,17 +245,17 @@ export function FlickeringFooter() {
             <div className="flex flex-col md:flex-row md:items-start md:justify-between p-6 sm:p-10 max-w-6xl mx-auto">
                 <div className="flex flex-col items-start justify-start gap-y-4 max-w-xs">
                     <Link href="/" className="flex items-center gap-3">
-                        <div className="relative grid h-10 w-10 place-items-center rounded-xl bg-black text-white shadow-[0_8px_30px_rgba(228,90,146,0.4)]">
-                            <Image src={logo} alt="Bits&Bytes logo" width={28} height={28} className="h-6 w-6 object-contain" priority />
+                        <div className="relative grid h-10 w-10 place-items-center rounded-xl bg-black text-white shadow-[0_8px_30px_rgba(197,49,46,0.4)]">
+                            <Image src={logo} alt="Kolkata fork of BitsnBytes logo" width={28} height={28} className="h-6 w-6 object-contain" priority />
                             <div className="absolute inset-0 rounded-xl border-2 border-[var(--brand-pink)]" />
                         </div>
                         <div>
-                            <p className="font-display text-base font-semibold text-foreground">Bits&Bytes</p>
+                            <p className="font-display text-base font-semibold text-foreground leading-tight">Kolkata fork of BitsnBytes</p>
                             <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Teen-led</p>
                         </div>
                     </Link>
                     <p className="tracking-tight text-muted-foreground text-sm">
-                        Building India&apos;s boldest teen-led hackathons & creative code movements - born in Lucknow, scaling nationwide.
+                        Building India&apos;s boldest teen-led hackathons &amp; creative code movements - charged up in Kolkata, scaling nationwide.
                     </p>
                     <div className="flex flex-wrap gap-2 mt-2">
                         {socialLinks.map(({ href, label, icon: Icon }) => (
@@ -297,7 +297,7 @@ export function FlickeringFooter() {
                             </a>
                             <p className="flex items-center gap-2 text-sm text-muted-foreground">
                                 <MapPin className="h-4 w-4 shrink-0" />
-                                Based in Lucknow, India
+                                Based in Kolkata, India
                             </p>
                         </div>
                     </div>
@@ -307,39 +307,39 @@ export function FlickeringFooter() {
                 <div className="absolute inset-0 bg-gradient-to-t from-transparent to-background z-10 from-40%" />
                 <div className="absolute inset-0 mx-4">
                     <FlickeringGrid
-                        text={tablet ? "B&B" : "Bits&Bytes"}
-                        fontSize={tablet ? 50 : 80}
+                        text={tablet ? "KOL" : "KOLKATA"}
+                        fontSize={tablet ? 40 : 60}
                         className="absolute inset-0 h-full w-full"
                         squareSize={2}
                         gridGap={tablet ? 2 : 3}
                         color="var(--brand-pink)"
-                        maxOpacity={0.22}
-                        flickerChance={0.08}
+                        maxOpacity={0.25}
+                        flickerChance={0.09}
                     />
                     <FlickeringGrid
-                        text={tablet ? "B&B" : "Bits&Bytes"}
-                        fontSize={tablet ? 50 : 80}
+                        text={tablet ? "KOL" : "KOLKATA"}
+                        fontSize={tablet ? 40 : 60}
                         className="absolute inset-0 h-full w-full"
                         squareSize={2}
                         gridGap={tablet ? 2 : 3}
                         color="var(--brand-coral)"
-                        maxOpacity={0.32}
-                        flickerChance={0.12}
+                        maxOpacity={0.35}
+                        flickerChance={0.14}
                     />
                     <FlickeringGrid
-                        text={tablet ? "B&B" : "Bits&Bytes"}
-                        fontSize={tablet ? 50 : 80}
+                        text={tablet ? "KOL" : "KOLKATA"}
+                        fontSize={tablet ? 40 : 60}
                         className="absolute inset-0 h-full w-full"
                         squareSize={2}
                         gridGap={tablet ? 2 : 3}
                         color="var(--brand-amber)"
-                        maxOpacity={0.18}
-                        flickerChance={0.06}
+                        maxOpacity={0.15}
+                        flickerChance={0.05}
                     />
                 </div>
             </div>
             <div className="border-t border-white/10 text-center text-[10px] sm:text-xs py-3 sm:py-4 px-4 w-full text-muted-foreground">
-                © {new Date().getFullYear()} Bits&Bytes. Built with club ❤️.
+                © {new Date().getFullYear()} Kolkata fork of BitsnBytes. Built with club ❤️.
             </div>
         </footer>
     );
