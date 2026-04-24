@@ -51,6 +51,22 @@ const aboutContent = {
 // Core Team - Top tier
 const coreTeam: CoreTeamMember[] = [
   {
+    id: 0,
+    name: "Shoryavardhaan Gupta",
+    role: "Kolkata Fork Lead",
+    image: "/team/shorya.png",
+    mobileImagePosition: "center 15%",
+    bio: "Leading the independent Kolkata fork of BitsnBytes, driving the mission to build high-performance, student-led tech communities across the city of joy.",
+    expertise: [
+      "Project Leadership",
+      "Full-Stack Architecture",
+      "Community Strategy",
+      "Growth Operations",
+    ],
+    accentColor: "#0066B3", // Brand Blue
+    isFounder: true,
+  },
+  {
     id: 1,
     name: "Yash Singh",
     role: "Co-Founder & Organisation Lead",
