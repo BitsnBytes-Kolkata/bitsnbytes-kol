@@ -203,4 +203,3 @@ export function Entropy({ className = "", size = 400 }: EntropyProps) {
         </div>
     )
 }
-

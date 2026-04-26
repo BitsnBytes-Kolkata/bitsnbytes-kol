@@ -16,4 +16,3 @@ export function FloatingAiAssistant() {
   }
   return <InternalFloatingAiAssistant />;
 }
-

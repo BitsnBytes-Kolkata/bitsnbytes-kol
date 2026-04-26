@@ -215,4 +215,3 @@ export const HeroFuturistic = () => {
 };
 
 export default HeroFuturistic;
-

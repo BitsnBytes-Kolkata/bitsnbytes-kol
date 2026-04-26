@@ -137,5 +137,3 @@ const Cursor = ({ position }: CursorProps) => {
 };
 
 export default SlideTabs;
-
-

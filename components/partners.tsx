@@ -69,7 +69,7 @@ export function Partners() {
                   />
                 </div>
               </CardItem>
-              
+
               <CardItem
                 as="p"
                 translateZ="60"
@@ -77,14 +77,14 @@ export function Partners() {
               >
                 {partner.role}
               </CardItem>
-              
+
               <CardItem
                 translateZ="70"
                 className="text-3xl font-black text-foreground tracking-tighter mb-4"
               >
                 {partner.name}
               </CardItem>
-              
+
               <CardItem
                 as="p"
                 translateZ="80"
@@ -92,18 +92,18 @@ export function Partners() {
               >
                 {partner.description}
               </CardItem>
-              
+
               <CardItem translateZ="90" className="flex flex-wrap gap-2 mb-12">
                 {partner.features.map(feat => (
-                  <span 
-                    key={feat} 
+                  <span
+                    key={feat}
                     className="text-[10px] px-3 py-1.5 rounded-full bg-foreground/[0.05] border border-foreground/10 text-foreground/40 font-bold uppercase tracking-wider group-hover/card:text-foreground/60 transition-colors"
                   >
                     {feat}
                   </span>
                 ))}
               </CardItem>
-              
+
               <div className="flex justify-between items-center mt-auto pt-6 border-t border-white/5">
                 <CardItem
                   translateZ={100}
@@ -129,16 +129,16 @@ export function Partners() {
               </div>
 
               {/* Decorative Corner Glow */}
-              <div 
+              <div
                 className={`absolute -bottom-10 -right-10 w-48 h-48 rounded-full opacity-0 filter blur-3xl pointer-events-none group-hover/card:opacity-20 transition-opacity duration-1000 ${
                   partner.color === "pink" ? "bg-(--brand-red)" : "bg-(--brand-blue)"
-                }`} 
+                }`}
               />
             </CardBody>
           </CardContainer>
         ))}
       </div>
-      
+
       {/* Background Section Ambient Elements */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-0 w-full h-[120%] opacity-20 pointer-events-none select-none">
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-(--brand-red) rounded-full filter blur-[200px] opacity-10 animate-pulse" />
@@ -147,4 +147,3 @@ export function Partners() {
     </PageSection>
   );
 }
-

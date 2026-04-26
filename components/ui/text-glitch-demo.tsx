@@ -26,11 +26,11 @@ export default function TextGlitchDemo() {
             <h2 className="text-2xl font-semibold text-neutral-800 dark:text-neutral-200">
               Interactive Link
             </h2>
-            <TextGlitch 
-              text="VISIT US" 
-              hoverText="LUCKNOW.CODES" 
-              href="https://www.lucknow.codes/" 
-              delay={0.4} 
+            <TextGlitch
+              text="VISIT US"
+              hoverText="LUCKNOW.CODES"
+              href="https://www.lucknow.codes/"
+              delay={0.4}
             />
           </div>
 
@@ -39,11 +39,11 @@ export default function TextGlitchDemo() {
             <h2 className="text-2xl font-semibold text-neutral-800 dark:text-neutral-200">
               Custom Brand Colors
             </h2>
-            <TextGlitch 
-              text="COLLABORATE" 
-              hoverText="BUILD TOGETHER" 
+            <TextGlitch
+              text="COLLABORATE"
+              hoverText="BUILD TOGETHER"
               className="!bg-[var(--brand-blue)] !border-b-[#ffacac]/50"
-              delay={0.6} 
+              delay={0.6}
             />
           </div>
         </div>
@@ -51,5 +51,3 @@ export default function TextGlitchDemo() {
     </main>
   )
 }
-
-

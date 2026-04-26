@@ -650,4 +650,3 @@
         @apply relative overflow-hidden rounded-3xl border border-foreground/10 bg-white/60 backdrop-blur-xl transition-all duration-300 hover:border-(--brand-blue)/30 hover:shadow-2xl hover:shadow-(--brand-blue)/5;
     }
 }
-

@@ -153,4 +153,3 @@ export const PromptBox = React.forwardRef<PromptBoxRef, PromptBoxProps>(
     }
 );
 PromptBox.displayName = "PromptBox";
-

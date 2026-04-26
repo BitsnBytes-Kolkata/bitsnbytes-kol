@@ -12,6 +12,3 @@ function Gallery4Demo() {
 }
 
 export { Gallery4Demo };
-
-
-

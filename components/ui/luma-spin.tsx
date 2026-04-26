@@ -10,6 +10,3 @@ export const LumaSpin = () => {
 };
 
 export default LumaSpin;
-
-
-

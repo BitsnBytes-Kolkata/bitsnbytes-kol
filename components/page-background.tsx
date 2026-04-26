@@ -23,5 +23,3 @@ export function PageBackground({ className }: PageBackgroundProps) {
 }
 
 export default PageBackground;
-
-

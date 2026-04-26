@@ -132,5 +132,3 @@ export const TextHoverEffect = ({
     </svg>
   );
 };
-
-

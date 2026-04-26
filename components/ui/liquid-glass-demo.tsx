@@ -5,6 +5,3 @@ const DemoOne = () => {
 };
 
 export { DemoOne };
-
-
-

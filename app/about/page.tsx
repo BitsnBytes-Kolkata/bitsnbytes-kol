@@ -151,7 +151,6 @@ const coreTeam: CoreTeamMember[] = [
     ],
     linkedin: "https://www.linkedin.com/in/devaanshpa/",
   },
-  },
 ];
 
 // Volunteers - smaller cards section
@@ -219,6 +218,3 @@ export default function About() {
     </>
   );
 }
-
-
-

@@ -116,6 +116,3 @@ export const Icon = ({ className, ...rest }: React.SVGProps<SVGSVGElement>) => {
     </svg>
   );
 };
-
-
-

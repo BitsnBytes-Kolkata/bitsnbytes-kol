@@ -216,6 +216,3 @@ export const Component = () => {
 };
 
 export { GlassEffect, GlassDock, GlassButton, GlassFilter };
-
-
-
