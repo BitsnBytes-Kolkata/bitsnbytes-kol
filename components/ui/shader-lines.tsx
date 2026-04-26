@@ -145,5 +145,3 @@ export function ShaderAnimation() {
 }
 
 export default ShaderAnimation
-
-

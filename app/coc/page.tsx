@@ -350,7 +350,3 @@ export default function CodeOfConduct() {
     </>
   );
 }
-
-
-
-

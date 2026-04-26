@@ -422,4 +422,3 @@ const CpuArchitecture = ({
 };
 
 export { CpuArchitecture };
-

@@ -72,4 +72,3 @@ export default function TechShapes({ className }: TechShapesProps) {
     </div>
   )
 }
-

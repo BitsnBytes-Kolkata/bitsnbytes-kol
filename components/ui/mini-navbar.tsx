@@ -198,6 +198,3 @@ export function MiniNavbar() {
         </header>
     );
 }
-
-
-

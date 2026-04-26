@@ -63,7 +63,7 @@ export default function Contact() {
     try {
       // Supabase integration removed for lean/static rebrand
       console.log("Form submission (simulated):", { name, email, subject, message })
-      
+
       // Simulate network delay
       await new Promise(resolve => setTimeout(resolve, 800))
 
@@ -261,5 +261,3 @@ export default function Contact() {
     </>
   )
 }
-
-

@@ -92,9 +92,9 @@ function TeamCard({
           // Use h-full so CSS grid can ensure equal, content-fitting heights across all cards
           "h-full",
           "md:backdrop-blur-lg",
-          // Consistent neutral framing with subtle accent glow
-          "border border-foreground/10 shadow-xl",
-          // Founders get extra glow
+          // Consistent neutral framing
+          "border border-foreground/10",
+          // Founders get extra border
           member.isFounder && "border-foreground/20",
           // Featured members (Aadrika) pop out even more
           member.isFeatured && "scale-[1.02] sm:scale-105 z-20 ring-1 ring-foreground/10",
@@ -104,27 +104,9 @@ function TeamCard({
             "linear-gradient(180deg, rgba(255,255,255,0.86) 0%, rgba(250,250,250,0.94) 58%, rgba(245,245,245,0.98) 100%)",
         }}
       >
-        <div
-          className="pointer-events-none absolute inset-0 rounded-xl sm:rounded-2xl opacity-70"
-          style={{
-            background: `radial-gradient(120% 80% at 50% -10%, ${cardAccent}44 0%, ${cardAccent}10 45%, transparent 72%)`,
-          }}
-        />
         {/* Image section - larger for better portraits */}
         <div className="relative z-10 mx-1 sm:mx-2 h-[280px] sm:h-[280px] md:h-[320px] lg:h-[340px] flex-shrink-0">
           <div className="relative h-full w-full rounded-xl sm:rounded-2xl overflow-hidden">
-            {/* Ambient glow background */}
-            <div className="absolute inset-0 -z-10 scale-110 opacity-40 blur-2xl sm:blur-3xl">
-              <Image
-                src={member.image}
-                alt=""
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                quality={60}
-                className="object-cover [object-position:var(--team-image-position-mobile)] [transform:scale(var(--team-image-scale-mobile))] sm:[object-position:var(--team-image-position)] sm:[transform:scale(var(--team-image-scale))]"
-                style={imageStyle}
-              />
-            </div>
             {/* Main image - keep it full-bleed on mobile with tuned focal points per portrait */}
             <div className="relative h-full w-full overflow-hidden rounded-xl sm:rounded-2xl border border-foreground/10 bg-foreground/5">
               <Image
@@ -193,9 +175,6 @@ function VolunteerCard({ volunteer }: { volunteer: Volunteer }) {
   return (
     <div className="group relative flex flex-col items-center w-24 sm:w-32">
       <div className="relative mb-2 sm:mb-3">
-        {/* Glow effect */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[var(--brand-blue)] via-[var(--brand-red)] to-[var(--brand-blue-dark)] opacity-50 blur-lg group-hover:opacity-80 transition-opacity duration-300" />
-
         {/* Avatar container */}
         <div className="relative h-16 w-16 sm:h-20 sm:w-20 overflow-hidden rounded-full border-2 border-foreground/10 bg-foreground/5 group-hover:border-[var(--brand-red)]/50 transition-transform transition-colors transition-opacity duration-300 group-hover:scale-105">
           {isPlaceholder || imageError ? (
@@ -303,4 +282,3 @@ export default function TeamCaseStudy({ coreTeam, volunteers }: TeamCaseStudyPro
     </div>
   );
 }
-

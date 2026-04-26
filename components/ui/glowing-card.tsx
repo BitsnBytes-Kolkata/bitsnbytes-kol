@@ -55,7 +55,7 @@ export function GlowingCard({
                     borderWidth={borderWidth}
                 />
 
-                <div className="relative h-full overflow-hidden rounded-[2.25rem] border border-foreground/5 bg-white/60 p-6 md:p-8 flex flex-col justify-between gap-4 shadow-sm">
+                <div className="relative h-full overflow-hidden rounded-[2.25rem] border border-foreground/5 bg-white/60 p-6 md:p-8 flex flex-col justify-between gap-4">
                     {/* Inner glass shine */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent opacity-50" />
 
@@ -64,9 +64,9 @@ export function GlowingCard({
                     </div>
                 </div>
 
-                {/* Ambient glows that sync with group hover */}
-                <div className="absolute -bottom-24 -left-24 h-48 w-48 rounded-full bg-(--brand-red)/10 blur-[80px] transition-opacity duration-500 group-hover:opacity-100 opacity-50" />
-                <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-(--brand-blue)/10 blur-[80px] transition-opacity duration-500 group-hover:opacity-100 opacity-50" />
+                {/* Ambient glows disabled for flat aesthetic */}
+                {/* <div className="absolute -bottom-24 -left-24 h-48 w-48 rounded-full bg-(--brand-red)/10 blur-[80px] transition-opacity duration-500 group-hover:opacity-100 opacity-50" /> */}
+                {/* <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-(--brand-blue)/10 blur-[80px] transition-opacity duration-500 group-hover:opacity-100 opacity-50" /> */}
             </div>
         </div>
     );
@@ -137,4 +137,3 @@ export function GlowingCardNumber({ index, className }: GlowingCardNumberProps) 
 }
 
 export { GlowingEffect };
-

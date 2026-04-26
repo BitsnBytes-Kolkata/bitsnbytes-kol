@@ -261,6 +261,3 @@ export default function Impact() {
     </>
   );
 }
-
-
-

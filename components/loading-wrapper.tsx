@@ -31,5 +31,3 @@ export function LoadingWrapper({ children, inline = false }: LoadingWrapperProps
     </Suspense>
   );
 }
-
-

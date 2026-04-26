@@ -346,6 +346,3 @@ export function FlickeringFooter() {
 }
 
 export default FlickeringFooter;
-
-
-

@@ -52,5 +52,3 @@ export function InteractiveRobotSection({ children, className }: InteractiveRobo
     </div>
   )
 }
-
-

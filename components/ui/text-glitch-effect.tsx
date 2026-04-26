@@ -115,7 +115,7 @@ export function TextGlitch({ text, hoverText, href, className = "", delay = 0 }:
     <h1
       ref={textRef}
       className={`
-        text-[10vw] font-bold leading-none tracking-tight m-0 
+        text-[10vw] font-bold leading-none tracking-tight m-0
         text-[var(--brand-yellow)]
         border-b border-[var(--brand-blue-dark)]/30
         flex flex-col items-start justify-center relative
@@ -137,7 +137,7 @@ export function TextGlitch({ text, hoverText, href, className = "", delay = 0 }:
       <span
         ref={spanRef}
         className="
-          absolute w-full h-full 
+          absolute w-full h-full
           text-black font-bold
           flex flex-col justify-center
           transition-transform transition-colors transition-opacity duration-400 ease-out
@@ -157,5 +157,3 @@ export function TextGlitch({ text, hoverText, href, className = "", delay = 0 }:
     </h1>
   )
 }
-
-

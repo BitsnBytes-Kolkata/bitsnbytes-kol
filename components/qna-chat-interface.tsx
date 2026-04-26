@@ -377,7 +377,7 @@ export function QnAChatInterface() {
                         } else if (actionData?.type === "generate_image") {
                             const { prompt, modelChoice, aspectRatio } = actionData as any;
                             updateMessageContent(assistantMessageId, (prev) => prev + "\n\n%%GENERATE_LOADER%%\n\n");
-                            
+
                             fetch("/api/assistant/image", {
                                 method: "POST",
                                 headers: { "Content-Type": "application/json" },
@@ -748,5 +748,3 @@ export function QnAChatInterface() {
         </div>
     )
 }
-
-
