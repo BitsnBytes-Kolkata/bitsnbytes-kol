@@ -12,7 +12,7 @@ const WebGLShader = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="absolute inset-0 bg-gradient-to-br from-[#02050a] via-[#004d87] to-[#0066B3]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#FAF7EF] via-[#0066B3]/20 to-[#C5312E]/10" />
     ),
   },
 );
@@ -62,7 +62,7 @@ export const HeroFuturistic = () => {
 
   return (
     <section
-      className="relative overflow-hidden rounded-b-[1.5rem] sm:rounded-b-[2rem] md:rounded-b-[3rem] lg:rounded-b-[3.5rem] text-white w-full max-w-full"
+      className="relative overflow-hidden rounded-b-[1.5rem] sm:rounded-b-[2rem] md:rounded-b-[3rem] lg:rounded-b-[3.5rem] text-foreground w-full max-w-full"
       aria-labelledby="home-hero-title"
     >
       <WebGLShader />
@@ -76,17 +76,17 @@ export const HeroFuturistic = () => {
           >
             <div className="flex flex-col h-full gap-6 sm:gap-8 md:gap-10">
               {/* Teen-led badge */}
-              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 sm:px-4 sm:py-1.5 text-[0.6rem] sm:text-[0.65rem] font-bold uppercase tracking-[0.25em] sm:tracking-[0.35em] text-white/80 backdrop-blur-md shadow-inner">
+              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-foreground/20 bg-foreground/5 px-3 py-1 sm:px-4 sm:py-1.5 text-[0.6rem] sm:text-[0.65rem] font-bold uppercase tracking-[0.25em] sm:tracking-[0.35em] text-foreground/80 backdrop-blur-md shadow-inner">
                 <Sparkles className="h-3 w-3 text-(--brand-red)" />
                 TEEN-LED
               </span>
 
               {/* Main content */}
               <div className="space-y-6">
-                <h1 id="home-hero-title" className="font-display text-2xl font-extrabold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tighter drop-shadow-2xl">
+                <h1 id="home-hero-title" className="font-display text-2xl font-extrabold leading-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tighter drop-shadow-sm">
                   Kolkata&apos;s boldest <br className="hidden sm:block" />builders club
                 </h1>
-                <p className="text-sm text-white/80 sm:text-base md:text-lg lg:text-xl max-w-2xl leading-relaxed">
+                <p className="text-sm text-foreground/80 sm:text-base md:text-lg lg:text-xl max-w-2xl leading-relaxed">
                   We host premium hackathons, design/dev squads, and real-world
                   launches—run entirely by students who want to ship things that
                   matter. City of Joy, city of builders.
@@ -107,7 +107,7 @@ export const HeroFuturistic = () => {
                 <Button
                   asChild
                   variant="outline"
-                  className="w-full sm:flex-1 h-12 sm:h-14 px-6 sm:px-8 rounded-full border-white/20 bg-white/5 text-sm sm:text-base font-semibold text-white backdrop-blur-md hover:bg-white/10 transition-transform transition-colors transition-opacity hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20"
+                  className="w-full sm:flex-1 h-12 sm:h-14 px-6 sm:px-8 rounded-full border-foreground/20 bg-foreground/5 text-sm sm:text-base font-semibold text-foreground backdrop-blur-md hover:bg-foreground/10 transition-transform transition-colors transition-opacity hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-white/20"
                 >
                   <Link href="/impact" className="flex items-center justify-center">See what we&apos;ve built</Link>
                 </Button>
@@ -118,10 +118,10 @@ export const HeroFuturistic = () => {
                 <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6">
                   {stats.map((stat) => (
                     <div key={stat.label} className="text-center sm:text-left">
-                      <p className="text-lg sm:text-xl md:text-3xl font-black text-white">
+                      <p className="text-lg sm:text-xl md:text-3xl font-black text-foreground">
                         {stat.value}
                       </p>
-                      <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.12em] sm:tracking-[0.18em] text-white/60 font-bold">
+                      <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.12em] sm:tracking-[0.18em] text-foreground/60 font-bold">
                         {stat.label}
                       </p>
                     </div>

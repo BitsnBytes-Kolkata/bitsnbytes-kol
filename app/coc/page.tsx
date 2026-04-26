@@ -82,7 +82,7 @@ const strikes = [
   {
     number: "3",
     title: "Third Strike",
-    description: "Permanent removal from the Kolkata fork of BitsnBytes community.",
+    description: "Permanent removal from Bits & Bytes Kolkata community.",
     color: "bg-red-500",
   },
 ];
@@ -91,26 +91,26 @@ const appliesTo = [
   "All offline meetups, workshops, and events",
   "Discord, WhatsApp, and other official online spaces",
   "Any club-affiliated projects or collaborations",
-  "Social media interactions under the Kolkata fork of BitsnBytes name",
+  "Social media interactions under Bits & Bytes Kolkata name",
 ];
 
 export default function CodeOfConduct() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[58vh] sm:min-h-[64vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32">
+      <section className="relative min-h-[58vh] sm:min-h-[64vh] flex items-center justify-center overflow-hidden text-foreground pt-24 md:pt-32">
         <WebGLShader />
         <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 md:py-16">
             <div className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
             <div className="flex flex-col items-center gap-6">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-white/90 backdrop-blur-md shadow-inner">
+              <span className="inline-flex items-center gap-2 rounded-full border border-foreground/20 bg-foreground/5 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-foreground/90 backdrop-blur-md shadow-inner">
                 <Shield className="h-3.5 w-3.5" />
                 Community Guidelines
               </span>
-              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight font-black text-white tracking-tighter drop-shadow-2xl">
+              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight font-black text-foreground tracking-tighter drop-shadow-2xl">
                 Code of Conduct
               </h1>
-              <div className="inline-block bg-(--brand-red) text-white px-8 py-4 rounded-full text-lg md:text-xl font-black shadow-[0_0_40px_rgba(228,90,146,0.6)] animate-bounce-subtle">
+              <div className="inline-block bg-(--brand-red) text-foreground px-8 py-4 rounded-full text-lg md:text-xl font-black shadow-[0_0_40px_rgba(228,90,146,0.6)] animate-bounce-subtle">
                 TL;DR: Be nice. Be cool. Don't cause chaos.
               </div>
             </div>
@@ -124,11 +124,11 @@ export default function CodeOfConduct() {
           align="center"
           eyebrow="Our Promise"
           title="What we stand for"
-          description="Kolkata fork of BitsnBytes is home for builders, dreamers, designers, and that one person who always knows the shortcut keys."
+          description="Bits & Bytes Kolkata is home for builders, dreamers, designers, and that one person who always knows the shortcut keys."
         >
           <div className="mx-auto max-w-3xl">
             <GlassContainer className="p-8 md:p-12 text-center" glowColor="both">
-              <p className="text-lg md:text-xl text-white font-medium leading-relaxed">
+              <p className="text-lg md:text-xl text-foreground font-medium leading-relaxed">
                 We want this place to feel friendly, safe, and welcoming for
                 everyone, no matter who they are or where they come from. This
                 document ensures that the vibe stays positive and everyone feels
@@ -153,14 +153,14 @@ export default function CodeOfConduct() {
                 glowColor={index % 2 === 0 ? "pink" : "purple"}
               >
                 <div className="flex items-start gap-4 md:gap-6">
-                  <div className="flex h-12 w-12 md:h-14 md:w-14 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-(--brand-red) shadow-inner">
+                  <div className="flex h-12 w-12 md:h-14 md:w-14 shrink-0 items-center justify-center rounded-2xl bg-foreground/5 border border-foreground/10 text-(--brand-red) shadow-inner">
                     <value.icon className="h-6 w-6 md:h-7 md:w-7" />
                   </div>
                   <div className="min-w-0">
-                    <h3 className="font-display text-xl md:text-2xl font-black text-white">
+                    <h3 className="font-display text-xl md:text-2xl font-black text-foreground">
                       {value.title}
                     </h3>
-                    <p className="mt-2 text-base text-white/70 font-medium leading-relaxed">
+                    <p className="mt-2 text-base text-foreground/70 font-medium leading-relaxed">
                       {value.description}
                     </p>
                   </div>
@@ -175,7 +175,7 @@ export default function CodeOfConduct() {
           align="center"
           eyebrow="Scope"
           title="Where this applies"
-          description="If it has the Kolkata fork of BitsnBytes name on it, this code covers it."
+          description="If it has Bits & Bytes Kolkata name on it, this code covers it."
         >
           <div className="mx-auto max-w-2xl">
             <GlassContainer className="p-8 md:p-10" glowColor="purple">
@@ -183,7 +183,7 @@ export default function CodeOfConduct() {
                 {appliesTo.map((item, index) => (
                   <li
                     key={index}
-                    className="flex items-start gap-4 text-base md:text-lg text-white font-medium"
+                    className="flex items-start gap-4 text-base md:text-lg text-foreground font-medium"
                   >
                     <span className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-(--brand-red) shadow-[0_0_10px_var(--brand-red)]" />
                     <span>{item}</span>
@@ -215,7 +215,7 @@ export default function CodeOfConduct() {
                 {notAllowed.map((item, index) => (
                   <li
                     key={index}
-                    className="flex items-start gap-3 text-base md:text-lg text-white/80 font-medium"
+                    className="flex items-start gap-3 text-base md:text-lg text-foreground/80 font-medium"
                   >
                     <span className="text-red-500 font-black shrink-0">✕</span>
                     <span>{item}</span>
@@ -243,7 +243,7 @@ export default function CodeOfConduct() {
                 >
                   <div
                     className={cn(
-                      "mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full text-white font-black text-2xl shadow-lg border-4 border-white/20",
+                      "mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full text-foreground font-black text-2xl shadow-lg border-4 border-foreground/20",
                       strike.color === "bg-yellow-500" ? "bg-yellow-500 shadow-yellow-500/20" :
                         strike.color === "bg-orange-500" ? "bg-orange-500 shadow-orange-500/20" :
                           "bg-red-500 shadow-red-500/20"
@@ -251,10 +251,10 @@ export default function CodeOfConduct() {
                   >
                     {strike.number}
                   </div>
-                  <h3 className="font-display text-xl font-black text-white">
+                  <h3 className="font-display text-xl font-black text-foreground">
                     {strike.title}
                   </h3>
-                  <p className="mt-2 text-sm text-white/60 font-medium leading-relaxed">
+                  <p className="mt-2 text-sm text-foreground/60 font-medium leading-relaxed">
                     {strike.description}
                   </p>
                 </GlassContainer>
@@ -263,12 +263,12 @@ export default function CodeOfConduct() {
 
             <div className="mt-8">
               <GlassContainer className="p-6 text-center" glowColor="none">
-                <p className="text-sm md:text-base text-white/70 font-medium leading-relaxed">
-                  <strong className="text-white font-black uppercase tracking-tighter mr-2">
+                <p className="text-sm md:text-base text-foreground/70 font-medium leading-relaxed">
+                  <strong className="text-foreground font-black uppercase tracking-tighter mr-2">
                     Important:
                   </strong>{" "}
                   For serious violations, the team may take immediate action
-                  without warning. The Kolkata fork of BitsnBytes staff has sole discretion in
+                  without warning. Bits & Bytes Kolkata staff has sole discretion in
                   determining what constitutes a violation. Decisions are made to
                   maintain a safe, welcoming community.
                 </p>
@@ -287,25 +287,25 @@ export default function CodeOfConduct() {
           <div className="mx-auto max-w-2xl">
             <GlassContainer className="p-8 md:p-12 text-center" glowColor="pink">
               <div className="space-y-8">
-                <div className="flex flex-col md:flex-row items-center gap-6 p-6 rounded-3xl bg-white/5 border border-white/10 shadow-inner">
-                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-(--brand-red) text-white shadow-[0_0_20px_rgba(228,90,146,0.5)]">
+                <div className="flex flex-col md:flex-row items-center gap-6 p-6 rounded-3xl bg-foreground/5 border border-foreground/10 shadow-inner">
+                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-(--brand-red) text-foreground shadow-[0_0_20px_rgba(228,90,146,0.5)]">
                     <Mail className="h-8 w-8" />
                   </div>
                   <div className="text-center md:text-left">
-                    <p className="text-sm text-white/50 font-bold uppercase tracking-[0.2em] mb-1">Email us at</p>
+                    <p className="text-sm text-foreground/50 font-bold uppercase tracking-[0.2em] mb-1">Email us at</p>
                     <a
-                      href="mailto:hello@gobitsnbytes.org"
-                      className="text-2xl md:text-3xl font-black text-white hover:text-(--brand-red) transition-colors tracking-tighter"
+                      href="mailto:kolkata@bitsnbytes.org"
+                      className="text-2xl md:text-3xl font-black text-foreground hover:text-(--brand-red) transition-colors tracking-tighter"
                     >
-                      hello@gobitsnbytes.org
+                      kolkata@bitsnbytes.org
                     </a>
                   </div>
                 </div>
 
-                <p className="text-base md:text-lg text-white/70 font-medium leading-relaxed">
+                <p className="text-base md:text-lg text-foreground/70 font-medium leading-relaxed">
                   Or message any team member privately. Share context or
                   screenshots if possible. Your report stays{" "}
-                  <strong className="text-white font-bold">
+                  <strong className="text-foreground font-bold">
                     100% confidential
                   </strong>
                   . We'll handle things calmly and fairly.
@@ -318,8 +318,8 @@ export default function CodeOfConduct() {
         {/* Final CTA */}
         <PageSection align="center">
           <GlassContainer className="p-10 md:p-20 text-center" glowColor="both">
-            <p className="text-xl md:text-3xl font-black text-white leading-tight max-w-3xl mx-auto tracking-tighter">
-              "Kolkata fork of BitsnBytes exists to be a positive, creative, exciting space.
+            <p className="text-xl md:text-3xl font-black text-foreground leading-tight max-w-3xl mx-auto tracking-tighter">
+              "Bits & Bytes Kolkata exists to be a positive, creative, exciting space.
               <span className="block mt-2 text-(--brand-red)">
                 Help us keep it that way.
               </span>
@@ -329,7 +329,7 @@ export default function CodeOfConduct() {
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
                 asChild
-                className="group rounded-full bg-(--brand-red) px-10 py-7 text-lg font-black text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-transform transition-colors transition-opacity hover:scale-105 w-full sm:w-auto"
+                className="group rounded-full bg-(--brand-red) px-10 py-7 text-lg font-black text-foreground shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-transform transition-colors transition-opacity hover:scale-105 w-full sm:w-auto"
               >
                 <Link href="/join">
                   Join the Community
@@ -339,7 +339,7 @@ export default function CodeOfConduct() {
               <Button
                 asChild
                 variant="outline"
-                className="rounded-full border-white/20 bg-white/5 px-10 py-7 text-lg font-bold text-white backdrop-blur-md hover:bg-white/10 w-full sm:w-auto transition-transform transition-colors transition-opacity"
+                className="rounded-full border-foreground/20 bg-foreground/5 px-10 py-7 text-lg font-bold text-foreground backdrop-blur-md hover:bg-white/10 w-full sm:w-auto transition-transform transition-colors transition-opacity"
               >
                 <Link href="/contact">Contact the Team</Link>
               </Button>
@@ -350,4 +350,7 @@ export default function CodeOfConduct() {
     </>
   );
 }
+
+
+
 

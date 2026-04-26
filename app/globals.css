@@ -18,32 +18,32 @@
     --brand-midnight: #050a14;
     --brand-ink: #02050a;
 
-    --background: #02050a;
-    --foreground: #FAF7EF;
-    --card: rgba(10, 20, 45, 0.92);
-    --card-foreground: #FAF7EF;
-    --popover: rgba(5, 12, 32, 0.96);
-    --popover-foreground: #FAF7EF;
-    --muted: rgba(250, 247, 239, 0.08);
-    --muted-foreground: rgba(250, 247, 239, 0.75);
-    --border: rgba(0, 102, 179, 0.2);
-    --input: rgba(0, 102, 179, 0.15);
+    --background: #FAF7EF;
+    --foreground: #02050a;
+    --card: #ffffff;
+    --card-foreground: #02050a;
+    --popover: #ffffff;
+    --popover-foreground: #02050a;
+    --muted: rgba(2, 5, 10, 0.05);
+    --muted-foreground: rgba(2, 5, 10, 0.65);
+    --border: rgba(2, 5, 10, 0.12);
+    --input: rgba(2, 5, 10, 0.08);
 
     --primary: var(--brand-red);
     --primary-foreground: #ffffff;
-    --secondary: rgba(0, 102, 179, 0.25);
-    --secondary-foreground: #FAF7EF;
+    --secondary: rgba(0, 102, 179, 0.1);
+    --secondary-foreground: var(--brand-blue);
     --accent: var(--brand-yellow);
     --accent-foreground: #02050a;
     --destructive: #f04438;
     --destructive-foreground: #ffffff;
 
-    --ring: rgba(0, 102, 179, 0.5);
+    --ring: rgba(197, 49, 46, 0.4);
     --radius: 18px;
 
-    --glow-strong: 0 20px 70px rgba(0, 102, 179, 0.4);
-    --glow-soft: 0 10px 32px rgba(197, 49, 46, 0.3);
-    --shadow-card: 0 20px 60px rgba(2, 5, 16, 0.8);
+    --glow-strong: 0 20px 70px rgba(197, 49, 46, 0.15);
+    --glow-soft: 0 10px 32px rgba(0, 102, 179, 0.12);
+    --shadow-card: 0 12px 40px rgba(2, 5, 16, 0.06), 0 0 0 1px rgba(2, 5, 16, 0.04);
 
     --chart-1: oklch(0.646 0.222 41.116);
     --chart-2: oklch(0.6 0.118 184.704);
@@ -203,13 +203,13 @@
     }
 
     .section-eyebrow {
-        @apply mb-4 inline-flex items-center gap-2 rounded-full border border-(--brand-blue)/30 bg-(--brand-off-white) px-4 py-1 text-[0.7rem] font-bold uppercase tracking-[0.35em] text-(--brand-blue);
+        @apply mb-4 inline-flex items-center gap-2 rounded-full border border-(--brand-red)/20 bg-(--brand-red)/5 px-4 py-1 text-[0.7rem] font-bold uppercase tracking-[0.35em] text-(--brand-red);
     }
 
     .glass-panel {
-        background: hsla(0, 0%, 100%, 0.18);
-        box-shadow: 0 0 0 0.1em hsla(0, 0%, 100%, 0.3) inset;
-        @apply rounded-3xl dark:bg-white/10;
+        background: rgba(255, 255, 255, 0.7);
+        box-shadow: 0 0 0 1px rgba(197, 49, 46, 0.1) inset;
+        @apply rounded-3xl backdrop-blur-md;
         /* Hardware acceleration */
         transform: translateZ(0);
         backface-visibility: hidden;
@@ -226,9 +226,9 @@
     }
 
     .glass-card {
-        background: rgba(250, 247, 239, 0.05);
-        box-shadow: 0 0 0 0.1em rgba(250, 247, 239, 0.1) inset;
-        @apply rounded-3xl border border-(--brand-off-white)/10;
+        background: #ffffff;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(197, 49, 46, 0.08) inset;
+        @apply rounded-3xl border border-(--brand-red)/5;
         /* Use transform instead of translate for better GPU acceleration */
         transform: translateY(0) translateZ(0);
         transition:
@@ -272,9 +272,9 @@
 
     .bg-grid-faint {
         background-image:
-            linear-gradient(rgba(0, 102, 179, 0.12) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 212, 0, 0.1) 1px, transparent 1px);
-        background-size: 100px 100px;
+            linear-gradient(rgba(197, 49, 46, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 102, 179, 0.04) 1px, transparent 1px);
+        background-size: 80px 80px;
     }
 
     .bg-noise-texture {
@@ -640,6 +640,14 @@
         100% {
             offset-distance: 100%;
         }
+    }
+
+    .section-eyebrow {
+        @apply inline-flex items-center gap-2 rounded-full border border-(--brand-red)/15 bg-(--brand-red)/5 px-4 py-1.5 font-bold uppercase tracking-[0.35em] text-(--brand-red) backdrop-blur-sm shadow-inner transition-all hover:bg-(--brand-red)/10;
+    }
+
+    .glass-card {
+        @apply relative overflow-hidden rounded-3xl border border-foreground/10 bg-white/60 backdrop-blur-xl transition-all duration-300 hover:border-(--brand-blue)/30 hover:shadow-2xl hover:shadow-(--brand-blue)/5;
     }
 }
 

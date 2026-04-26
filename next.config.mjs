@@ -26,7 +26,7 @@ const nextConfig = {
     NEXT_PUBLIC_GIT_COMMIT_MESSAGE: gitInfo.commitMessage,
     NEXT_PUBLIC_GIT_COMMIT_DATE: gitInfo.commitDate,
     NEXT_PUBLIC_BUILD_TIME: new Date().toISOString(),
-    NEXT_PUBLIC_REPO_URL: "https://github.com/gobitsnbytes/bitsnbytes",
+    NEXT_PUBLIC_REPO_URL: "https://github.com/BitsnBytes-Kolkata/bitsnbytes",
   },
   typescript: {
     ignoreBuildErrors: true,
@@ -102,3 +102,5 @@ const nextConfig = {
 }
 
 export default nextConfig
+
+

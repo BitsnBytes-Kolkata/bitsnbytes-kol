@@ -42,9 +42,9 @@ export function GlowingCard({
             )}
             style={{ animationDelay: `${animationDelay}s` }}
         >
-            <div className="relative h-full overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-2 backdrop-blur-2xl transition-transform transition-colors transition-opacity duration-500 hover:border-white/20 hover:bg-white/10">
+            <div className="relative h-full overflow-hidden rounded-[2.5rem] border border-foreground/10 bg-foreground/5 p-2 backdrop-blur-2xl transition-transform transition-colors transition-opacity duration-500 hover:border-foreground/20 hover:bg-foreground/10">
                 {/* Reflective top edge */}
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent z-20" />
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent z-20" />
 
                 <GlowingEffect
                     spread={spread}
@@ -55,9 +55,9 @@ export function GlowingCard({
                     borderWidth={borderWidth}
                 />
 
-                <div className="relative h-full overflow-hidden rounded-[2.25rem] border border-white/10 bg-black/40 p-6 md:p-8 flex flex-col justify-between gap-4">
+                <div className="relative h-full overflow-hidden rounded-[2.25rem] border border-foreground/5 bg-white/60 p-6 md:p-8 flex flex-col justify-between gap-4 shadow-sm">
                     {/* Inner glass shine */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-50" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent opacity-50" />
 
                     <div className="relative z-10 h-full">
                         {children}
@@ -96,7 +96,7 @@ interface GlowingCardTitleProps {
 export function GlowingCardTitle({ children, className }: GlowingCardTitleProps) {
     return (
         <h3 className={cn(
-            "pt-0.5 text-xl leading-[1.375rem] font-semibold font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground dark:text-white",
+            "pt-0.5 text-xl leading-[1.375rem] font-semibold font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground",
             className
         )}>
             {children}
@@ -112,7 +112,7 @@ interface GlowingCardDescriptionProps {
 export function GlowingCardDescription({ children, className }: GlowingCardDescriptionProps) {
     return (
         <p className={cn(
-            "font-sans text-sm leading-[1.25rem] md:text-base md:leading-[1.5rem] text-muted-foreground dark:text-white font-medium",
+            "font-sans text-sm leading-[1.25rem] md:text-base md:leading-[1.5rem] text-muted-foreground font-medium",
             className
         )}>
             {children}

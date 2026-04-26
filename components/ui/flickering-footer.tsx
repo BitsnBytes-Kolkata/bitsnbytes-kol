@@ -214,7 +214,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
 
 const socialLinks = [
     { href: "https://www.linkedin.com/company/gobitsbytes", label: "LinkedIn", icon: Linkedin },
-    { href: "https://github.com/gobitsnbytes", label: "GitHub", icon: Github },
+    { href: "https://github.com/BitsnBytes-Kolkata", label: "GitHub", icon: Github },
     { href: "https://www.instagram.com/gobitsnbytes", label: "Instagram", icon: Instagram },
 ];
 
@@ -241,16 +241,16 @@ export function FlickeringFooter() {
     const tablet = useMediaQuery("(max-width: 1024px)");
 
     return (
-        <footer id="footer" className="w-full pb-0 mt-12 sm:mt-16 border-t border-white/20 bg-white/70 backdrop-blur-xl dark:border-white/10 dark:bg-white/5">
+        <footer id="footer" className="w-full pb-0 mt-12 sm:mt-16 border-t border-foreground/10 bg-white/70 backdrop-blur-xl">
             <div className="flex flex-col md:flex-row md:items-start md:justify-between p-6 sm:p-10 max-w-6xl mx-auto">
                 <div className="flex flex-col items-start justify-start gap-y-4 max-w-xs">
                     <Link href="/" className="flex items-center gap-3">
-                        <div className="relative grid h-10 w-10 place-items-center rounded-xl bg-black text-white shadow-[0_8px_30px_rgba(197,49,46,0.4)]">
-                            <Image src={logo} alt="Kolkata fork of BitsnBytes logo" width={28} height={28} className="h-6 w-6 object-contain" priority />
+                        <div className="relative grid h-10 w-10 place-items-center rounded-xl bg-foreground text-white shadow-lg">
+                            <Image src={logo} alt="Bits & Bytes Kolkata logo" width={28} height={28} className="h-6 w-6 object-contain" priority />
                             <div className="absolute inset-0 rounded-xl border-2 border-[var(--brand-red)]" />
                         </div>
                         <div>
-                            <p className="font-display text-base font-semibold text-foreground leading-tight">Kolkata fork of BitsnBytes</p>
+                            <p className="font-display text-base font-semibold text-foreground leading-tight">Bits & Bytes Kolkata</p>
                             <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Teen-led</p>
                         </div>
                     </Link>
@@ -264,7 +264,7 @@ export function FlickeringFooter() {
                                 href={href}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="inline-flex items-center gap-1.5 rounded-full border border-white/30 bg-white/50 px-3 py-1.5 text-xs backdrop-blur-md transition-colors hover:border-white/50 hover:text-foreground dark:bg-white/10"
+                                className="inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1.5 text-xs backdrop-blur-md transition-colors hover:border-foreground/30 hover:text-foreground"
                             >
                                 <Icon className="h-3.5 w-3.5" />
                                 <span>{label}</span>
@@ -290,10 +290,10 @@ export function FlickeringFooter() {
                         <div className="flex flex-col gap-y-2">
                             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-foreground">Connect</p>
                             <a
-                                href="mailto:hello@gobitsnbytes.org"
-                                className="text-white/70 hover:text-white transition-colors"
+                                href="mailto:kolkata@bitsnbytes.org"
+                                className="text-foreground/70 hover:text-foreground transition-colors"
                             >
-                                hello@gobitsnbytes.org
+                                kolkata@bitsnbytes.org
                             </a>
                             <p className="flex items-center gap-2 text-sm text-muted-foreground">
                                 <MapPin className="h-4 w-4 shrink-0" />
@@ -312,7 +312,7 @@ export function FlickeringFooter() {
                         className="absolute inset-0 h-full w-full"
                         squareSize={2}
                         gridGap={tablet ? 2 : 3}
-                        color="var(--brand-red)"
+                        color="var(--brand-blue)"
                         maxOpacity={0.25}
                         flickerChance={0.09}
                     />
@@ -322,9 +322,9 @@ export function FlickeringFooter() {
                         className="absolute inset-0 h-full w-full"
                         squareSize={2}
                         gridGap={tablet ? 2 : 3}
-                        color="var(--brand-yellow)"
-                        maxOpacity={0.35}
-                        flickerChance={0.14}
+                        color="var(--brand-red)"
+                        maxOpacity={0.15}
+                        flickerChance={0.05}
                     />
                     <FlickeringGrid
                         text={tablet ? "KOL" : "KOLKATA"}
@@ -332,18 +332,20 @@ export function FlickeringFooter() {
                         className="absolute inset-0 h-full w-full"
                         squareSize={2}
                         gridGap={tablet ? 2 : 3}
-                        color="var(--brand-yellow-light)"
-                        maxOpacity={0.15}
-                        flickerChance={0.05}
+                        color="var(--brand-yellow)"
+                        maxOpacity={0.2}
+                        flickerChance={0.12}
                     />
                 </div>
             </div>
-            <div className="border-t border-white/10 text-center text-[10px] sm:text-xs py-3 sm:py-4 px-4 w-full text-muted-foreground">
-                © {new Date().getFullYear()} Kolkata fork of BitsnBytes. Built with club ❤️.
+            <div className="border-t border-foreground/5 text-center text-[10px] sm:text-xs py-3 sm:py-4 px-4 w-full text-muted-foreground">
+                © {new Date().getFullYear()} Bits & Bytes Kolkata. Built with club ❤️.
             </div>
         </footer>
     );
 }
 
 export default FlickeringFooter;
+
+
 

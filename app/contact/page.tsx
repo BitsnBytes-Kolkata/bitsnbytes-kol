@@ -85,18 +85,18 @@ export default function Contact() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[50vh] md:min-h-[65vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32">
+      <section className="relative min-h-[50vh] md:min-h-[65vh] flex items-center justify-center overflow-hidden text-foreground pt-24 md:pt-32">
         <WebGLShader />
         <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6 py-12 md:py-24">
             <div className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
             <div className="flex flex-col items-center gap-6">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-white/90 backdrop-blur-md shadow-inner">
+              <span className="inline-flex items-center gap-2 rounded-full border border-foreground/20 bg-foreground/5 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-foreground/90 backdrop-blur-md shadow-inner">
                 Contact
               </span>
-              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight font-black text-white tracking-tighter drop-shadow-2xl">
+              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight font-black text-foreground tracking-tighter drop-shadow-sm">
                 Let's co-create <br className="hidden sm:block" /> the next big sprint
               </h1>
-              <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-medium">
+              <p className="text-base sm:text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto leading-relaxed font-medium">
                 Partner with us on hackathons, workshops, or custom experiences for schools across Kolkata.
               </p>
             </div>
@@ -115,24 +115,24 @@ export default function Contact() {
             <GlassContainer className="p-0 overflow-hidden" glowColor="both">
               <div className="grid md:grid-cols-5 h-full">
                 {/* Info Sidebar */}
-                <div className="md:col-span-2 bg-white/5 p-5 sm:p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10 max-w-full overflow-hidden">
-                  <h3 className="font-display text-2xl font-black text-white mb-6">Get in Touch</h3>
+                <div className="md:col-span-2 bg-foreground/5 p-5 sm:p-8 md:p-12 border-b md:border-b-0 md:border-r border-foreground/10 max-w-full overflow-hidden">
+                  <h3 className="font-display text-2xl font-black text-foreground mb-6">Get in Touch</h3>
                   <div className="space-y-8 max-w-full">
                     {[
-                      { icon: Mail, label: "Email", value: "hello@gobitsnbytes.org", href: "mailto:hello@gobitsnbytes.org", color: "text-(--brand-red)" },
+                      { icon: Mail, label: "Email", value: "kolkata@bitsnbytes.org", href: "mailto:kolkata@bitsnbytes.org", color: "text-(--brand-red)" },
                       { icon: MapPin, label: "Location", value: "Kolkata, India", color: "text-(--brand-blue)" },
                       { icon: Clock, label: "Established", value: "Teen-led since 2025", color: "text-blue-400" },
                     ].map((info) => (
                       <div key={info.label} className="flex items-start gap-4 max-w-full">
-                        <div className={cn("flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10", info.color)}>
+                        <div className={cn("flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-foreground/5 border border-foreground/10", info.color)}>
                           <info.icon className="h-6 w-6" />
                         </div>
                         <div className="min-w-0 pr-2">
-                          <p className="text-xs font-bold uppercase tracking-widest text-white/50">{info.label}</p>
+                          <p className="text-xs font-bold uppercase tracking-widest text-foreground/50">{info.label}</p>
                           {info.href ? (
-                            <a href={info.href} className="text-base font-black text-white hover:text-[var(--brand-red)] mt-0.5 block break-words break-all sm:break-normal">{info.value}</a>
+                            <a href={info.href} className="text-base font-black text-foreground hover:text-[var(--brand-red)] mt-0.5 block break-words break-all sm:break-normal">{info.value}</a>
                           ) : (
-                            <p className="text-base font-black text-white mt-0.5 break-words break-all sm:break-normal">{info.value}</p>
+                            <p className="text-base font-black text-foreground mt-0.5 break-words break-all sm:break-normal">{info.value}</p>
                           )}
                         </div>
                       </div>
@@ -141,48 +141,48 @@ export default function Contact() {
                 </div>
 
                 {/* Form Section */}
-                <div className="md:col-span-3 p-5 sm:p-8 md:p-12 bg-black/20 w-full max-w-full">
+                <div className="md:col-span-3 p-5 sm:p-8 md:p-12 bg-white/40 w-full max-w-full shadow-inner">
                   <form onSubmit={handleSubmit} className="space-y-6 w-full max-w-full relative">
                     <div className="grid sm:grid-cols-2 gap-6 w-full">
                       <div className="space-y-2 w-full">
-                        <Label htmlFor="name" className="text-sm font-bold uppercase tracking-widest text-white/70">Name</Label>
+                        <Label htmlFor="name" className="text-sm font-bold uppercase tracking-widest text-foreground/70">Name</Label>
                         <Input
                           id="name"
                           name="name"
                           placeholder="Your name"
-                          className="h-14 bg-white/5 border-white/10 rounded-2xl focus:border-(--brand-red) focus:ring-(--brand-red)/20 text-white placeholder:text-white/20"
+                          className="h-14 bg-foreground/5 border-foreground/10 rounded-2xl focus:border-(--brand-red) focus:ring-(--brand-red)/20 text-foreground placeholder:text-foreground/20"
                           required
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="email" className="text-sm font-bold uppercase tracking-widest text-white/70">Email</Label>
+                        <Label htmlFor="email" className="text-sm font-bold uppercase tracking-widest text-foreground/70">Email</Label>
                         <Input
                           id="email"
                           name="email"
                           type="email"
                           placeholder="you@email.com"
-                          className="h-14 bg-white/5 border-white/10 rounded-2xl focus:border-(--brand-red) focus:ring-(--brand-red)/20 text-white placeholder:text-white/20"
+                          className="h-14 bg-foreground/5 border-foreground/10 rounded-2xl focus:border-(--brand-red) focus:ring-(--brand-red)/20 text-foreground placeholder:text-foreground/20"
                           required
                         />
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="subject" className="text-sm font-bold uppercase tracking-widest text-white/70">Subject</Label>
+                      <Label htmlFor="subject" className="text-sm font-bold uppercase tracking-widest text-foreground/70">Subject</Label>
                       <Input
                         id="subject"
                         name="subject"
                         placeholder="Reason for reaching out"
-                        className="h-14 bg-white/5 border-white/10 rounded-2xl focus:border-(--brand-red) focus:ring-(--brand-red)/20 text-white placeholder:text-white/20"
+                        className="h-14 bg-foreground/5 border-foreground/10 rounded-2xl focus:border-(--brand-red) focus:ring-(--brand-red)/20 text-foreground placeholder:text-foreground/20"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="message" className="text-sm font-bold uppercase tracking-widest text-white/70">Message</Label>
+                      <Label htmlFor="message" className="text-sm font-bold uppercase tracking-widest text-foreground/70">Message</Label>
                       <Textarea
                         id="message"
                         name="message"
                         rows={5}
                         placeholder="Tell us what's on your mind..."
-                        className="bg-white/5 border-white/10 rounded-2xl focus:border-(--brand-red) focus:ring-(--brand-red)/20 text-white placeholder:text-white/20 min-h-[150px] resize-none"
+                        className="bg-foreground/5 border-foreground/10 rounded-2xl focus:border-(--brand-red) focus:ring-(--brand-red)/20 text-foreground placeholder:text-foreground/20 min-h-[150px] resize-none"
                         required
                       />
                     </div>
@@ -193,7 +193,7 @@ export default function Contact() {
                           ref={captchaRef}
                           sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
                           reCaptchaCompat={false}
-                          theme="dark"
+                          theme="light"
                           onVerify={setCaptchaToken}
                         />
                       )}
@@ -202,7 +202,7 @@ export default function Contact() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="group w-full h-16 rounded-full bg-(--brand-red) text-lg font-black text-white shadow-lg shadow-[#C5312E]/20 hover:shadow-xl hover:shadow-[#C5312E]/40 transition-transform transition-colors transition-opacity hover:scale-[1.02] disabled:opacity-50"
+                      className="group w-full h-16 rounded-full bg-(--brand-red) text-lg font-black text-foreground shadow-lg shadow-[#C5312E]/20 hover:shadow-xl hover:shadow-[#C5312E]/40 transition-transform transition-colors transition-opacity hover:scale-[1.02] disabled:opacity-50"
                     >
                       {isSubmitting ? (
                         <>
@@ -233,10 +233,10 @@ export default function Contact() {
 
             {/* Social Links Section */}
             <div className="mt-20">
-              <p className="text-sm font-black uppercase tracking-[0.3em] text-white/50 mb-8">Connect with us</p>
+              <p className="text-sm font-black uppercase tracking-[0.3em] text-foreground/50 mb-8">Connect with us</p>
               <div className="flex flex-wrap items-center justify-center gap-6">
                 {[
-                  { icon: Github, label: "GitHub", href: "https://github.com/gobitsnbytes" },
+                  { icon: Github, label: "GitHub", href: "https://github.com/BitsnBytes-Kolkata" },
                   { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/gobitsbytes" },
                   { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/bitsnbyteskol" },
                 ].map((social) => (
@@ -249,7 +249,7 @@ export default function Contact() {
                   >
                     <GlassContainer className="px-8 py-4 flex items-center gap-3 transition-transform group-hover:scale-105" glowColor="none">
                       <social.icon className="h-5 w-5 text-(--brand-red) transition-transform group-hover:rotate-12" />
-                      <span className="font-black text-white uppercase tracking-widest text-xs">{social.label}</span>
+                      <span className="font-black text-foreground uppercase tracking-widest text-xs">{social.label}</span>
                     </GlassContainer>
                   </Link>
                 ))}
@@ -261,4 +261,5 @@ export default function Contact() {
     </>
   )
 }
+
 

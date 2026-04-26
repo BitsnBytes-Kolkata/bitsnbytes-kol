@@ -21,14 +21,14 @@ const TeamCaseStudy = dynamic(() => import("@/components/team-case-study"), {
 });
 
 const aboutContent = {
-  title: "About the Kolkata fork of BitsnBytes",
+  title: "About Bits & Bytes Kolkata",
   description:
     "We are a teen-led code club dedicated to empowering high-agency individuals to ship production-grade technology through real-world product launches.",
   sections: [
     {
       title: "The Origin Story",
       description:
-        "Originally hosting Daydream Kolkata under Hack Club, we faced a last-minute venue withdrawal. We decided to fork BitsnBytes to bypass rigid formats and deliver actual value to builders.",
+        "Originally hosting Daydream Kolkata under Hack Club, we faced a last-minute venue withdrawal. We decided to fork Bits & Bytes to bypass rigid formats and deliver actual value to builders.",
     },
     {
       title: "High Agency Only",
@@ -56,7 +56,7 @@ const coreTeam: CoreTeamMember[] = [
     role: "Kolkata Fork Lead",
     image: "/team/shorya.png",
     mobileImagePosition: "center 15%",
-    bio: "Leading the independent Kolkata fork of BitsnBytes, driving the mission to build high-performance, student-led tech communities across the city of joy.",
+    bio: "Leading the independent Bits & Bytes Kolkata, driving the mission to build high-performance, student-led tech communities across the city of joy.",
     expertise: [
       "Project Leadership",
       "Full-Stack Architecture",
@@ -65,6 +65,9 @@ const coreTeam: CoreTeamMember[] = [
     ],
     accentColor: "#0066B3", // Brand Blue
     isFounder: true,
+    socials: {
+      linkedin: "https://linkedin.com/in/shoryavardhaan",
+    },
   },
   {
     id: 1,
@@ -148,108 +151,19 @@ const coreTeam: CoreTeamMember[] = [
     ],
     linkedin: "https://www.linkedin.com/in/devaanshpa/",
   },
-  {
-    id: 5,
-    name: "Maryam Fatima",
-    role: "Social Media & Promotions Head",
-    image: "/team/maryam.jpeg",
-    mobileImagePosition: "center 22%",
-    bio: "Leading social strategy and impact storytelling. Generated 10k+ impressions for club events. Spearheads visual campaigns for major independent hackathons.",
-    expertise: [
-      "Impact Storytelling",
-      "Visual Design",
-      "Campaign Planning",
-      "Brand Identity",
-    ],
-    linkedin: "https://www.linkedin.com/in/maryam-fatima-9719aa377/",
-  },
-  {
-    id: 6,
-    name: "Sristhi Singh",
-    role: "Operations & Communications Head",
-    image: "/team/srishti.jpeg",
-    mobileImagePosition: "center 16%",
-    bio: "Optimizing internal communication for 100+ members. Ensures smooth collaboration across design/dev squads and city-wide event transitions.",
-    expertise: [
-      "Process Optimization",
-      "Resource Logistics",
-      "Team Communications",
-      "Project Coordination",
-    ],
-    linkedin: "https://www.linkedin.com/in/srishti-singh-ab6a1b391",
   },
 ];
 
 // Volunteers - smaller cards section
 const volunteers: Volunteer[] = [
-  {
-    id: 11,
-    name: "Jaagruti",
-    image: "/team/jaagruti.jpeg",
-    section: "Creatives",
-  },
-  {
-    id: 18,
-    name: "Kavan",
-    image: "/team/kavan.jpg",
-    section: "Creatives",
-  },
-  {
-    id: 16,
-    name: "Vareesha",
-    image: "/team/vareesha.jpg",
-    linkedin: "https://www.linkedin.com/in/vareesha-mehdi-a669203ab/",
-    section: "Creatives",
-  },
-  {
-    id: 13,
-    name: "Aishwary",
-    image: "/team/aishwary.jpeg",
-    linkedin: "https://www.linkedin.com/in/ashlovesnoodle",
-    section: "Creatives",
-  },
-  {
-    id: 5,
-    name: "Saksham",
-    image: "/team/saksham.jpeg",
-    linkedin: "https://www.linkedin.com/in/sakshm/",
-    section: "Tech",
-  },
-  {
-    id: 7,
-    name: "Areeb",
-    image: "/team/areeb.png",
-    linkedin: "https://www.linkedin.com/in/areeb-ahmad-066547315/",
-    section: "Tech",
-  },
-  {
-    id: 15,
-    name: "Prakhar",
-    image: "/team/prakhar.png",
-    linkedin: "https://www.linkedin.com/in/prakharrdev/",
-    section: "Tech",
-  },
-  {
-    id: 14,
-    name: "Adithya",
-    image: "/team/adhitya.png", // Corrected image path and extension
-    linkedin: "https://www.linkedin.com/in/adithya---k/",
-    section: "Outreach",
-  },
-  {
-    id: 8,
-    name: "Atharva",
-    image: "/team/atharva.jpg",
-    linkedin: "https://www.linkedin.com/in/atharvaupadhyay/",
-    section: "Outreach",
-  },
-  {
-    id: 17,
-    name: "Aanjaneya",
-    image: "/team/aanjaneya.jpg",
-    linkedin: "https://www.linkedin.com/in/aanjaneya-tripathi-0700a4346/",
-    section: "Outreach",
-  },
+  // To add a volunteer in the future, uncomment and use this format:
+  // {
+  //   id: 1,
+  //   name: "Example Volunteer",
+  //   image: "/team/placeholder.png",
+  //   linkedin: "https://www.linkedin.com/in/example/",
+  //   section: "Creatives", // or "Tech", "Outreach"
+  // },
 ];
 
 export default function About() {
@@ -305,4 +219,6 @@ export default function About() {
     </>
   );
 }
+
+
 

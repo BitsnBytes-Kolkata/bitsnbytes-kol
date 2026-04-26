@@ -1,8 +1,8 @@
-# Kolkata fork of BitsnBytes Technical Documentation
+# Bits & Bytes Kolkata Technical Documentation
 
 ## 1. Project Overview
 
-**Purpose:** Official website and platform for the Kolkata fork of BitsnBytes, a teen-led code club based in Kolkata, India. Serves as a community hub and event platform.
+**Purpose:** Official website and platform for Bits & Bytes Kolkata, a teen-led code club based in Kolkata, India. Serves as a community hub and event platform.
 
 **Tech Stack:** Next.js 16, React 19, TypeScript 5, Tailwind CSS 4, Supabase (PostgreSQL), Vercel.
 
@@ -453,4 +453,6 @@ Next.js 16
 - [ ] Discord bot commands via `/api/discord` webhook
 - [ ] Analytics dashboard (Supabase dashboards)
 - [ ] Email notifications for leads (Resend.dev)
+
+
 

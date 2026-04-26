@@ -60,7 +60,7 @@ export default function Home() {
         <PageSection
           eyebrow="Impact"
           title="Club-powered learning with real outcomes"
-          description="We're the Kolkata fork of BitsnBytes where workshops, hackathons, and build nights lead directly to shipped projects and new opportunities."
+          description="We're Bits & Bytes Kolkata where workshops, hackathons, and build nights lead directly to shipped projects and new opportunities."
         >
           <div className="grid gap-6 md:grid-cols-3">
             {stats.map((stat) => (
@@ -70,14 +70,14 @@ export default function Home() {
                 glowColor={stat.label === "Projects shipped" ? "red" : stat.label === "Partner schools" ? "yellow" : "blue"}
               >
                 <div className="space-y-4">
-                  <p className="text-5xl font-black text-white tracking-tighter">
+                  <p className="text-5xl font-black text-foreground tracking-tighter">
                     {stat.value}
                   </p>
                   <div>
-                    <h3 className="text-xl font-bold text-white uppercase tracking-tight">
+                    <h3 className="text-xl font-bold text-foreground uppercase tracking-tight">
                       {stat.label}
                     </h3>
-                    <p className="text-base text-white/60 font-medium">
+                    <p className="text-base text-foreground/60 font-medium">
                       {stat.detail}
                     </p>
                   </div>
@@ -111,4 +111,6 @@ export default function Home() {
     </>
   );
 }
+
+
 

@@ -42,7 +42,7 @@ const highlightStats = [
   {
     value: "2,700",
     label: "Submissions Evaluated",
-    description: "Reviewed by the Kolkata fork of BitsnBytes team in a 3-day sprint",
+    description: "Reviewed by Bits & Bytes Kolkata team in a 3-day sprint",
     timeframe: "3 days ↑",
   },
   {
@@ -78,24 +78,24 @@ export default function Impact() {
   return (
     <>
       <section
-        className="relative min-h-[72vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32"
+        className="relative min-h-[72vh] flex items-center justify-center overflow-hidden text-foreground pt-24 md:pt-32"
         aria-labelledby="impact-hero-title"
       >
         <WebGLShader />
         <div className="relative z-10 w-full mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto w-full max-w-[860px] min-h-[460px] md:min-h-[500px] px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center flex items-center justify-center">
             <div className="flex flex-col items-center gap-6">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-white/90 backdrop-blur-md shadow-inner">
+              <span className="inline-flex items-center gap-2 rounded-full border border-foreground/20 bg-foreground/5 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-foreground/90 backdrop-blur-md shadow-inner">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-(--brand-red) opacity-75" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-(--brand-red)" />
                 </span>
                 Impact
               </span>
-              <h1 id="impact-hero-title" className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-extrabold text-white tracking-tighter drop-shadow-2xl">
+              <h1 id="impact-hero-title" className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-extrabold text-foreground tracking-tighter drop-shadow-sm">
                 Our impact hits <br className="hidden sm:block" /> beyond the venue walls
               </h1>
-              <p className="max-w-2xl text-base sm:text-lg md:text-xl text-white/85 font-medium leading-relaxed">
+              <p className="max-w-2xl text-base sm:text-lg md:text-xl text-foreground/85 font-medium leading-relaxed">
                 From first-high-schooler hackathons to squads embedded inside
                 local schools, we design experiences that get teens
                 building—and ship the outcomes publicly.
@@ -124,21 +124,21 @@ export default function Impact() {
                   {highlightStats.map((stat, index) => (
                     <div
                       key={stat.label}
-                      className="flex flex-col border-b border-white/10 pb-5 last:border-none last:pb-0"
+                      className="flex flex-col border-b border-foreground/10 pb-5 last:border-none last:pb-0"
                       style={{ animationDelay: `${index * 0.08}s` }}
                     >
                       <div className="flex items-center justify-between">
-                        <span className="text-4xl font-black text-white">
+                        <span className="text-4xl font-black text-foreground">
                           {stat.value}
                         </span>
-                        <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-(--brand-red)">
+                        <span className="inline-flex items-center rounded-full border border-foreground/20 bg-foreground/10 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-(--brand-red)">
                           {stat.timeframe}
                         </span>
                       </div>
-                      <p className="text-lg font-bold text-white mt-1">
+                      <p className="text-lg font-bold text-foreground mt-1">
                         {stat.label}
                       </p>
-                      <p className="text-sm text-white/60 font-medium">
+                      <p className="text-sm text-foreground/60 font-medium">
                         {stat.description}
                       </p>
                     </div>
@@ -192,7 +192,7 @@ export default function Impact() {
                 >
                   <CardItem
                     translateZ="100"
-                    className="mb-6 w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
+                    className="mb-6 w-full overflow-hidden rounded-2xl border border-foreground/10 shadow-2xl"
                   >
                     <Image
                       src={card.image}
@@ -204,14 +204,14 @@ export default function Impact() {
                   </CardItem>
                   <CardItem
                     translateZ="50"
-                    className="font-display text-2xl font-black text-white"
+                    className="font-display text-2xl font-black text-foreground"
                   >
                     {card.title}
                   </CardItem>
                   <CardItem
                     as="p"
                     translateZ="60"
-                    className="mt-3 flex-1 text-base text-white/70 font-medium leading-relaxed"
+                    className="mt-3 flex-1 text-base text-foreground/70 font-medium leading-relaxed"
                   >
                     {card.copy}
                   </CardItem>
@@ -261,4 +261,6 @@ export default function Impact() {
     </>
   );
 }
+
+
 

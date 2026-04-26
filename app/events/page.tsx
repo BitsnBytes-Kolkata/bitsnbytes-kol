@@ -35,24 +35,24 @@ export default function Events() {
     <>
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section
-        className="relative min-h-[72vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32"
+        className="relative min-h-[72vh] flex items-center justify-center overflow-hidden text-foreground pt-24 md:pt-32"
         aria-labelledby="events-hero-title"
       >
         <WebGLShader />
         <div className="relative z-10 w-full mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto w-full max-w-[860px] min-h-[460px] md:min-h-[500px] px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center flex items-center justify-center">
             <div className="flex flex-col items-center gap-6">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-white/90 backdrop-blur-md shadow-inner">
+              <span className="inline-flex items-center gap-2 rounded-full border border-foreground/20 bg-foreground/5 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-foreground/90 backdrop-blur-md shadow-inner">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-(--brand-red) opacity-75" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-(--brand-red)" />
                 </span>
                 Events
               </span>
-              <h1 id="events-hero-title" className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-extrabold text-white tracking-tighter drop-shadow-2xl">
+              <h1 id="events-hero-title" className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-extrabold text-foreground tracking-tighter drop-shadow-sm">
                 Where code meets <br className="hidden sm:block" /> every boundary
               </h1>
-              <p className="max-w-2xl text-base sm:text-lg md:text-xl text-white/85 font-medium leading-relaxed">
+              <p className="max-w-2xl text-base sm:text-lg md:text-xl text-foreground/85 font-medium leading-relaxed">
                 Join thousands of student innovators at hackathons, summits, and workshops that
                 turn teen builders into tomorrow&apos;s founders and policymakers.
               </p>
@@ -64,7 +64,7 @@ export default function Events() {
       <main className="bg-transparent flex flex-col pt-12">
         {/* ── Event Toggle Tabs ────────────────────────────────────────── */}
         <div
-          className="mx-auto flex w-fit max-w-[95vw] flex-wrap items-center justify-center gap-2 rounded-[2rem] border border-white/10 bg-white/5 p-1.5 backdrop-blur-md mb-8"
+          className="mx-auto flex w-fit max-w-[95vw] flex-wrap items-center justify-center gap-2 rounded-[2rem] border border-foreground/10 bg-white/60 p-1.5 backdrop-blur-md mb-8 shadow-sm"
           role="tablist"
           aria-label="Filter events"
         >
@@ -74,8 +74,8 @@ export default function Events() {
             aria-selected={activeEvent === "all"}
             role="tab"
             className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "all"
-              ? "bg-(--brand-red) text-white shadow-[0_0_20px_rgba(197,49,46,0.3)]"
-              : "text-white/70 hover:text-white hover:bg-white/5"
+              ? "bg-(--brand-red) text-white shadow-lg"
+              : "text-foreground/70 hover:text-foreground hover:bg-foreground/5"
               }`}
           >
             All Events
@@ -86,8 +86,8 @@ export default function Events() {
             aria-selected={activeEvent === "copilot"}
             role="tab"
             className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "copilot"
-              ? "bg-(--brand-red) text-white shadow-[0_0_20px_rgba(197,49,46,0.3)]"
-              : "text-white/70 hover:text-white hover:bg-white/5"
+              ? "bg-(--brand-red) text-white shadow-lg"
+              : "text-foreground/70 hover:text-foreground hover:bg-foreground/5"
               }`}
           >
             Archived: Copilot Dev Days
@@ -98,8 +98,8 @@ export default function Events() {
             aria-selected={activeEvent === "execron"}
             role="tab"
             className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "execron"
-              ? "bg-(--brand-red) text-white shadow-[0_0_20px_rgba(197,49,46,0.3)]"
-              : "text-white/70 hover:text-white hover:bg-white/5"
+              ? "bg-(--brand-red) text-white shadow-lg"
+              : "text-foreground/70 hover:text-foreground hover:bg-foreground/5"
               }`}
           >
             Archived: Execron 1.0
@@ -110,8 +110,8 @@ export default function Events() {
             aria-selected={activeEvent === "india-innovates"}
             role="tab"
             className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "india-innovates"
-              ? "bg-(--brand-red) text-white shadow-[0_0_20px_rgba(197,49,46,0.3)]"
-              : "text-white/70 hover:text-white hover:bg-white/5"
+              ? "bg-(--brand-red) text-white shadow-lg"
+              : "text-foreground/70 hover:text-foreground hover:bg-foreground/5"
               }`}
           >
             Archived: India Innovates
@@ -128,7 +128,7 @@ export default function Events() {
             <GlassContainer glowColor="pink" animated={false} className="overflow-hidden">
 
               {/* ── Banner image header ── */}
-              <div className="relative w-full overflow-hidden rounded-t-[2.25rem] bg-white/5">
+              <div className="relative w-full overflow-hidden rounded-t-[2.25rem] bg-foreground/5">
                 <Image
                   src="/images/copilot-dev-day.png"
                   alt="GitHub Copilot Dev Days | Kolkata"
@@ -143,26 +143,26 @@ export default function Events() {
               <div className="p-6 sm:p-8 md:p-10">
                 {/* Badges row */}
                 <div className="flex flex-wrap items-center gap-2 mb-6">
-                  <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white bg-(--brand-red)">
+                  <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-foreground bg-(--brand-red)">
                     Archived Event
                   </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
-                    Hosted by Kolkata fork of BitsnBytes
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-foreground/5 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-foreground/80 backdrop-blur-md">
+                    Hosted by Bits & Bytes Kolkata
                   </span>
                 </div>
 
                 {/* Stats + details two-column */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                  <div className="prose prose-invert max-w-none text-white/80 space-y-6 lg:col-span-2">
+                  <div className="prose prose-invert max-w-none text-foreground/80 space-y-6 lg:col-span-2">
                     <div>
-                      <h2 className="text-xl font-bold text-white mb-2">Event Summary</h2>
+                      <h2 className="text-xl font-bold text-foreground mb-2">Event Summary</h2>
                       <p>
                         <strong>GitHub Copilot Dev Days</strong> was a community developer event in Kolkata that brought together students, developers, and technology enthusiasts to explore how AI-assisted development works in real projects.
                       </p>
                     </div>
 
                     <div>
-                      <h2 className="text-xl font-bold text-white mb-2">What the event covered</h2>
+                      <h2 className="text-xl font-bold text-foreground mb-2">What the event covered</h2>
                       <ul className="list-disc pl-5 space-y-1">
                         <li>How GitHub Copilot works inside modern dev environments.</li>
                         <li>Integrating AI-assisted coding into real workflows.</li>
@@ -172,15 +172,15 @@ export default function Events() {
                     </div>
 
                     <div>
-                      <h2 className="text-xl font-bold text-white mb-2">Partners & Details</h2>
+                      <h2 className="text-xl font-bold text-foreground mb-2">Partners & Details</h2>
                       <p>
-                        The event was hosted by <strong>Kolkata fork of BitsnBytes</strong>, with community partners including <strong>Coding Connoisseurs</strong>, <strong>Aryan Singh</strong>, and <strong>Notion Kolkata</strong>. All participants observed the official <Link href="https://www.microsoft.com/en-us/events/code-of-conduct" target="_blank" rel="noopener noreferrer" className="text-(--brand-red) hover:underline underline-offset-2">GitHub Event Code of Conduct</Link>.
+                        The event was hosted by <strong>Bits & Bytes Kolkata</strong>, with community partners including <strong>Coding Connoisseurs</strong>, <strong>Aryan Singh</strong>, and <strong>Notion Kolkata</strong>. All participants observed the official <Link href="https://www.microsoft.com/en-us/events/code-of-conduct" target="_blank" rel="noopener noreferrer" className="text-(--brand-red) hover:underline underline-offset-2">GitHub Event Code of Conduct</Link>.
                       </p>
                     </div>
                   </div>
 
                   <div className="space-y-6">
-                    <div className="space-y-0 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+                    <div className="space-y-0 divide-y divide-white/10 rounded-2xl border border-foreground/10 bg-foreground/5 overflow-hidden">
                       {[
                         { icon: <Calendar className="h-4 w-4 text-(--brand-red)" />, label: "Date", value: "Apr 19, 2026" },
                         { icon: <MapPin className="h-4 w-4 text-(--brand-red)" />, label: "Venue", value: "Kolkata" },
@@ -190,9 +190,9 @@ export default function Events() {
                         <div key={s.label} className="flex items-center justify-between px-5 py-3.5">
                           <div className="flex items-center gap-2.5">
                             {s.icon}
-                            <span className="text-sm text-white/60 font-medium">{s.label}</span>
+                            <span className="text-sm text-foreground/60 font-medium">{s.label}</span>
                           </div>
-                          <span className="text-sm font-black text-white text-right">{s.value}</span>
+                          <span className="text-sm font-black text-foreground text-right">{s.value}</span>
                         </div>
                       ))}
                     </div>
@@ -200,7 +200,7 @@ export default function Events() {
                     {/* CTA */}
                     <Button
                       asChild
-                      className="w-full rounded-2xl bg-white/10 border border-white/20 py-5 text-sm font-bold text-white hover:bg-white/20 transition-colors"
+                      className="w-full rounded-2xl bg-foreground/10 border border-foreground/20 py-5 text-sm font-bold text-foreground hover:bg-white/20 transition-colors"
                     >
                       <Link
                         href="https://luma.com/xtxua1jl"
@@ -215,7 +215,7 @@ export default function Events() {
                 </div>
 
                 {/* ── Gallery ── */}
-                <div className="mt-16 border-t border-white/10 pt-12">
+                <div className="mt-16 border-t border-foreground/10 pt-12">
                   <Gallery4
                     title="In Pictures"
                     description=""
@@ -273,43 +273,43 @@ export default function Events() {
             <GlassContainer glowColor="pink" animated={false} className="overflow-hidden">
 
               {/* ── Banner image header ── */}
-              <div className="relative w-full overflow-hidden rounded-t-[2.25rem] bg-white/5 flex items-center justify-center min-h-[320px] border-b border-white/10">
+              <div className="relative w-full overflow-hidden rounded-t-[2.25rem] bg-foreground/5 flex items-center justify-center min-h-[320px] border-b border-foreground/10">
                 <div className="text-center p-8">
-                  <div className="inline-flex items-center justify-center p-4 rounded-full bg-white/5 border border-white/10 mb-4">
+                  <div className="inline-flex items-center justify-center p-4 rounded-full bg-foreground/5 border border-foreground/10 mb-4">
                     <Activity className="h-12 w-12 text-(--brand-red)" />
                   </div>
-                  <h3 className="text-2xl font-black tracking-tight text-white mb-2">Execron 1.0</h3>
-                  <p className="text-white/60 font-medium">Build. Break. Repeat. Ship Something Real.</p>
+                  <h3 className="text-2xl font-black tracking-tight text-foreground mb-2">Execron 1.0</h3>
+                  <p className="text-foreground/60 font-medium">Build. Break. Repeat. Ship Something Real.</p>
                 </div>
               </div>
 
               {/* ── Details ── */}
               <div className="p-6 sm:p-8 md:p-10">
                 <div className="flex flex-wrap items-center gap-2 mb-8">
-                  <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white bg-(--brand-red)">
+                  <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-foreground bg-(--brand-red)">
                     Archived Event
                   </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-foreground/80 backdrop-blur-md">
                     <Trophy className="h-3 w-3 text-(--brand-red)" />
                     In Collaboration with TechKriti '26, IIT Kanpur
                   </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-foreground/80 backdrop-blur-md">
                     <Building2 className="h-3 w-3 text-(--brand-red)" />
                     IIT Kanpur
                   </span>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                  <div className="prose prose-invert max-w-none text-white/80 space-y-6 lg:col-span-2">
+                  <div className="prose prose-invert max-w-none text-foreground/80 space-y-6 lg:col-span-2">
                     <div>
-                      <h2 className="text-xl font-bold text-white mb-2">Event Summary</h2>
+                      <h2 className="text-xl font-bold text-foreground mb-2">Event Summary</h2>
                       <p>
                         <strong>Execron 1.0</strong> was an AI Hackathon & Workshop designed for students in <strong>Classes 9–12</strong>. Held in collaboration with <strong>TechKriti '26, IIT Kanpur</strong>, the event featured a 4-hour hands-on tech workshop followed by a 24-hour hackathon sprint.
                       </p>
                     </div>
 
                     <div>
-                      <h2 className="text-xl font-bold text-white mb-2">What the event included</h2>
+                      <h2 className="text-xl font-bold text-foreground mb-2">What the event included</h2>
                       <ul className="list-disc pl-5 space-y-1">
                         <li>A 4-hour hands-on workshop on modern tech topics.</li>
                         <li>A 24-hour hackathon sprint with mentor support.</li>
@@ -319,7 +319,7 @@ export default function Events() {
                     </div>
 
                     <div>
-                      <h2 className="text-xl font-bold text-white mb-2">Topics Covered</h2>
+                      <h2 className="text-xl font-bold text-foreground mb-2">Topics Covered</h2>
                       <ul className="list-disc pl-5 space-y-1">
                         <li><strong>AI & ML</strong> — Models and real-world AI applications.</li>
                         <li><strong>Web Development</strong> — Modern frameworks and responsive design.</li>
@@ -330,7 +330,7 @@ export default function Events() {
                     </div>
 
                     <div>
-                      <h2 className="text-xl font-bold text-white mb-2">Schedule</h2>
+                      <h2 className="text-xl font-bold text-foreground mb-2">Schedule</h2>
                       <p>
                         Workshop batches were held from <strong>19–21 March 2026</strong>. The grand finale took place on <strong>22 March 2026</strong>. Team sizes ranged from 1 to 4 members. Registration closed on 18 March 2026.
                       </p>
@@ -338,26 +338,26 @@ export default function Events() {
                   </div>
 
                   <div className="space-y-6">
-                    <div className="space-y-0 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+                    <div className="space-y-0 divide-y divide-white/10 rounded-2xl border border-foreground/10 bg-foreground/5 overflow-hidden">
                       {[
                         { icon: <Calendar className="h-4 w-4 text-(--brand-red)" />, label: "Date", value: "Mar 19–22, 2026" },
                         { icon: <MapPin className="h-4 w-4 text-(--brand-red)" />, label: "Venue", value: "IIT Kanpur" },
                         { icon: <Users className="h-4 w-4 text-(--brand-red)" />, label: "Team Size", value: "1–4 members" },
-                        { icon: <Building2 className="h-4 w-4 text-(--brand-red)" />, label: "Partners", value: "ByteForge, Kolkata fork of BitsnBytes" },
+                        { icon: <Building2 className="h-4 w-4 text-(--brand-red)" />, label: "Partners", value: "ByteForge, Bits & Bytes Kolkata" },
                       ].map((s) => (
                         <div key={s.label} className="flex items-center justify-between px-5 py-3.5">
                           <div className="flex items-center gap-2.5">
                             {s.icon}
-                            <span className="text-sm text-white/60 font-medium">{s.label}</span>
+                            <span className="text-sm text-foreground/60 font-medium">{s.label}</span>
                           </div>
-                          <span className="text-sm font-black text-white text-right">{s.value}</span>
+                          <span className="text-sm font-black text-foreground text-right">{s.value}</span>
                         </div>
                       ))}
                     </div>
 
                     <Button
                       asChild
-                      className="w-full rounded-2xl bg-white/10 border border-white/20 py-5 text-sm font-bold text-white hover:bg-white/20 transition-colors"
+                      className="w-full rounded-2xl bg-foreground/10 border border-foreground/20 py-5 text-sm font-bold text-foreground hover:bg-white/20 transition-colors"
                     >
                       <Link
                         href="https://byteforge.paxus.in/"
@@ -371,7 +371,7 @@ export default function Events() {
                   </div>
                 </div>
 
-                <div className="mt-16 border-t border-white/10 pt-12">
+                <div className="mt-16 border-t border-foreground/10 pt-12">
                   <Gallery4
                     title="In Pictures"
                     description=""
@@ -430,7 +430,7 @@ export default function Events() {
               <GlassContainer glowColor="pink" animated={false} className="overflow-hidden">
 
                 {/* ── Banner image header ── */}
-                <div className="relative w-full overflow-hidden rounded-t-[2.25rem] bg-white/5">
+                <div className="relative w-full overflow-hidden rounded-t-[2.25rem] bg-foreground/5">
                   <Image
                     src="/images/banner.jpeg"
                     alt="India Innovates 2026 — Bharat Mandapam, New Delhi"
@@ -444,29 +444,29 @@ export default function Events() {
                 {/* ── Details ── */}
                 <div className="p-6 sm:p-8 md:p-10">
                   <div className="flex flex-wrap items-center gap-2 mb-8">
-                    <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white bg-(--brand-red)">
+                    <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-foreground bg-(--brand-red)">
                       Archived Event
                     </span>
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-foreground/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-foreground/80 backdrop-blur-md">
                       <Trophy className="h-3 w-3 text-(--brand-red)" />
-                      Official Executive Partner: Kolkata fork of BitsnBytes
+                      Official Executive Partner: Bits & Bytes Kolkata
                     </span>
                   </div>
 
-                  <div className="prose prose-invert max-w-none text-white/80 space-y-6">
-                    <p className="text-lg text-white font-medium">
-                      <strong>India Innovates 2026</strong> is now archived. <strong>Kolkata fork of BitsnBytes (GobitsnBytes)</strong> was listed as the <strong>Official Executive Partner</strong> for the finale.
+                  <div className="prose prose-invert max-w-none text-foreground/80 space-y-6">
+                    <p className="text-lg text-foreground font-medium">
+                      <strong>India Innovates 2026</strong> is now archived. <strong>Bits & Bytes Kolkata (GobitsnBytes)</strong> was listed as the <strong>Official Executive Partner</strong> for the finale.
                     </p>
 
                     <div>
-                      <h2 className="text-xl font-bold text-white mb-2">Event Summary</h2>
+                      <h2 className="text-xl font-bold text-foreground mb-2">Event Summary</h2>
                       <p>
                         India Innovates 2026 was presented as the <strong>World's Largest Civic Tech Hackathon</strong>, held on <strong>March 28, 2026</strong> at <strong>Bharat Mandapam, Pragati Maidan, New Delhi</strong> (9 AM - 7 PM). Organizers included <strong>HN Group</strong> and <strong>MCD</strong>, with partner institutions such as <strong>IIT Kharagpur, NSUT, GGSIPU, and DDU</strong>. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-red) hover:underline">[indiainnovates]</Link>
                       </p>
                     </div>
 
                     <div>
-                      <h2 className="text-xl font-bold text-white mb-2">Scale</h2>
+                      <h2 className="text-xl font-bold text-foreground mb-2">Scale</h2>
                       <ul className="list-disc pl-5 space-y-1">
                         <li><strong>1.26 crore+</strong> total applicants nationwide. <Link href="https://www.tribuneindia.com/news/j-k/ju-team-among-top-15-at-india-innovates-2026/" target="_blank" className="text-(--brand-red) hover:underline">[tribuneindia]</Link></li>
                         <li><strong>28,000+ to 5,000+ to 15 teams</strong> across three elimination rounds. <Link href="https://www.dailyexcelsior.com/ju-students-outshine-at-india-innovates-2026/" target="_blank" className="text-(--brand-red) hover:underline">[dailyexcelsior]</Link></li>
@@ -476,14 +476,14 @@ export default function Events() {
                     </div>
 
                     <div>
-                      <h2 className="text-xl font-bold text-white mb-2">Finale Format</h2>
+                      <h2 className="text-xl font-bold text-foreground mb-2">Finale Format</h2>
                       <p>
                         It was not a build-on-site round. Teams developed in advance, and the final day focused on <strong>live product demonstrations</strong> reviewed by investors, officials, diplomats, and founders. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-red) hover:underline">[indiainnovates]</Link>
                       </p>
                     </div>
 
                     <div>
-                      <h2 className="text-xl font-bold text-white mb-2">Dignitaries and Finalists</h2>
+                      <h2 className="text-xl font-bold text-foreground mb-2">Dignitaries and Finalists</h2>
                       <p>
                         Confirmed attendees included <strong>Delhi CM Rekha Gupta</strong>, the <strong>Bihar Assembly Speaker</strong>, and <strong>MP Manoj Tiwari (North East Delhi)</strong>. <Link href="https://www.newdelhitimes.com/delhi-cm-rekha-gupta-attends-india-innovates-2026-hackathon-highlights-youth-driven-innovation/" target="_blank" className="text-(--brand-red) hover:underline">[newdelhitimes]</Link>
                       </p>
@@ -493,14 +493,14 @@ export default function Events() {
                     </div>
 
                     <div>
-                      <h2 className="text-xl font-bold text-white mb-2">Post-Event Pathway</h2>
+                      <h2 className="text-xl font-bold text-foreground mb-2">Post-Event Pathway</h2>
                       <p>
                         Following the finale, selected teams entered a <strong>ministry-level presentation stage</strong> for post-event review and exposure. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-red) hover:underline">[indiainnovates]</Link>
                       </p>
                     </div>
 
                     <div>
-                      <h2 className="text-xl font-bold text-white mb-2">Media and Social Coverage</h2>
+                      <h2 className="text-xl font-bold text-foreground mb-2">Media and Social Coverage</h2>
                       <ul className="list-disc pl-5 space-y-1">
                         <li><code>#IndiaInnovates2026</code> was trending on X (Twitter) on event day. <Link href="https://x.com/search?q=%23IndiaInnovates2026" target="_blank" className="text-(--brand-red) hover:underline">[x]</Link></li>
                         <li>Event updates were also posted by Delhi CM via official channels. <Link href="https://www.newdelhitimes.com/delhi-cm-rekha-gupta-attends-india-innovates-2026-hackathon-highlights-youth-driven-innovation/" target="_blank" className="text-(--brand-red) hover:underline">[newdelhitimes]</Link></li>
@@ -522,11 +522,11 @@ export default function Events() {
                 <div className="space-y-5">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div className="space-y-1">
-                      <h3 className="text-lg sm:text-xl font-bold text-white">Event Video</h3>
-                      <p className="text-sm text-white/65">Stage highlights and on-floor moments from the finale.</p>
+                      <h3 className="text-lg sm:text-xl font-bold text-foreground">Event Video</h3>
+                      <p className="text-sm text-foreground/65">Stage highlights and on-floor moments from the finale.</p>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-white/70">
+                      <span className="inline-flex items-center rounded-full border border-white/15 bg-foreground/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-foreground/70">
                         Archive Footage
                       </span>
                       <span className="inline-flex items-center rounded-full border border-(--brand-red)/40 bg-(--brand-red)/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-(--brand-red)">
@@ -535,10 +535,10 @@ export default function Events() {
                     </div>
                   </div>
 
-                  <div className="relative flex items-center justify-center overflow-hidden rounded-[1.4rem] border border-white/15 bg-black/40 p-2 shadow-[0_20px_70px_rgba(0,0,0,0.45)] backdrop-blur-md">
+                  <div className="relative flex items-center justify-center overflow-hidden rounded-[1.4rem] border border-foreground/15 bg-white/40 p-2 shadow-2xl backdrop-blur-md">
                     <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(228,90,146,0.15),transparent_50%)]" />
                     <video
-                      className="relative z-10 w-full max-h-[75vh] object-contain rounded-[1rem] border border-white/10 bg-black"
+                      className="relative z-10 w-full max-h-[75vh] object-contain rounded-[1rem] border border-foreground/10 bg-black"
                       controls
                       playsInline
                       preload="metadata"
@@ -614,4 +614,5 @@ export default function Events() {
     </>
   );
 }
+
 

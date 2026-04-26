@@ -1,6 +1,6 @@
-# Kolkata fork of BitsnBytes
+# Bits & Bytes Kolkata
 
-Official platform for the Kolkata fork of BitsnBytes, a teen-led coding community based in Kolkata, India. This repository powers the public website and community pages.
+Official platform for Bits & Bytes Kolkata, a teen-led coding community based in Kolkata, India. This repository powers the public website and community pages.
 
 ## What This Project Includes
 
@@ -143,3 +143,5 @@ The app also injects git metadata at build time in `next.config.mjs`.
 ## License
 
 This repository does not currently include a license file. Add one if you intend to allow reuse/distribution under specific terms.
+
+

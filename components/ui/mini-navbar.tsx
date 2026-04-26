@@ -23,8 +23,8 @@ const AnimatedNavLink = ({
     href: string;
     children: React.ReactNode;
 }) => {
-    const defaultTextColor = "text-white/60";
-    const hoverTextColor = "text-white";
+    const defaultTextColor = "text-foreground/60";
+    const hoverTextColor = "text-foreground";
     const textSizeClass = "text-sm";
 
     return (
@@ -83,10 +83,10 @@ export function MiniNavbar() {
 
     const loginButtonElement = (
         <Link
-            href="https://github.com/gobitsnbytes"
+            href="https://github.com/BitsnBytes-Kolkata"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 px-4 py-2 text-xs font-bold border border-white/10 bg-white/5 text-white/70 rounded-full hover:border-white/30 hover:text-white transition-transform transition-colors transition-opacity duration-200 w-full md:w-auto"
+            className="flex items-center justify-center gap-2 px-4 py-2 text-xs font-bold border border-foreground/10 bg-foreground/5 text-foreground/70 rounded-full hover:border-foreground/30 hover:text-foreground transition-transform transition-colors transition-opacity duration-200 w-full md:w-auto"
         >
             <Github className="w-3.5 h-3.5" />
             GitHub
@@ -121,7 +121,7 @@ export function MiniNavbar() {
                 "px-4 md:px-6 py-2.5",
                 "backdrop-blur-none md:backdrop-blur-lg", // Disable blur on mobile for performance
                 headerShapeClass,
-                "border border-white/10 bg-black/95 md:bg-black/70 shadow-2xl",
+                "border border-foreground/10 bg-white/95 md:bg-white/80 shadow-xl shadow-black/5",
                 // Positioning: fixed padding on mobile, centered on desktop
                 "left-4 right-4 md:left-1/2 md:right-auto md:w-auto",
                 "transform translate-x-0 md:-translate-x-1/2",
@@ -134,10 +134,10 @@ export function MiniNavbar() {
                     <div className="relative h-8 w-8 flex items-center justify-center rounded-lg bg-white overflow-hidden p-1.5">
                         <Image
                             src={logo}
-                            alt="Kolkata fork of BitsnBytes logo"
+                            alt="Bits & Bytes Kolkata logo"
                             width={20}
                             height={20}
-                            className="object-contain invert"
+                            className="object-contain"
                         />
                     </div>
                 </Link>
@@ -156,7 +156,7 @@ export function MiniNavbar() {
                 </div>
 
                 <button
-                    className="md:hidden flex items-center justify-center w-8 h-8 text-white/70 hover:text-white transition-colors focus:outline-none"
+                    className="md:hidden flex items-center justify-center w-8 h-8 text-foreground/70 hover:text-foreground transition-colors focus:outline-none"
                     onClick={toggleMenu}
                     aria-label={isOpen ? "Close Menu" : "Open Menu"}
                 >
@@ -181,7 +181,7 @@ export function MiniNavbar() {
                                     onClick={() => setIsOpen(false)}
                                     className={cn(
                                         "text-lg font-bold transition-colors w-full text-center py-2",
-                                        pathname === link.href ? "text-[var(--brand-red)]" : "text-white/70 hover:text-white"
+                                        pathname === link.href ? "text-[var(--brand-red)]" : "text-foreground/70 hover:text-foreground"
                                     )}
                                 >
                                     {link.label}
@@ -198,4 +198,6 @@ export function MiniNavbar() {
         </header>
     );
 }
+
+
 

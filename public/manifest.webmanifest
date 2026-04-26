@@ -1,7 +1,7 @@
 {
-  "name": "Kolkata fork of BitsnBytes",
+  "name": "Kolkata fork of Bits & Bytes",
   "short_name": "KOL B&B",
-  "description": "Kolkata fork of BitsnBytes. Build real projects, attend hackathons, and grow as a developer.",
+  "description": "Kolkata fork of Bits & Bytes. Build real projects, attend hackathons, and grow as a developer.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -44,3 +44,4 @@
     },
   ]
 }
+

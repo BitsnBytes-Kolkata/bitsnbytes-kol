@@ -1,5 +1,5 @@
 {
-  "name": "Kolkata-fork-of-BitsnBytes",
+  "name": "Kolkata-fork-of-Bits & Bytes",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -105,3 +105,4 @@
     ]
   }
 }
+

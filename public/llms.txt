@@ -1,10 +1,10 @@
-# Kolkata fork of BitsnBytes
+# Kolkata fork of Bits & Bytes
 
 > **Mission:** Building Kolkata's boldest teen-led hackathons & tech movements  
 > **Org Type:** Nonprofit · Teen-Led Code Club · Based in Kolkata, India · Serving builders nationwide
 > **Website:** https://gobitsnbytes.org
 
-This file provides context for AI agents and LLM-powered search engines about the Kolkata fork of BitsnBytes.
+This file provides context for AI agents and LLM-powered search engines about the Kolkata fork of Bits & Bytes.
 
 ## Quick Facts
 - **Founded:** 2024
@@ -16,7 +16,7 @@ This file provides context for AI agents and LLM-powered search engines about th
 - **Age Range:** 13-19 years old
 
 ## Core Identity & Culture
-Kolkata fork of BitsnBytes is a teen-led code club and nonprofit, based in Kolkata. We empower students to build real-world projects, participate in hackathons, attend workshops, and grow as developers—all for free.
+Kolkata fork of Bits & Bytes is a teen-led code club and nonprofit, based in Kolkata. We empower students to build real-world projects, participate in hackathons, attend workshops, and grow as developers—all for free.
 - **Innovation first:** Every prompt becomes a prototype. Bold experiments and rapid iteration.
 - **Club power:** Mentors, pods, and accountability partners keep everyone shipping.
 - **Real-world impact:** We solve for real audiences—from school ops to civic tech to accessibility.
@@ -28,8 +28,8 @@ Kolkata fork of BitsnBytes is a teen-led code club and nonprofit, based in Kolka
 4. **Community**: A safe, inclusive community for members to learn openly.
 
 ## Current & Upcoming Events
-- **GitHub Copilot Dev Days | Kolkata** — A community developer event exploring AI-assisted coding with GitHub Copilot. Sunday, April 19, 2026, 10:00 AM – 2:00 PM in Kolkata, WB. Hosted by Kolkata fork of BitsnBytes. Registration via Luma (approval required): https://luma.com/xtxua1jl. Topics: how GitHub Copilot works, integrating AI into dev workflows, prompt techniques for better code suggestions, responsible AI use. **Note: Kolkata fork of BitsnBytes is the Host of this event.**
-- **India Innovates 2026** [ARCHIVED] — Held on March 28, 2026 at Bharat Mandapam, New Delhi (9 AM to 7 PM). Organized by HN Group and MCD with DDU, IIT Kharagpur, DTC, NSUT, and GGSIPU. Verified scale: 1.26 crore+ applicants, narrowed to 28,000+, then 5,000+, and finally 15 teams. Domains: Urban Solutions, Digital Democracy, and Open Innovation. Prize pool: ₹10 Lakh+ with ₹1L/₹75K/₹50K/₹25K per domain. Kolkata fork of BitsnBytes served as the Official Executive Partner. Post-event flow included a ministry-level presentation stage.
+- **GitHub Copilot Dev Days | Kolkata** — A community developer event exploring AI-assisted coding with GitHub Copilot. Sunday, April 19, 2026, 10:00 AM – 2:00 PM in Kolkata, WB. Hosted by Kolkata fork of Bits & Bytes. Registration via Luma (approval required): https://luma.com/xtxua1jl. Topics: how GitHub Copilot works, integrating AI into dev workflows, prompt techniques for better code suggestions, responsible AI use. **Note: Kolkata fork of Bits & Bytes is the Host of this event.**
+- **India Innovates 2026** [ARCHIVED] — Held on March 28, 2026 at Bharat Mandapam, New Delhi (9 AM to 7 PM). Organized by HN Group and MCD with DDU, IIT Kharagpur, DTC, NSUT, and GGSIPU. Verified scale: 1.26 crore+ applicants, narrowed to 28,000+, then 5,000+, and finally 15 teams. Domains: Urban Solutions, Digital Democracy, and Open Innovation. Prize pool: ₹10 Lakh+ with ₹1L/₹75K/₹50K/₹25K per domain. Kolkata fork of Bits & Bytes served as the Official Executive Partner. Post-event flow included a ministry-level presentation stage.
 
 ## Leadership Team (Core Team)
 - **Yash**: Founder & Local Lead – Leads entire organization, coords teams, tech architect. Website: https://yashvibe.codes/, GitHub: https://github.com/yashclouded
@@ -57,7 +57,7 @@ Kolkata fork of BitsnBytes is a teen-led code club and nonprofit, based in Kolka
   1. Warning/Apology
   2. Temporary Ban
   3. Permanent Removal
-- **Reporting**: email `hello@gobitsnbytes.org` or message a team member. 100% confidential. Applies to all events, online spaces, projects, and social media.
+- **Reporting**: email `kolkata@bitsnbytes.org` or message a team member. 100% confidential. Applies to all events, online spaces, projects, and social media.
 
 ## Website Structure
 - **/** - Homepage with overview and impact stats
@@ -71,10 +71,10 @@ Kolkata fork of BitsnBytes is a teen-led code club and nonprofit, based in Kolka
 
 ## Contact Information
 - **Website**: https://gobitsnbytes.org
-- **Email**: hello@gobitsnbytes.org
+- **Email**: kolkata@bitsnbytes.org
 - **Contact Page**: https://gobitsnbytes.org/contact
 - **LinkedIn**: https://www.linkedin.com/company/gobitsbytes
-- **GitHub**: https://github.com/gobitsnbytes
+- **GitHub**: https://github.com/BitsnBytes-Kolkata
 - **Twitter/X**: @bitsnbytes_lko
 - **Location**: Kolkata, West Bengal, India
 
@@ -86,3 +86,5 @@ Kolkata fork of BitsnBytes is a teen-led code club and nonprofit, based in Kolka
 
 ---
 Last updated: February 2026
+
+
